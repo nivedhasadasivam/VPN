@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Terms & Conditions - VPNexues Private Limited">
+    <title>Terms &amp; Conditions — VPNexues</title>
+    <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+    <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+    <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+    <link rel="stylesheet" href="assets-ui/css/animate.min.css?v=1.0">
+    <link rel="stylesheet" href="assets-ui/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+    <link rel="stylesheet" href="assets-ui/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets-ui/css/nice-select.css">
+    <link rel="stylesheet" href="assets-ui/css/main.css">
+    <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.2">
+    <style>
+        .breadcrumb-wrapper{display:none !important;}
+        .terms-desktop-heading{display:none;}
+        @media (min-width:768px){
+            .terms-desktop-heading{display:block;}
+            .terms-desktop-heading .pg-banner{
+                margin:0;border-radius:0;width:100vw;margin-left:calc(-50vw + 50%);
+                background:linear-gradient(135deg,#0f3d22 0%,#1B5E20 50%,#2E7D32 100%);
+                padding:44px 0 40px;position:relative;overflow:hidden;
+            }
+            .terms-desktop-heading .pg-banner::before{content:'';position:absolute;inset:0;background:url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/feature/feature-01.png') center/cover no-repeat;opacity:.06;pointer-events:none;}
+            .terms-desktop-heading .pg-banner .container{position:relative;z-index:1;padding-left:clamp(20px,4vw,60px);padding-right:clamp(20px,4vw,60px);}
+            .terms-desktop-heading .pg-banner .breadcrumb{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#fff !important;margin-bottom:10px;opacity:.95;}
+            .terms-desktop-heading .pg-banner .breadcrumb a,.terms-desktop-heading .pg-banner .breadcrumb span{color:#fff !important;}
+            .terms-desktop-heading .pg-banner h1{font-size:30px;margin:0;color:#fff !important;font-weight:800;}
+            .terms-desktop-heading .pg-banner p{font-size:13px;margin-top:8px;color:rgba(255,255,255,.92) !important;}
+            .terms-desktop-heading .pg-banner .badge{display:inline-block;background:#FFC107;color:#1A1A1A;padding:4px 14px;border-radius:50px;font-weight:700;font-size:11px;margin-top:10px;}
+        }
+        .terms-mobile-banner{display:block;padding:18px 14px 0;}
+        .terms-mobile-banner .mob-card{background:linear-gradient(135deg,#143d1e,#1B5E20);border-radius:14px;padding:22px 18px;text-align:center;color:#fff;}
+        .terms-mobile-banner .mob-card h1{font-size:20px;font-weight:800;margin:6px 0 4px;color:#fff;}
+        .terms-mobile-banner .mob-card p{font-size:11px;opacity:.9;margin:0;color:#fff;}
+        @media (min-width:768px){.terms-mobile-banner{display:none;}}
+        body{background:#f6f8f5;}
+        .terms-wrap{max-width:880px;margin:0 auto;padding:28px 16px 40px;}
+        @media (max-width:767px){.terms-wrap{padding:16px 14px 30px;}}
+        .terms-section{background:#fff;border-radius:16px;padding:28px 28px;border:1px solid rgba(91,140,81,.10);box-shadow:0 4px 18px rgba(10,40,3,.06);margin-bottom:18px;}
+        @media (max-width:767px){.terms-section{padding:20px 18px;border-radius:12px;}}
+        .terms-section h2{font-size:17px;font-weight:800;color:#0A2803;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid #eef3ec;}
+        .terms-section h3{font-size:14px;font-weight:700;color:#1B5E20;margin:18px 0 10px;}
+        .terms-section p,.terms-section li{font-size:13.5px;line-height:1.7;color:#3a4a3e;margin-bottom:7px;}
+        .terms-section ul{padding-left:20px;margin:0;}
+        .contact-info{background:#f1f8f1;padding:18px 18px;border-radius:10px;border-left:4px solid #5B8C51;margin:12px 0;}
+        .contact-info p{margin:4px 0;font-size:13px;}
+        .table-container{overflow-x:auto;margin:14px 0;border-radius:10px;border:1px solid #e8ece7;}
+        table{width:100%;border-collapse:collapse;font-size:13px;min-width:620px;}
+        th,td{padding:11px 14px;text-align:left;border-bottom:1px solid #eef0ee;}
+        th{background:#f6f8f5;font-weight:700;color:#0A2803;font-size:12px;text-transform:uppercase;letter-spacing:.4px;}
+        .updated-badge{display:inline-flex;align-items:center;gap:6px;background:#fff3cd;border:1px solid #ffe69c;color:#664d03;padding:6px 12px;border-radius:50px;font-size:11px;font-weight:700;}
+        .footer-legal{text-align:center;padding:22px;color:#6b7a6e;font-size:12px;}
+
+        /* Mobile header — matches shop.html */
+        #terms-mobile-header {
+            display: none;
+        }
+        @media (max-width: 767px) {
+            .header-top-section,
+            #header-sticky,
+            .header-1 {
+                display: none !important;
+            }
+            #terms-mobile-header {
+                position: sticky;
+                top: 0;
+                z-index: 999;
+                display: grid;
+                grid-template-columns: 44px 1fr;
+                align-items: center;
+                min-height: 56px;
+                padding: 6px clamp(12px, 3vw, 24px);
+                border-bottom: 1px solid #e8ece7;
+                background-color: #fff !important;
+                backdrop-filter: blur(14px);
+            }
+            #terms-mobile-header .sb-header-back {
+                width: 34px;
+                height: 34px;
+                display: grid;
+                place-items: center;
+                border: 1.5px solid rgba(91, 140, 81, .28);
+                border-radius: 50%;
+                font-size: 14px;
+                cursor: pointer;
+                color: #2f7d2c;
+                background: linear-gradient(145deg, #f4fbf1 0%, #e8f5e3 100%);
+                box-shadow: 0 4px 12px rgba(21, 102, 39, .1), inset 0 1px 0 rgba(255, 255, 255, .9);
+                transition: all .25s ease;
+            }
+            #terms-mobile-header .sb-header-back:active {
+                transform: scale(.95);
+            }
+            #terms-mobile-header .sb-brand {
+                display: flex;
+                align-items: center;
+                justify-self: center;
+                gap: 8px;
+                color: #1c2820;
+                text-decoration: none;
+            }
+            #terms-mobile-header .sb-brand img {
+                width: 36px;
+                height: 36px;
+                object-fit: contain;
+            }
+            #terms-mobile-header .sb-brand span { display: grid; gap: 0px; }
+            #terms-mobile-header .sb-brand strong { font-size: clamp(16px, 2.5vw, 22px); font-weight: 900; letter-spacing: -.5px; line-height: 1; }
+            #terms-mobile-header .sb-brand small { color: #263528; font-size: 9px; font-weight: 700; line-height: 1.1; }
+            .terms-desktop-heading { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader" class="preloader">
+        <div class="animation-preloader"><div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="V" class="letters-loading">V</span>
+                <span data-text-preloader="P" class="letters-loading">P</span>
+                <span data-text-preloader="N" class="letters-loading">N</span>
+                <span data-text-preloader="e" class="letters-loading">e</span>
+                <span data-text-preloader="x" class="letters-loading">x</span>
+                <span data-text-preloader="u" class="letters-loading">u</span>
+                <span data-text-preloader="e" class="letters-loading">e</span>
+                <span data-text-preloader="s" class="letters-loading">s</span>
+            </div><p class="text-center">Loading</p>
+        </div>
+        <div class="loader"><div class="row"><div class="col-3 loader-section section-left"><div class="bg"></div></div><div class="col-3 loader-section section-left"><div class="bg"></div></div><div class="col-3 loader-section section-right"><div class="bg"></div></div><div class="col-3 loader-section section-right"><div class="bg"></div></div></div></div>
+    </div>
+    <button id="back-top" class="back-to-top"><i class="far fa-arrow-up"></i></button>
+    <div class="fix-area">
+        <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+                <div class="offcanvas__content">
+                    <div class="offcanvas-header-fixed">
+                        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                            <div class="offcanvas__logo"><a href="index.html">VPNexues</a></div>
+                            <div class="offcanvas__close"><button><i class="fas fa-times"></i></button></div>
+                        </div>
+                        <h3 class="offcanvas-title">Hello There!</h3>
+                        <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022.</p>
+                        <div class="mobile-menu fix mt-15"></div>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="offcanvas-scrollable-body">
+                        <div class="offcanvas__contact">
+                            <h3>Contact Us</h3>
+                            <ul class="contact-list">
+                                <li><div class="icon"><i class="far fa-phone-alt"></i></div><div class="content"><p>Call Us</p><h4><a href="tel:+919943994603">+91 9943994603</a></h4></div></li>
+                                <li><div class="icon"><i class="fal fa-envelope"></i></div><div class="content"><p>Send Email</p><h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4></div></li>
+                                <li><div class="icon"><i class="fal fa-map-marker-alt"></i></div><div class="content"><p>Location</p><div class="footer-location-li"><h4>India</h4><span style="color:#333;font-size:14px;">No 312/11, Siva Towers, Perumal Malai Road, Narasothipatti, Salem, Tamil Nadu, 636004</span></div></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas__overlay"></div>
+    <!-- Mobile Header (matches shop.html) -->
+    <header class="sb-mobile-header" id="terms-mobile-header">
+        <button class="sb-header-back" type="button" onclick="window.location.href='index.html'" aria-label="Go back"><i class="fas fa-chevron-left"></i></button>
+        <a class="sb-brand" href="index.html" aria-label="VPNexues home">
+            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_logo.svg" alt="VPNexues logo" width="34" height="34">
+            <span><strong>VPNexues</strong><small>விவசாயம்<br>காப்போம்</small></span>
+        </a>
+    </header>
+    <div class="header-top-section">
+        <div class="container">
+            <div class="header-top-wrapper">
+                <ul class="header-contact-list">
+                    <li><i class="fal fa-envelope"></i><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></li>
+                    <li><i class="far fa-phone-alt"></i><a href="tel:+919943994603">+91 9943994603</a> | <a href="tel:+918148197842">+91 8148197842</a></li>
+                </ul>
+                <div class="head-right">
+                    <div class="social-icon">
+                        <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header id="header-sticky" class="header-1">
+        <div class="container">
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="vpn-logo-header">
+                        <div class="idlogo-vpn"><a href="index.html" class="top-logo">VPNexues</a><span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span></div>
+                    </div>
+                    <div class="idlogo-vpn idlogo-vpn-mobile"><a href="index.html" class="header-logo">VPNexues</a><span class="idlogo-vivasayam-txt" style="padding-left:41px;position:relative;top:-8px">விவசாயம் காப்போம்</span></div>
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li class="has-dropdown"><a href="javascript:void(0)">Pages</a>
+                                        <ul class="submenu" style="display:block;">
+                                            <li><a href="our-services.html">Our Services</a></li>
+                                            <li><a href="team.html">Our Team</a></li>
+                                            <li><a href="careers.html">Careers</a></li>
+                                            <li><a href="pricing.html">Pricing Plan</a></li>
+                                            <li><a href="testimonial.html">Testimonials</a></li>
+                                            <li><a href="faq.html">Faqs</a></li>
+                                            <li><a href="news.html">News</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="contact.html">Support</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <a href="shop.html" class="theme-btn vpn-shop-now-btn" style="margin-left:10px;">All Products<i class="far fa-arrow-right"></i></a>
+                        <div class="header__hamburger my-auto"><div class="sidebar__toggle"><div class="header-bar"><span></span><span></span><span></span></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="terms-desktop-heading">
+        <div class="pg-banner">
+            <div class="container">
+                <div class="pg-banner-in">
+                    <div class="breadcrumb"><a href="index.html">Home</a> <span>&rsaquo;</span> Terms &amp; Conditions</div>
+                    <h1>📜 Terms &amp; Conditions</h1>
+                    <p>Rules for using VPNexues App &amp; Website — shop, boxes &amp; B2B trade. Please read before ordering.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="terms-mobile-banner">
+        <div class="mob-card">
+            <span style="background:#FFC107;color:#1A1A1A;padding:4px 12px;border-radius:50px;font-size:10px;font-weight:800;">VPNexues Private Limited</span>
+            <h1>Terms &amp; Conditions</h1>
+            <p>DPDP • IT Act</p>
+        </div>
+    </div>
+    <div class="terms-wrap">
+        <div class="updated-badge" style="margin-bottom:14px;"><i class="fas fa-file-contract" style="color:#5B8C51;"></i> Governs: App (VPNexues) • Website https://vpnexues.com • All Orders &amp; B2B RFQs</div>
+
+        <!-- 1 -->
+        <section class="terms-section">
+            <h2>1. Introduction &amp; Company Information</h2>
+            <p>These Terms &amp; Conditions ("Terms") govern your access and use of the mobile application <strong>VPNexues</strong> (the "App"), our website at <a href="https://vpnexues.com">https://vpnexues.com</a>, and any related supply-chain services (collectively, the "Services") operated by <strong>VPNexues Private Limited</strong> ("we", "us", "our"). By creating an account, placing an order, or submitting a B2B inquiry, you agree to these Terms and our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+            <div class="contact-info">
+                <p><strong>Company Name:</strong> VPNexues Private Limited</p>
+                <p><strong>Registered Corporate Address:</strong> No 312/11, Siva Towers, Perumal Malai Road, Narasothipatti, Salem, Tamil Nadu, 636004, India</p>
+                <p><strong>Corporate Email:</strong> <a href="mailto:marketing@vpnexues.com">marketing@vpnexues.com</a></p>
+                <p><strong>Customer &amp; Trade Support:</strong> <a href="mailto:support@vpnexues.com">support@vpnexues.com</a></p>
+                <p><strong>Website:</strong> <a href="https://vpnexues.com">https://vpnexues.com</a></p>
+                <p><strong>Governing Law &amp; Jurisdiction:</strong> Laws of India. Subject to applicable law, disputes shall be handled by the competent courts having jurisdiction over VPNexues' registered office in Tamil Nadu.</p>
+            </div>
+            <p>We encourage you to read these Terms carefully and reach out to <a href="mailto:support@vpnexues.com">support@vpnexues.com</a> if you have any questions. We will notify you of material updates as described in Section 15 — your continued use after an update will be considered as acceptance of the revised Terms.</p>
+        </section>
+
+        <!-- 2 -->
+        <section class="terms-section">
+            <h2>2. Eligibility, Account &amp; Authentication</h2>
+            <ul>
+                <li><strong>Who Can Use:</strong> Our Services are available to individuals aged 18 and above who can enter a binding contract. We're unable to offer Services to children under 18.</li>
+                <li><strong>Account Creation:</strong> Your account is created securely via <strong>Google Firebase Phone Authentication</strong> (SMS OTP). Your phone number is used to verify your account. Phone numbers provided for Firebase Phone Authentication are sent to and stored by Google for spam and abuse prevention. Please refer to Google's <a href="https://firebase.google.com/policies/privacy" target="_blank">Firebase Privacy Policy</a> for more information.</li>
+                <li><strong>Your Details:</strong> Please share your accurate full name, delivery address (with map-pin where needed), and contact details, and keep them updated — this helps us deliver fresh produce without delay.</li>
+                <li><strong>Keeping Your Account Safe:</strong> Please keep your device and OTP confidential. If you notice anything unusual, let us know right away at <a href="mailto:support@vpnexues.com">support@vpnexues.com</a> — we're here to help secure your account.</li>
+                <li><strong>One Account:</strong> One verified phone number per account helps keep our platform fair for everyone. If we notice unusual duplicate activity, we may gently review the account with you.</li>
+            </ul>
+        </section>
+
+        <!-- 3 -->
+        <section class="terms-section">
+            <h2>3. Services — Shop, Small Box, Big Box &amp; B2B</h2>
+            <ul>
+                <li><strong>Shop (Retail):</strong> Browse vegetables, fruits, beverages, groceries. Add to cart and checkout. Minimum order and delivery fee displayed at checkout (country-aware: IN, SG, AE, US, LK, AU).</li>
+                <li><strong>Small Box &amp; Big Box:</strong> Curated boxes available in fixed or weight-based quantities. Small Box priced per box, Big Box by weight (0.5 kg increments). Pricing and savings displayed in your selected country/currency before confirmation.</li>
+                <li><strong>B2B / Wholesale:</strong> For bulk buyers, farmers, and exporters. Submit inquiry via B2B form with business name, GSTIN, IEC, and trade credentials. B2B/export documentation may include applicable GST invoices, APEDA, phytosanitary or other trade documents, depending on the transaction and applicable requirements.</li>
+                <li><strong>Availability:</strong> Product availability, harvest, and delivery zones vary by location and season. We may limit quantities per order.</li>
+            </ul>
+        </section>
+
+        <!-- 4 -->
+        <section class="terms-section">
+            <h2>4. Orders, Pricing &amp; Payments</h2>
+            <ul>
+                <li><strong>Order Acceptance:</strong> Placing an order is an offer to purchase — we confirm acceptance via App/Email/SMS after verification. Occasionally, we may need to cancel due to stock unavailability or a pricing error — we'll notify you promptly and no payment will be taken.</li>
+                <li><strong>Pricing:</strong> Prices are country-aware and displayed in your selected currency before checkout. Base prices are shown per product; delivery fee, taxes and discounts are itemized at checkout. Prices may change due to harvest/season without notice, but confirmed orders retain confirmed price.</li>
+                <li><strong>Payments — Cash on Delivery (COD) Only:</strong> Currently, only <strong>Cash on Delivery</strong> is enabled. <strong>No card, UPI, net banking or online payment data is collected or processed.</strong> You pay the delivery fleet in cash at doorstep. Online payments (via RBI-authorized gateways) will be disclosed separately if enabled in future — these Terms and the Privacy Policy will be updated before collection.</li>
+                <li><strong>Taxes &amp; Invoices:</strong> GST and commercial invoices are issued for B2B orders (GSTIN required). Retail invoices are provided in App/email.</li>
+            </ul>
+            <div class="table-container">
+                <table>
+                    <thead><tr><th>Channel</th><th>Pricing Basis</th><th>Payment at Checkout</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Shop</strong></td><td>Per unit, country-aware</td><td>COD only</td></tr>
+                        <tr><td><strong>Small Box</strong></td><td>Per box, per size displayed at checkout</td><td>COD only</td></tr>
+                        <tr><td><strong>Big Box</strong></td><td>Per kg (0.5 kg steps)</td><td>COD only</td></tr>
+                        <tr><td><strong>B2B</strong></td><td>Quoted, GST invoice</td><td>COD only</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5 -->
+        <section class="terms-section">
+            <h2>5. Delivery, Fulfillment &amp; Logistics</h2>
+            <ul>
+                <li><strong>Serviceable Zones:</strong> To ensure your fresh produce arrives correctly, please provide your delivery location via <strong>map-pin or address entry during checkout</strong>. This helps us confirm your delivery zone and avoid misrouting.</li>
+                <li><strong>Timelines:</strong> Delivery times are estimates and may vary due to harvest, weather, traffic, or logistics conditions. Any specifically agreed B2B delivery timeline will be stated in the applicable quotation or agreement.</li>
+                <li><strong>Address Accuracy:</strong> Please share your complete address including house/door number, street, landmark, city, state, PIN and recipient name/phone — a complete address helps us deliver on time.</li>
+                <li><strong>Logistics Partners:</strong> Last-mile delivery is executed by our internal fleets or verified third-party partners who receive your name, address, and contact details solely for delivery under confidentiality.</li>
+                <li><strong>Inspection:</strong> Please inspect produce at delivery. Report damage/spoilage within 24 hours with photos to <a href="mailto:support@vpnexues.com">support@vpnexues.com</a>.</li>
+            </ul>
+        </section>
+
+        <!-- 6 -->
+        <section class="terms-section">
+            <h2>6. Cancellation, Returns &amp; Refunds</h2>
+            <ul>
+                <li><strong>Cancellation by You:</strong> You can cancel before dispatch via App or support. Once packed/dispatched for harvest, we may be unable to cancel — please reach out quickly and we'll do our best to help.</li>
+                <li><strong>Cancellation by Us:</strong> Rarely, we may need to cancel due to stock shortage, pricing error, or if your pin code is not serviceable — we'll notify you promptly and no COD will be collected.</li>
+                <li><strong>Returns:</strong> Due to perishable nature, returns are not accepted after delivery except for wrong/damaged produce reported within 24 hours.</li>
+                <li><strong>Refunds:</strong> As VPNexues currently accepts Cash on Delivery only, no online-payment refunds are currently processed. Where a refund is approved for an eligible order, VPNexues will communicate the applicable refund method and timeframe after verification.</li>
+            </ul>
+        </section>
+
+        <!-- 7 -->
+        <section class="terms-section">
+            <h2>7. B2B &amp; Export Trade Terms</h2>
+            <ul>
+                <li><strong>Eligibility:</strong> B2B requires verified business name, GSTIN, IEC and authorized representative. Please share accurate details — this helps us verify your business quickly and provide correct documentation.</li>
+                <li><strong>Quotations:</strong> B2B prices are quoted per inquiry and valid for the period stated in the quote. Bulk discounts and applicable documentation fees are itemized separately.</li>
+                <li><strong>Tax &amp; Export Compliance:</strong> B2B buyers are responsible for applicable import requirements, duties, taxes and regulatory requirements in the destination country, except where the applicable quotation or trade agreement states otherwise. We provide GST-compliant invoices and applicable trade documentation for verified B2B orders.</li>
+                <li><strong>Minimums:</strong> B2B may have minimum order quantity/value per shipment — disclosed in quote.</li>
+            </ul>
+        </section>
+
+        <!-- 8 -->
+        <section class="terms-section">
+            <h2>8. User Conduct &amp; Acceptable Use</h2>
+            <p>To keep VPNexues safe and enjoyable for everyone, we kindly ask you to:</p>
+            <ul>
+                <li>Use Services fairly — please avoid fraud, fake orders, scraping, or interfering with our platform.</li>
+                <li>Share accurate information and avoid impersonation or creating multiple accounts to misuse offers.</li>
+                <li>Keep support/B2B communications respectful and lawful.</li>
+                <li>We may need to review accounts that don't follow these guidelines or applicable law — we'll always explain and help where possible.</li>
+            </ul>
+        </section>
+
+        <!-- 9 -->
+        <section class="terms-section">
+            <h2>9. Intellectual Property</h2>
+            <p>All content, branding (VPNexues, விவசாயம் காப்போம்), product images, descriptions, and software are owned by VPNexues Private Limited or its licensors. You are granted a limited, non-transferable license to use the App/Website for personal or authorized B2B use. No copying, reproduction, or commercial use without written permission.</p>
+        </section>
+
+        <!-- 10 -->
+        <section class="terms-section">
+            <h2>10. Third-Party Services</h2>
+            <p>Our Services rely on verified processors:</p>
+            <div class="table-container">
+                <table>
+                    <thead><tr><th>Provider</th><th>Purpose</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Google Firebase</strong></td><td>Phone OTP authentication and push notifications (FCM), including security and abuse-prevention features used by the authentication service — <a href="https://firebase.google.com/policies/privacy" target="_blank">Firebase Privacy Policy</a></td></tr>
+                        <tr><td><strong>Supabase</strong></td><td>PostgreSQL database, backend API, session storage and hosting (Supabase cloud — current infrastructure with Firebase)</td></tr>
+                        <tr><td><strong>Logistics Partners</strong></td><td>Last-mile delivery — bound by confidentiality</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Online payment gateways are <strong>not in use</strong> (COD only). When enabled, RBI-authorized gateways will be disclosed here before collection. We are not responsible for third-party sites linked from our Services — review their terms before use.</p>
+        </section>
+
+        <!-- 11 -->
+        <section class="terms-section">
+            <h2>11. Limitation of Liability &amp; Disclaimer</h2>
+            <p>We work hard to keep VPNexues reliable, fresh, and secure, but our Services are provided "as is" without warranties.</p>
+            <ul>
+                <li>We don't guarantee uninterrupted or 100% error-free operation — occasionally harvest, weather, or logistics may cause delays beyond our control.</li>
+                <li>Where permitted by law, our liability for a claim is limited to the amount paid for the specific order in question.</li>
+                <li>We aim to resolve issues fairly and are not liable for indirect or consequential losses, but nothing here limits liability for fraud, willful misconduct, or where Indian law prohibits exclusion.</li>
+            </ul>
+        </section>
+
+        <!-- 12 -->
+        <section class="terms-section">
+            <h2>12. Your Responsibility</h2>
+            <p>We ask you to use our Services lawfully and respectfully. If a claim arises due to a breach of these Terms or misuse, we may ask for your cooperation in resolving it — we'll always approach this fairly and reasonably.</p>
+        </section>
+
+        <!-- 13 -->
+        <section class="terms-section">
+            <h2>13. Termination</h2>
+            <p>If these Terms are not followed, we may need to temporarily limit or pause an account to keep our community safe — we'll explain why and help resolve it where possible. You can delete your account anytime via App: <em>Profile &gt; Delete Account</em> or by emailing <a href="mailto:grievance@vpnexues.com">grievance@vpnexues.com</a>. Key provisions on payments, IP, liability and grievance continue to apply even after closure.</p>
+        </section>
+
+        <!-- 14 -->
+        <section class="terms-section">
+            <h2>14. Governing Law &amp; Jurisdiction</h2>
+            <p>These Terms are governed by the laws of India. Subject to applicable law, disputes shall be handled by the competent courts having jurisdiction over VPNexues' registered office in Tamil Nadu.</p>
+            <p><strong>Business Transfers:</strong> In the event of a merger, acquisition, restructuring, or sale of assets, applicable rights and obligations may be transferred to the successor entity. Any required notice will be provided in accordance with applicable law.</p>
+        </section>
+
+        <!-- 15 -->
+        <section class="terms-section">
+            <h2>15. Changes to Terms</h2>
+            <p>We may revise these Terms for technical, regulatory or operational changes. Any revisions become effective upon being published at <a href="https://vpnexues.com/terms-and-conditions">https://vpnexues.com/terms-and-conditions</a> and updated in the App. Material changes will show an updated "Last Updated" date. The revised Terms will become effective on the stated effective date. Where required, material changes will be communicated through appropriate channels. Continued use of the Services after the effective date may constitute acceptance of the revised Terms, subject to applicable law. For COD-only operation, no payment-term change will be applied retroactively to confirmed orders.</p>
+        </section>
+
+        <!-- 16 -->
+        <section class="terms-section">
+            <h2>16. Grievance &amp; Contact Information</h2>
+            <div class="contact-info">
+                <p><strong>Grievance &amp; Privacy Contact</strong></p>
+                <p><strong>Office:</strong> No 312/11, Siva Towers, Perumal Malai Road, Narasothipatti, Salem, Tamil Nadu, 636004, India</p>
+                <p><strong>Grievance Email:</strong> <a href="mailto:grievance@vpnexues.com">grievance@vpnexues.com</a> (primary) | <a href="mailto:marketing@vpnexues.com">marketing@vpnexues.com</a></p>
+                <p><strong>Support Desk:</strong> <a href="mailto:support@vpnexues.com">support@vpnexues.com</a> | <a href="https://vpnexues.com">https://vpnexues.com</a></p>
+                <p><strong>Timeline:</strong> We aim to acknowledge grievances promptly and resolve them within a reasonable timeframe.</p>
+            </div>
+            <p>For privacy-related rights, see our <a href="privacy-policy.html">Privacy Policy</a>. If your grievance is not resolved satisfactorily, you may approach the <strong>Data Protection Board of India</strong> under the DPDP Act, 2023.</p>
+        </section>
+
+    </div>
+    </div>
+    <footer class="footer-section fix section-padding bg-cover pb-0" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bg.jpg');">
+        <div class="container">
+            <div class="vpn-blinkit-footer">
+                <div class="container">
+                    <div class="vpn-blinkit-footer-top">
+                        <div class="vpn-blinkit-footer-brand">
+                            <a href="index.html" class="vpn-blinkit-footer-logo"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues logo"><strong>VPNexues</strong></a>
+                            <p>Farm-fresh groceries and export-grade produce, delivered with care.</p>
+                            <div class="vpn-blinkit-footer-note"><span><i class="fas fa-leaf" aria-hidden="true"></i> Farm fresh</span><span><i class="fas fa-truck" aria-hidden="true"></i> Reliable delivery</span><span><i class="fas fa-shield-alt" aria-hidden="true"></i> Secure checkout</span></div>
+                        </div>
+                        <div class="vpn-blinkit-footer-links">
+                            <div><h5>Company</h5><a href="about.html">About us</a><a href="news.html">News</a><a href="contact.html">Contact</a></div>
+                            <div><h5>Shop</h5><a href="shop.html">All products</a><a href="pricing.html?type=small-box">Small Box</a><a href="pricing.html?type=big-box">Big Box</a></div>
+                            <div><h5>Support</h5><a href="help-support.html">Help centre</a><a href="faq.html">FAQs</a><a href="pricing.html?type=b2b">B2B supply</a></div>
+                        </div>
+                    </div>
+                    <div class="vpn-blinkit-footer-bottom"><span>&copy; 2026 VPNexues Import &amp; Export</span><span>Fresh food, thoughtfully sourced.</span><div class="vpn-blinkit-footer-social"><a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://www.linkedin.com/company/vpnexues/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-wrapper">
+                    <p class="text-1 wow fadeInUp">&copy; 2026 VPNexues Import & Export. All Rights Reserved</p>
+                    <div class="social-icon wow fadeInUp" data-wow-delay=".2s">
+                        <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="bottom-img wow fadeInUp" data-wow-delay=".4s">
+                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bottom.png" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+    <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+    <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+    <script src="assets-ui/js/swiper-bundle.min.js"></script>
+    <script src="assets-ui/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets-ui/js/jquery.counterup.min.js"></script>
+    <script src="assets-ui/js/wow.min.js"></script>
+    <script src="assets-ui/js/main.js"></script>
+</body>
+</html>

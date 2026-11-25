@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notification Preferences | VPNexues</title>
+  <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16">
+  <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+  <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.2">
+  <style>
+    :root {
+      --np-green: #15803d;
+      --np-green-light: #dcfce7;
+      --np-green-dark: #166534;
+      --np-bg: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%);
+      --np-text: #1a1a1a;
+      --np-muted: #6b7280;
+      --np-border: #f0f0f0;
+      --np-radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body.np-page {
+      min-height: 100vh;
+      background: var(--np-bg);
+      color: var(--np-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    /* �”€�”€�”€ Shell �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .np-shell {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px 20px;
+    }
+
+    /* �”€�”€�”€ Header �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .np-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--np-border);
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+    }
+
+    .np-back {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid #14532d;
+      background: #14532d;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(20, 83, 45, .28), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transition: all .25s ease;
+    }
+
+    .np-back:hover {
+      border-color: #0f3d22;
+      background: #0f3d22;
+      box-shadow: 0 6px 16px rgba(20, 83, 45, .34), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transform: translateX(-2px);
+    }
+
+    .np-back:active {
+      transform: translateX(0);
+      background: #0b2e19;
+      box-shadow: 0 2px 6px rgba(20, 83, 45, .3), inset 0 1px 2px rgba(0, 0, 0, .18);
+    }
+
+    .np-back i { display: inline-block; line-height: 1; }
+
+    .np-header-text {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* Balances the back button so the title stays truly centred. */
+    .np-header-spacer { flex: 0 0 40px; width: 40px; }
+
+    .np-header-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--np-text);
+    }
+
+    .np-header-sub {
+      font-size: 13px;
+      color: var(--np-muted);
+      margin-top: 1px;
+    }
+
+    /* �”€�”€�”€ Section Label �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .np-section-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--np-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+
+    .np-section-label:first-child {
+      margin-top: 16px;
+    }
+
+    /* �”€�”€�”€ Setting Row �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .np-setting {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--np-border);
+    }
+
+    .np-setting:last-child {
+      border-bottom: none;
+    }
+
+    .np-setting-info { flex: 1; }
+
+    .np-setting-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--np-text);
+    }
+
+    .np-setting-desc {
+      font-size: 13px;
+      color: var(--np-muted);
+      margin-top: 1px;
+    }
+
+    /* �”€�”€�”€ Toggle Switch �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .np-toggle {
+      position: relative;
+      width: 50px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .np-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .np-toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: #d1d5db;
+      border-radius: 28px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .np-toggle-slider::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    .np-toggle input:checked + .np-toggle-slider {
+      background: var(--np-green);
+    }
+
+    .np-toggle input:checked + .np-toggle-slider::before {
+      transform: translateX(22px);
+    }
+
+    /* �”€�”€�”€ Info Banner �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .np-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: var(--np-green-light);
+      border-radius: var(--np-radius);
+      margin-top: 24px;
+    }
+
+    .np-info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #bbf7d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      color: var(--np-green);
+    }
+
+    .np-info-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--np-green-dark);
+      margin-bottom: 2px;
+    }
+
+    .np-info-text span {
+      font-size: 13px;
+      color: var(--np-muted);
+    }
+
+    /* �”€�”€�”€ Responsive �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    @media (min-width: 768px) {
+      .np-shell { max-width: 100%; padding: 0 24px 30px; }
+      .np-header { padding: 18px 24px; width: 100%; margin-left: 0; }
+      .np-header-title { font-size: 22px; }
+    }
+
+    @media (min-width: 1024px) {
+      .np-shell { max-width: 100%; padding: 0 32px 40px; }
+      .np-header-title { font-size: 24px; }
+    }
+  </style>
+</head>
+<body class="np-page">
+  <main class="np-shell">
+
+    <!-- Header -->
+    <header class="np-header">
+      <a class="np-back" href="account.html" aria-label="Go back">
+        <i class="fas fa-chevron-left"></i>
+      </a>
+      <div class="np-header-text">
+        <h1 class="np-header-title">Notification Preferences</h1>
+      </div>
+      <span class="np-header-spacer" aria-hidden="true"></span>
+    </header>
+
+    <div class="np-setting">
+      <div class="np-setting-info">
+        <div class="np-setting-title">Order Updates</div>
+        <div class="np-setting-desc">Get notified about your order status</div>
+      </div>
+      <label class="np-toggle">
+        <input type="checkbox" checked data-key="np_order_updates">
+        <span class="np-toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="np-setting">
+      <div class="np-setting-info">
+        <div class="np-setting-title">Delivery Updates</div>
+        <div class="np-setting-desc">Get notified about delivery updates</div>
+      </div>
+      <label class="np-toggle">
+        <input type="checkbox" checked data-key="np_delivery_updates">
+        <span class="np-toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="np-setting">
+      <div class="np-setting-info">
+        <div class="np-setting-title">Order Reminders</div>
+        <div class="np-setting-desc">Reminders for pending or important orders</div>
+      </div>
+      <label class="np-toggle">
+        <input type="checkbox" checked data-key="np_order_reminders">
+        <span class="np-toggle-slider"></span>
+      </label>
+    </div>
+
+  </main>
+
+
+
+  <script>
+  (function() {
+    'use strict';
+
+    function loadPreferences() {
+      document.querySelectorAll('.np-toggle input[data-key]').forEach(function(input) {
+        var saved = localStorage.getItem(input.getAttribute('data-key'));
+        if (saved !== null) {
+          input.checked = saved === 'true';
+        }
+      });
+    }
+
+    function savePreference(input) {
+      localStorage.setItem(input.getAttribute('data-key'), input.checked);
+    }
+
+    function updateCartBadge() {
+      var badge = document.getElementById('nav-cart-badge');
+      if (!badge) return;
+      var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      var count = 0;
+      cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+      if (count > 0) { badge.textContent = count; badge.style.display = ''; }
+      else { badge.style.display = 'none'; }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      loadPreferences();
+      updateCartBadge();
+
+      document.querySelectorAll('.np-toggle input[data-key]').forEach(function(input) {
+        input.addEventListener('change', function() {
+          savePreference(this);
+        });
+      });
+    });
+
+    window.updateCartBadge = updateCartBadge;
+  })();
+  </script>
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

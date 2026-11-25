@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--<< Header Area >>-->
+    <head>
+        <!-- ========== Meta Tags ========== -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="modinatheme">
+        <meta name="description" content="VPNexues - News Details">
+        <!-- ======== Page title ============ -->
+        <title>VPNexues - News Details</title>
+        <!--<< Favicon >>-->
+        <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+        <link rel="shortcut icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" type="image/x-icon" />
+        <!--<< Bootstrap min.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+        <!--<< Font Awesome.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+        <!--<< Animate.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/animate.min.css?v=1.0">
+        <!--<< Magnific Popup.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/magnific-popup.css">
+        <!--<< MeanMenu.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+        <!--<< Odometer.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/odometer.css">
+        <!--<< Swiper Bundle.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/swiper-bundle.min.css">
+        <!--<< Nice Select.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/nice-select.css">
+        <!--<< Main.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/main.css">
+        <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css">
+        <!-- News details page specific styles -->
+        <style>
+            .breadcrumb-wrapper {
+                display: none !important;
+            }
+            #header-sticky {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+                border-bottom: none !important;
+                box-shadow: none !important;
+            }
+            .header-main {
+                padding: 12px 0 !important;
+                margin: 0;
+            }
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            .mega-menu-wrapper {
+                padding: 0;
+                margin: 0;
+            }
+            .fix-area {
+                margin-bottom: 0;
+            }
+            .offcanvas__info {
+                margin-bottom: 0;
+            }
+            /* Desktop header nav blends with the banner below (matches shop page) */
+            @media (min-width: 768px) {
+                #header-sticky { background: linear-gradient(180deg, #f7fbf5 0%, #eef6ea 100%); box-shadow: none; border-bottom: none; }
+                #header-sticky .mega-menu-wrapper,
+                #header-sticky .header-main { background: transparent; box-shadow: none; }
+                #header-sticky .mean__menu-wrapper,
+                #header-sticky .main-menu,
+                #header-sticky nav#mobile-menu,
+                #header-sticky nav#mobile-menu > ul {
+                    background: transparent !important;
+                    box-shadow: none !important;
+                    border: none !important;
+                    border-radius: 0 !important;
+                }
+                #header-sticky .header-main .main-menu ul li > a { color: #1c4b2a; }
+                #header-sticky .header-main .main-menu ul li:hover > a,
+                #header-sticky .header-main .main-menu ul li > a:hover { color: #f8b417; }
+            }
+
+            /* ===== NEWS DETAIL DESKTOP BANNER (shop-style pg-banner) ===== */
+            .news-detail-desktop-heading {
+                display: none;
+            }
+            @media (min-width: 768px) {
+                .news-detail-desktop-heading {
+                    display: block !important;
+                }
+                .news-detail-desktop-heading .pg-banner {
+                    margin: 0;
+                    border-radius: 0;
+                    width: 100vw;
+                    margin-left: calc(-50vw + 50%);
+                    background: linear-gradient(rgba(20,71,47,.45), rgba(20,71,47,.55)), url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/news-sustainable.png') center 35%/cover no-repeat;
+                    padding: 70px 0 65px;
+                }
+                .news-detail-desktop-heading .pg-banner::after { display: none !important; }
+                .news-detail-desktop-heading .pg-banner::before { display: none !important; }
+                .news-detail-desktop-heading .pg-banner .container {
+                    padding-left: clamp(20px, 4vw, 60px);
+                    padding-right: clamp(20px, 4vw, 60px);
+                }
+                .news-detail-desktop-heading .pg-banner .pg-banner-in .breadcrumb {
+                    font-size: 12px;
+                    letter-spacing: 1.5px;
+                    text-transform: uppercase;
+                    opacity: 1;
+                    color: #fff !important;
+                    margin-bottom: 10px;
+                    text-shadow: 0 2px 8px rgba(0, 0, 0, .65), 0 0 18px rgba(255, 255, 255, .35);
+                }
+                .news-detail-desktop-heading .pg-banner .pg-banner-in .breadcrumb a,
+                .news-detail-desktop-heading .pg-banner .pg-banner-in .breadcrumb span {
+                    color: #fff !important;
+                }
+                .news-detail-desktop-heading .pg-banner .pg-banner-in h1 {
+                    font-size: 30px;
+                    margin: 0;
+                    color: #fff !important;
+                    text-shadow: 0 2px 10px rgba(0, 0, 0, .7), 0 0 22px rgba(255, 255, 255, .4);
+                }
+                .news-detail-desktop-heading .pg-banner .pg-banner-in p {
+                    font-size: 13px;
+                    margin-top: 6px;
+                    color: #fff !important;
+                    opacity: 1;
+                    text-shadow: 0 1px 6px rgba(0, 0, 0, .6), 0 0 14px rgba(255, 255, 255, .3);
+                }
+            }
+            @media (min-width: 992px) {
+                .news-detail-desktop-heading .pg-banner {
+                    border-radius: 0 0 28px 28px;
+                }
+            }
+            /* ===== HERO (desktop green bar — hidden, replaced above) ===== */
+            .news-detail-hero-section {
+                display: none;
+            }
+            @media (min-width: 768px) {
+                .news-detail-hero-section {
+                    display: none;
+                }
+            }
+
+            /* ===== MOBILE BANNER ===== */
+            .news-banner {
+                width: 100%;
+                overflow: hidden;
+                margin: 0;
+                padding: 0 8px;
+            }
+            .news-banner-img {
+                width: 100%;
+                height: auto;
+                display: block;
+                object-fit: cover;
+                margin: 0;
+                padding: 0;
+                border-radius: 12px;
+            }
+            @media (min-width: 768px) {
+                .news-banner {
+                    display: none;
+                }
+            }
+
+            /* ===== DETAILS LAYOUT ===== */
+            .blog-details-wrapper {
+                padding: 40px 0 80px;
+                background: #fff;
+            }
+            .details-main-card {
+                background: #fff;
+                border-radius: 14px;
+                overflow: hidden;
+                box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+            }
+            .details-featured-thumb {
+                width: 100%;
+                min-height: 230px;
+                background-size: cover;
+                background-position: center 65%;
+            }
+            .details-content {
+                padding: 24px 18px 28px;
+            }
+            @media (min-width: 768px) {
+                .details-content {
+                    padding: 30px 34px 36px;
+                }
+            }
+            .details-post-meta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 18px;
+                margin-bottom: 14px;
+            }
+            .details-post-meta span {
+                font-size: 14px;
+                color: #6b7280;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+            }
+            .details-post-meta i {
+                color: #2b8c5e;
+            }
+            .details-content h1.article-title {
+                font-size: 24px;
+                font-weight: 800;
+                color: #1a2332;
+                line-height: 1.25;
+                margin-bottom: 12px;
+            }
+            @media (min-width: 768px) {
+                .details-content h1.article-title {
+                    font-size: 32px;
+                }
+            }
+            .details-content p {
+                color: #4a5568;
+                line-height: 1.75;
+                font-size: 15px;
+                margin-bottom: 16px;
+                text-align: justify;
+                text-align-last: left;
+                hyphens: auto;
+            }
+            @media (min-width: 768px) {
+                .details-content p {
+                    font-size: 16px;
+                }
+            }
+            .details-content h2.section-sub {
+                font-size: 20px;
+                font-weight: 700;
+                color: #1a2b1e;
+                margin: 26px 0 12px;
+            }
+            @media (min-width: 768px) {
+                .details-content h2.section-sub {
+                    font-size: 24px;
+                }
+            }
+            .details-content ul.check-list {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 18px;
+            }
+            .details-content ul.check-list li {
+                position: relative;
+                padding-left: 28px;
+                margin-bottom: 10px;
+                color: #4a5568;
+                line-height: 1.7;
+                font-size: 15px;
+            }
+            .details-content ul.check-list li::before {
+                content: "\f058";
+                font-family: "Font Awesome 6 Pro", "Font Awesome 5 Pro", "Font Awesome 6 Free";
+                font-weight: 400;
+                position: absolute;
+                left: 0;
+                top: 1px;
+                color: #2b8c5e;
+            }
+            .details-quote-card {
+                position: relative;
+                background: #fff;
+                border: 1px solid #e2ece0;
+                border-left: 4px solid #2f7d2c;
+                border-radius: 14px;
+                padding: 24px 22px 20px;
+                margin: 26px 0;
+                box-shadow: 0 6px 24px rgba(20, 71, 47, .06);
+            }
+            @media (min-width: 768px) {
+                .details-quote-card {
+                    padding: 30px 32px 24px;
+                }
+            }
+            .details-quote-card .quote-mark {
+                width: 46px;
+                height: 46px;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #edf7ea, #dcebd6);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #2f7d2c;
+                font-size: 20px;
+                margin-bottom: 14px;
+            }
+            .details-quote-card .quote-text {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.6;
+                color: #1a2b1e;
+                margin: 0 0 18px;
+                font-style: italic;
+            }
+            @media (min-width: 768px) {
+                .details-quote-card .quote-text {
+                    font-size: 21px;
+                }
+            }
+            .details-quote-card .quote-footer {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding-top: 14px;
+                border-top: 1px solid #eef3ec;
+            }
+            .details-quote-card .quote-author-img {
+                width: 48px;
+                height: 48px;
+                flex: 0 0 48px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 2px solid #2f7d2c;
+            }
+            .details-quote-card .quote-author-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 50% 8%;
+                display: block;
+            }
+            .details-quote-card .quote-author-name {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .details-quote-card .quote-author-name strong {
+                font-size: 15px;
+                font-weight: 800;
+                color: #1a2b1e;
+                line-height: 1.2;
+            }
+            .details-quote-card .quote-author-name span {
+                font-size: 13px;
+                font-weight: 600;
+                color: #2b8c5e;
+            }
+            .details-tags-share {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                padding-top: 22px;
+                border-top: 1px solid #f1f5f9;
+                margin-top: 26px;
+            }
+            @media (min-width: 768px) {
+                .details-tags-share {
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            }
+            .details-tags {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 8px;
+            }
+            .details-tags .tag-label {
+                font-weight: 700;
+                color: #1a2b1e;
+                font-size: 14px;
+                margin-right: 2px;
+            }
+            .details-tags a {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 14px;
+                background: #f8fbf7;
+                border: 1px solid #e2ece0;
+                border-radius: 50px;
+                font-size: 13px;
+                font-weight: 600;
+                color: #1f2b20;
+                text-decoration: none;
+                transition: all .25s ease;
+            }
+            .details-tags a:hover {
+                background: #2f7d2c;
+                color: #fff;
+                border-color: #2f7d2c;
+                transform: translateY(-2px);
+            }
+            .details-share {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .details-share .share-label {
+                font-weight: 700;
+                color: #1a2b1e;
+                font-size: 14px;
+                margin-right: 4px;
+            }
+            .details-share a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: #f1f5f9;
+                color: #1a2332;
+                text-decoration: none;
+                transition: all .25s ease;
+            }
+            .details-share a:hover {
+                background: #2b8c5e;
+                color: #fff;
+                transform: translateY(-2px);
+            }
+
+            /* ===== AUTHOR BOX ===== */
+            .details-author-box {
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                background: #f8fbf7;
+                border: 1px solid #eef3ec;
+                border-radius: 14px;
+                padding: 20px;
+                margin-top: 30px;
+            }
+            .details-author-box .author-avatar {
+                width: 68px;
+                height: 68px;
+                flex: 0 0 68px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #2f7d2c, #1f5f23);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-size: 24px;
+                font-weight: 800;
+                overflow: hidden;
+            }
+            .details-author-box .author-avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 50% 8%;
+                display: block;
+            }
+            .details-author-box h4 {
+                font-size: 17px;
+                font-weight: 700;
+                color: #1a2b1e;
+                margin-bottom: 4px;
+            }
+            .details-author-box p {
+                font-size: 13px;
+                color: #6b7280;
+                line-height: 1.6;
+                margin: 0;
+                text-align: justify;
+                text-align-last: left;
+            }
+
+            /* ===== COMMENTS ===== */
+            .comments-section {
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+                padding: 24px 18px 28px;
+                margin-top: 30px;
+            }
+            @media (min-width: 768px) {
+                .comments-section {
+                    padding: 30px 34px;
+                }
+            }
+            .comments-section .section-title-sm {
+                font-size: 20px;
+                font-weight: 800;
+                color: #1a2b1e;
+                padding-bottom: 12px;
+                border-bottom: 2px solid #f1f5f9;
+                margin-bottom: 22px;
+            }
+            .comment-item {
+                display: flex;
+                gap: 14px;
+                margin-bottom: 22px;
+            }
+            .comment-item .comment-avatar {
+                width: 48px;
+                height: 48px;
+                flex: 0 0 48px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #2f7d2c, #1f5f23);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                font-size: 16px;
+            }
+            .comment-item .comment-body h5 {
+                font-size: 15px;
+                font-weight: 700;
+                color: #1a2b1e;
+                margin-bottom: 2px;
+            }
+            .comment-item .comment-body .comment-date {
+                font-size: 12px;
+                color: #94a3b8;
+                margin-bottom: 6px;
+            }
+            .comment-item .comment-body p {
+                font-size: 14px;
+                color: #4a5568;
+                line-height: 1.7;
+                margin-bottom: 8px;
+            }
+            .comment-item .comment-body .reply-btn {
+                font-size: 13px;
+                font-weight: 700;
+                color: #2b8c5e;
+                text-decoration: none;
+            }
+            .comment-item .comment-body .reply-btn i {
+                margin-right: 4px;
+            }
+            .comment-item .comment-body .reply-btn:hover {
+                color: #1f6e48;
+            }
+
+            /* ===== COMMENT FORM ===== */
+            .comment-form-wrap {
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+                padding: 24px 18px 28px;
+                margin-top: 30px;
+            }
+            @media (min-width: 768px) {
+                .comment-form-wrap {
+                    padding: 30px 34px;
+                }
+            }
+            .comment-form-wrap .section-title-sm {
+                font-size: 20px;
+                font-weight: 800;
+                color: #1a2b1e;
+                padding-bottom: 12px;
+                border-bottom: 2px solid #f1f5f9;
+                margin-bottom: 22px;
+            }
+            .comment-form-wrap .form-control {
+                border: 1px solid #e2e8f0;
+                border-radius: 10px;
+                padding: 12px 16px;
+                font-size: 14px;
+                color: #1a2332;
+                background: #fff;
+            }
+            .comment-form-wrap .form-control:focus {
+                border-color: #2b8c5e;
+                box-shadow: 0 0 0 3px rgba(43, 140, 94, .12);
+            }
+            .comment-form-wrap textarea.form-control {
+                min-height: 120px;
+                resize: vertical;
+            }
+            .comment-form-wrap .form-label {
+                font-size: 14px;
+                font-weight: 600;
+                color: #1a2b1e;
+            }
+            .comment-form-wrap .theme-btn {
+                padding: 12px 30px;
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                text-align: center;
+                white-space: nowrap;
+            }
+            @media (min-width: 768px) {
+                .comment-form-wrap .theme-btn {
+                    width: auto;
+                }
+            }
+
+            /* ===== SIDEBAR ===== */
+            .sidebar-widget {
+                background: #fff;
+                border-radius: 12px;
+                padding: 28px 25px;
+                box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+                margin-bottom: 30px;
+            }
+            .sidebar-widget .wid-title {
+                border-bottom: 2px solid #f1f5f9;
+                padding-bottom: 12px;
+                margin-bottom: 20px;
+            }
+            .sidebar-widget .wid-title h3 {
+                font-size: 20px;
+                font-weight: 700;
+                color: #1a2332;
+            }
+            .search_widget form {
+                display: flex;
+                border: 1px solid #e2e8f0;
+                border-radius: 30px;
+                overflow: hidden;
+                background: #fff;
+            }
+            .search_widget input {
+                flex: 1;
+                border: none;
+                padding: 12px 20px;
+                outline: none;
+                font-size: 14px;
+            }
+            .search_widget button {
+                background: #2b8c5e;
+                border: none;
+                color: #fff;
+                padding: 0 25px;
+                font-size: 16px;
+                transition: 0.3s;
+            }
+            .search_widget button:hover {
+                background: #1f6e48;
+            }
+            .popular-posts .single-post-item {
+                display: flex;
+                gap: 15px;
+                margin-bottom: 20px;
+                align-items: center;
+            }
+            .popular-posts .thumb {
+                width: 75px;
+                height: 75px;
+                border-radius: 10px;
+                background-size: cover;
+                flex-shrink: 0;
+            }
+            .popular-posts .post-content h5 {
+                font-size: 15px;
+                font-weight: 600;
+                margin-bottom: 4px;
+                line-height: 1.35;
+            }
+            .popular-posts .post-content h5 a {
+                color: #1a2332;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+            .popular-posts .post-content h5 a:hover {
+                color: #2b8c5e;
+            }
+            .popular-posts .post-date {
+                font-size: 13px;
+                color: #6b7280;
+            }
+            .popular-posts .post-date i {
+                margin-right: 4px;
+                color: #2b8c5e;
+            }
+            .sticky-style {
+                position: sticky;
+                top: 100px;
+            }
+            @media (max-width: 991px) {
+                .sticky-style {
+                    position: static;
+                }
+            }
+
+            /* ===== MODERN TAGS WIDGET ===== */
+            .tags-widget-modern {
+                background: #ffffff;
+                border-radius: 16px;
+                padding: 28px 24px 32px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+                border: 1px solid #eef3ec;
+                transition: box-shadow 0.4s ease, transform 0.4s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            .tags-widget-modern:hover {
+                box-shadow: 0 16px 48px rgba(47, 125, 44, 0.10);
+                transform: translateY(-3px);
+            }
+            .tags-widget-modern::before {
+                content: '';
+                position: absolute;
+                top: -60px;
+                right: -60px;
+                width: 180px;
+                height: 180px;
+                background: radial-gradient(circle, rgba(47, 125, 44, 0.04) 0%, transparent 70%);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 0;
+            }
+            .tags-widget-modern .wid-title {
+                margin-bottom: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 6px 12px;
+                position: relative;
+                z-index: 1;
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .tags-widget-modern .wid-title h3 {
+                font-size: 22px;
+                font-weight: 800;
+                color: #1a2b1e;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin: 0;
+                letter-spacing: -0.3px;
+            }
+            .tags-widget-modern .title-icon {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: linear-gradient(135deg, #edf7ea, #dcebd6);
+                border-radius: 14px;
+                color: #2f7d2c;
+                font-size: 18px;
+                transition: background 0.3s ease, transform 0.3s ease;
+            }
+            .tags-widget-modern:hover .title-icon {
+                background: linear-gradient(135deg, #2f7d2c, #1f5f23);
+                color: #fff;
+                transform: rotate(8deg) scale(1.02);
+            }
+            .tags-widget-modern .title-shape {
+                display: inline-block;
+                width: 48px;
+                height: 4px;
+                background: linear-gradient(90deg, #2f7d2c, #a8d5a2);
+                border-radius: 4px;
+                margin-left: 4px;
+            }
+            .tagcloud-modern {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px 12px;
+                position: relative;
+                z-index: 1;
+            }
+            .tag-item {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 22px 10px 18px;
+                background: linear-gradient(135deg, var(--tag-bg, #f0f7ed), var(--tag-bg2, #e8f5e2));
+                border-radius: 50px;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--tag-color, #2f7d2c);
+                text-decoration: none;
+                border: 1.5px solid var(--tag-border, #c8e6c0);
+                transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                letter-spacing: 0.2px;
+                position: relative;
+                overflow: hidden;
+            }
+            .tag-item::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, var(--tag-color, #2f7d2c), transparent 80%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                border-radius: 50px;
+            }
+            .tag-item:hover::before {
+                opacity: 0.12;
+            }
+            .tag-item:hover {
+                transform: translateY(-3px);
+                background: var(--tag-color, #2f7d2c);
+                color: #fff;
+                border-color: var(--tag-color, #2f7d2c);
+                box-shadow: 0 8px 24px rgba(47, 125, 44, 0.25);
+            }
+            .tag-item:hover .tag-emoji {
+                transform: scale(1.15);
+            }
+            .tag-item .tag-emoji {
+                font-size: 16px;
+                line-height: 1;
+                transition: transform 0.3s ease;
+                position: relative;
+                z-index: 1;
+            }
+            .tag-item span:last-child {
+                position: relative;
+                z-index: 1;
+            }
+            .tag-item.active {
+                background: var(--tag-color, #2f7d2c) !important;
+                color: #fff !important;
+                border-color: var(--tag-color, #2f7d2c) !important;
+                box-shadow: 0 6px 20px rgba(47, 125, 44, 0.3);
+            }
+            .tag-item.active .tag-emoji {
+                transform: scale(1.15);
+            }
+            @media (max-width: 575px) {
+                .tags-widget-modern {
+                    padding: 20px 16px 24px;
+                }
+                .tags-widget-modern .wid-title h3 {
+                    font-size: 20px;
+                }
+                .tags-widget-modern .title-icon {
+                    width: 34px;
+                    height: 34px;
+                    font-size: 15px;
+                }
+                .tag-item {
+                    padding: 8px 16px 8px 14px;
+                    font-size: 13px;
+                    gap: 6px;
+                }
+                .tagcloud-modern {
+                    gap: 8px;
+                }
+            }
+
+            /* ===== B2B FOOTER ===== */
+            .vnp-box-footer {
+                background: #1E3917 !important;
+                background-image: none !important;
+            }
+            .vnp-box-footer::before {
+                background: rgba(30, 57, 23, .85) !important;
+            }
+            .vnp-box-footer .footer-widget-wrapper {
+                display: none !important;
+            }
+            .vnp-box-footer .footer-bottom {
+                background: transparent !important;
+                border: 0 !important;
+            }
+            .vnp-box-footer .footer-desktop-logo-copy {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: flex-start;
+                line-height: 1.1;
+            }
+            .vnp-box-footer .footer-desktop-logo-copy strong {
+                font-size: 24px;
+                font-weight: 800;
+                color: #fff;
+            }
+            .vnp-box-footer .footer-desktop-logo-copy small {
+                font-size: 11px;
+                font-weight: 600;
+                color: rgba(255, 255, 255, .76);
+            }
+            .vnp-box-footer .footer-mobile-brand {
+                display: none;
+            }
+            @media (min-width: 768px) {
+                .vnp-box-footer {
+                    padding-top: 46px !important;
+                }
+            }
+            @media (max-width: 767px) {
+                .vnp-box-footer {
+                    padding: 24px 0 0 !important;
+                    background-position: center;
+                }
+                .vnp-box-footer .footer-widget-top {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 3px;
+                    padding: 0 18px 18px;
+                    text-align: center;
+                }
+                .vnp-box-footer .footer-widget-top .footer-desktop-logo {
+                    display: none;
+                }
+                .vnp-box-footer .footer-mobile-brand {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 9px;
+                    color: #fff;
+                    text-decoration: none;
+                    text-align: left;
+                }
+                .vnp-box-footer .footer-mobile-brand img {
+                    width: 38px;
+                    height: 38px;
+                    flex: 0 0 38px;
+                    object-fit: contain;
+                }
+                .vnp-box-footer .footer-mobile-brand-copy {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 2px;
+                }
+                .vnp-box-footer .footer-mobile-brand-copy strong {
+                    color: #fff;
+                    font-size: 19px;
+                    font-weight: 800;
+                    line-height: 1;
+                }
+                .vnp-box-footer .footer-mobile-brand-copy small {
+                    color: rgba(255, 255, 255, .76);
+                    font-size: 9px;
+                    font-weight: 600;
+                    line-height: 1;
+                }
+                .vnp-box-footer .footer-bottom {
+                    padding: 16px 0 18px;
+                }
+                .vnp-box-footer .footer-bottom-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 14px;
+                    text-align: center;
+                }
+                .vnp-box-footer .footer-bottom-wrapper .text-1 {
+                    margin: 0;
+                    font-size: 10px;
+                    line-height: 1.3;
+                }
+                .vnp-box-footer .footer-bottom-wrapper .social-icon {
+                    display: flex;
+                    gap: 20px;
+                }
+                .vnp-box-footer .footer-bottom-wrapper .bottom-img {
+                    display: none;
+                }
+            }
+        </style>
+<style>
+        .vnp-box-footer{position:relative}
+        .vnp-subs-popup{
+          display:none;align-items:center;gap:12px;background:#fff;border-radius:14px;
+          padding:14px 16px;box-shadow:0 16px 40px rgba(20,71,47,.18);
+          border:1px solid #eef3ec;
+        }
+        .vnp-subs-popup.show{display:flex;animation:vnpSubsPop .3s ease}
+        @keyframes vnpSubsPop{from{opacity:0;transform:translate(-50%,-50%) scale(.9)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+        .vnp-subs-popup-icon{
+          width:38px;height:38px;flex:0 0 38px;border-radius:50%;
+          background:linear-gradient(135deg,#2f7d2c,#1f5f23);color:#fff;
+          display:flex;align-items:center;justify-content:center;font-size:16px;
+        }
+        .vnp-subs-popup.err .vnp-subs-popup-icon{background:linear-gradient(135deg,#c0392b,#922b21)}
+        .vnp-subs-popup-body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+        .vnp-subs-popup-title{font-size:14px;font-weight:800;color:#1a2b1e;line-height:1.2}
+        .vnp-subs-popup-desc{font-size:12px;color:#6b7280;line-height:1.4}
+        .vnp-subs-popup-close{border:none;background:none;color:#9ca3af;font-size:14px;cursor:pointer;padding:4px}
+        #vnp-subscribe-btn .vnp-subs-tick{margin-right:6px}
+        #vnp-subscribe-btn.vnp-subs-done{
+          background:#FFC107 !important;
+          background-image:none !important;
+          color:#1a2b1e !important;
+          border-color:#FFC107 !important;
+          box-shadow:0 8px 24px rgba(255,193,7,.35) !important;
+          font-weight:800;
+        }
+        #vnp-subscribe-btn.vnp-subs-done::before,
+        #vnp-subscribe-btn.vnp-subs-done::after{display:none !important}
+        #vnp-subscribe-btn.vnp-subs-done .vnp-subs-tick{
+          margin:0;width:22px;height:22px;border-radius:50%;
+          background:#1a2b1e;color:#FFC107;font-size:12px;
+          display:inline-flex;align-items:center;justify-content:center;
+          transform:none !important;
+        }
+        #vnp-subscribe-btn.vnp-subs-done{line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+        @media(max-width:767px){
+          .vnp-subs-popup{
+            position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+            z-index:99999;width:82%;max-width:330px;flex-direction:column;
+            text-align:center;padding:28px 22px;background:#2f7d2c;border:none;
+          }
+          .vnp-subs-popup::before{
+            content:'';position:fixed;inset:0;background:rgba(15,30,20,.55);z-index:-1;
+          }
+          .vnp-subs-popup.show{animation:vnpSubsPopMob .3s ease}
+          @keyframes vnpSubsPopMob{from{opacity:0;transform:translate(-50%,-46%) scale(.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+          .vnp-subs-popup-body{align-items:center}
+          .vnp-subs-popup-title{color:#fff}
+          .vnp-subs-popup-desc{color:rgba(255,255,255,.9)}
+          .vnp-subs-popup-icon{background:#FFC107;color:#1a2b1e}
+          .vnp-subs-popup-close{position:absolute;top:10px;right:12px;color:rgba(255,255,255,.8)}
+          .vnp-subs-popup.err{background:#b03a2e}
+        }
+        @media(min-width:768px){
+          .vnp-subs-popup{
+            position:absolute;left:50%;bottom:120px;transform:translateX(-50%);
+            z-index:60;background:#2f7d2c;border:none;
+            flex-direction:column;text-align:center;gap:10px;padding:20px 26px;
+            min-width:240px;
+          }
+          .vnp-subs-popup.show{animation:vnpSubsPopDesk .3s ease}
+          @keyframes vnpSubsPopDesk{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+          .vnp-subs-popup .vnp-subs-popup-icon{
+            width:52px;height:52px;flex:0 0 52px;font-size:24px;
+            background:#FFC107;color:#1a2b1e;
+          }
+          .vnp-subs-popup-title{color:#fff;font-size:15px}
+          .vnp-subs-popup-desc{color:rgba(255,255,255,.85)}
+          .vnp-subs-popup-close{color:rgba(255,255,255,.8);position:absolute;top:10px;right:12px}
+          .vnp-subs-popup.err{background:#b03a2e}
+        }
+    </style>    
+    <link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+</head>
+    <body>
+
+        <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner">
+                </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="N" class="letters-loading">N</span>
+                    <span data-text-preloader="E" class="letters-loading">E</span>
+                    <span data-text-preloader="W" class="letters-loading">W</span>
+                    <span data-text-preloader="S" class="letters-loading">S</span>
+                </div>
+                <p class="text-center">Loading</p>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back To Top Start -->
+        <button id="back-top" class="back-to-top">
+            <i class="far fa-arrow-up"></i>
+        </button>
+
+        <!-- MouseCursor Start -->
+        <div class="mouseCursor cursor-outer"></div>
+        <div class="mouseCursor cursor-inner"></div>
+
+        <!-- Offcanvas Area Start -->
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas-header-fixed">
+                            <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                                <div class="offcanvas__logo">
+                                    <a href="index.html">VPNexues</a>
+                                </div>
+                                <div class="offcanvas__close">
+                                    <button><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <h3 class="offcanvas-title">Hello There!</h3>
+                            <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022. </p>
+                            <div class="mobile-menu fix mt-15"></div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="https://www.facebook.com/vpnexues" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="offcanvas-scrollable-body">
+                            <div class="offcanvas__contact">
+                                <h3>Contact Us</h3>
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="icon"><i class="far fa-phone-alt"></i></div>
+                                        <div class="content">
+                                            <p>Call Us</p>
+                                            <h4><a href="tel:+91 9943994603">+91 9943994603</a></h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fal fa-envelope"></i></div>
+                                        <div class="content">
+                                            <p>Send Email</p>
+                                            <h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4>
+                                        </div>
+                                    </li>
+                                    <li style="align-items: flex-start;">
+                                        <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
+                                        <div class="content">
+                                            <p>Location</p>
+                                            <div class="footer-location-li"><h4>Singapore</h4><span style="color:#333;font-size: 14px;">412 Race Course Road, Singapore 218660, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                            <div class="footer-location-li"><h4>India</h4><span style="color:#333;font-size: 14px;">No 312/11, Siva towers, Perumal, Malai Road, Narasothipatti, Salem Tamil Nadu, India, 636004, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+
+        <!-- Header Top Start -->
+        <div class="header-top-section">
+            <div class="container">
+                <div class="header-top-wrapper">
+                    <ul class="header-contact-list">
+                        <li><i class="fal fa-envelope"></i><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></li>
+                        <li><i class="far fa-phone-alt"></i><a href="tel:+91 9943994603">+91 9943994603</a> | <a href="tel:+91 8148197842">+91 8148197842</a></li>
+                    </ul>
+                    <div class="head-right">
+                        <div class="line-shape"></div>
+                        <div class="social-icon">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Section Start -->
+        <header id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="vpn-logo-header">
+                            <div class="idlogo-vpn">
+                                <a href="index.html" class="top-logo">VPNexues</a>
+                                <span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+                            </div>
+                        </div>
+                        <div class="idlogo-vpn idlogo-vpn-mobile">
+                            <a href="index.html" class="header-logo">VPNexues</a>
+                            <span class="idlogo-vivasayam-txt" style="padding-left:41px;position:relative;top:-8px">விவசாயம் காப்போம்</span>
+                        </div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="careers.html">Careers</a></li>
+                                        <li class="has-dropdown">
+                                            <a href="javascript:void(0)">Pages</a>
+                                            <ul class="submenu" style="display:block;">
+                                                <li><a href="our-services.html">Our Services</a></li>
+                                                <li><a href="team.html">Our Team</a></li>
+                                                <li><a href="pricing.html">Pricing Plan</a></li>
+                                                <li><a href="testimonial.html">Testimonials</a></li>
+                                                <li><a href="faq.html">Faqs</a></li>
+                                        <li><a href="news.html">News</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html">Support</a></li>
+                                        <li>
+                                            <a href="javascript:void(0);">Shop</a>
+                                            <ul class="submenu">
+                                                <li><a href="pricing.html?type=small-box">Small Box</a></li>
+                                                <li><a href="pricing.html?type=big-box">Big Box</a></li>
+                                                <li><a href="pricing.html?type=b2b">B2B</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <div class="header__hamburger my-auto">
+                                <div class="sidebar__toggle">
+                                    <div class="header-bar"><span></span><span></span><span></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- News Details Desktop Banner (shop-style pg-banner, desktop only) -->
+        <div class="news-detail-desktop-heading">
+            <div class="pg-banner"><div class="container"><div class="pg-banner-in"><div class="breadcrumb"><a href="index.html">Home</a><span>&rsaquo;</span> <a href="news.html">News</a><span>&rsaquo;</span> Article</div><h1>&#128240; News Details</h1><p>Read the full story behind our organic farm-to-table journey.</p></div></div></div>
+        </div>
+
+        <!-- News Details Hero (desktop green bar) — hidden, replaced by pg-banner above -->
+        <section class="news-detail-hero-section">
+            <svg class="leaf-deco-hero leaf-deco-hero--left" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 10 C30 40, 10 80, 20 140 C20 140, 40 100, 60 80 C80 100, 100 140, 100 140 C110 80, 90 40, 60 10Z" fill="#4d7c3f" opacity="0.5"/>
+                <path d="M60 10 C60 60, 60 100, 60 140" stroke="#4d7c3f" stroke-width="1.5" fill="none" opacity="0.4"/>
+            </svg>
+            <svg class="leaf-deco-hero leaf-deco-hero--right" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 10 C30 40, 10 80, 20 140 C20 140, 40 100, 60 80 C80 100, 100 140, 100 140 C110 80, 90 40, 60 10Z" fill="#4d7c3f" opacity="0.5"/>
+                <path d="M60 10 C60 60, 60 100, 60 140" stroke="#4d7c3f" stroke-width="1.5" fill="none" opacity="0.4"/>
+            </svg>
+            <h1>News Details</h1>
+            <div class="news-breadcrumb"><a href="news.html">News</a><i class="far fa-angle-right"></i><span>Article</span></div>
+        </section>
+
+        <!-- Mobile Banner -->
+        <section class="news-banner">
+            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/news-banner-main.png" alt="VPNexues Our Blog & News" class="news-banner-img" loading="eager">
+        </section>
+
+        <!-- Details Section Start -->
+        <section class="blog-details-wrapper">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Article Column -->
+                    <div class="col-lg-8">
+                        <div class="details-main-card wow fadeInUp" data-article="1">
+                            <div class="details-featured-thumb" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/news-sustainable.png'); min-height: 300px;"></div>
+                            <div class="details-content">
+                                <div class="details-post-meta">
+                                    <span><i class="far fa-user"></i>Pradeep K.</span>
+                                    <span><i class="fal fa-comments"></i>4 Comments</span>
+                                    <span><i class="fal fa-clock"></i>3 min Read</span>
+                                    <span><i class="fal fa-calendar-alt"></i>12 June, 2026</span>
+                                </div>
+                                <h1 class="article-title">Sustainable Farming: Feeding the Future Responsibly</h1>
+                                <p>Discover how VPNexues integrates organic practices with modern supply chains to deliver farm-fresh produce across the globe. From the fertile red soil of Tamil Nadu to dining tables in Singapore, the UAE and Europe, every single harvest follows one clear promise � purity without compromise, and uncompromising quality control at every stage of the journey.</p>
+                                <h2 class="section-sub">Why Sustainable Farming Matters</h2>
+                                <p>Conventional farming relies heavily on chemical inputs that steadily degrade soil health, groundwater reserves and surrounding biodiversity over time. Sustainable farming completely reverses that trend by working together with nature instead of fighting against it. When the soil is healthy, the crops it grows are healthier too, and when the crops are healthier, the people who eat them feel the difference in every single meal they enjoy.</p>
+                                <ul class="check-list">
+                                    <li>100% certified organic, chemical-free produce, harvested fresh every single day</li>
+                                    <li>Direct sourcing from audited organic farms across Tamil Nadu, without any middlemen</li>
+                                    <li>Fair and transparent income for every farmer in our growing network</li>
+                                    <li>Complete traceability from the moment of seeding right up to final shipment</li>
+                                </ul>
+                                <div class="details-quote-card">
+                                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                                    <p class="quote-text">"The future of food depends on the choices we make in the fields today. Grow organically, trade fairly, and eat better."</p>
+                                    <div class="quote-footer">
+                                        <div class="quote-author-img"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/preed-bg.jpeg" alt="Pradeep Kumar" loading="lazy"></div>
+                                        <div class="quote-author-name">
+                                            <strong>Pradeep Kumar</strong>
+                                            <span>Director, VPNexues</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="section-sub">From Farm to Table, Without Compromise</h2>
+                                <p>VPNexues works directly with certified organic farmers across Tamil Nadu, eliminating middlemen to guarantee both fair farmer income and honest pricing for every single customer. Every batch of produce is carefully inspected, packed with care and shipped using cold-chain integrity so that freshness survives the entire journey from farm to doorstep.</p>
+                                <p>Whether you are a family subscribing to a weekly vegetable box or a business sourcing premium ingredients at scale, our farm-to-customer model consistently delivers the freshest certified organic produce to your door, week after week, with the same dependable quality you can always trust.</p>
+
+                                <!-- Author Box -->
+                                <div class="details-author-box">
+                                    <div class="author-avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/preed-bg.jpeg" alt="Pradeep Kumar" loading="lazy"></div>
+                                    <div class="author-info">
+                                        <h4>Pradeep Kumar</h4>
+                                        <p>Director of VPNexues &mdash; passionate about sustainable agriculture and building transparent supply chains that connect Tamil Nadu's organic farms with customers and businesses around the world.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Tags & Share -->
+                                <div class="details-tags-share">
+                                    <div class="details-tags">
+                                        <span class="tag-label"><i class="fas fa-tags"></i> Tags:</span>
+                                        <a href="news.html">Organic</a>
+                                        <a href="news.html">Farming</a>
+                                        <a href="news.html">Export</a>
+                                    </div>
+                                    <div class="details-share">
+                                        <span class="share-label"><i class="fas fa-share-alt"></i> Share:</span>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Article 2 -->
+                        <div class="details-main-card wow fadeInUp" data-article="2" style="display:none;">
+                            <div class="details-featured-thumb" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/news-spices.png'); min-height: 300px;"></div>
+                            <div class="details-content">
+                                <div class="details-post-meta">
+                                    <span><i class="far fa-user"></i>Nageswaran D.</span>
+                                    <span><i class="fal fa-comments"></i>7 Comments</span>
+                                    <span><i class="fal fa-clock"></i>4 min Read</span>
+                                    <span><i class="fal fa-calendar-alt"></i>18 May, 2026</span>
+                                </div>
+                                <h1 class="article-title">From Farm to Table: The Journey of Organic Spices</h1>
+                                <p>Explore the traceability and quality control that makes VPNexues spices stand out in international markets. Every turmeric root, chilli pod and black peppercorn that leaves our farms carries a documented story � from the soil it grew in to the exact consignment it ships in � so international buyers always know precisely what they are receiving.</p>
+                                <h2 class="section-sub">Traceability That Builds Trust</h2>
+                                <p>In the global spice trade, trust is everything. VPNexues maintains a complete digital trail for every single batch of spices: which organic farm it came from, when it was harvested, how it was dried and graded, and which quality checks it passed before export. Buyers in Singapore, the UAE and Europe can trace a whole consignment back to the individual farmers who grew it.</p>
+                                <ul class="check-list">
+                                    <li>Batch-level traceability from farm to export consignment</li>
+                                    <li>Lab-tested for purity, moisture and contaminant-free quality</li>
+                                    <li>Organic-certified sourcing directly from audited Tamil Nadu farms</li>
+                                    <li>Strict grading and cold-chain storage from harvest to shipment</li>
+                                </ul>
+                                <div class="details-quote-card">
+                                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                                    <p class="quote-text">"A spice that cannot be traced is a spice that cannot be trusted. We trace every single grain."</p>
+                                    <div class="quote-footer">
+                                        <div class="quote-author-img"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Nageswaran%201%20.jpg" alt="Nageswaran Duraiswamy" loading="lazy"></div>
+                                        <div class="quote-author-name">
+                                            <strong>Nageswaran Duraiswamy</strong>
+                                            <span>Director, VPNexues</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="section-sub">Quality Control at Every Stage</h2>
+                                <p>From the moment turmeric is harvested to the second it is packed for export, our spices pass through multiple quality gates. Farms are audited, drying is monitored for moisture levels, and every finished batch is laboratory tested before it receives the VPNexues export seal � ensuring international markets always receive spices of consistent, premium grade.</p>
+                                <p>This obsessive attention to quality is exactly why VPNexues spices have earned repeat orders from food processors, retailers and importers across the Gulf and Europe. Clean sourcing, rigorous testing and honest grading are not marketing words here � they are the daily standard of how we operate.</p>
+
+                                <!-- Author Box -->
+                                <div class="details-author-box">
+                                    <div class="author-avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Nageswaran%201%20.jpg" alt="Nageswaran Duraiswamy" loading="lazy"></div>
+                                    <div class="author-info">
+                                        <h4>Nageswaran D.</h4>
+                                        <p>Senior Quality Officer at VPNexues � leads our spice traceability and laboratory testing programme, ensuring every export batch meets the strictest international food-safety standards.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Tags & Share -->
+                                <div class="details-tags-share">
+                                    <div class="details-tags">
+                                        <span class="tag-label"><i class="fas fa-tags"></i> Tags:</span>
+                                        <a href="news.html">Spices</a>
+                                        <a href="news.html">Organic</a>
+                                        <a href="news.html">Export</a>
+                                    </div>
+                                    <div class="details-share">
+                                        <span class="share-label"><i class="fas fa-share-alt"></i> Share:</span>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Article 3 -->
+                        <div class="details-main-card wow fadeInUp" data-article="3" style="display:none;">
+                            <div class="details-featured-thumb" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/news-export.png'); min-height: 300px; background-position: center 22%;"></div>
+                            <div class="details-content">
+                                <div class="details-post-meta">
+                                    <span><i class="far fa-user"></i>Admin</span>
+                                    <span><i class="fal fa-comments"></i>2 Comments</span>
+                                    <span><i class="fal fa-clock"></i>3 min Read</span>
+                                    <span><i class="fal fa-calendar-alt"></i>10 May, 2026</span>
+                                </div>
+                                <h1 class="article-title">Export Trends: Indian Organic Produce in 2026</h1>
+                                <p>Insights into the growing demand for Indian organic products and how VPNexues is leading the charge. Global consumers are increasingly choosing certified organic produce, and India's rich agricultural heritage puts Tamil Nadu's farms at the very centre of this expanding international opportunity.</p>
+                                <h2 class="section-sub">A Growing Global Appetite</h2>
+                                <p>Across the Gulf, Singapore and Europe, demand for organic fruits, vegetables and spices continues to climb every year. Shoppers are no longer satisfied with produce alone � they want verifiable organic certification, clean sourcing and transparent supply chains. This shift in consumer behaviour is opening new doors for Indian organic exporters who can guarantee quality and traceability.</p>
+                                <ul class="check-list">
+                                    <li>Organic imports to the UAE, Singapore and the EU growing year on year</li>
+                                    <li>Consumers actively seeking certified, traceable produce</li>
+                                    <li>Premium pricing for verified organic and fair-trade sourcing</li>
+                                    <li>Cold-chain and documentation standards becoming stricter</li>
+                                </ul>
+                                <div class="details-quote-card">
+                                    <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
+                                    <p class="quote-text">"The world wants Indian organic produce � our job is to make sure it arrives exactly as promised."</p>
+                                    <div class="quote-footer">
+                                        <div class="quote-author-img"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/preed-bg.jpeg" alt="Pradeep Kumar" loading="lazy"></div>
+                                        <div class="quote-author-name">
+                                            <strong>Pradeep Kumar</strong>
+                                            <span>Director, VPNexues</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="section-sub">How VPNexues Is Leading the Charge</h2>
+                                <p>VPNexues stays ahead of these trends by combining certified organic farming with modern export infrastructure. Our cold-chain facilities, complete traceability systems and long-standing farm partnerships allow us to deliver consistent quality that international buyers trust � shipment after shipment.</p>
+                                <p>Looking ahead, we are expanding our certified organic farm network, strengthening trade routes across the Gulf and Europe, and investing in smarter packaging that keeps freshness intact over long distances. Indian organic produce is entering a golden era, and VPNexues is proud to be at the front of that journey.</p>
+
+                                <!-- Author Box -->
+                                <div class="details-author-box">
+                                    <div class="author-avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/preed-bg.jpeg" alt="Pradeep Kumar" loading="lazy"></div>
+                                    <div class="author-info">
+                                        <h4>VPNexues Editorial Team</h4>
+                                        <p>Bringing you the latest news on organic farming, export markets and sustainable trade from the VPNexues team in Tamil Nadu.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Tags & Share -->
+                                <div class="details-tags-share">
+                                    <div class="details-tags">
+                                        <span class="tag-label"><i class="fas fa-tags"></i> Tags:</span>
+                                        <a href="news.html">Export</a>
+                                        <a href="news.html">Organic</a>
+                                        <a href="news.html">Trends</a>
+                                    </div>
+                                    <div class="details-share">
+                                        <span class="share-label"><i class="fas fa-share-alt"></i> Share:</span>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comments -->
+                        <div class="comments-section wow fadeInUp">
+                            <h3 class="section-title-sm">Comments (2)</h3>
+                            <div class="comment-item">
+                                <div class="comment-avatar">SK</div>
+                                <div class="comment-body">
+                                    <h5>Sathish Kumar</h5>
+                                    <div class="comment-date">10 June, 2026 at 09:24 AM</div>
+                                    <p>Great read! We switched our weekly vegetables to VPNexues and the freshness is unmatched.</p>
+                                    <a href="#" class="reply-btn"><i class="fas fa-reply"></i>Reply</a>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <div class="comment-avatar">AH</div>
+                                <div class="comment-body">
+                                    <h5>Arpita Hemaanth</h5>
+                                    <div class="comment-date">11 June, 2026 at 06:41 PM</div>
+                                    <p>Love how transparent the sourcing is. Knowing exactly which farm my food came from makes all the difference.</p>
+                                    <a href="#" class="reply-btn"><i class="fas fa-reply"></i>Reply</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comment Form -->
+                        <div class="comment-form-wrap wow fadeInUp">
+                            <h3 class="section-title-sm">Leave a Comment</h3>
+                            <form action="#" method="post">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="cf-name">Your Name</label>
+                                        <input type="text" class="form-control" id="cf-name" placeholder="Enter your name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="cf-email">Your Email</label>
+                                        <input type="email" class="form-control" id="cf-email" placeholder="Enter your email">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label" for="cf-msg">Your Comment</label>
+                                        <textarea class="form-control" id="cf-msg" placeholder="Write your comment here..."></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="theme-btn">Post Comment <i class="far fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Column -->
+                    <div class="col-lg-4 wow fadeInUp">
+                        <div class="main-sidebar sticky-style">
+                            <!-- Search Widget -->
+                            <div class="sidebar-widget">
+                                <div class="wid-title"><h3>Search</h3></div>
+                                <div class="search_widget">
+                                    <form action="#">
+                                        <input type="text" placeholder="Keywords here....">
+                                        <button type="submit"><i class="fal fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Recent News Widget -->
+                            <div class="sidebar-widget">
+                                <div class="wid-title"><h3>Recent News</h3></div>
+                                <div class="popular-posts">
+                                    <div class="single-post-item">
+                                        <div class="thumb" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-02.jpg');"></div>
+                                        <div class="post-content">
+                                            <h5><a href="news-details.html">Smart Packaging & Product Design</a></h5>
+                                            <div class="post-date"><i class="far fa-calendar"></i>18 May, 2026</div>
+                                        </div>
+                                    </div>
+                                    <div class="single-post-item">
+                                        <div class="thumb" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-04.jpg');"></div>
+                                        <div class="post-content">
+                                            <h5><a href="news-details.html">Drivers Deliver More Than Products</a></h5>
+                                            <div class="post-date"><i class="far fa-calendar"></i>29 April, 2026</div>
+                                        </div>
+                                    </div>
+                                    <div class="single-post-item">
+                                        <div class="thumb" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-06.jpg');"></div>
+                                        <div class="post-content">
+                                            <h5><a href="news-details.html">Organic Mangoes: A Sweet Success</a></h5>
+                                            <div class="post-date"><i class="far fa-calendar"></i>10 April, 2026</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MODERN ATTRACTIVE TAGS WIDGET -->
+                            <div class="tags-widget-modern">
+                                <div class="wid-title">
+                                    <h3>
+                                        <span class="title-icon"><i class="fas fa-tags"></i></span>
+                                        Popular Tags
+                                    </h3>
+                                    <span class="title-shape"></span>
+                                </div>
+                                <div class="tagcloud-modern">
+                                    <a href="news.html?tag=organic" class="tag-item" style="--tag-color: #2f7d2c; --tag-bg: #f0f7ed; --tag-bg2: #e8f5e2; --tag-border: #c8e6c0;"><span class="tag-emoji">&#127807;</span> <span>Organic</span></a>
+                                    <a href="news.html?tag=export" class="tag-item" style="--tag-color: #1a5f7a; --tag-bg: #eaf4f8; --tag-bg2: #ddeef5; --tag-border: #b0d8e8;"><span class="tag-emoji">&#128674;</span> <span>Export</span></a>
+                                    <a href="news.html?tag=spices" class="tag-item" style="--tag-color: #b45f2a; --tag-bg: #fdf3eb; --tag-bg2: #fae8d8; --tag-border: #f0cca8;"><span class="tag-emoji">&#127798;</span> <span>Spices</span></a>
+                                    <a href="news.html?tag=farm" class="tag-item" style="--tag-color: #4a7c59; --tag-bg: #f1f8f2; --tag-bg2: #e6f2e8; --tag-border: #bddcbf;"><span class="tag-emoji">&#127806;</span> <span>Farm</span></a>
+                                    <a href="news.html?tag=fresh" class="tag-item" style="--tag-color: #3b8c5e; --tag-bg: #edf7ef; --tag-bg2: #e0f1e4; --tag-border: #b4debb;"><span class="tag-emoji">&#129388;</span> <span>Fresh</span></a>
+                                    <a href="news.html?tag=vegan" class="tag-item" style="--tag-color: #6b8c5c; --tag-bg: #f4f8f0; --tag-bg2: #ebf3e4; --tag-border: #c5dbb8;"><span class="tag-emoji">&#129367;</span> <span>Vegan</span></a>
+                                    <a href="news.html?tag=tamilnadu" class="tag-item" style="--tag-color: #b36b39; --tag-bg: #fdf5ed; --tag-bg2: #faebdb; --tag-border: #efd0ab;"><span class="tag-emoji">&#128205;</span> <span>TamilNadu</span></a>
+                                    <a href="news.html?tag=premium" class="tag-item" style="--tag-color: #8b6b4d; --tag-bg: #f8f4ef; --tag-bg2: #f2ece4; --tag-border: #ddd0be;"><span class="tag-emoji">&#11088;</span> <span>Premium</span></a>
+                                </div>
+                            </div>
+                            <!-- END MODERN TAGS WIDGET -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section Start -->
+        <footer class="footer-section fix section-padding bg-cover pb-0 vnp-box-footer" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bg.jpg');">
+            <div class="container">
+                <div class="footer-widget-top">
+                    <a href="index.html" class="logo-img footer-desktop-logo">
+                        <span class="footer-desktop-logo-copy"><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+                    </a>
+                    <a href="index.html" class="footer-mobile-brand" aria-label="VPNexues home">
+                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues logo">
+                        <span class="footer-mobile-brand-copy"><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+                    </a>
+                    <div class="content-items">
+                        <h3>Subscribe Our Newsletter To Get More Updates</h3>
+                        <form action="https://formsubmit.co/hemaanthvpnexues@gmail.com" method="POST" id="vnp-subscribe-form">
+                            <input type="hidden" name="_subject" value="New Newsletter Subscription - VPNexues">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="email" name="email" placeholder="Your email" id="vnp-subscribe-email" required>
+                            <button class="theme-btn" type="submit" id="vnp-subscribe-btn">Subscribe <i class="far fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="footer-bottom-wrapper">
+                            <p class="text-1">&copy; 2026 VPNexues Import &amp; Export. All Rights Reserved</p>
+                            <div class="social-icon">
+                                <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="bottom-img"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bottom.png" alt="img"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div id="vnp-subscribe-popup" class="vnp-subs-popup" role="alert" aria-live="polite">
+                    <div class="vnp-subs-popup-icon"><i class="fas fa-check"></i></div>
+                    <div class="vnp-subs-popup-body">
+                        <strong class="vnp-subs-popup-title">You're subscribed!</strong>
+                        <span class="vnp-subs-popup-desc">Thank you for joining the VPNexues newsletter.</span>
+                    </div>
+                    <button type="button" class="vnp-subs-popup-close" aria-label="Close"><i class="fas fa-times"></i></button>
+                </div>
+        </footer>
+
+        <!-- All JS Plugins -->
+        <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+        <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.nice-select.min.js"></script>
+        <script src="assets-ui/js/odometer.min.js"></script>
+        <script src="assets-ui/js/jquery.appear.min.js"></script>
+        <script src="assets-ui/js/swiper-bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+        <script src="assets-ui/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets-ui/js/wow.min.js"></script>
+        <script src="assets-ui/js/gsap.min.js"></script>
+        <script src="assets-ui/js/ScrollTrigger.min.js"></script>
+        <script src="assets-ui/js/SplitText.min.js"></script>
+        <script src="assets-ui/js/splitType.js"></script>
+        <script src="assets-ui/js/main.js"></script>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Home</span>
+                </a>
+                <a href="shop.html" class="nav-item">
+                    <span class="nav-icon-wrap"><i class="fas fa-store nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Shop</span>
+                </a>
+                <a href="shop-cart.html" class="nav-item">
+                    <span class="nav-icon-wrap">
+                        <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+                        <span class="nav-badge" id="nav-cart-badge" style="display:none;">0</span>
+                    </span>
+                    <span class="nav-label">Cart</span>
+                </a>
+                <a href="javascript:void(0)" class="nav-item" onclick="vpnOpenModal('login'); return false;">
+                    <span class="nav-icon-wrap"><i class="far fa-user nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Account</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Cart Badge Script -->
+        <script>
+        (function() {
+            function updateCartBadge() {
+                var badge = document.getElementById("nav-cart-badge");
+                if (!badge) return;
+                var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+                var count = 0;
+                cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+                if (count > 0) {
+                    badge.textContent = count;
+                    badge.style.display = "";
+                } else {
+                    badge.style.display = "none";
+                }
+            }
+            updateCartBadge();
+            window.updateCartBadge = updateCartBadge;
+        })();
+        </script>
+          <script>
+  (function() {
+    var form = document.getElementById('vnp-subscribe-form');
+    if (!form) return;
+    var popup = document.getElementById('vnp-subscribe-popup');
+    var popupTitle = popup ? popup.querySelector('.vnp-subs-popup-title') : null;
+    var popupDesc = popup ? popup.querySelector('.vnp-subs-popup-desc') : null;
+    var popupIcon = popup ? popup.querySelector('.vnp-subs-popup-icon i') : null;
+    var popupClose = popup ? popup.querySelector('.vnp-subs-popup-close') : null;
+    var btn = document.getElementById('vnp-subscribe-btn');
+    var emailInput = document.getElementById('vnp-subscribe-email');
+    var popupTimer = null;
+
+    function showPopup(type, title, desc, icon) {
+      if (!popup) return;
+      popup.className = 'vnp-subs-popup show' + (type === 'err' ? ' err' : '');
+      popupIcon.className = icon;
+      popupTitle.textContent = title;
+      popupDesc.textContent = desc;
+      clearTimeout(popupTimer);
+      popupTimer = setTimeout(hidePopup, 4000);
+    }
+    function hidePopup() {
+      if (popup) popup.className = 'vnp-subs-popup';
+    }
+    if (popupClose) popupClose.addEventListener('click', hidePopup);
+
+    function resetBtn() {
+      btn.disabled = false;
+      btn.innerHTML = 'Subscribe <i class="far fa-arrow-right"></i>';
+      btn.classList.remove('vnp-subs-done');
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = (emailInput.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showPopup('err', 'Invalid email address', 'Please enter a valid email address.', 'fas fa-exclamation-triangle');
+        return;
+      }
+      hidePopup();
+      btn.disabled = true;
+      btn.innerHTML = 'Subscribing... <i class="far fa-arrow-right"></i>';
+      var body = '_subject=New Newsletter Subscription - VPNexues&_template=table&_captcha=false&email=' + encodeURIComponent(email);
+      var controller = new AbortController();
+      var fetchTimer = setTimeout(function() { controller.abort(); }, 12000);
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+        body: body,
+        signal: controller.signal
+      }).then(function(res) {
+        clearTimeout(fetchTimer);
+        btn.innerHTML = '<i class="fas fa-check vnp-subs-tick"></i> Subscribed';
+        btn.classList.add('vnp-subs-done');
+        emailInput.value = '';
+        showPopup('ok', "You're subscribed!", 'Thank you for joining the VPNexues newsletter.', 'fas fa-check');
+        setTimeout(resetBtn, 4000);
+      }).catch(function() {
+        clearTimeout(fetchTimer);
+        resetBtn();
+        showPopup('err', 'Something went wrong', 'Please try again or email support@vpnexues.com.', 'fas fa-exclamation-triangle');
+        setTimeout(hidePopup, 5000);
+      });
+    });
+})();
+
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var id = parseInt(params.get('id'), 10);
+    if (!id) id = 1;
+    var cards = document.querySelectorAll('.details-main-card[data-article]');
+    if (!cards.length) return;
+    cards.forEach(function(card) {
+      card.style.display = (parseInt(card.getAttribute('data-article'), 10) === id) ? 'block' : 'none';
+    });
+    var bannerImages = {
+      1: 'https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/news-sustainable.png',
+      2: 'https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/news-spices.png',
+      3: 'https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/news-export.png'
+    };
+    var img = bannerImages[id] || bannerImages[1];
+    var pgBanner = document.querySelector('.news-detail-desktop-heading .pg-banner');
+    if (pgBanner) {
+      pgBanner.style.background = "linear-gradient(rgba(20,71,47,.45), rgba(20,71,47,.55)), url('" + img + "') center 35%/cover no-repeat";
+      pgBanner.style.padding = "70px 0 65px";
+    }
+    var mobileBanner = document.querySelector('.news-banner .news-banner-img');
+    if (mobileBanner) {
+      mobileBanner.src = img;
+    }
+  })();
+
+        </script>
+    
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+<script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+</body>
+</html>

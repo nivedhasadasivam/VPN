@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment History | VPNexues</title>
+  <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16">
+  <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+  <style>
+    :root {
+      --ph-green: #14532d;
+      --ph-bg: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%);
+      --ph-card: #ffffff;
+      --ph-text: #1a1a1a;
+      --ph-muted: #6b7280;
+      --ph-border: #e5e7eb;
+      --ph-radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%);
+    }
+
+    body.ph-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%) !important;
+      color: var(--ph-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    /* �”€�”€�”€ Shell �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ph-shell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* �”€�”€�”€ Header �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ph-sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffff;
+    }
+
+    .ph-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: transparent;
+    }
+
+    .ph-back {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid #14532d;
+      background: #14532d;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(20, 83, 45, .28), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transition: all .25s ease;
+    }
+
+    .ph-back:hover {
+      border-color: #0f3d22;
+      background: #0f3d22;
+      box-shadow: 0 6px 16px rgba(20, 83, 45, .34), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transform: translateX(-2px);
+    }
+
+    .ph-back:active {
+      transform: translateX(0);
+      background: #0b2e19;
+      box-shadow: 0 2px 6px rgba(20, 83, 45, .3), inset 0 1px 2px rgba(0, 0, 0, .18);
+    }
+
+    .ph-title {
+      flex: 1;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .ph-back i { display: inline-block; line-height: 1; }
+
+    /* Balances the back button so the title stays truly centred. */
+    .ph-header-spacer {
+      flex: 0 0 40px;
+      width: 40px;
+    }
+
+    /* �”€�”€�”€ Summary Banner �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ph-summary {
+      margin: 0 0 16px;
+      padding: 14px 16px;
+      border-radius: 0;
+      background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);
+      color: #fff;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    .ph-summary-item {
+      flex: 1;
+    }
+
+    .ph-summary-value {
+      font-size: 18px;
+      font-weight: 800;
+      display: block;
+    }
+
+    .ph-summary-label {
+      font-size: 11px;
+      opacity: 0.8;
+      margin-top: 1px;
+      display: block;
+    }
+
+    .ph-summary-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.25);
+      margin: 0 8px;
+    }
+
+    /* �”€�”€�”€ Filter Tabs �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ph-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 0 16px 14px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .ph-tabs::-webkit-scrollbar { display: none; }
+
+    .ph-tab {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--ph-border);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ph-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .ph-tab.active {
+      background: var(--ph-green);
+      border-color: var(--ph-green);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* �”€�”€�”€ Payment List �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ph-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 16px;
+    }
+
+    /* �”€�”€�”€ Payment Card �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ph-card {
+      background: #fef9c3;
+      border: 1px solid #a3e635;
+      border-radius: var(--ph-radius);
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .ph-card.failed-card {
+      background: #fef2f2;
+      border-color: #fca5a5;
+    }
+
+    .ph-card:active {
+      transform: scale(0.985);
+    }
+
+    .ph-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-bottom: none;
+      background: #fef9c3;
+    }
+
+    .ph-card-thumb {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: #fff;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e7eb;
+    }
+
+    .ph-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ph-card-thumb i {
+      font-size: 18px;
+      color: #d1d5db;
+    }
+
+    .ph-card-body {
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      background: #14532d;
+      color: #ffffff;
+    }
+
+    .ph-method-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 17px;
+    }
+
+    .ph-method-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ph-method-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ph-text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ph-method-date {
+      font-size: 12px;
+      color: var(--ph-muted);
+      margin-top: 1px;
+    }
+
+    .ph-status-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .ph-status-badge.paid {
+      background: #dcfce7;
+      color: #000000;
+    }
+
+    .ph-status-badge.pending {
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    .ph-status-badge.failed {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .ph-card-body {
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      background: #14532d;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .ph-order-id {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .ph-amount {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    /* �”€�”€�”€ Empty State �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ph-empty {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .ph-empty-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .ph-empty-icon i {
+      font-size: 32px;
+      color: #3b82f6;
+    }
+
+    .ph-empty h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ph-text);
+      margin-bottom: 4px;
+    }
+
+    .ph-empty p {
+      font-size: 14px;
+      color: var(--ph-muted);
+    }
+
+  </style>
+</head>
+<body class="ph-page">
+  <div class="ph-shell">
+    <!-- Header -->
+    <div class="ph-sticky-top">
+      <div class="ph-header">
+        <a href="account.html" class="ph-back"><i class="fas fa-chevron-left"></i></a>
+        <div class="ph-title">Payment History</div>
+        <div class="ph-header-spacer"></div>
+      </div>
+    </div>
+
+    <!-- Summary Banner -->
+    <div class="ph-summary" id="ph-summary">
+      <div class="ph-summary-item">
+        <span class="ph-summary-value" id="ph-total-paid">₹0</span>
+        <span class="ph-summary-label">Total Paid</span>
+      </div>
+      <div class="ph-summary-divider"></div>
+      <div class="ph-summary-item">
+        <span class="ph-summary-value" id="ph-total-orders">0</span>
+        <span class="ph-summary-label">Payments</span>
+      </div>
+      <div class="ph-summary-divider"></div>
+      <div class="ph-summary-item">
+        <span class="ph-summary-value" id="ph-total-failed" style="color:#fca5a5;">0</span>
+        <span class="ph-summary-label">Failed</span>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="ph-tabs">
+      <div class="ph-tab active" data-filter="all" onclick="filterPayments('all', this)">All</div>
+      <div class="ph-tab" data-filter="paid" onclick="filterPayments('paid', this)">Paid</div>
+      <div class="ph-tab" data-filter="failed" onclick="filterPayments('failed', this)">Failed</div>
+      <div class="ph-tab" data-filter="upi" onclick="filterPayments('upi', this)">UPI</div>
+      <div class="ph-tab" data-filter="card" onclick="filterPayments('card', this)">Card</div>
+      <div class="ph-tab" data-filter="cod" onclick="filterPayments('cod', this)">Cash on Delivery</div>
+      <div class="ph-tab" data-filter="netbanking" onclick="filterPayments('netbanking', this)">Net Banking</div>
+    </div>
+
+    <!-- Payment List -->
+    <div class="ph-list" id="ph-list"></div>
+
+    <!-- Empty State -->
+    <div class="ph-empty" id="ph-empty" style="display:none;">
+      <div class="ph-empty-icon"><i class="fas fa-credit-card"></i></div>
+      <h3>No payments yet</h3>
+      <p>Your payment history will appear here after checkout</p>
+    </div>
+  </div>
+
+
+
+  <script>
+  (function() {
+    var payments = [];
+    try { payments = JSON.parse(localStorage.getItem('vpnexues_payments') || '[]'); } catch(e) { payments = []; }
+
+    var totalPaid = 0;
+    var failedCount = 0;
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    payments.forEach(function(p) {
+      if (p.status === 'failed') {
+        failedCount++;
+      } else {
+        totalPaid += (p.amount || 0);
+      }
+    });
+
+    document.getElementById('ph-total-paid').textContent = '₹' + totalPaid.toLocaleString('en-IN');
+    document.getElementById('ph-total-orders').textContent = payments.length;
+    document.getElementById('ph-total-failed').textContent = failedCount;
+
+    window._allPayments = payments;
+    renderPayments(payments);
+  })();
+
+  function filterPayments(filter, el) {
+    document.querySelectorAll('.ph-tab').forEach(function(t) { t.classList.remove('active'); });
+    el.classList.add('active');
+
+    var payments = window._allPayments || [];
+    if (filter === 'all') {
+      renderPayments(payments);
+    } else if (filter === 'paid' || filter === 'failed') {
+      var filtered = payments.filter(function(p) {
+        return (p.status || 'paid') === filter;
+      });
+      renderPayments(filtered);
+    } else {
+      var filtered = payments.filter(function(p) {
+        if (p.status === 'failed') return false;
+        var m = (p.method || '').toLowerCase();
+        if (filter === 'upi') return m.indexOf('upi') !== -1 || m.indexOf('gpay') !== -1 || m.indexOf('phonepe') !== -1 || m.indexOf('paytm') !== -1;
+        if (filter === 'card') return m.indexOf('card') !== -1;
+        if (filter === 'cod') return m.indexOf('cash') !== -1 || m.indexOf('cod') !== -1;
+        if (filter === 'netbanking') return m.indexOf('net') !== -1 || m.indexOf('bank') !== -1;
+        return true;
+      });
+      renderPayments(filtered);
+    }
+  }
+
+  function renderPayments(payments) {
+    var list = document.getElementById('ph-list');
+    var empty = document.getElementById('ph-empty');
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    if (!payments || payments.length === 0) {
+      list.innerHTML = '';
+      empty.style.display = '';
+      return;
+    }
+
+    empty.style.display = 'none';
+    var html = '';
+
+    payments.forEach(function(p) {
+      var d = new Date(p.date);
+      var day = d.getDate();
+      var month = months[d.getMonth()];
+      var year = d.getFullYear();
+      var hours = d.getHours();
+      var mins = d.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      var minsStr = mins < 10 ? '0' + mins : mins;
+      var dateStr = day + ' ' + month + ', ' + year + ' | ' + hours + ':' + minsStr + ' ' + ampm;
+
+      var methodName = p.method || 'Card';
+      var methodIcon = 'fa-credit-card';
+      var methodColor = '#3b82f6';
+      var methodBg = '#dbeafe';
+
+      if (methodName.toLowerCase().indexOf('upi') !== -1 || methodName.toLowerCase().indexOf('gpay') !== -1 || methodName.toLowerCase().indexOf('phonepe') !== -1 || methodName.toLowerCase().indexOf('paytm') !== -1) {
+        methodIcon = 'fa-mobile-alt';
+        methodColor = '#8b5cf6';
+        methodBg = '#ede9fe';
+      } else if (methodName.toLowerCase().indexOf('cash') !== -1) {
+        methodIcon = 'fa-money-bill-wave';
+        methodColor = '#16a34a';
+        methodBg = '#dcfce7';
+      } else if (methodName.toLowerCase().indexOf('net') !== -1 || methodName.toLowerCase().indexOf('bank') !== -1) {
+        methodIcon = 'fa-university';
+        methodColor = '#0891b2';
+        methodBg = '#cffafe';
+      } else if (methodName.toLowerCase().indexOf('wallet') !== -1) {
+        methodIcon = 'fa-wallet';
+        methodColor = '#f59e0b';
+        methodBg = '#fef3c7';
+      }
+
+      var firstImage = null;
+      var productNames = [];
+      (p.items || []).forEach(function(item) {
+        productNames.push(item.name || 'Item');
+        if (!firstImage && (item.image || item.img)) firstImage = item.image || item.img;
+      });
+      var thumbHtml = firstImage
+        ? '<img src="' + firstImage + '" alt="">'
+        : '<i class="fas fa-box"></i>';
+
+      var isFailed = p.status === 'failed';
+      var statusLabel = isFailed ? 'Failed' : 'Paid';
+      var statusClass = isFailed ? 'failed' : 'paid';
+      var cardClass = isFailed ? ' ph-card failed-card' : '';
+      var bodyBg = isFailed ? '#7f1d1d' : '#14532d';
+
+      html += '<div class="ph-card' + cardClass + '">';
+      html += '<div class="ph-card-header">';
+      html += '<div class="ph-card-thumb">' + thumbHtml + '</div>';
+      html += '<div class="ph-method-icon" style="background:' + methodBg + ';color:' + methodColor + ';"><i class="fas ' + methodIcon + '"></i></div>';
+      html += '<div class="ph-method-info">';
+      html += '<div class="ph-method-name">' + (productNames.length > 0 ? productNames.slice(0, 2).join(', ') + (productNames.length > 2 ? ' & ' + (productNames.length - 2) + ' more' : '') : methodName) + '</div>';
+      html += '<div class="ph-method-date">' + dateStr + '</div>';
+      html += '</div>';
+      html += '<div class="ph-status-badge ' + statusClass + '">' + statusLabel + '</div>';
+      html += '</div>';
+      html += '<div class="ph-card-body" style="background:' + bodyBg + ';">';
+      html += '<div><div class="ph-order-id">' + (p.orderId || '') + '</div>';
+      if (isFailed && p.failReason) {
+        html += '<div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px;">' + p.failReason + '</div>';
+      }
+      html += '</div>';
+      html += '<div class="ph-amount">₹' + (p.amount || 0).toFixed(2) + '</div>';
+      html += '</div>';
+      html += '</div>';
+    });
+
+    list.innerHTML = html;
+  }
+  </script>
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

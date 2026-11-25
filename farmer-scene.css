@@ -1,0 +1,39 @@
+/* Full-screen farmer contact reveal scene */
+.farmer-fullscreen{position:relative;background:#ffffff;width:100%;min-height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.farmer-stage{position:relative;width:100%;height:100vh;}
+.farmer-svg{position:absolute;bottom:4%;left:-30vw;width:55vh;height:auto;animation:farmerSequence 9s ease-in-out forwards;}
+/* walk-in */
+@keyframes farmerSequence{
+  0%{left:-30vw;transform:translateY(0);}
+  25%{left:50%;transform:translate(-50%,0);}
+  32%{left:50%;transform:translate(-50%,0);}
+  40%{left:50%;transform:translate(-50%,18px) rotate(6deg);}
+  48%{left:50%;transform:translate(-50%,18px) rotate(6deg);}
+  55%{left:50%;transform:translate(-50%,0);}
+  75%{left:130%;transform:translate(0,0);}
+  100%{left:130%;transform:translate(0,0);}
+}
+/* limbs */
+.farmer-svg .leg{transform-origin:top center;animation:legSwing 0.9s ease-in-out infinite;}
+.farmer-svg .leg.right{animation-delay:0.45s;}
+.farmer-svg .arm{transform-origin:top center;animation:armSwing 0.9s ease-in-out infinite;}
+.farmer-svg .arm.right{animation-delay:0.45s;}
+@keyframes legSwing{0%,100%{transform:rotate(-18deg);}50%{transform:rotate(18deg);}}
+@keyframes armSwing{0%,100%{transform:rotate(12deg);}50%{transform:rotate(-12deg);}}
+.farmer-svg .sack-held{animation:sackBounce 0.9s ease-in-out infinite;}
+@keyframes sackBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+/* ground sack */
+.sack-ground{position:absolute;bottom:4%;left:50%;transform:translateX(-50%);width:14vw;height:9vw;opacity:0;animation:sackGroundAppear 9s forwards;}
+@keyframes sackGroundAppear{0%,46%{opacity:0;}50%,100%{opacity:1;}}
+/* contact form */
+.contact-unfold{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);width:min(400px,90vw);transition:transform .7s ease,opacity .7s ease;}
+.contact-unfold.show{transform:translate(-50%,-50%) scale(1);opacity:1;}
+.contact-unfold input,.contact-unfold textarea{width:100%;margin-bottom:10px;padding:10px;border:1px solid #ccc;border-radius:6px;font:inherit;}
+.contact-unfold button{width:100%;padding:12px;background:#4a7c3f;color:#fff;border:none;border-radius:6px;font-weight:700;cursor:pointer;}
+@media (prefers-reduced-motion: reduce){
+  .farmer-svg,.sack-ground{animation:none!important;}
+  .farmer-svg{left:130%!important;}
+  .sack-ground{opacity:1;}
+  .contact-unfold{opacity:1;transform:translate(-50%,-50%) scale(1);}
+}
+@media (max-width:600px){.farmer-svg{width:70vw;}.sack-ground{width:26vw;height:16vw;}}

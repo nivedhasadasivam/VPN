@@ -1,0 +1,2564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help &amp; Support | VPNexues</title>
+  <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16">
+  <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+  <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+  <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+  <link rel="stylesheet" href="assets-ui/css/main.css">
+  <link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+  <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.2">
+  <style>
+    :root {
+      --hs-green: #15803d;
+      --hs-green-dark: #14532d;
+      --hs-green-light: #dcfce7;
+      --hs-bg: #f5f5f5;
+      --hs-card: #ffffff;
+      --hs-text: #1a1a1a;
+      --hs-muted: #6b7280;
+      --hs-border: #14532d;
+      --hs-radius: 12px;
+    }
+
+    /* box-sizing handled by bootstrap */
+
+    html, body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(180deg, #eaf6ea 0%, #f6faf5 55%, #ffffff 100%);
+    }
+
+    body.hs-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eaf6ea 0%, #f6faf5 55%, #ffffff 100%) !important;
+      color: var(--hs-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    /* ─── Shell ──────────────────────────────────────────────── */
+    .hs-shell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Header ─────────────────────────────────────────────── */
+    .hs-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffff;
+    }
+
+    .hs-header-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 16px 14px;
+      position: relative;
+    }
+
+    .hs-back {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(91, 140, 81, .28);
+      background: linear-gradient(145deg, #f4fbf1 0%, #e8f5e3 100%);
+      color: #2f7d2c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(21, 102, 39, .1), inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(91, 140, 81, .06);
+      transition: all .25s ease;
+    }
+
+    .hs-back:hover {
+      border-color: rgba(91, 140, 81, .45);
+      box-shadow: 0 6px 16px rgba(21, 102, 39, .16), inset 0 1px 0 rgba(255, 255, 255, 1);
+      transform: translateX(-2px);
+    }
+
+    .hs-back:active {
+      transform: translateX(0);
+      box-shadow: 0 2px 6px rgba(21, 102, 39, .1), inset 0 1px 2px rgba(91, 140, 81, .1);
+    }
+
+    .hs-header-info {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hs-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--hs-text);
+    }
+
+    /* ─── Section ────────────────────────────────────────────── */
+    .hs-section {
+      padding: 0 16px;
+      margin-top: 28px;
+    }
+
+    .hs-section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--hs-text);
+      margin-bottom: 12px;
+    }
+
+    /* Desktop-only section header + group titles (hidden on mobile) */
+    .hs-desktop-head { display: none; }
+    .hs-group-title { display: none; }
+    @media (min-width: 768px) {
+      .hs-section-title { display: none; }
+      .hs-desktop-head { display: block; }
+      .hs-group-title { display: flex; }
+    }
+
+    /* ─── Contact Card ───────────────────────────────────────── */
+    .hs-card {
+      background: var(--hs-card);
+      border: none;
+      border-radius: var(--hs-radius);
+    }
+
+    .hs-card-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border-bottom: 2px solid #14532d;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .hs-card-item:last-child {
+      border-bottom: none;
+    }
+
+    .hs-card-item:hover {
+      background: #f9fafb;
+    }
+
+    .hs-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--hs-green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hs-card-icon i {
+      font-size: 18px;
+      color: var(--hs-green);
+    }
+
+    .hs-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hs-card-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-h);
+    }
+
+    .hs-card-detail {
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #000;
+      margin-top: 2px;
+    }
+
+    .hs-card-arrow {
+      font-size: 14px;
+      color: #9ca3af;
+      flex-shrink: 0;
+    }
+
+    /* ─── Office Location ────────────────────────────────────── */
+    .hs-office-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      border-bottom: 2px solid #14532d;
+    }
+
+    .hs-office-item:last-child {
+      border-bottom: none;
+    }
+
+    .hs-office-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--hs-green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .hs-office-icon i {
+      font-size: 18px;
+      color: var(--hs-green);
+    }
+
+    .hs-office-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hs-office-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-h);
+    }
+
+    .hs-office-address {
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #000;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .hs-office-phone {
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #000;
+      margin-top: 4px;
+    }
+
+    .hs-office-arrow {
+      font-size: 14px;
+      color: #9ca3af;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    /* ─── Bottom Buttons ─────────────────────────────────────── */
+    .hs-bottom-btns {
+      padding: 0 16px;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hs-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--hs-radius);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .hs-btn-live {
+      background: transparent;
+      border: 2px solid var(--hs-green);
+      color: var(--hs-green);
+    }
+
+    .hs-btn-live:hover {
+      background: var(--hs-green-light);
+    }
+
+    .hs-btn-faq {
+      background: transparent;
+      border: 2px solid var(--hs-border);
+      color: var(--hs-text);
+    }
+
+    .hs-btn-faq:hover {
+      background: #f9fafb;
+    }
+
+    .hs-btn i {
+      font-size: 18px;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+
+    /* ═══════════════════════════════════════════════════════════
+       MODERN PRO REDESIGN (overrides base hs-* styles)
+       ═══════════════════════════════════════════════════════════ */
+    body.hs-page {
+      background: linear-gradient(180deg, #eaf6ea 0%, #f6faf5 55%, #ffffff 100%);
+    }
+
+    .hs-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding-bottom: 40px;
+    }
+
+    /* Header — frosted glass, brand green */
+    .hs-header {
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(91, 140, 81, .14);
+      box-shadow: 0 4px 18px rgba(20, 71, 47, .05);
+    }
+
+    .hs-header-top {
+      width: 100%;
+      padding: 14px 16px;
+    }
+
+    .hs-back {
+      background: linear-gradient(135deg, #14472F, #1a5c35);
+      border: none;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(20, 71, 47, .25);
+    }
+
+    .hs-back:hover {
+      background: linear-gradient(135deg, #1a5c35, #2c7a46);
+      transform: translateX(-2px);
+      box-shadow: 0 6px 16px rgba(20, 71, 47, .35);
+    }
+
+    .hs-title {
+      color: #14472F;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    /* Hero banner */
+    .hs-hero {
+      margin: 18px 16px 0;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #14472F, #1a5c35 60%, #2c7a46);
+      color: #fff;
+      padding: 34px 22px 38px;
+      box-shadow: 0 18px 44px rgba(20, 71, 47, .28);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hs-hero::after {
+      content: '\f059';
+      font-family: 'Font Awesome 5 Pro';
+      position: absolute;
+      right: -26px;
+      bottom: -36px;
+      font-size: 150px;
+      color: rgba(255, 255, 255, .07);
+      transform: rotate(-12deg);
+    }
+
+    .hs-hero-icon {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #F5A623;
+    }
+
+    .hs-hero h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 0 8px;
+      letter-spacing: .3px;
+    }
+
+    .hs-hero p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .85);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    .hs-section {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      padding: 0 16px;
+      margin-top: 30px;
+    }
+
+    .hs-section-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #14472F;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hs-section-title::before {
+      content: '';
+      width: 24px;
+      height: 5px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #F5A623, #2c7a46);
+      flex-shrink: 0;
+    }
+
+    /* Contact / Office containers — card on mobile, grid on desktop */
+    .hs-contact-grid,
+    .hs-office-grid {
+      background: #fff;
+      border: 1px solid rgba(91, 140, 81, .14);
+      border-radius: 20px;
+      box-shadow: 0 14px 38px rgba(20, 71, 47, .07);
+      overflow: hidden;
+    }
+
+    .hs-card-item {
+      border-bottom: 1px solid rgba(91, 140, 81, .12);
+      padding: 18px 16px;
+    }
+
+    .hs-card-item:last-child { border-bottom: none; }
+
+    .hs-card-item:hover { background: #f6faf3; }
+
+    .hs-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #EAF4EA, #dcf5dd);
+      transition: all .25s ease;
+    }
+
+    .hs-card-icon i { color: #2f7d2c; transition: color .25s ease; }
+
+    .hs-card-item:hover .hs-card-icon {
+      background: linear-gradient(135deg, #14472F, #2c7a46);
+    }
+
+    .hs-card-item:hover .hs-card-icon i { color: #fff; }
+
+    .hs-card-title { font-size: 15px; font-weight: 700; color: #1E3917; }
+
+    .hs-card-detail { font-size: 13px; color: #5C6672; margin-top: 3px; }
+
+    .hs-card-arrow { color: #9ca3af; transition: all .25s ease; }
+
+    .hs-card-item:hover .hs-card-arrow { color: #2f7d2c; transform: translateX(3px); }
+
+    .hs-office-item {
+      border-bottom: 1px solid rgba(91, 140, 81, .12);
+      padding: 18px 16px;
+      transition: background .2s ease;
+    }
+
+    .hs-office-item:last-child { border-bottom: none; }
+
+    .hs-office-item:hover { background: #f6faf3; }
+
+    .hs-office-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #EAF4EA, #dcf5dd);
+    }
+
+    .hs-office-icon i { color: #2f7d2c; }
+
+    .hs-office-name { font-size: 15px; font-weight: 700; color: #1E3917; }
+
+    .hs-office-address { font-size: 13px; color: #5C6672; margin-top: 4px; line-height: 1.6; }
+
+    .hs-office-phone { font-size: 13px; color: #5C6672; margin-top: 6px; font-weight: 600; }
+
+    .hs-office-arrow { color: #9ca3af; }
+
+    /* Bottom buttons */
+    .hs-bottom-btns {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      padding: 0 16px;
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .hs-btn {
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      padding: 17px 16px;
+    }
+
+    .hs-btn-live {
+      background: linear-gradient(135deg, #14472F, #1a5c35 60%, #2c7a46);
+      border: none;
+      color: #fff;
+      box-shadow: 0 10px 26px rgba(20, 71, 47, .28);
+    }
+
+    .hs-btn-live:hover {
+      background: linear-gradient(135deg, #1a5c35, #2c7a46);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(20, 71, 47, .36);
+    }
+
+    .hs-btn-faq {
+      background: #fff;
+      border: 1.5px solid rgba(91, 140, 81, .3);
+      color: #14472F;
+    }
+
+    .hs-btn-faq:hover { border-color: #2f7d2c; background: #f6faf3; }
+
+    /* Desktop (Option 3: Border-Accented Eco Tiles) */
+    @media (min-width: 768px) {
+      .hs-header-top { padding: 16px 16px; }
+
+      .hs-hero {
+        margin: 22px auto 0;
+        padding: 48px 40px 52px;
+        border-radius: 26px;
+      }
+
+      .hs-hero h2 { font-size: 32px; }
+
+      .hs-hero p { font-size: 16px; }
+
+      /* Section header (badge + title) */
+      .hs-desktop-head { text-align: center; margin: 36px 0 6px; padding: 0 16px; }
+      .hs-desktop-head .hs-badge {
+        display: inline-block; padding: 6px 16px; background: #e8f5e9;
+        color: #1c4b2a; font-size: 13px; font-weight: 800; letter-spacing: .5px;
+        text-transform: uppercase; border-radius: 20px;
+      }
+      .hs-desktop-head h2 { font-family: 'Nunito', sans-serif; font-size: 34px; font-weight: 700; color: var(--text-h); margin: 12px 0 0; }
+
+      /* Group titles */
+      .hs-group-title {
+        display: flex; align-items: center; gap: 10px;
+        font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-h); margin: 30px 0 16px;
+      }
+      .hs-group-title::before { content: ''; width: 4px; height: 20px; background: #1c4b2a; border-radius: 2px; }
+
+      .hs-contact-grid,
+      .hs-office-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      .hs-card-item,
+      .hs-office-item {
+        background: #fff;
+        border: none;
+        border-left: 6px solid #1c4b2a;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        transition: all .25s ease;
+      }
+      .hs-office-item { border-left-color: #f8b417; }
+
+      .hs-card-item:hover,
+      .hs-office-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, .09);
+        background: #fff;
+      }
+
+      .hs-card-icon,
+      .hs-office-icon {
+        width: 48px; height: 48px; border-radius: 50%;
+        background: #f0fdf4; color: #1c4b2a;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 18px; flex-shrink: 0;
+      }
+      .hs-office-item .hs-office-icon { background: #fff7e6; color: #b45309; }
+
+      .hs-card-title,
+      .hs-office-name { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-h); margin-bottom: 4px; line-height: 1.3; }
+      .hs-card-detail,
+      .hs-office-address,
+      .hs-office-phone { font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 400; color: #000; line-height: 1.5; }
+
+      .hs-card-arrow,
+      .hs-office-arrow { display: none; }
+
+      .hs-office-item:last-child { grid-column: 1 / -1; justify-self: center; width: calc((100% - 20px) / 2); }
+
+      .hs-bottom-btns {
+        flex-direction: row;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 36px;
+      }
+
+      .hs-btn {
+        width: auto; min-width: 200px; border-radius: 30px;
+        padding: 14px 28px; font-weight: 700; font-size: 14px;
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        box-shadow: 0 6px 16px rgba(28, 75, 42, .18);
+      }
+      .hs-btn-live { background: #1c4b2a; color: #fff; border: 2px solid #1c4b2a; }
+      .hs-btn-live:hover { background: #12331c; border-color: #12331c; color: #fff; transform: translateY(-2px); }
+      .hs-btn-faq { background: #fff; color: #1c4b2a; border: 2px solid #1c4b2a; }
+      .hs-btn-faq:hover { background: #f0fdf4; color: #1c4b2a; transform: translateY(-2px); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       THEME HEADER / MOBILE HEADER / FOOTER INTEGRATION
+       ═══════════════════════════════════════════════════════════ */
+    /* Hide desktop header on mobile only */
+    @media (max-width: 767px) {
+      .header-top-section,
+      #header-sticky,
+      .header-1 {
+        display: none !important;
+      }
+    }
+    /* vpn account btn (mirrors shop.html inline styles) */
+    .vpn-account-btn {
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid rgba(74, 124, 63, .26);
+      color: #263226;
+      border-radius: 30px;
+      padding: 9px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 8px 22px rgba(42, 70, 36, .08);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, color .22s ease;
+      margin-right: 8px;
+      white-space: nowrap;
+      line-height: 1.4;
+      text-decoration: none;
+    }
+    .vpn-account-btn i { color: #4a7c3f; transition: transform .22s ease; }
+    .vpn-account-btn:hover { transform: translateY(-2px); border-color: rgba(74, 124, 63, .48); box-shadow: 0 12px 28px rgba(42, 70, 36, .14); color: #1f5f23; }
+    .vpn-account-btn:hover i { transform: scale(1.08); }
+    .vpn-account-btn:active { transform: translateY(0) scale(.98); }
+    @media (max-width: 767px) {
+      .vpn-account-btn { display: none !important; }
+    }
+    /* Hide mobile header on desktop */
+    @media (min-width: 768px) {
+      #shop-mobile-header {
+        display: none !important;
+      }
+    }
+
+    /* The app-style .hs-header replaces both legacy headers. */
+    .header-top-section,
+    #header-sticky,
+    #shop-mobile-header {
+      display: none !important;
+    }
+
+    /* Mobile header (matches shop.html) */
+    #shop-mobile-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: grid;
+      /* Equal side columns keep the brand lockup truly centred. */
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      min-height: 56px;
+      padding: 6px clamp(12px, 3vw, 24px);
+      border-bottom: 1px solid #e8ece7;
+      background-color: #fff !important;
+      backdrop-filter: blur(14px);
+    }
+    #shop-mobile-header .sb-header-back {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      justify-self: start;
+      place-items: center;
+      border: 1.5px solid rgba(91, 140, 81, .28);
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      color: #2f7d2c;
+      background: linear-gradient(145deg, #f4fbf1 0%, #e8f5e3 100%);
+      box-shadow:
+        0 4px 12px rgba(21, 102, 39, .1),
+        inset 0 1px 0 rgba(255, 255, 255, .9),
+        inset 0 -1px 0 rgba(91, 140, 81, .06);
+      transition: all .25s ease;
+    }
+    #shop-mobile-header .sb-header-back:hover {
+      border-color: rgba(91, 140, 81, .45);
+      box-shadow:
+        0 6px 16px rgba(21, 102, 39, .16),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+      transform: translateX(-2px);
+    }
+    #shop-mobile-header .sb-header-back:active {
+      transform: translateX(0);
+      box-shadow:
+        0 2px 6px rgba(21, 102, 39, .1),
+        inset 0 1px 2px rgba(91, 140, 81, .1);
+    }
+    #shop-mobile-header .sb-brand {
+      display: flex;
+      align-items: center;
+      justify-self: center;
+      gap: 8px;
+      color: #1c2820;
+      text-decoration: none;
+    }
+    #shop-mobile-header .sb-brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+    #shop-mobile-header .sb-brand span { display: grid; gap: 0px; }
+    #shop-mobile-header .sb-brand strong { font-size: clamp(17px, 2.5vw, 22px); font-weight: 900; letter-spacing: -.5px; line-height: 1; }
+    #shop-mobile-header .sb-brand small { color: #263528; font-size: 11px; font-weight: 700; line-height: 1.1; letter-spacing: .2px; }
+
+    /* Desktop header: light-green gradient blend (matches the other 8 pages) */
+    @media (min-width: 768px) {
+      #header-sticky { background: linear-gradient(180deg, #f7fbf5 0%, #eef6ea 100%); box-shadow: none; border-bottom: none; }
+      #header-sticky .mega-menu-wrapper,
+      #header-sticky .header-main { background: transparent; box-shadow: none; }
+      #header-sticky .mean__menu-wrapper,
+      #header-sticky .main-menu,
+      #header-sticky nav#mobile-menu,
+      #header-sticky nav#mobile-menu > ul {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+      }
+      #header-sticky .header-main .main-menu ul li > a { color: #1c4b2a; }
+      #header-sticky .header-main .main-menu ul li:hover > a,
+      #header-sticky .header-main .main-menu ul li > a:hover { color: #f8b417; }
+    }
+
+    /* Hero: mobile-only, shop-size, no image */
+    @media (min-width: 768px) {
+      .hs-hero { display: none; }
+    }
+
+    /* Desktop banner (matches shop page desktop banner style) */
+    .hs-desktop-banner { display: none; }
+    @media (min-width: 768px) {
+      .hs-desktop-banner { display: block; }
+      .hs-desktop-banner .pg-banner {
+        margin: 0;
+        border-radius: 0;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        background: linear-gradient(to right, rgba(20,71,47,.35), rgba(20,61,33,.25)), url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Shopping%20pages%20Bannner%20Imgs/help-support-banner.png') center 62%/100% auto no-repeat;
+        padding: 44px 0 40px;
+      }
+      .hs-desktop-banner .pg-banner::before { display: none; }
+      .hs-desktop-banner .pg-banner::after { display: none !important; }
+      .hs-desktop-banner .pg-banner-in { position: relative; z-index: 2; }
+      .hs-desktop-banner .container {
+        padding-left: clamp(20px, 4vw, 60px);
+        padding-right: clamp(20px, 4vw, 60px);
+      }
+      .hs-desktop-banner .breadcrumb {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        opacity: 1;
+        color: #fff !important;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, .65), 0 0 18px rgba(255, 255, 255, .35);
+      }
+      .hs-desktop-banner .breadcrumb a,
+      .hs-desktop-banner .breadcrumb span { color: #fff !important; text-decoration: none; }
+      .hs-desktop-banner .breadcrumb a:hover { color: #F2B233; }
+      .hs-desktop-banner h1 { font-size: 30px; margin: 0; color: #fff; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,.7), 0 0 22px rgba(255,255,255,.4); }
+      .hs-desktop-banner p { font-size: 13px; margin-top: 6px; color: #fff; opacity: 1; text-shadow: 0 1px 6px rgba(0,0,0,.6), 0 0 14px rgba(255,255,255,.3); }
+    }
+    @media (min-width: 992px) {
+      .hs-desktop-banner .pg-banner { border-radius: 0 0 28px 28px; }
+    }
+    @media (max-width: 767px) {
+      .hs-hero {
+        margin: 12px 19px 14px;
+        border-radius: 16px;
+        min-height: 132px;
+        padding: 22px 18px;
+        box-shadow: 0 12px 26px rgba(43, 110, 43, .19);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .hs-hero::after { font-size: 96px; right: -14px; bottom: -22px; }
+      .hs-hero-icon { width: 44px; height: 44px; margin-bottom: 10px; font-size: 18px; }
+      .hs-hero h2 { font-size: 18px; margin-bottom: 5px; }
+      .hs-hero p { font-size: 12px; line-height: 1.55; max-width: 300px; }
+    }
+
+    /* Footer — desktop = shop style, mobile = pricing style */
+    .vnp-box-footer { background: #1E3917 !important; background-image: none !important; position: relative; }
+    .vnp-box-footer::before { background: rgba(30, 57, 23, .85) !important; }
+    .vnp-box-footer .footer-bottom { background: transparent !important; border: 0 !important; }
+    .vnp-box-footer .footer-desktop-logo-copy { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
+    .vnp-box-footer .footer-desktop-logo-copy strong { font-size: 24px; font-weight: 800; color: #fff; }
+    .vnp-box-footer .footer-desktop-logo-copy small { font-size: 11px; font-weight: 600; color: rgba(255, 255, 255, .76); }
+    .vnp-box-footer .footer-mobile-brand { display: none; }
+    @media (min-width: 768px) { .vnp-box-footer { padding-top: 46px !important; } }
+    @media (max-width: 767px) {
+      .vnp-box-footer { padding: 24px 0 0 !important; }
+      .vnp-box-footer .footer-widget-top { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 0 18px 18px; text-align: center; }
+      .vnp-box-footer .footer-widget-top .footer-desktop-logo { display: none; }
+      .vnp-box-footer .footer-mobile-brand { display: inline-flex; align-items: center; gap: 9px; color: #fff; text-decoration: none; text-align: left; }
+      .vnp-box-footer .footer-mobile-brand img { width: 38px; height: 38px; flex: 0 0 38px; object-fit: contain; }
+      .vnp-box-footer .footer-mobile-brand-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+      .vnp-box-footer .footer-mobile-brand-copy strong { color: #fff; font-size: 19px; font-weight: 800; line-height: 1; }
+      .vnp-box-footer .footer-mobile-brand-copy small { color: rgba(255, 255, 255, .76); font-size: 9px; font-weight: 600; line-height: 1; }
+      .vnp-box-footer .footer-bottom { padding: 16px 0 18px; }
+      .vnp-box-footer .footer-bottom-wrapper { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+      .vnp-box-footer .footer-bottom-wrapper .text-1 { margin: 0; font-size: 10px; line-height: 1.3; }
+      .vnp-box-footer .footer-bottom-wrapper .social-icon { display: flex; gap: 20px; }
+      .vnp-box-footer .footer-bottom-wrapper .bottom-img { display: none; }
+    }
+
+    /* Subscribe popup */
+    .vnp-subs-popup {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 16px 40px rgba(20, 71, 47, .18);
+      border: 1px solid #eef3ec;
+    }
+    .vnp-subs-popup.show { display: flex; animation: vnpSubsPop .3s ease; }
+    @keyframes vnpSubsPop { from { opacity: 0; transform: translate(-50%, -50%) scale(.9); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+    .vnp-subs-popup-icon {
+      width: 38px; height: 38px; flex: 0 0 38px; border-radius: 50%;
+      background: linear-gradient(135deg, #2f7d2c, #1f5f23); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+    }
+    .vnp-subs-popup.err .vnp-subs-popup-icon { background: linear-gradient(135deg, #c0392b, #922b21); }
+    .vnp-subs-popup-body { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+    .vnp-subs-popup-title { font-size: 14px; font-weight: 800; color: #1a2b1e; line-height: 1.2; }
+    .vnp-subs-popup-desc { font-size: 12px; color: #6b7280; line-height: 1.4; }
+    .vnp-subs-popup-close { border: none; background: none; color: #9ca3af; font-size: 14px; cursor: pointer; padding: 4px; }
+    #vnp-subscribe-btn .vnp-subs-tick { margin-right: 6px; }
+    #vnp-subscribe-btn.vnp-subs-done {
+      background: #FFC107 !important;
+      background-image: none !important;
+      color: #1a2b1e !important;
+      border-color: #FFC107 !important;
+      box-shadow: 0 8px 24px rgba(255, 193, 7, .35) !important;
+      font-weight: 800;
+    }
+    #vnp-subscribe-btn.vnp-subs-done::before,
+    #vnp-subscribe-btn.vnp-subs-done::after { display: none !important; }
+    #vnp-subscribe-btn.vnp-subs-done .vnp-subs-tick {
+      margin: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: #1a2b1e; color: #FFC107; font-size: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
+      transform: none !important;
+    }
+    #vnp-subscribe-btn.vnp-subs-done { line-height: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+    @media (max-width: 767px) {
+      .vnp-subs-popup {
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        z-index: 99999; width: 82%; max-width: 330px; flex-direction: column;
+        text-align: center; padding: 28px 22px; background: #2f7d2c; border: none;
+      }
+      .vnp-subs-popup::before {
+        content: ''; position: fixed; inset: 0; background: rgba(15, 30, 20, .55); z-index: -1;
+      }
+      .vnp-subs-popup.show { animation: vnpSubsPopMob .3s ease; }
+      @keyframes vnpSubsPopMob { from { opacity: 0; transform: translate(-50%, -46%) scale(.92); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+      .vnp-subs-popup-body { align-items: center; }
+      .vnp-subs-popup-title { color: #fff; }
+      .vnp-subs-popup-desc { color: rgba(255, 255, 255, .9); }
+      .vnp-subs-popup-icon { background: #FFC107; color: #1a2b1e; }
+      .vnp-subs-popup-close { position: absolute; top: 10px; right: 12px; color: rgba(255, 255, 255, .8); }
+      .vnp-subs-popup.err { background: #b03a2e; }
+    }
+    @media (min-width: 768px) {
+      .vnp-subs-popup {
+        position: absolute; left: 50%; bottom: 120px; transform: translateX(-50%);
+        z-index: 60; background: #2f7d2c; border: none;
+        flex-direction: column; text-align: center; gap: 10px; padding: 20px 26px;
+        min-width: 240px;
+      }
+      .vnp-subs-popup.show { animation: vnpSubsPopDesk .3s ease; }
+      @keyframes vnpSubsPopDesk { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+      .vnp-subs-popup .vnp-subs-popup-icon {
+        width: 52px; height: 52px; flex: 0 0 52px; font-size: 24px;
+        background: #FFC107; color: #1a2b1e;
+      }
+      .vnp-subs-popup-title { color: #fff; font-size: 15px; }
+      .vnp-subs-popup-desc { color: rgba(255, 255, 255, .85); }
+      .vnp-subs-popup-close { color: rgba(255, 255, 255, .8); position: absolute; top: 10px; right: 12px; }
+      .vnp-subs-popup.err { background: #b03a2e; }
+    }
+  </style>
+</head>
+<body class="hs-page">
+  <!-- App-style page header (matches account / payment history) -->
+  <div class="hs-header">
+    <div class="hs-header-top">
+      <a class="hs-back" href="account.html" aria-label="Go back to account">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </a>
+      <div class="hs-header-info">
+        <div class="hs-title">Help &amp; Support</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Header (matches shop.html) -->
+  <div class="header-top-section">
+    <div class="container">
+      <div class="header-top-wrapper">
+        <ul class="header-contact-list">
+          <li>
+            <i class="fal fa-envelope"></i>
+            <a href="mailto:support@vpnexues.com">support@vpnexues.com</a>
+          </li>
+          <li>
+            <i class="far fa-phone-alt"></i>
+            <a href="tel:+91 9943994603">+91 9943994603</a> |
+            <a href="tel:+91 8148197842">+91 8148197842</a>
+          </li>
+        </ul>
+        <div class="head-right">
+          <div class="line-shape"></div>
+          <div class="social-icon">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header id="header-sticky" class="header-1">
+    <div class="container">
+      <div class="mega-menu-wrapper">
+        <div class="header-main">
+          <div class="vpn-logo-header">
+            <div class="idlogo-vpn">
+              <a href="index.html" class="top-logo">VPNexues</a>
+              <span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+            </div>
+          </div>
+          <div class="mean__menu-wrapper">
+            <div class="main-menu">
+              <nav id="mobile-menu">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About Us</a></li>
+                  <li class="has-dropdown">
+                    <a href="javascript:void(0)">Pages</a>
+                    <ul class="submenu" style="display: block;">
+                      <li><a href="our-services.html">Our Services</a></li>
+                      <li><a href="team.html">Our Team</a></li>
+                      <li><a href="pricing.html">Pricing Plan</a></li>
+                      <li><a href="testimonial.html">Testimonails</a></li>
+                      <li><a href="faq.html">Faqs</a></li>
+                      <li><a href="news.html">News</a></li>
+                      <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      Shop
+                      
+                    </a>
+                    <ul class="submenu">
+                      <li><a href="shop.html">Shop</a></li>
+                      <li><a href="pricing.html?type=small-box" onclick="goPage('small-box')">Small Box</a></li>
+                      <li><a href="pricing.html?type=big-box" onclick="goPage('big-box')">Big Box</a></li>
+                      <li><a href="pricing.html?type=b2b" onclick="goPage('b2b')">B2B</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="contact.html">Support</a></li>
+                  <li class="vpn-desktop-careers"><a href="careers.html">Careers</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="header-right d-flex justify-content-end align-items-center">
+            <button class="vpn-login-btn" onclick="vpnOpenModal('login')" aria-label="Login or Sign up">
+              <i class="far fa-user"></i> Login
+            </button>
+            <a class="vpn-account-btn" href="account.html" aria-label="My Account">
+              <i class="far fa-user-circle"></i> <span id="navAccountLabel">My Account</span>
+            </a>
+            <div class="header__hamburger my-auto">
+              <div class="sidebar__toggle">
+                <div class="header-bar">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Offcanvas Area Start -->
+  <div class="fix-area">
+    <div class="offcanvas__info">
+      <div class="offcanvas__wrapper">
+        <div class="offcanvas__content">
+          <style>
+                            .offcanvas__logo { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; line-height: 1.05; background: url(https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg) no-repeat left center; background-size: 52px; padding-left: 66px; font-size: 24px; min-height: 60px; }
+                            .offcanvas__logo a { font-size: 24px; line-height: 1.05; }
+                            .offcanvas__logo .idlogo-vivasayam-txt { display: block; font-size: 10px; line-height: 1.25; font-weight: 600; letter-spacing: .2px; margin-top: 2px; white-space: nowrap; }
+                        </style>
+                        <div class="offcanvas-header-fixed">
+            <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+              <div class="offcanvas__logo">
+                <a href="index.html">VPNexues</a><span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+              </div>
+              <div class="offcanvas__close">
+                <button><i class="fas fa-times"></i></button>
+              </div>
+            </div>
+            <h3 class="offcanvas-title">Hello There!</h3>
+            <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022.</p>
+            <div class="mobile-menu fix mt-15"></div>
+            <div class="social-icon d-flex align-items-center">
+              <a href="https://www.facebook.com/vpnexues" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="offcanvas-scrollable-body">
+            <div class="offcanvas__contact">
+              <h3>Contact Us</h3>
+              <ul class="contact-list">
+                <li>
+                  <div class="icon"><i class="far fa-phone-alt"></i></div>
+                  <div class="content">
+                    <p>Call Us</p>
+                    <h4><a href="tel:+91 9943994603">+91 9943994603</a></h4>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon"><i class="fal fa-envelope"></i></div>
+                  <div class="content">
+                    <p>Send Email</p>
+                    <h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4>
+                  </div>
+                </li>
+                <li style="align-items: flex-start;">
+                  <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
+                  <div class="content">
+                    <p>Location</p>
+                    <div class="footer-location-li"><h4>Singapore</h4><span style="color:#333;font-size: 14px;">412 Race Course Road, Singapore 218660</span></div>
+                    <div class="footer-location-li"><h4>India</h4><span style="color:#333;font-size: 14px;">No 312/11, Siva towers, Narasothipatti, Salem Tamil Nadu, India, 636004</span></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <a href="contact.html" class="theme-btn">
+              Get A Quote
+              <i class="far fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas__overlay"></div>
+
+  <!-- Mobile Header (matches shop.html, only visible on mobile) -->
+  <header class="sb-mobile-header" id="shop-mobile-header">
+    <button class="sb-header-back" type="button" onclick="window.history.length > 1 ? window.history.back() : window.location.href='account.html'" aria-label="Go back"><i class="fas fa-chevron-left"></i></button>
+    <a class="sb-brand" href="index.html" aria-label="VPNexues home">
+      <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="">
+      <span><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+    </a>
+  </header>
+
+  <!-- Desktop green curvy banner (hidden on mobile) -->
+  <div class="hs-desktop-banner" aria-label="Help and support">
+    <div class="pg-banner">
+      <div class="container">
+        <div class="pg-banner-in">
+          <div class="breadcrumb"><a href="index.html">Home</a><span>&rsaquo;</span> Support</div>
+          <h1>How Can We Help You?</h1>
+          <p>Our support team is here to assist you with orders, delivery, returns, products and more — 7 days a week.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="hs-shell">
+
+    <!-- Hero Banner -->
+    <section class="hs-hero">
+      <div class="hs-hero-icon"><i class="fas fa-headset"></i></div>
+      <h2>How Can We Help You?</h2>
+      <p>Our support team is here to assist you with orders, delivery, returns, products and more — 7 days a week.</p>
+    </section>
+
+    <!-- Desktop section header (Option 3 style, hidden on mobile) -->
+    <div class="hs-desktop-head">
+      <span class="hs-badge">VPNexues Support</span>
+      <h2>Get in Touch with Us</h2>
+    </div>
+
+    <!-- Contact Us -->
+    <section class="hs-section">
+      <h2 class="hs-section-title">Contact Us</h2>
+      <h3 class="hs-group-title">Direct Channels</h3>
+      <div class="hs-contact-grid">
+        <a href="tel:+919943994603" class="hs-card-item">
+          <div class="hs-card-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="hs-card-info">
+            <div class="hs-card-title">Call Us</div>
+            <div class="hs-card-detail">+91 9943994603</div>
+            <div class="hs-card-detail">+91 8148197842</div>
+          </div>
+          <i class="fas fa-chevron-right hs-card-arrow"></i>
+        </a>
+        <a href="mailto:support@vpnexues.com" class="hs-card-item">
+          <div class="hs-card-icon"><i class="far fa-envelope"></i></div>
+          <div class="hs-card-info">
+            <div class="hs-card-title">Send Email</div>
+            <div class="hs-card-detail">support@vpnexues.com</div>
+          </div>
+          <i class="fas fa-chevron-right hs-card-arrow"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="hs-section">
+      <h2 class="hs-section-title">Our Office Locations</h2>
+      <h3 class="hs-group-title">Corporate Hubs</h3>
+      <div class="hs-office-grid">
+        <div class="hs-office-item">
+          <div class="hs-office-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="hs-office-info">
+            <div class="hs-office-name">Singapore Office</div>
+            <div class="hs-office-address">412 Race Course Road, Singapore 218660</div>
+            <div class="hs-office-phone">+91 9943994603 | +91 8148197842</div>
+          </div>
+          <i class="fas fa-chevron-right hs-office-arrow"></i>
+        </div>
+        <div class="hs-office-item">
+          <div class="hs-office-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="hs-office-info">
+            <div class="hs-office-name">India Office</div>
+            <div class="hs-office-address">No 312/11, Siva Towers, Perumal Malai Road, Narasothipatti, Salem, Tamil Nadu 636004</div>
+            <div class="hs-office-phone">+91 9943994603 | +91 8148197842</div>
+          </div>
+          <i class="fas fa-chevron-right hs-office-arrow"></i>
+        </div>
+        <div class="hs-office-item">
+          <div class="hs-office-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="hs-office-info">
+            <div class="hs-office-name">Tirupattur Office</div>
+            <div class="hs-office-address">VP Nexues Private Limited, No. 8, Don Bosco Nagar (3rd Floor, Aether E-Bike Showroom Building and opposite to DBX School), Tirupattur - 635601 TN, India</div>
+            <div class="hs-office-phone">+91 9943994603 | +91 8148197842</div>
+          </div>
+          <i class="fas fa-chevron-right hs-office-arrow"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Buttons -->
+    <div class="hs-bottom-btns">
+      <button class="hs-btn hs-btn-live" onclick="openLiveChat()">
+        <i class="far fa-comment-dots"></i>
+        Start Live Chat
+      </button>
+      <a href="faq.html" class="hs-btn hs-btn-faq">
+        <i class="far fa-question-circle"></i>
+        View Knowledgebase
+      </a>
+    </div>
+
+    <!-- Privacy Policy Link -->
+    <div class="hs-privacy-link" style="text-align: center; margin-top: 30px;">
+      <p style="font-size: 12px; color: #6b7280; margin-bottom: 0;">
+        <a href="privacy-policy.html" style="color: #1c4b2a; text-decoration: underline;">Privacy Policy</a>
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Footer (desktop = shop footer, mobile = pricing-style footer) -->
+  <footer class="footer-section fix section-padding bg-cover pb-0 vnp-box-footer" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bg.jpg');">
+    <div class="container">
+      <div class="footer-widget-top">
+        <a href="index.html" class="logo-img footer-desktop-logo">
+          <span class="footer-desktop-logo-copy"><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+        </a>
+        <a href="index.html" class="footer-mobile-brand" aria-label="VPNexues home">
+          <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues logo">
+          <span class="footer-mobile-brand-copy"><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+        </a>
+        <div class="content-items">
+          <h3>Subscribe Our Newsletter To Get More Updates</h3>
+          <form action="https://formsubmit.co/hemaanthvpnexues@gmail.com" method="POST" id="vnp-subscribe-form">
+            <input type="hidden" name="_subject" value="New Newsletter Subscription - VPNexues">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="email" name="email" placeholder="Your email" id="vnp-subscribe-email" required>
+            <button class="theme-btn" type="submit" id="vnp-subscribe-btn">Subscribe <i class="far fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+      </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-wrapper">
+          <p class="text-1">&copy; 2026 VPNexues Import &amp; Export. All Rights Reserved</p>
+          <div class="social-icon">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+          <div class="bottom-img"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bottom.png" alt="img"></div>
+        </div>
+      </div>
+    </div>
+    <div id="vnp-subscribe-popup" class="vnp-subs-popup" role="alert" aria-live="polite">
+      <div class="vnp-subs-popup-icon"><i class="fas fa-check"></i></div>
+      <div class="vnp-subs-popup-body">
+        <strong class="vnp-subs-popup-title">You're subscribed!</strong>
+        <span class="vnp-subs-popup-desc">Thank you for joining the VPNexues newsletter.</span>
+      </div>
+      <button type="button" class="vnp-subs-popup-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+  </footer>
+
+  <!-- Live Chat Modal -->
+  <div class="lc-overlay" id="lcOverlay" onclick="closeLiveChat()"></div>
+  <div class="lc-panel" id="lcPanel">
+    <div class="lc-header">
+      <div class="lc-header-left">
+        <div class="lc-avatar"><i class="fas fa-leaf"></i></div>
+        <div class="lc-header-info">
+          <span class="lc-header-name">VPNexues Support</span>
+          <span class="lc-header-status"><span class="lc-dot"></span> Online</span>
+        </div>
+      </div>
+      <div class="lc-header-actions">
+        <button class="lc-header-btn" aria-label="More options"><i class="fas fa-ellipsis-v"></i></button>
+        <button class="lc-header-btn" onclick="toggleChatFullscreen()" aria-label="Fullscreen"><i class="fas fa-expand-alt"></i></button>
+        <button class="lc-close" onclick="closeLiveChat()" aria-label="Close chat"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="lc-body" id="lcBody"></div>
+    <div class="lc-footer" id="lcFooter">
+      <input type="text" id="lcInput" class="lc-input" placeholder="Type your message..." autocomplete="off" />
+      <button class="lc-send" id="lcSendBtn" onclick="lcSendUserMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function updateCartBadge() {
+        var badge = document.getElementById('nav-cart-badge');
+        if (badge) {
+          var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          var count = 0;
+          cart.forEach(function (item) { count += (item.qty || item.quantity || 1); });
+          if (count > 0) {
+            badge.textContent = count;
+            badge.style.display = '';
+          } else {
+            badge.style.display = 'none';
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        updateCartBadge();
+      });
+
+      window.updateCartBadge = updateCartBadge;
+    })();
+
+    /* ═══════════════════════════════════════════════════════════════
+       LIVE SUPPORT CHAT
+       ═══════════════════════════════════════════════════════════════ */
+
+    var PRODUCTS = [
+      {
+        id: 'small-box',
+        name: 'Small Box',
+        icon: 'fas fa-box-open',
+        desc: 'Weekly subscription box with fresh organic vegetables for families.',
+        price: 'From S$30/week',
+        suggestions: [
+          { text: 'Perfect for families of 2-4 members', icon: 'fas fa-users' },
+          { text: 'Includes seasonal vegetables from Tamil Nadu farms', icon: 'fas fa-leaf' },
+          { text: 'Free delivery across Singapore & India', icon: 'fas fa-truck' },
+          { text: 'Customize your box — choose veggies you love', icon: 'fas fa-sliders-h' },
+          { text: 'Cancel or pause anytime — no lock-in', icon: 'fas fa-calendar-times' }
+        ],
+        link: 'pricing.html?type=small-box'
+      },
+      {
+        id: 'big-box',
+        name: 'Big Box',
+        icon: 'fas fa-box',
+        desc: 'Premium bulk box with groceries, fruits & vegetables for larger households.',
+        price: 'From S$32/week',
+        suggestions: [
+          { text: 'Ideal for families of 4-6+ members', icon: 'fas fa-home' },
+          { text: 'Includes rice, dal, eggs & fresh produce', icon: 'fas fa-seedling' },
+          { text: 'Save more with monthly & yearly plans', icon: 'fas fa-percentage' },
+          { text: 'Premium organic groceries from certified farms', icon: 'fas fa-certificate' },
+          { text: 'Delivered fresh to your doorstep weekly', icon: 'fas fa-shipping-fast' }
+        ],
+        link: 'pricing.html?type=big-box'
+      },
+      {
+        id: 'b2b',
+        name: 'B2B Bulk Supply',
+        icon: 'fas fa-warehouse',
+        desc: 'Wholesale organic produce for restaurants, supermarkets & businesses.',
+        price: 'Custom pricing',
+        suggestions: [
+          { text: 'Bulk orders for restaurants, hotels & retailers', icon: 'fas fa-store' },
+          { text: 'Minimum order: 50kg per delivery', icon: 'fas fa-weight-hanging' },
+          { text: 'Custom packaging with your brand label', icon: 'fas fa-tags' },
+          { text: 'Dedicated account manager for your business', icon: 'fas fa-user-tie' },
+          { text: 'Export documentation & logistics handled', icon: 'fas fa-file-alt' }
+        ],
+        link: 'pricing.html?type=b2b'
+      },
+      {
+        id: 'organic-vegetables',
+        name: 'Organic Vegetables',
+        icon: 'fas fa-carrot',
+        desc: 'Fresh, chemical-free vegetables sourced directly from Tamil Nadu farms.',
+        price: 'Varies by product',
+        suggestions: [
+          { text: '100% certified organic — no chemicals or pesticides', icon: 'fas fa-shield-alt' },
+          { text: 'Harvested fresh and shipped within 24 hours', icon: 'fas fa-clock' },
+          { text: 'Available: Tomato, Carrot, Brinjal, Lady Finger & more', icon: 'fas fa-list' },
+          { text: 'Farm-to-table traceability for every product', icon: 'fas fa-search' },
+          { text: 'Seasonal specials available every month', icon: 'fas fa-calendar-alt' }
+        ],
+        link: 'pricing.html?type=small-box'
+      },
+      {
+        id: 'tropical-fruits',
+        name: 'Tropical Fruits',
+        icon: 'fas fa-apple-alt',
+        desc: 'Sweet, farm-fresh tropical fruits from South India — Mango, Banana & more.',
+        price: 'From S$30/box',
+        suggestions: [
+          { text: 'Premium Alphonso & Banganapalli mangoes', icon: 'fas fa-star' },
+          { text: 'Fresh bananas — Robusta, Red Banana & Nendran', icon: 'fas fa-hand-holding' },
+          { text: 'Seasonal fruits delivered at peak ripeness', icon: 'fas fa-sun' },
+          { text: 'Exported fresh with cold-chain logistics', icon: 'fas fa-snowflake' },
+          { text: 'Perfect for retail stores & juice bars', icon: 'fas fa-glass-whiskey' }
+        ],
+        link: 'pricing.html?type=small-box'
+      },
+      {
+        id: 'premium-spices',
+        name: 'Premium Spices',
+        icon: 'fas fa-pepper-hot',
+        desc: 'Authentic South Indian spices — turmeric, chili, pepper & spice blends.',
+        price: 'From S$15/pack',
+        suggestions: [
+          { text: 'Single-origin spices from Salem & Madurai farms', icon: 'fas fa-map-marker-alt' },
+          { text: 'Available: Turmeric, Black Pepper, Chili, Cumin & more', icon: 'fas fa-list-ul' },
+          { text: 'No additives — pure, natural spices', icon: 'fas fa-ban' },
+          { text: 'Bulk & retail packaging available', icon: 'fas fa-boxes' },
+          { text: 'Lab-tested for quality & purity', icon: 'fas fa-flask' }
+        ],
+        link: 'pricing.html?type=small-box'
+      }
+    ];
+
+    var SERVICES = [
+      {
+        id: 'export',
+        name: 'Organic Produce Export',
+        icon: 'fas fa-globe-asia',
+        desc: 'Full-scale export of organic produce from Tamil Nadu to global markets.',
+        suggestions: [
+          { text: 'Export to Singapore, UAE, Europe & USA', icon: 'fas fa-plane' },
+          { text: 'Handles customs, documentation & logistics', icon: 'fas fa-file-invoice' },
+          { text: 'Cold-chain & shelf-stable shipping options', icon: 'fas fa-thermometer-half' },
+          { text: 'Minimum order: 500kg per shipment', icon: 'fas fa-dolly' },
+          { text: 'Certified organic — APEDA, USDA & EU standards', icon: 'fas fa-award' }
+        ]
+      },
+      {
+        id: 'farm-door',
+        name: 'Farm-to-Door Delivery',
+        icon: 'fas fa-home',
+        desc: 'Direct delivery of fresh produce from farms to your doorstep.',
+        suggestions: [
+          { text: 'Weekly subscription plans for homes', icon: 'fas fa-calendar-week' },
+          { text: 'Same-day delivery in select cities', icon: 'fas fa-bolt' },
+          { text: 'Track your delivery in real-time', icon: 'fas fa-map-pin' },
+          { text: 'Flexible scheduling — choose your delivery day', icon: 'fas fa-calendar-check' },
+          { text: 'Eco-friendly packaging — zero plastic', icon: 'fas fa-recycle' }
+        ]
+      },
+      {
+        id: 'import',
+        name: 'Import & Sourcing',
+        icon: 'fas fa-ship',
+        desc: 'Import specialty food ingredients and products from global markets.',
+        suggestions: [
+          { text: 'Source organic ingredients from 15+ countries', icon: 'fas fa-globe' },
+          { text: 'Quality inspection before import', icon: 'fas fa-check-double' },
+          { text: 'Handle all import duties & documentation', icon: 'fas fa-stamp' },
+          { text: 'Warehousing & distribution in India', icon: 'fas fa-warehouse' },
+          { text: 'Competitive pricing for bulk imports', icon: 'fas fa-hand-holding-usd' }
+        ]
+      }
+    ];
+
+    var SUPPORT_TOPICS = [
+      {
+        id: 'account',
+        name: 'Account Help',
+        icon: 'fas fa-user-circle',
+        desc: 'Help with your VPNexues account — profile, password, settings & more.',
+        suggestions: [
+          { text: 'Update your profile name, email or phone number from Account Settings', icon: 'fas fa-user-edit' },
+          { text: 'Reset password: go to Login \u2192 tap "Forgot Password" or contact support', icon: 'fas fa-key' },
+          { text: 'Delete your account permanently from Account \u2192 Delete Account', icon: 'fas fa-trash-alt' },
+          { text: 'Manage notification preferences under Account \u2192 Notifications', icon: 'fas fa-bell' },
+          { text: 'Login issues? Clear browser cache or try a different browser', icon: 'fas fa-broom' }
+        ],
+        link: 'account.html'
+      },
+      {
+        id: 'orders',
+        name: 'Order Help',
+        icon: 'fas fa-shopping-bag',
+        desc: 'Track, modify or get help with your existing orders.',
+        suggestions: [
+          { text: 'Track your order in real-time from Account \u2192 Order Tracking', icon: 'fas fa-truck' },
+          { text: 'View all past orders under Account \u2192 My Orders', icon: 'fas fa-list-alt' },
+          { text: 'Modify or cancel order within 1 hour of placing — contact support', icon: 'fas fa-edit' },
+          { text: 'Payment failed? Check your bank or try another payment method', icon: 'fas fa-credit-card' },
+          { text: 'Order not received? Contact us with your order ID for quick resolution', icon: 'fas fa-exclamation-circle' }
+        ],
+        link: 'orders.html'
+      },
+      {
+        id: 'refunds',
+        name: 'Refund & Returns',
+        icon: 'fas fa-undo',
+        desc: 'Return policy, refund process & cancellation details.',
+        suggestions: [
+          { text: 'Fresh produce returns accepted within 24 hours of delivery if damaged', icon: 'fas fa-clock' },
+          { text: 'Refund processed within 3-5 business days to original payment method', icon: 'fas fa-money-bill-wave' },
+          { text: 'Damaged or wrong item? Share photo via support for instant replacement', icon: 'fas fa-camera' },
+          { text: 'Subscription can be paused or cancelled anytime — no penalty', icon: 'fas fa-calendar-times' },
+          { text: 'B2B bulk order returns evaluated case-by-case — contact your account manager', icon: 'fas fa-handshake' }
+        ],
+        link: 'payment-history.html'
+      },
+      {
+        id: 'enquiries',
+        name: 'General Enquiries',
+        icon: 'fas fa-info-circle',
+        desc: 'Business partnerships, wholesale pricing, export queries & general questions.',
+        suggestions: [
+          { text: 'B2B partnership enquiries: email sales@vpnexues.com or call us', icon: 'fas fa-briefcase' },
+          { text: 'Wholesale & bulk pricing available for restaurants and retailers', icon: 'fas fa-store' },
+          { text: 'Export documentation and certifications available on request', icon: 'fas fa-file-alt' },
+          { text: 'Visit our offices: Singapore (Race Course Rd) or India (Salem, Tamil Nadu)', icon: 'fas fa-map-marker-alt' },
+          { text: 'Press & media enquiries: contact support@vpnexues.com', icon: 'fas fa-newspaper' }
+        ],
+        link: 'contact.html'
+      }
+    ];
+
+    var lcState = {
+      currentCategory: null,
+      currentTopic: null,
+      step: 'idle'
+    };
+
+    function openLiveChat() {
+      document.getElementById('lcOverlay').classList.add('open');
+      document.getElementById('lcPanel').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('chat-open');
+      lcState = { currentCategory: null, currentTopic: null, step: 'idle' };
+      document.getElementById('lcBody').innerHTML = '';
+      lcShowWelcome();
+    }
+
+    function closeLiveChat() {
+      document.getElementById('lcOverlay').classList.remove('open');
+      document.getElementById('lcPanel').classList.remove('open');
+      document.body.style.overflow = '';
+      document.body.classList.remove('chat-open');
+    }
+
+    function toggleChatFullscreen() {
+      document.getElementById('lcPanel').classList.toggle('lc-fullscreen');
+    }
+
+    function lcShowWelcome() {
+      lcAddBotMessage("Hi! I\u2019m the VPNexues assistant. \uD83C\uDF31<br><br>I can help you with our organic products, pricing, orders, delivery, payments, returns, and more. What would you like to know?");
+      setTimeout(function () {
+        lcShowMainOptions();
+      }, 600);
+    }
+
+    function lcShowMainOptions() {
+      var html = '';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'products\')"><span class="lc-num">1.</span><span>Products</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'pricing\')"><span class="lc-num">2.</span><span>Pricing Plans</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'delivery\')"><span class="lc-num">3.</span><span>Delivery Info</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'track\')"><span class="lc-num">4.</span><span>Track My Order</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'payment\')"><span class="lc-num">5.</span><span>Payment Methods</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'return\')"><span class="lc-num">6.</span><span>Return Policy</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'b2b\')"><span class="lc-num">7.</span><span>B2B Orders</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'contact\')"><span class="lc-num">8.</span><span>Contact Info</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-numbered-option" onclick="lcOptionClick(\'agent\')"><span class="lc-num">9.</span><span>Talk to Agent</span><i class="fas fa-chevron-right lc-opt-arrow"></i></button>';
+      html += '<button class="lc-browse-all" onclick="lcOptionClick(\'browse\')"><span>Browse All Topics</span><i class="fas fa-arrow-right"></i></button>';
+      lcAddOptions(html);
+    }
+
+    function lcOptionClick(option) {
+      lcRemoveOptions();
+      switch (option) {
+        case 'products': lcShowProducts(); break;
+        case 'pricing': lcShowPricing(); break;
+        case 'delivery': lcShowDelivery(); break;
+        case 'track': lcShowTrackOrder(); break;
+        case 'payment': lcShowPaymentMethods(); break;
+        case 'return': lcShowReturnPolicy(); break;
+        case 'b2b': lcShowB2B(); break;
+        case 'contact': lcShowContactInfo(); break;
+        case 'agent': lcTalkToAgent(); break;
+        case 'browse': lcShowAllTopics(); break;
+      }
+    }
+
+    function lcShowProducts() {
+      lcAddUserMessage("Products");
+      setTimeout(function () {
+        lcAddBotMessage("Our Products \u2014 100% organic from Tamil Nadu");
+        setTimeout(function () {
+          var html = '<div class="lc-product-cats">';
+          html += '<div class="lc-pcat"><div class="lc-pcat-head"><i class="fas fa-carrot"></i><strong>Vegetables</strong></div><div class="lc-pcat-items">Tomato, Carrot, Eggplant, Lady Finger, Broccoli, Beans, Onion</div></div>';
+          html += '<div class="lc-pcat"><div class="lc-pcat-head"><i class="fas fa-apple-alt"></i><strong>Fruits</strong></div><div class="lc-pcat-items">Mango, Banana, Apple, Watermelon</div></div>';
+          html += '<div class="lc-pcat"><div class="lc-pcat-head"><i class="fas fa-seedling"></i><strong>Grains & Spices</strong></div><div class="lc-pcat-items">Coffee Beans, Dal, Rice, Premium Spices</div></div>';
+          html += '<div class="lc-pcat"><div class="lc-pcat-head"><i class="fas fa-ellipsis-h"></i><strong>Other</strong></div><div class="lc-pcat-items">Fresh Eggs, Beverages, Groceries</div></div>';
+          html += '</div>';
+          html += '<div class="lc-bot-note">All chemical-free, sourced from certified organic farms.</div>';
+          html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcShowPricing() {
+      lcAddUserMessage("Pricing Plans");
+      setTimeout(function () {
+        lcAddBotMessage("Here are our pricing plans:");
+        setTimeout(function () {
+          var html = '<div class="lc-suggestions">';
+          html += '<div class="lc-suggestion"><i class="fas fa-box-open"></i><span><strong>Small Box</strong> \u2014 From S$30/week</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-box"></i><span><strong>Big Box</strong> \u2014 From S$32/week</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-warehouse"></i><span><strong>B2B Bulk Supply</strong> \u2014 Custom pricing</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-carrot"></i><span><strong>Organic Vegetables</strong> \u2014 Varies by product</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-apple-alt"></i><span><strong>Tropical Fruits</strong> \u2014 From S$30/box</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-pepper-hot"></i><span><strong>Premium Spices</strong> \u2014 From S$15/pack</span></div>';
+          html += '</div>';
+          html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcShowDelivery() {
+      lcAddUserMessage("Delivery Info");
+      setTimeout(function () {
+        lcAddBotMessage("We deliver across Singapore, India, UAE, USA & Europe. Delivery is free on subscription plans!");
+        setTimeout(function () {
+          var html = '<div class="lc-suggestions">';
+          html += '<div class="lc-suggestion"><i class="fas fa-truck"></i><span>Free delivery on all subscription plans</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-bolt"></i><span>Same-day delivery in select cities</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-map-pin"></i><span>Track your delivery in real-time</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-calendar-check"></i><span>Flexible scheduling \u2014 choose your delivery day</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-recycle"></i><span>Eco-friendly packaging \u2014 zero plastic</span></div>';
+          html += '</div>';
+          html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcShowTrackOrder() {
+      lcAddUserMessage("Track My Order");
+      var isLoggedIn = localStorage.getItem('vpnexuesAuth') === 'true'
+        || localStorage.getItem('vpnexuesLoggedIn') === 'true'
+        || localStorage.getItem('isLoggedIn') === 'true'
+        || sessionStorage.getItem('vpnexuesAuth') === 'true'
+        || sessionStorage.getItem('vpnexuesLoggedIn') === 'true'
+        || sessionStorage.getItem('isLoggedIn') === 'true';
+      if (!isLoggedIn) {
+        setTimeout(function () {
+          lcAddBotMessage("Please log in to your account to track your orders.");
+          setTimeout(function () {
+            var html = '<div class="lc-followup">';
+            html += '<button class="lc-followup-btn" onclick="vpnOpenModal(\'login\')"><i class="fas fa-sign-in-alt"></i> Login to Track Order</button>';
+            html += '<button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Back to Support</button>';
+            html += '</div>';
+            lcAddOptions(html);
+          }, 300);
+        }, 400);
+        return;
+      }
+      setTimeout(function () {
+        var orders = [];
+        try { orders = JSON.parse(localStorage.getItem('vpnexues_orders') || '[]'); } catch(e) { orders = []; }
+        if (!orders.length) {
+          lcAddBotMessage("We couldn\u2019t find any orders on your account yet.");
+          setTimeout(function () {
+            var html = '<div class="lc-followup">';
+            html += '<button class="lc-followup-btn" onclick="window.location.href=\'shop.html\'"><i class="fas fa-shopping-bag"></i> Browse Products</button>';
+            html += '<button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Back to Support</button>';
+            html += '</div>';
+            lcAddOptions(html);
+          }, 300);
+          return;
+        }
+        lcAddBotMessage("Here are your recent orders:");
+        setTimeout(function () {
+          var recent = orders.slice(0, 5);
+          var html = '<div class="lc-order-list">';
+          recent.forEach(function(order) {
+            var statusClass = 'lc-ord-status--' + (order.status || 'processing');
+            var statusLabel = (order.status || 'processing').charAt(0).toUpperCase() + (order.status || 'processing').slice(1);
+            var d = new Date(order.date);
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            var dateStr = d.getDate() + ' ' + months[d.getMonth()] + ', ' + d.getFullYear();
+            var itemNames = (order.items || []).map(function(i){ return i.name || ''; }).filter(Boolean);
+            var itemsText = itemNames.length > 2 ? itemNames.slice(0,2).join(', ') + ' & ' + (itemNames.length - 2) + ' more' : itemNames.join(', ');
+            html += '<div class="lc-order-card" onclick="lcShowOrderDetail(\'' + order.id + '\')">';
+            html += '<div class="lc-order-card-top">';
+            html += '<span class="lc-order-id">' + order.id + '</span>';
+            html += '<span class="lc-ord-status ' + statusClass + '">' + statusLabel + '</span>';
+            html += '</div>';
+            html += '<div class="lc-order-card-body">';
+            if (itemsText) html += '<div class="lc-order-items">' + itemsText + '</div>';
+            html += '<div class="lc-order-meta"><span>Placed: ' + dateStr + '</span>';
+            if (order.total) html += '<span>\u20B9' + Number(order.total).toFixed(2) + '</span>';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="lc-order-card-action"><button class="lc-order-detail-btn" onclick="event.stopPropagation();lcShowOrderDetail(\'' + order.id + '\')"><i class="fas fa-eye"></i> View Details</button></div>';
+            html += '</div>';
+          });
+          html += '</div>';
+          html += '<div class="lc-followup">';
+          html += '<button class="lc-followup-btn" onclick="lcRefreshTrackOrders()"><i class="fas fa-sync-alt"></i> Refresh Status</button>';
+          html += '<button class="lc-followup-btn" onclick="window.location.href=\'order-tracking.html\'"><i class="fas fa-map-marker-alt"></i> Full Tracking</button>';
+          html += '<button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Back</button>';
+          html += '</div>';
+          lcAddOptions(html);
+        }, 400);
+      }, 400);
+    }
+
+    function lcRefreshTrackOrders() {
+      lcRemoveOptions();
+      lcAddUserMessage("Refresh Status");
+      setTimeout(function () {
+        var orders = [];
+        try { orders = JSON.parse(localStorage.getItem('vpnexues_orders') || '[]'); } catch(e) { orders = []; }
+        if (!orders.length) {
+          lcAddBotMessage("No orders found. Your order list has been refreshed.");
+          setTimeout(function () { lcShowMainOptions(); }, 300);
+          return;
+        }
+        lcAddBotMessage("Refreshed! Here are your latest orders:");
+        setTimeout(function () {
+          var recent = orders.slice(0, 5);
+          var html = '<div class="lc-order-list">';
+          recent.forEach(function(order) {
+            var statusClass = 'lc-ord-status--' + (order.status || 'processing');
+            var statusLabel = (order.status || 'processing').charAt(0).toUpperCase() + (order.status || 'processing').slice(1);
+            var d = new Date(order.date);
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            var dateStr = d.getDate() + ' ' + months[d.getMonth()] + ', ' + d.getFullYear();
+            var itemNames = (order.items || []).map(function(i){ return i.name || ''; }).filter(Boolean);
+            var itemsText = itemNames.length > 2 ? itemNames.slice(0,2).join(', ') + ' & ' + (itemNames.length - 2) + ' more' : itemNames.join(', ');
+            html += '<div class="lc-order-card" onclick="lcShowOrderDetail(\'' + order.id + '\')">';
+            html += '<div class="lc-order-card-top">';
+            html += '<span class="lc-order-id">' + order.id + '</span>';
+            html += '<span class="lc-ord-status ' + statusClass + '">' + statusLabel + '</span>';
+            html += '</div>';
+            html += '<div class="lc-order-card-body">';
+            if (itemsText) html += '<div class="lc-order-items">' + itemsText + '</div>';
+            html += '<div class="lc-order-meta"><span>Placed: ' + dateStr + '</span>';
+            if (order.total) html += '<span>\u20B9' + Number(order.total).toFixed(2) + '</span>';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="lc-order-card-action"><button class="lc-order-detail-btn" onclick="event.stopPropagation();lcShowOrderDetail(\'' + order.id + '\')"><i class="fas fa-eye"></i> View Details</button></div>';
+            html += '</div>';
+          });
+          html += '</div>';
+          html += '<div class="lc-followup">';
+          html += '<button class="lc-followup-btn" onclick="lcRefreshTrackOrders()"><i class="fas fa-sync-alt"></i> Refresh Status</button>';
+          html += '<button class="lc-followup-btn" onclick="window.location.href=\'order-tracking.html\'"><i class="fas fa-map-marker-alt"></i> Full Tracking</button>';
+          html += '<button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Back</button>';
+          html += '</div>';
+          lcAddOptions(html);
+        }, 400);
+      }, 400);
+    }
+
+    function lcShowOrderDetail(orderId) {
+      lcRemoveOptions();
+      lcAddUserMessage("View " + orderId);
+      setTimeout(function () {
+        var orders = [];
+        try { orders = JSON.parse(localStorage.getItem('vpnexues_orders') || '[]'); } catch(e) { orders = []; }
+        var order = null;
+        for (var i = 0; i < orders.length; i++) {
+          if (orders[i].id === orderId) { order = orders[i]; break; }
+        }
+        if (!order) {
+          lcAddBotMessage("Order not found. It may have been removed.");
+          setTimeout(function () { lcShowMainOptions(); }, 300);
+          return;
+        }
+        var statusLabel = (order.status || 'processing').charAt(0).toUpperCase() + (order.status || 'processing').slice(1);
+        var d = new Date(order.date);
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var dateStr = d.getDate() + ' ' + months[d.getMonth()] + ', ' + d.getFullYear() + ' \u2022 ' + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+        var html = '<div class="lc-ord-detail">';
+        html += '<div class="lc-ord-detail-header">';
+        html += '<div class="lc-ord-detail-id">' + order.id + '</div>';
+        html += '<div class="lc-ord-status lc-ord-status--' + (order.status || 'processing') + '">' + statusLabel + '</div>';
+        html += '</div>';
+        html += '<div class="lc-ord-detail-row"><span class="lc-ord-detail-label">Placed</span><span>' + dateStr + '</span></div>';
+        if (order.total) html += '<div class="lc-ord-detail-row"><span class="lc-ord-detail-label">Total</span><span>\u20B9' + Number(order.total).toFixed(2) + '</span></div>';
+        if (order.paymentMethod) html += '<div class="lc-ord-detail-row"><span class="lc-ord-detail-label">Payment</span><span>' + order.paymentMethod + '</span></div>';
+        if (order.deliveryTime) html += '<div class="lc-ord-detail-row"><span class="lc-ord-detail-label">Delivery</span><span>' + order.deliveryTime + '</span></div>';
+        var items = order.items || [];
+        if (items.length) {
+          html += '<div class="lc-ord-detail-items-label">Items (' + items.length + ')</div>';
+          items.forEach(function(item) {
+            var qty = item.qty || item.quantity || 1;
+            html += '<div class="lc-ord-detail-item">';
+            html += '<div class="lc-ord-detail-item-info">';
+            html += '<div class="lc-ord-detail-item-name">' + (item.name || 'Item') + '</div>';
+            html += '<div class="lc-ord-detail-item-qty">Qty: ' + qty + ' \u00D7 \u20B9' + Number(item.price || 0).toFixed(2) + '</div>';
+            html += '</div>';
+            html += '<div class="lc-ord-detail-item-total">\u20B9' + (Number(item.price || 0) * qty).toFixed(2) + '</div>';
+            html += '</div>';
+          });
+        }
+        if (order.address) {
+          html += '<div class="lc-ord-detail-address">';
+          html += '<div class="lc-ord-detail-addr-title"><i class="fas fa-map-marker-alt"></i> Delivery Address</div>';
+          html += '<div>' + (order.address.address || '') + '</div>';
+          if (order.address.flat) html += '<div>Flat/House: ' + order.address.flat + '</div>';
+          if (order.address.phone) html += '<div class="lc-ord-detail-addr-contact"><i class="fas fa-phone"></i> ' + order.address.phone + '</div>';
+          html += '</div>';
+        }
+        html += '<div class="lc-ord-detail-note">Live tracking is not currently available for this order.</div>';
+        html += '<div class="lc-ord-detail-note">Estimated delivery information is currently unavailable.</div>';
+        html += '</div>';
+        html += '<div class="lc-followup">';
+        html += '<button class="lc-followup-btn" onclick="lcRefreshTrackOrders()"><i class="fas fa-sync-alt"></i> Refresh Status</button>';
+        html += '<button class="lc-followup-btn" onclick="window.location.href=\'order-tracking.html\'"><i class="fas fa-map-marker-alt"></i> Full Tracking</button>';
+        html += '<button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Back</button>';
+        html += '</div>';
+        lcAddBotMessage(html);
+      }, 400);
+    }
+
+    function lcShowPaymentMethods() {
+      lcAddUserMessage("Payment Methods");
+      setTimeout(function () {
+        lcAddBotMessage("We accept all major payment methods:");
+        setTimeout(function () {
+          var html = '<div class="lc-suggestions">';
+          html += '<div class="lc-suggestion"><i class="fas fa-credit-card"></i><span>Credit & Debit Cards (Visa, Mastercard, AMEX)</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-mobile-alt"></i><span>UPI (Google Pay, PhonePe, Paytm)</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-university"></i><span>Net Banking</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-wallet"></i><span>Digital Wallets</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-shield-alt"></i><span>All transactions are secure & encrypted</span></div>';
+          html += '</div>';
+          html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcShowReturnPolicy() {
+      lcAddUserMessage("Return Policy");
+      setTimeout(function () {
+        lcAddBotMessage("Our return & refund policy:");
+        setTimeout(function () {
+          var html = '<div class="lc-suggestions">';
+          html += '<div class="lc-suggestion"><i class="fas fa-clock"></i><span>Fresh produce returns accepted within 24 hours of delivery if damaged</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-money-bill-wave"></i><span>Refund processed within 3-5 business days</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-camera"></i><span>Damaged or wrong item? Share photo via support for instant replacement</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-calendar-times"></i><span>Subscription can be paused or cancelled anytime \u2014 no penalty</span></div>';
+          html += '</div>';
+          html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcShowB2B() {
+      lcAddUserMessage("B2B Orders");
+      setTimeout(function () {
+        lcAddBotMessage("B2B Bulk Supply \u2014 Wholesale organic produce for businesses:");
+        setTimeout(function () {
+          var html = '<div class="lc-suggestions">';
+          html += '<div class="lc-suggestion"><i class="fas fa-store"></i><span>Bulk orders for restaurants, hotels & retailers</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-weight-hanging"></i><span>Minimum order: 50kg per delivery</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-tags"></i><span>Custom packaging with your brand label</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-user-tie"></i><span>Dedicated account manager for your business</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-file-alt"></i><span>Export documentation & logistics handled</span></div>';
+          html += '</div>';
+          html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcShowContactInfo() {
+      lcAddUserMessage("Contact Info");
+      setTimeout(function () {
+        lcAddBotMessage("Here\u2019s how you can reach us:");
+        setTimeout(function () {
+          var html = '<div class="lc-suggestions">';
+          html += '<div class="lc-suggestion"><i class="fas fa-phone-alt"></i><span>Call Us: +91 9943994603 | +91 8148197842</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-envelope"></i><span>Email: support@vpnexues.com</span></div>';
+          html += '<div class="lc-suggestion"><i class="fab fa-whatsapp"></i><span>WhatsApp: +91 9943994603</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-map-marker-alt"></i><span>Singapore: 412 Race Course Road, Singapore 218660</span></div>';
+          html += '<div class="lc-suggestion"><i class="fas fa-map-marker-alt"></i><span>India: Siva Towers, Salem, Tamil Nadu 636004</span></div>';
+          html += '</div>';
+          html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcShowAllTopics() {
+      lcAddUserMessage("Browse All Topics");
+      setTimeout(function () {
+        lcAddBotMessage("Tap a topic to get an instant answer:");
+        setTimeout(function () {
+          var topicCategories = [
+            { title: 'About Us', icon: '\uD83C\uDFE2', items: [
+              { q: 'What does VP NEXUES do?', label: 'What we do', icon: 'fas fa-building' },
+              { q: 'about vpnexues', label: 'About VPNexues', icon: 'fas fa-info-circle' },
+              { q: 'Why should I choose VPNexues?', label: 'Why choose us', icon: 'fas fa-check-circle' },
+              { q: 'source from farmers', label: 'Our farmers', icon: 'fas fa-leaf' },
+              { q: 'product quality', label: 'Quality assurance', icon: 'fas fa-shield-alt' }
+            ]},
+            { title: 'Products', icon: '\uD83E\uDD6C', items: [
+              { q: 'What products do you sell?', label: 'Our products', icon: 'fas fa-box-open' },
+              { q: 'do you provide organic products', label: 'Organic products', icon: 'fas fa-seedling' },
+              { q: 'freshness', label: 'Freshness', icon: 'fas fa-snowflake' },
+              { q: 'shelf life', label: 'Shelf life', icon: 'fas fa-clock' },
+              { q: 'product samples', label: 'Product samples', icon: 'fas fa-flask' }
+            ]},
+            { title: 'Pricing & Plans', icon: '\uD83D\uDCB0', items: [
+              { q: 'pricing plans', label: 'Pricing plans', icon: 'fas fa-tags' },
+              { q: 'small box', label: 'Small Box', icon: 'fas fa-box' },
+              { q: 'big box', label: 'Big Box', icon: 'fas fa-boxes' },
+              { q: 'minimum order', label: 'Minimum order', icon: 'fas fa-sort-amount-down' },
+              { q: 'gift', label: 'Gift packs', icon: 'fas fa-gift' }
+            ]},
+            { title: 'Orders', icon: '\uD83D\uDCE6', items: [
+              { q: 'how to place an order', label: 'How to order', icon: 'fas fa-shopping-cart' },
+              { q: 'track my order', label: 'Track order', icon: 'fas fa-truck' },
+              { q: 'cancel order', label: 'Cancel order', icon: 'fas fa-times-circle' },
+              { q: 'modify order', label: 'Modify order', icon: 'fas fa-edit' },
+              { q: 'promo code', label: 'Promo codes', icon: 'fas fa-ticket-alt' }
+            ]},
+            { title: 'Delivery', icon: '\uD83D\uDE9A', items: [
+              { q: 'delivery info', label: 'Delivery info', icon: 'fas fa-shipping-fast' },
+              { q: 'shipping charges', label: 'Shipping charges', icon: 'fas fa-dollar-sign' },
+              { q: 'where do you deliver', label: 'Countries', icon: 'fas fa-globe' },
+              { q: 'delayed order', label: 'Delayed order', icon: 'fas fa-exclamation-triangle' },
+              { q: 'no one home', label: 'Missed delivery', icon: 'fas fa-home' }
+            ]},
+            { title: 'Payment', icon: '\uD83D\uDCB3', items: [
+              { q: 'payment methods', label: 'Payment methods', icon: 'fas fa-credit-card' },
+              { q: 'cod', label: 'Cash on delivery', icon: 'fas fa-money-bill-wave' },
+              { q: 'payment failed', label: 'Payment failed', icon: 'fas fa-exclamation-circle' },
+              { q: 'gst invoice', label: 'GST invoice', icon: 'fas fa-file-invoice' }
+            ]},
+            { title: 'Returns & Refunds', icon: '\u21A9\uFE0F', items: [
+              { q: 'return policy', label: 'Return policy', icon: 'fas fa-undo' },
+              { q: 'refund', label: 'Refund options', icon: 'fas fa-sync' },
+              { q: 'damaged product', label: 'Damaged product', icon: 'fas fa-box-open' },
+              { q: 'wrong product', label: 'Wrong product', icon: 'fas fa-exchange-alt' }
+            ]},
+            { title: 'B2B & Wholesale', icon: '\uD83C\uDFE2', items: [
+              { q: 'b2b orders', label: 'B2B orders', icon: 'fas fa-building' },
+              { q: 'become a distributor', label: 'Become distributor', icon: 'fas fa-handshake' },
+              { q: 'customized packaging', label: 'Custom packaging', icon: 'fas fa-box' },
+              { q: 'request a quotation', label: 'Request quote', icon: 'fas fa-file-alt' },
+              { q: 'do you export', label: 'Export services', icon: 'fas fa-shipping-fast' }
+            ]},
+            { title: 'Contact & Support', icon: '\uD83D\uDCDE', items: [
+              { q: 'contact info', label: 'Contact info', icon: 'fas fa-phone' },
+              { q: 'talk to agent', label: 'Talk to agent', icon: 'fas fa-headset' },
+              { q: 'business hours', label: 'Business hours', icon: 'fas fa-clock' },
+              { q: 'business enquiry', label: 'Business enquiry', icon: 'fas fa-envelope' },
+              { q: 'linkedin', label: 'LinkedIn', icon: 'fab fa-linkedin' }
+            ]}
+          ];
+          var html = '<div class="lc-topics-popup">';
+          topicCategories.forEach(function (cat) {
+            html += '<div class="lc-topic-cat">';
+            html += '<div class="lc-topic-cat-title">' + cat.icon + ' ' + cat.title + '</div>';
+            html += '<div class="lc-topic-pills">';
+            cat.items.forEach(function (item) {
+              html += '<button class="lc-topic-pill" onclick="lcTopicTap(\'' + item.q.replace(/'/g, "\\'") + '\')"><i class="' + item.icon + '"></i><span>' + item.label + '</span></button>';
+            });
+            html += '</div></div>';
+          });
+          html += '</div>';
+          html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcTopicTap(question) {
+      lcRemoveOptions();
+      lcAddUserMessage(question);
+      setTimeout(function () {
+        var answers = {
+          'What does VP NEXUES do?': 'We supply high-quality agricultural and food products for domestic and international markets. Farm-to-table organic produce connecting Tamil Nadu\u2019s finest farmers with global tables.',
+          'about vpnexues': 'Est. 2022 \u2014 Tamil Nadu\u2019s Premier Organic Farm-to-Table Export Company. Connecting farmers directly with consumers. No middlemen, fair pricing, guaranteed freshness. Ships to India, Singapore, USA & UAE.',
+          'Why should I choose VPNexues?': '<strong>Quality:</strong> 100% certified organic, lab-tested produce.<br><strong>Reliability:</strong> Consistent supply with on-time delivery.<br><strong>Traceability:</strong> QR codes on every carton.<br><strong>Fair Trade:</strong> Direct from farmers, no middlemen.',
+          'source from farmers': 'We source directly from certified organic farms across Tamil Nadu. Every farm is audited and certified under Indian & international organic standards.',
+          'product quality': 'All products are 100% certified organic. Soil, water & produce tested at independent labs. QR code on every carton shows farm, harvest date & inspection report.',
+          'What products do you sell?': '<strong>Vegetables:</strong> Tomato, Carrot, Eggplant, Lady Finger, Broccoli, Beans, Onion<br><strong>Fruits:</strong> Mango, Banana, Apple, Watermelon<br><strong>Grains & Spices:</strong> Coffee Beans, Dal, Rice, Premium Spices<br><strong>Other:</strong> Fresh Eggs, Beverages, Groceries<br><em>All chemical-free, sourced from certified organic farms.</em>',
+          'do you provide organic products': 'Yes! All our products are 100% certified organic. We work directly with certified organic farms across Tamil Nadu.',
+          'freshness': 'Harvested to order, packed within hours. Cold-chain insulated packaging with ice packs. Temperature-controlled freight for international shipments.',
+          'shelf life': '<strong>Leafy Vegetables:</strong> 3\u20135 days (refrigerated)<br><strong>Root Vegetables & Fruits:</strong> 7\u201310 days<br><strong>Spices & Grains:</strong> Up to 12 months. Every pack lists harvest date & best-before guidance.',
+          'product samples': 'Yes, product samples are available depending on the product and request. Contact us to request samples for your evaluation.',
+          'pricing plans': '<strong>Small Box \u2014 \u20B91,550:</strong> Min 10 products. Mix veg, fruits & groceries.<br><strong>Big Box \u2014 \u20B95,518:</strong> Min 10 kg. Any mix. 12% discount.<br><strong>B2B Custom \u2014 Quote:</strong> Restaurants, hotels. 30-day credit. Visit vpnexues.com/pricing.html',
+          'small box': '<strong>Small Box \u2014 \u20B91,550:</strong> Min 10 products per box. Mix vegetables, fruits & groceries. Weekly or fortnightly delivery. Items after 10 charged at +15% premium.',
+          'big box': '<strong>Big Box \u2014 \u20B95,518:</strong> Min 10 kg total weight. Any mix from any category. No item count limit. 12% bulk discount auto-applied at 10 kg+.',
+          'minimum order': '<strong>Retail:</strong> No minimum \u2014 order a single item if you need.<br><strong>B2B / Wholesale:</strong> Minimum varies by product. Contact our B2B team for a quote.',
+          'gift': 'Curated Small Box & Big Box subscriptions. Festive hampers during Diwali, Pongal & year-end. Subscribers get up to 15% off + priority delivery.',
+          'how to place an order': '<strong>1.</strong> Browse at vpnexues.com/shop.html<br><strong>2.</strong> Add items to your cart<br><strong>3.</strong> Choose box type: Small Box, Big Box, or B2B<br><strong>4.</strong> Enter delivery details & complete payment. No account needed \u2014 checkout as a guest!',
+          'track my order': '<strong>1.</strong> My Account \u2192 "My Orders"<br><strong>2.</strong> Tracking link via WhatsApp/email<br><strong>3.</strong> Order ID starts with VPN- (e.g. VPN-24581). Need help? Call +91 9943994603',
+          'cancel order': 'You can modify or cancel within 4 hours of placement (before packing). Contact via WhatsApp (+91 9943994603) or Email (support@vpnexues.com). Include your order ID.',
+          'modify order': 'You can modify within 4 hours of placement (before packing). Contact via WhatsApp (+91 9943994603) or Email (support@vpnexues.com). Include your order ID.',
+          'promo code': '<strong>1.</strong> Go to checkout<br><strong>2.</strong> Find "Apply Coupon" field<br><strong>3.</strong> Enter code and click "Apply"<br><strong>4.</strong> Discount reflected in order total.',
+          'delivery info': 'We deliver across Singapore, India, UAE, USA & Europe. Free delivery on subscription plans. Same-day delivery in select cities.',
+          'shipping charges': '<strong>Tamil Nadu:</strong> FREE on orders above \u20B9999<br><strong>Rest of India:</strong> Calculated at checkout by weight<br><strong>International:</strong> Quoted at checkout. No hidden fees.',
+          'where do you deliver': 'We ship to: India, Singapore, United States, United Arab Emirates. New destinations reviewed quarterly.',
+          'delayed order': '<strong>1.</strong> Check tracking link for updated ETA<br><strong>2.</strong> If 2+ days past promised date, WhatsApp +91 9943994603 with order ID. We\u2019ll escalate it immediately.',
+          'no one home': 'Delivery attempted up to 2 times. Package held at nearest hub for 3 days. Leave a note at checkout like "Leave with security" or "Call before delivery".',
+          'payment methods': '<strong>Cards:</strong> Visa, Mastercard, RuPay, Amex<br><strong>UPI:</strong> Google Pay, PhonePe, Paytm, BHIM<br><strong>Net Banking:</strong> All major Indian banks<br><strong>Other:</strong> PayNow (SG), PayPal, Bank Transfer (B2B)',
+          'cod': 'Available for select Tamil Nadu pin codes. Orders under \u20B95,000. Not available for international or B2B orders.',
+          'payment failed': 'Usually auto-refunded by bank within 5\u20137 business days. If not refunded after 7 days, email support@vpnexues.com with transaction ID.',
+          'gst invoice': 'Auto-sent to registered email after payment. For business GSTIN, provide at checkout or email before dispatch.',
+          'return policy': 'We don\u2019t accept returns on opened items. If a product arrives damaged, expired, or wrong: free replacement, full refund (5\u20137 days), or store credit with 5% bonus. Report within 24 hours.',
+          'refund': 'Full refund to original payment (5\u20137 business days). Free replacement on next delivery. Store credit with 5% bonus. Contact within 24 hours with order ID + photo.',
+          'damaged product': 'Contact us within 24 hours with: order ID, photo of damaged product, and a short note. We\u2019ll arrange free replacement or full refund.',
+          'wrong product': 'Contact us within 24 hours with: order ID, photo of wrong product, and a short note. We\u2019ll arrange free replacement or full refund.',
+          'b2b orders': '<strong>We Supply:</strong> Restaurants, Hotels, Grocery Chains, Food Processing, Institutions<br><strong>What You Get:</strong> Custom categories, Account manager, Invoice billing, 30-day credit, Organic & Halal certs. Email: support@vpnexues.com',
+          'become a distributor': 'Interested in becoming a distributor? Contact our B2B team at support@vpnexues.com or call +91 9943994603.',
+          'customized packaging': 'Yes, we provide customised packaging for bulk orders. Discuss your requirements with our B2B team.',
+          'request a quotation': 'Send us your requirements and we will provide a customised quotation. Response time: Usually within 24 business hours. Email: support@vpnexues.com',
+          'do you export': 'Yes, we export products to international markets including Singapore, USA, and UAE. Contact our B2B team at support@vpnexues.com for export enquiries.',
+          'contact info': '<strong>Phone:</strong> +91 9943994603 | +91 8148197842<br><strong>Email:</strong> support@vpnexues.com<br><strong>Singapore:</strong> 412 Race Course Road, Singapore 218660<br><strong>India:</strong> Siva Towers, Salem, Tamil Nadu 636004',
+          'talk to agent': 'Mon\u2013Sat, 9AM\u20137PM IST<br><strong>Phone:</strong> +91 9943994603<br><strong>WhatsApp:</strong> +91 9943994603<br><strong>Email:</strong> support@vpnexues.com',
+          'business hours': 'Mon\u2013Sat, 9AM\u20137PM IST. Closed on Sundays & public holidays.',
+          'business enquiry': 'Email: support@vpnexues.com | Call: +91 9943994603. We respond within 24 business hours.',
+          'linkedin': 'Follow VPNexues on LinkedIn for company updates, product launches, and news:<br><a href="https://www.linkedin.com/company/vpnexues/" target="_blank" style="color:#2d6a2e;font-weight:600;">linkedin.com/company/vpnexues</a>'
+        };
+        var answer = answers[question] || "I can help you with that. Let me show you the available topics:";
+        lcAddBotMessage(answer);
+        setTimeout(function () {
+          var html = '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Ask about another product</button><button class="lc-followup-btn" onclick="lcTalkToAgent()"><i class="fas fa-headset"></i> Talk to Agent</button></div>';
+          lcAddOptions(html);
+        }, 300);
+      }, 400);
+    }
+
+    function lcAskAnother() {
+      lcRemoveOptions();
+      lcAddUserMessage("I have another question");
+      setTimeout(function () {
+        lcAddBotMessage("Sure! What would you like to know about?");
+        setTimeout(function () {
+          lcShowMainOptions();
+        }, 300);
+      }, 400);
+    }
+
+    function lcTalkToAgent() {
+      lcRemoveOptions();
+      lcAddUserMessage("I want to talk to an agent");
+      setTimeout(function () {
+        lcAddBotMessage("Connecting you with our support team...");
+        setTimeout(function () {
+          lcAddBotMessage("\uD83D\uDC4B Hi there! I\u2019m Priya from VPNexues support. I can help you with:");
+          setTimeout(function () {
+            var html = '<div class="lc-suggestions">';
+            html += '<div class="lc-suggestion"><i class="fas fa-shopping-bag"></i><span>Order assistance</span></div>';
+            html += '<div class="lc-suggestion"><i class="fas fa-truck"></i><span>Delivery tracking</span></div>';
+            html += '<div class="lc-suggestion"><i class="fas fa-undo"></i><span>Returns & refunds</span></div>';
+            html += '<div class="lc-suggestion"><i class="fas fa-handshake"></i><span>B2B partnership</span></div>';
+            html += '</div>';
+            html += '<div class="lc-followup"><button class="lc-followup-btn" onclick="lcAskAnother()"><i class="fas fa-arrow-left"></i> Back to products</button></div>';
+            lcAddOptions(html);
+          }, 300);
+        }, 800);
+      }, 500);
+    }
+
+    function lcSendUserMessage() {
+      var input = document.getElementById('lcInput');
+      var text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      lcAddUserMessage(text);
+      lcProcessUserInput(text);
+    }
+
+    function lcProcessUserInput(text) {
+      var lower = text.toLowerCase();
+      lcRemoveOptions();
+      setTimeout(function () {
+        if (lower.match(/product|vegetable|fruit|spice|organic|what.*sell/)) {
+          lcShowProducts();
+        } else if (lower.match(/pric|cost|how much|plan|rate|charge/)) {
+          lcShowPricing();
+        } else if (lower.match(/deliver|shipping|ship|dispatch/)) {
+          lcShowDelivery();
+        } else if (lower.match(/track|order status|where.*order/)) {
+          lcShowTrackOrder();
+        } else if (lower.match(/pay|card|upi|wallet|net bank/)) {
+          lcShowPaymentMethods();
+        } else if (lower.match(/refund|return|money back/)) {
+          lcShowReturnPolicy();
+        } else if (lower.match(/b2b|bulk|wholesale|business/)) {
+          lcShowB2B();
+        } else if (lower.match(/contact|phone|email|whatsapp|address/)) {
+          lcShowContactInfo();
+        } else if (lower.match(/hello|hi|hey/)) {
+          lcAddBotMessage("Hello! \uD83D\uDC4B How can I assist you today?");
+          setTimeout(function () { lcShowMainOptions(); }, 300);
+        } else if (lower.match(/thank|thanks/)) {
+          lcAddBotMessage("You're welcome! \uD83C\uDF31 Is there anything else I can help with?");
+          setTimeout(function () { lcShowMainOptions(); }, 300);
+        } else {
+          lcAddBotMessage("I can help you with products, pricing, delivery, orders & more. Let me show you:");
+          setTimeout(function () { lcShowMainOptions(); }, 400);
+        }
+      }, 500);
+    }
+
+    function lcAddBotMessage(text) {
+      var body = document.getElementById('lcBody');
+      var msg = document.createElement('div');
+      msg.className = 'lc-msg lc-bot';
+      msg.innerHTML = '<div class="lc-msg-avatar"><i class="fas fa-robot"></i></div><div class="lc-msg-bubble">' + text + '</div>';
+      body.appendChild(msg);
+      lcScrollBottom();
+    }
+
+    function lcAddUserMessage(text) {
+      var body = document.getElementById('lcBody');
+      var msg = document.createElement('div');
+      msg.className = 'lc-msg lc-user';
+      msg.innerHTML = '<div class="lc-msg-bubble">' + text + '</div>';
+      body.appendChild(msg);
+      lcScrollBottom();
+    }
+
+    function lcAddOptions(html) {
+      var body = document.getElementById('lcBody');
+      var wrapper = document.createElement('div');
+      wrapper.className = 'lc-options-wrap';
+      wrapper.innerHTML = html;
+      body.appendChild(wrapper);
+      lcScrollBottom();
+    }
+
+    function lcRemoveOptions() {
+      var wraps = document.querySelectorAll('.lc-options-wrap');
+      wraps.forEach(function (w) { w.remove(); });
+    }
+
+    function lcScrollBottom() {
+      var body = document.getElementById('lcBody');
+      setTimeout(function () { body.scrollTop = body.scrollHeight; }, 50);
+    }
+
+    document.getElementById('lcInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') lcSendUserMessage();
+    });
+  </script>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       LIVE CHAT PANEL
+       ═══════════════════════════════════════════════════════════════ */
+    .lc-overlay {
+      position: fixed; inset: 0; z-index: 9998;
+      background: rgba(0,0,0,.45); opacity: 0; pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .lc-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .lc-panel {
+      position: fixed; bottom: 0; right: 0; z-index: 9999;
+      width: 100%; max-width: 420px; height: 100vh;
+      background: #f8faf8; display: flex; flex-direction: column;
+      transform: translateY(100%); transition: transform .35s cubic-bezier(.22,1,.36,1);
+      box-shadow: -4px 0 24px rgba(0,0,0,.15);
+    }
+    .lc-panel.open { transform: translateY(0); }
+    @media (min-width: 768px) {
+      .lc-panel { border-radius: 16px; height: 92vh; bottom: 16px; right: 16px; }
+    }
+
+    .lc-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%);
+      color: #15803d; flex-shrink: 0; position: relative; overflow: hidden;
+    }
+    .lc-header::after {
+      content: ''; position: absolute; right: -20px; top: -20px; width: 120px; height: 120px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2315803d' opacity='0.08'%3E%3Cpath d='M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z'/%3E%3C/svg%3E") no-repeat center/contain;
+    }
+    .lc-header-left { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
+    .lc-avatar {
+      width: 44px; height: 44px; border-radius: 14px;
+      background: linear-gradient(135deg, #15803d, #166534); display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #fff; flex-shrink: 0;
+    }
+    .lc-header-name { font-size: 16px; font-weight: 700; display: block; color: #1a1a1a; }
+    .lc-header-status { font-size: 12px; color: #15803d; display: flex; align-items: center; gap: 5px; font-weight: 500; }
+    .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; display: inline-block; }
+    .lc-header-actions { display: flex; align-items: center; gap: 6px; position: relative; z-index: 1; }
+    .lc-header-btn {
+      width: 36px; height: 36px; border-radius: 10px; border: none;
+      background: #fff; color: #666; font-size: 14px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .2s; box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    }
+    .lc-header-btn:hover { background: #f0fdf4; color: #15803d; }
+    .lc-close {
+      width: 36px; height: 36px; border-radius: 10px; border: none;
+      background: #15803d; color: #fff; font-size: 14px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .2s; box-shadow: 0 2px 6px rgba(21,128,61,.3);
+    }
+    .lc-close:hover { background: #166534; transform: scale(1.05); }
+
+    .lc-fullscreen { width: 100% !important; max-width: 100% !important; height: 100vh !important; bottom: 0 !important; right: 0 !important; border-radius: 0 !important; }
+
+    .lc-body {
+      flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px;
+      scroll-behavior: smooth;
+    }
+
+    .lc-msg { display: flex; gap: 8px; max-width: 92%; animation: lcFadeIn .3s ease; }
+    .lc-bot { align-self: flex-start; }
+    .lc-user { align-self: flex-end; flex-direction: row-reverse; }
+    .lc-msg-avatar {
+      width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+      background: #dcfce7; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: #15803d; margin-top: 2px;
+    }
+    .lc-msg-bubble {
+      padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5;
+    }
+    .lc-bot .lc-msg-bubble {
+      background: #fff; color: #1a1a1a; border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .lc-user .lc-msg-bubble {
+      background: #15803d; color: #fff; border-bottom-right-radius: 4px;
+    }
+
+    .lc-options-wrap { padding: 4px 0; }
+
+    .lc-option {
+      display: flex; align-items: center; gap: 12px; width: 100%;
+      padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 10px;
+      background: #fff; font-size: 14px; font-weight: 600; color: #1a1a1a;
+      cursor: pointer; transition: all .15s; text-align: left;
+    }
+    .lc-option + .lc-option { margin-top: 6px; }
+    .lc-option i:first-child { font-size: 16px; color: #15803d; width: 22px; text-align: center; }
+    .lc-option span { flex: 1; }
+    .lc-opt-arrow { font-size: 11px; color: #9ca3af; }
+    .lc-option:hover { border-color: #15803d; background: #f0fdf4; }
+    .lc-opt-agent { border-color: #15803d; background: #f0fdf4; }
+    .lc-opt-agent:hover { background: #dcfce7; }
+
+    .lc-numbered-option {
+      display: flex; align-items: center; gap: 6px; width: 100%;
+      padding: 14px 16px; border: 1.5px solid #e5e7eb; border-radius: 10px;
+      background: #fff; font-size: 15px; font-weight: 600; color: #1a1a1a;
+      cursor: pointer; transition: all .15s; text-align: left;
+    }
+    .lc-numbered-option + .lc-numbered-option { margin-top: 8px; }
+    .lc-numbered-option .lc-num { color: #15803d; font-weight: 700; font-size: 15px; min-width: 24px; }
+    .lc-numbered-option span:not(.lc-num) { flex: 1; }
+    .lc-numbered-option:hover { border-color: #15803d; background: #f0fdf4; }
+
+    .lc-browse-all {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; margin-top: 10px; padding: 14px 16px;
+      border: none; border-radius: 12px;
+      background: linear-gradient(135deg, #15803d, #166534);
+      color: #fff; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all .2s;
+    }
+    .lc-browse-all:hover { background: linear-gradient(135deg, #166534, #14532d); transform: translateY(-1px); }
+
+    .lc-topics-popup { display: flex; flex-direction: column; gap: 18px; }
+    .lc-topic-cat-title {
+      font-size: 13px; font-weight: 700; color: #15803d; text-transform: uppercase;
+      letter-spacing: 0.8px; margin-bottom: 8px; padding-bottom: 0;
+      border-bottom: none;
+    }
+    .lc-topic-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .lc-topic-pill {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+      padding: 14px 10px; font-size: 13px; color: #374151;
+      cursor: pointer; font-weight: 500; transition: all .15s;
+      display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
+    }
+    .lc-topic-pill i { color: #15803d; font-size: 18px; }
+    .lc-topic-pill span { line-height: 1.3; }
+    .lc-topic-pill:hover { background: #f0fdf4; border-color: #15803d; }
+    @media (min-width: 768px) {
+      .lc-topic-pills { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .lc-product-cats { display: flex; flex-direction: column; gap: 8px; }
+    .lc-pcat {
+      background: #fff; border: 1.5px solid #e5e7eb; border-radius: 12px;
+      padding: 12px 14px; transition: border-color .15s;
+    }
+    .lc-pcat:hover { border-color: #15803d; }
+    .lc-pcat-head {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; color: #15803d; margin-bottom: 4px;
+    }
+    .lc-pcat-head i { font-size: 15px; width: 20px; text-align: center; }
+    .lc-pcat-items { font-size: 13px; color: #374151; line-height: 1.5; padding-left: 28px; }
+    .lc-bot-note { font-size: 12px; color: #6b7280; margin-top: 8px; font-style: italic; }
+
+    .lc-divider {
+      display: flex; align-items: center; gap: 10px; margin: 12px 0 8px;
+      font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: .04em;
+    }
+    .lc-divider::before, .lc-divider::after {
+      content: ''; flex: 1; height: 1px; background: #e5e7eb;
+    }
+
+    .lc-suggestions { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    .lc-suggestion {
+      display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px;
+      background: #fff; border-radius: 10px; font-size: 13px; color: #374151;
+      box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    }
+    .lc-suggestion i { color: #15803d; font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+    .lc-action-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; margin-top: 10px; padding: 12px; border-radius: 10px;
+      background: #15803d; color: #fff; font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: background .2s; text-align: center;
+    }
+    .lc-action-btn:hover { background: #166534; }
+
+    .lc-followup { display: flex; gap: 8px; margin-top: 10px; }
+    .lc-followup-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 10px 8px; border: 1.5px solid #e5e7eb; border-radius: 10px;
+      background: #fff; font-size: 12px; font-weight: 600; color: #374151;
+      cursor: pointer; transition: all .15s;
+    }
+    .lc-followup-btn:hover { border-color: #15803d; background: #f0fdf4; }
+
+    .lc-order-list { display: flex; flex-direction: column; gap: 8px; }
+    .lc-order-card {
+      background: #fff; border: 1.5px solid #e5e7eb; border-radius: 12px;
+      padding: 12px; cursor: pointer; transition: all .15s;
+    }
+    .lc-order-card:hover { border-color: #15803d; background: #f0fdf4; }
+    .lc-order-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .lc-order-id { font-size: 13px; font-weight: 700; color: #1a1a1a; }
+    .lc-ord-status {
+      display: inline-flex; align-items: center; padding: 3px 8px;
+      border-radius: 6px; font-size: 11px; font-weight: 600;
+    }
+    .lc-ord-status--processing { background: #3d6b1e; color: #fff; }
+    .lc-ord-status--failed { background: #fee2e2; color: #dc2626; }
+    .lc-ord-status--delivered { background: #dcfce7; color: #16a34a; }
+    .lc-ord-status--cancelled { background: #fee2e2; color: #dc2626; }
+    .lc-ord-status--shipped { background: #dbeafe; color: #2563eb; }
+    .lc-order-card-body { margin-bottom: 8px; }
+    .lc-order-items { font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 4px; }
+    .lc-order-meta { display: flex; justify-content: space-between; font-size: 12px; color: #6b7280; }
+    .lc-order-card-action { text-align: center; padding-top: 6px; border-top: 1px solid #f3f4f6; }
+    .lc-order-detail-btn {
+      padding: 6px 16px; border-radius: 8px; border: 1.5px solid #15803d;
+      background: #15803d; color: #fff; font-size: 12px; font-weight: 600;
+      cursor: pointer; transition: all .15s;
+    }
+    .lc-order-detail-btn:hover { background: #166534; }
+    .lc-ord-detail { font-size: 13px; }
+    .lc-ord-detail-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .lc-ord-detail-id { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+    .lc-ord-detail-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f3f4f6; }
+    .lc-ord-detail-label { color: #6b7280; font-weight: 500; }
+    .lc-ord-detail-items-label { font-size: 13px; font-weight: 700; margin: 10px 0 6px; }
+    .lc-ord-detail-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #f9fafb; }
+    .lc-ord-detail-item:last-child { border-bottom: none; }
+    .lc-ord-detail-item-name { font-size: 13px; font-weight: 600; }
+    .lc-ord-detail-item-qty { font-size: 11px; color: #6b7280; }
+    .lc-ord-detail-item-total { font-size: 13px; font-weight: 700; }
+    .lc-ord-detail-address { margin-top: 10px; padding: 10px; background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 8px; }
+    .lc-ord-detail-addr-title { font-size: 12px; font-weight: 700; color: #15803d; margin-bottom: 4px; }
+    .lc-ord-detail-addr-contact { font-size: 11px; color: #6b7280; margin-top: 4px; }
+    .lc-ord-detail-note { margin-top: 8px; font-size: 12px; color: #6b7280; font-style: italic; }
+
+    .lc-footer {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px; background: #fff; border-top: 1px solid #e5e7eb; flex-shrink: 0;
+    }
+    .lc-input {
+      flex: 1; padding: 10px 14px; border: 1.5px solid #e5e7eb; border-radius: 20px;
+      font-size: 14px; outline: none; transition: border-color .2s; color: #000 !important; background: #fff !important; -webkit-text-fill-color: #000 !important;
+    }
+    .lc-input:focus { border-color: #15803d; }
+    .lc-send {
+      width: 40px; height: 40px; border-radius: 50%; border: none;
+      background: #15803d; color: #fff; font-size: 15px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s; flex-shrink: 0;
+    }
+    .lc-send:hover { background: #166534; }
+
+    @keyframes lcFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+
+  <!--<< Theme JS (header / footer / offcanvas) >>-->
+  <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+  <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+  <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+  <script src="assets-ui/js/main.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      /* goPage fallback (used by header Shop dropdown) */
+      window.goPage = window.goPage || function (type) {
+        if (type === 'home') { window.location.href = 'index.html'; return; }
+        if (type) { window.location.href = 'pricing.html?type=' + encodeURIComponent(type); }
+      };
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+        /* Meanmenu mobile nav */
+        if (window.jQuery && jQuery.fn.meanmenu && document.getElementById('mobile-menu')) {
+          jQuery('#mobile-menu').meanmenu({
+            meanMenuContainer: '.mobile-menu',
+            meanScreenWidth: '1199',
+            meanExpand: ['<i class="far fa-plus"></i>']
+          });
+        }
+
+        /* Offcanvas toggle */
+        function openOffcanvas() {
+          document.querySelector('.offcanvas__info').classList.add('info-open');
+          document.querySelector('.offcanvas__overlay').classList.add('overlay-open');
+          document.body.style.overflow = 'hidden';
+          document.documentElement.style.overflow = 'hidden';
+        }
+        function closeOffcanvas() {
+          document.querySelector('.offcanvas__info').classList.remove('info-open');
+          document.querySelector('.offcanvas__overlay').classList.remove('overlay-open');
+          document.body.style.overflow = '';
+          document.documentElement.style.overflow = '';
+        }
+        document.querySelectorAll('.sidebar__toggle').forEach(function (el) {
+          el.addEventListener('click', openOffcanvas);
+        });
+        document.querySelectorAll('.offcanvas__close, .offcanvas__overlay').forEach(function (el) {
+          el.addEventListener('click', closeOffcanvas);
+        });
+
+        /* Sticky header */
+        var sticky = document.getElementById('header-sticky');
+        if (sticky) {
+          function onScroll() {
+            if (window.scrollY > 80) { sticky.classList.add('sticky'); }
+            else { sticky.classList.remove('sticky'); }
+          }
+          window.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        }
+      });
+    })();
+  </script>
+
+  <!-- Newsletter subscribe (matches pricing.html) -->
+  <script>
+    (function () {
+      var form = document.getElementById('vnp-subscribe-form');
+      if (!form) return;
+      var popup = document.getElementById('vnp-subscribe-popup');
+      var popupTitle = popup ? popup.querySelector('.vnp-subs-popup-title') : null;
+      var popupDesc = popup ? popup.querySelector('.vnp-subs-popup-desc') : null;
+      var popupIcon = popup ? popup.querySelector('.vnp-subs-popup-icon i') : null;
+      var popupClose = popup ? popup.querySelector('.vnp-subs-popup-close') : null;
+      var btn = document.getElementById('vnp-subscribe-btn');
+      var emailInput = document.getElementById('vnp-subscribe-email');
+      var popupTimer = null;
+
+      function showPopup(type, title, desc, icon) {
+        if (!popup) return;
+        popup.className = 'vnp-subs-popup show' + (type === 'err' ? ' err' : '');
+        popupIcon.className = icon;
+        popupTitle.textContent = title;
+        popupDesc.textContent = desc;
+        clearTimeout(popupTimer);
+        popupTimer = setTimeout(hidePopup, 4000);
+      }
+      function hidePopup() {
+        if (popup) popup.className = 'vnp-subs-popup';
+      }
+      if (popupClose) popupClose.addEventListener('click', hidePopup);
+
+      function resetBtn() {
+        btn.disabled = false;
+        btn.innerHTML = 'Subscribe <i class="far fa-arrow-right"></i>';
+        btn.classList.remove('vnp-subs-done');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = (emailInput.value || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showPopup('err', 'Invalid email address', 'Please enter a valid email address.', 'fas fa-exclamation-triangle');
+          return;
+        }
+        hidePopup();
+        btn.disabled = true;
+        btn.innerHTML = 'Subscribing... <i class="far fa-arrow-right"></i>';
+        var body = '_subject=New Newsletter Subscription - VPNexues&_template=table&_captcha=false&email=' + encodeURIComponent(email);
+        var controller = new AbortController();
+        var fetchTimer = setTimeout(function () { controller.abort(); }, 12000);
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+          body: body,
+          signal: controller.signal
+        }).then(function (res) {
+          clearTimeout(fetchTimer);
+          if (!res.ok) throw new Error('Network');
+          return res.json();
+        }).then(function () {
+          btn.innerHTML = '<span class="vnp-subs-tick"><i class="fas fa-check"></i></span> Subscribed';
+          btn.classList.add('vnp-subs-done');
+          emailInput.value = '';
+          showPopup('ok', "You're subscribed!", 'Thank you for joining the VPNexues newsletter.', 'fas fa-check');
+        }).catch(function () {
+          clearTimeout(fetchTimer);
+          resetBtn();
+          showPopup('err', 'Something went wrong', 'Please try again in a moment.', 'fas fa-exclamation-triangle');
+        });
+      });
+    })();
+  </script>
+
+<script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

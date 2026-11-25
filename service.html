@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="modinatheme">
+        <meta name="description" content="VPNexues Services - Organic Farm-to-Table">
+        <title>VPNexues - Our Services</title>
+        <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+        <link rel="shortcut icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+        <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+        <link rel="stylesheet" href="assets-ui/css/animate.min.css?v=1.0">
+        <link rel="stylesheet" href="assets-ui/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+        <link rel="stylesheet" href="assets-ui/css/odometer.css">
+        <link rel="stylesheet" href="assets-ui/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets-ui/css/nice-select.css">
+        <link rel="stylesheet" href="assets-ui/css/main.css">
+        <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css">
+    <style>
+        .breadcrumb-wrapper { display: none !important; }
+
+        /* ── Services Hero ── */
+        .svc-hero {
+            width: 100%;
+            background: linear-gradient(135deg, #14532d 0%, #1a6b33 40%, #2d8a3e 100%);
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .svc-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%; left: -20%;
+            width: 60%; height: 180%;
+            background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .svc-hero h1 {
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(28px, 6vw, 42px);
+            font-weight: 900;
+            color: #fff;
+            margin: 0 0 8px;
+            position: relative;
+        }
+        .svc-hero p {
+            color: rgba(255,255,255,.8);
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+            position: relative;
+        }
+        .svc-hero .svc-hero-icon {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.15);
+            border: 2px solid rgba(255,255,255,.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            position: relative;
+        }
+        .svc-hero .svc-hero-icon i { font-size: 28px; color: #fff; }
+
+        /* ── Services Grid ── */
+        .svc-grid-section {
+            padding: 30px 16px 40px;
+            background: #f8faf6;
+        }
+        .svc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .svc-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #e8efe5;
+            box-shadow: 0 4px 16px rgba(20,60,20,.06);
+            transition: transform .25s ease, box-shadow .25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        .svc-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(20,60,20,.12);
+        }
+        .svc-card-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block;
+            background: #e8f5e9;
+        }
+        .svc-card-body {
+            padding: 12px 14px 14px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .svc-card-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            flex-shrink: 0;
+        }
+        .svc-card-icon i { font-size: 18px; color: #2d6a2e; }
+        .svc-card-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: #1a3c1a;
+            margin: 0 0 4px;
+            line-height: 1.2;
+        }
+        .svc-card-desc {
+            font-size: 11px;
+            color: #6b7b6b;
+            margin: 0;
+            line-height: 1.35;
+        }
+        .svc-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #2d6a2e;
+            text-decoration: none;
+        }
+        .svc-card-link i { font-size: 10px; transition: transform .2s; }
+        .svc-card:hover .svc-card-link i { transform: translateX(3px); }
+
+        @media (min-width: 768px) {
+            .svc-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; padding: 0 20px; }
+            .svc-card-title { font-size: 15px; }
+            .svc-card-desc { font-size: 13px; }
+            .svc-grid-section { padding: 40px 0 60px; }
+        }
+
+        /* ── CTA Section ── */
+        .svc-cta {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #14532d, #1a6b33);
+            text-align: center;
+        }
+        .svc-cta h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(20px, 4vw, 30px);
+            font-weight: 900;
+            color: #fff;
+            margin: 0 0 16px;
+        }
+        .svc-cta .theme-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: #fff;
+            color: #14532d;
+            font-weight: 800;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .svc-cta .theme-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+    </style>
+    
+    <link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+</head>
+    <body>
+
+        <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
+                <div class="txt-loading">
+                    <span data-text-preloader="V" class="letters-loading">V</span>
+                    <span data-text-preloader="P" class="letters-loading">P</span>
+                </div>
+                <p class="text-center">Loading</p>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back To Top Start -->
+        <button id="back-top" class="back-to-top"><i class="far fa-arrow-up"></i></button>
+
+        <!-- MouseCursor Start -->
+        <div class="mouseCursor cursor-outer"></div>
+        <div class="mouseCursor cursor-inner"></div>
+
+        <!-- Offcanvas Area Start -->
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas-header-fixed">
+                            <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                                <div class="offcanvas__logo">
+                                    <a href="index.html">VPNexues</a>
+                                </div>
+                                <div class="offcanvas__close">
+                                    <button><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <h3 class="offcanvas-title">Hello There!</h3>
+                            <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022. </p>
+                            <div class="mobile-menu fix mt-15"></div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="https://www.facebook.com/vpnexues" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="offcanvas-scrollable-body">
+                            <div class="offcanvas__contact">
+                                <h3>Contact Us</h3>
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="icon"><i class="far fa-phone-alt"></i></div>
+                                        <div class="content">
+                                            <p>Call Us</p>
+                                            <h4><a href="tel:+91 9943994603">+91 9943994603</a></h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fal fa-envelope"></i></div>
+                                        <div class="content">
+                                            <p>Send Email</p>
+                                            <h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4>
+                                        </div>
+                                    </li>
+                                    <li style="align-items: flex-start;">
+                                        <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
+                                        <div class="content">
+                                            <p>Location</p>
+                                            <div class="footer-location-li"><h4>Singapore</h4><span style="color:#333;font-size: 14px;">412 Race Course Road, Singapore 218660, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                            <div class="footer-location-li"><h4>India</h4><span style="color:#333;font-size: 14px;">No 312/11, Siva towers, Perumal, Malai Road, Narasothipatti, Salem Tamil Nadu, India, 636004, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="contact.html" class="theme-btn">Contact Us <i class="far fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+
+        <!-- Header Top Start -->
+        <div class="header-top-section">
+            <div class="container">
+                <div class="header-top-wrapper">
+                    <ul class="header-contact-list">
+                        <li>
+                            <i class="fal fa-envelope"></i>
+                            <a href="mailto:support@vpnexues.com">support@vpnexues.com</a>
+                        </li>
+                        <li>
+                            <i class="far fa-phone-alt"></i>
+                            <a href="tel:+919943994603">+91 9943994603</a>
+                        </li>
+                    </ul>
+                    <div class="head-right">
+                        <div class="line-shape"></div>
+                        <div class="social-icon">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Section Start -->
+        <header id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="vpn-logo-header">
+                            <div class="idlogo-vpn">
+                                <a href="index.html" class="top-logo">VPNexues</a>
+                                <span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+                            </div>
+                        </div>
+                        <div class="idlogo-vpn idlogo-vpn-mobile">
+                            <a href="index.html" class="header-logo">VPNexues</a>
+                            <span class="idlogo-vivasayam-txt" style="padding-left:41px;position:relative;top:-8px">விவசாயம் காப்போம்</span>
+                        </div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li class="has-dropdown">
+                                            <a href="javascript:void(0)">Pages</a>
+                                            <ul class="submenu" style="display:block;">
+                                                <li><a href="our-services.html">Our Services</a></li>
+                                                <li><a href="team.html">Our Team</a></li>
+                                                <li><a href="careers.html">Careers</a></li>
+                                                <li><a href="pricing.html">Pricing Plan</a></li>
+                                                <li><a href="testimonial.html">Testimonials</a></li>
+                                                <li><a href="faq.html">FAQs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Shop</a>
+                                            <ul class="submenu">
+                                                <li><a href="pricing.html?type=small-box" onclick="goPage('small-box')">Small Box</a></li>
+                                                <li><a href="pricing.html?type=big-box" onclick="goPage('big-box')">Big Box</a></li>
+                                                <li><a href="pricing.html?type=b2b" onclick="goPage('b2b')">B2B</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="news.html">News</a></li>
+                                        <li><a href="contact.html">Support</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <div class="header__hamburger my-auto">
+                                <div class="sidebar__toggle">
+                                    <div class="header-bar">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Services Hero -->
+        <section class="svc-hero">
+            <div class="svc-hero-icon">
+                <i class="fas fa-tractor"></i>
+            </div>
+            <h1>Our Services</h1>
+            <p>Fresh, organic produce delivered from farm to your doorstep</p>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="svc-grid-section">
+            <div class="svc-grid">
+                <a href="service-details.html" class="svc-card">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-3/service/service-01.jpg" alt="Fresh Vegetables" class="svc-card-img">
+                    <div class="svc-card-body">
+                        <div class="svc-card-icon"><i class="fas fa-carrot"></i></div>
+                        <h3 class="svc-card-title">Fresh Vegetables</h3>
+                        <p class="svc-card-desc">Farm-fresh organic vegetables picked daily</p>
+                        <span class="svc-card-link">Learn More <i class="far fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="svc-card">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-3/service/service-02.jpg" alt="Dairy Products" class="svc-card-img">
+                    <div class="svc-card-body">
+                        <div class="svc-card-icon"><i class="fas fa-cheese"></i></div>
+                        <h3 class="svc-card-title">Dairy Products</h3>
+                        <p class="svc-card-desc">Pure cow milk, butter, and ghee</p>
+                        <span class="svc-card-link">Learn More <i class="far fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="svc-card">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-3/service/service-03.jpg" alt="Organic Fruits" class="svc-card-img">
+                    <div class="svc-card-body">
+                        <div class="svc-card-icon"><i class="fas fa-apple-alt"></i></div>
+                        <h3 class="svc-card-title">Organic Fruits</h3>
+                        <p class="svc-card-desc">Seasonal fruits from certified organic farms</p>
+                        <span class="svc-card-link">Learn More <i class="far fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="svc-card">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-3/service/service-04.jpg" alt="Grains & Pulses" class="svc-card-img">
+                    <div class="svc-card-body">
+                        <div class="svc-card-icon"><i class="fas fa-seedling"></i></div>
+                        <h3 class="svc-card-title">Grains & Pulses</h3>
+                        <p class="svc-card-desc">Premium quality rice, wheat, and lentils</p>
+                        <span class="svc-card-link">Learn More <i class="far fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="svc-card">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/inner-page/service/service-01.jpg" alt="Product Delivery" class="svc-card-img">
+                    <div class="svc-card-body">
+                        <div class="svc-card-icon"><i class="fas fa-truck"></i></div>
+                        <h3 class="svc-card-title">Fast Delivery</h3>
+                        <p class="svc-card-desc">Same-day delivery within city limits</p>
+                        <span class="svc-card-link">Learn More <i class="far fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="svc-card">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/inner-page/service/service-02.jpg" alt="Organic Store" class="svc-card-img">
+                    <div class="svc-card-body">
+                        <div class="svc-card-icon"><i class="fas fa-store"></i></div>
+                        <h3 class="svc-card-title">Organic Store</h3>
+                        <p class="svc-card-desc">100% certified organic products</p>
+                        <span class="svc-card-link">Learn More <i class="far fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="svc-card">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/inner-page/service/service-03.jpg" alt="Agriculture" class="svc-card-img">
+                    <div class="svc-card-body">
+                        <div class="svc-card-icon"><i class="fas fa-tractor"></i></div>
+                        <h3 class="svc-card-title">Agriculture</h3>
+                        <p class="svc-card-desc">Sustainable farming practices</p>
+                        <span class="svc-card-link">Learn More <i class="far fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="service-details.html" class="svc-card">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/inner-page/service/service-04.jpg" alt="Export" class="svc-card-img">
+                    <div class="svc-card-body">
+                        <div class="svc-card-icon"><i class="fas fa-globe-asia"></i></div>
+                        <h3 class="svc-card-title">Global Export</h3>
+                        <p class="svc-card-desc">Worldwide shipping to 15+ countries</p>
+                        <span class="svc-card-link">Learn More <i class="far fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="svc-cta">
+            <h2>100% Organic Farm. Farming for a Better Future.</h2>
+            <a href="shop.html" class="theme-btn">Shop Now <i class="far fa-arrow-right"></i></a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-section-4 section-padding section-bg pb-0 pt-0">
+            <div class="container">
+                <div class="footer-widget-top-4 wow fadeInUp">
+                    <h2>Join Our Newsletter</h2>
+                    <form action="#">
+                        <input type="text" placeholder="Enter email">
+                        <button class="theme-btn" type="submit">Subscribe <i class="far fa-arrow-right"></i></button>
+                    </form>
+                </div>
+                <div class="footer-widget-wrapper-4">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-6 col-md-8 wow fadeInUp" data-wow-delay=".2s">
+                            <div class="footer-widget-items">
+                                <div class="widget-head">
+                                    <a href="index.html" class="footer-logo">VPNexues</a>
+                                </div>
+                                <div class="footer-content">
+                                    <h3>Follow Us:</h3>
+                                    <div class="social-icon">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 wow fadeInUp" data-wow-delay=".4s">
+                            <div class="footer-widget-items">
+                                <div class="widget-head"><h5>Useful Links</h5></div>
+                                <ul class="list-area">
+                                    <li><a href="about.html"><i class="far fa-chevron-double-right"></i> About Company</a></li>
+                                    <li><a href="team.html"><i class="far fa-chevron-double-right"></i> Meet Member</a></li>
+                                    <li><a href="contact.html"><i class="far fa-chevron-double-right"></i> Contact Us</a></li>
+                                    <li><a href="faq.html"><i class="far fa-chevron-double-right"></i> Our FAQs</a></li>
+                                    <li><a href="pricing.html"><i class="far fa-chevron-double-right"></i> Pricing Plan</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-6 wow fadeInUp" data-wow-delay=".6s">
+                            <div class="footer-widget-items">
+                                <div class="widget-head"><h5>Our Services</h5></div>
+                                <ul class="list-area">
+                                    <li><a href="service-details.html"><i class="far fa-chevron-double-right"></i> Agriculture Foods</a></li>
+                                    <li><a href="service-details.html"><i class="far fa-chevron-double-right"></i> Organic Vegetables</a></li>
+                                    <li><a href="service-details.html"><i class="far fa-chevron-double-right"></i> Dairy Products</a></li>
+                                    <li><a href="service-details.html"><i class="far fa-chevron-double-right"></i> Fast Delivery</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 ps-xl-5 wow fadeInUp" data-wow-delay=".8s">
+                            <div class="footer-widget-items">
+                                <div class="widget-head"><h5>Contact Us</h5></div>
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                                        <div class="content">
+                                            <h5>Email us:</h5>
+                                            <p><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                                        <div class="content">
+                                            <h5>Phone:</h5>
+                                            <p><a href="tel:+919943994603">+91 9943994603</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                                        <div class="content">
+                                            <h5>Location:</h5>
+                                            <p>Salem, Tamil Nadu, India</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="footer-bottom-wrapper">
+                        <p class="text-1 wow fadeInUp">� 2026 VPNexues. All Rights Reserved</p>
+                        <div class="social-icon wow fadeInUp" data-wow-delay=".2s">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--<< All JS Plugins >>-->
+        <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+        <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.nice-select.min.js"></script>
+        <script src="assets-ui/js/odometer.min.js"></script>
+        <script src="assets-ui/js/jquery.appear.min.js"></script>
+        <script src="assets-ui/js/swiper-bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+        <script src="assets-ui/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets-ui/js/wow.min.js"></script>
+        <script src="assets-ui/js/gsap.min.js"></script>
+        <script src="assets-ui/js/ScrollTrigger.min.js"></script>
+        <script src="assets-ui/js/SplitText.min.js"></script>
+        <script src="assets-ui/js/splitType.js"></script>
+        <script src="assets-ui/js/main.js"></script>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Home</span>
+                </a>
+                <a href="shop.html" class="nav-item">
+                    <span class="nav-icon-wrap"><i class="fas fa-store nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Shop</span>
+                </a>
+                <a href="shop-cart.html" class="nav-item">
+                    <span class="nav-icon-wrap">
+                        <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+                        <span class="nav-badge" id="nav-cart-badge" style="display:none">0</span>
+                    </span>
+                    <span class="nav-label">Cart</span>
+                </a>
+                <a href="javascript:void(0)" class="nav-item" onclick="vpnOpenModal('login'); return false;">
+                    <span class="nav-icon-wrap"><i class="far fa-user nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Account</span>
+                </a>
+            </div>
+        </nav>
+
+        <script>
+        (function() {
+            function updateCartBadge() {
+                var badge = document.getElementById("nav-cart-badge");
+                if (!badge) return;
+                var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+                var count = 0;
+                cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+                if (count > 0) {
+                    badge.textContent = count;
+                    badge.style.display = "";
+                } else {
+                    badge.style.display = "none";
+                }
+            }
+            updateCartBadge();
+            window.updateCartBadge = updateCartBadge;
+        })();
+        </script>
+    
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+<script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+</body>
+</html>

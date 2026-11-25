@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Addresses | VPNexues</title>
+  <script>
+    (function () {
+      var authKeys = ["vpnexuesAuth", "vpnexuesLoggedIn", "vpnexuesSession", "isLoggedIn"];
+      var isLoggedIn = authKeys.some(function (key) {
+        return localStorage.getItem(key) === "true" || sessionStorage.getItem(key) === "true";
+      });
+      if (!isLoggedIn) {
+        window.location.replace("index.html?login=1");
+      }
+    })();
+  </script>
+  <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16">
+  <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+  <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.2">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <style>
+    /* �•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•�
+       VPNexues Addresses �€” Combined Page
+       �•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•� */
+
+    :root {
+      --adr-green: #15803d;
+      --adr-green-light: #dcfce7;
+      --adr-green-dark: #166534;
+      --adr-bg: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%);
+      --adr-card: #ffffff;
+      --adr-text: #1a1a1a;
+      --adr-muted: #6b7280;
+      --adr-border: #e5e7eb;
+      --adr-radius: 14px;
+      --adr-radius-sm: 10px;
+      --adr-red: #dc2626;
+      --adr-red-light: #fee2e2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body.adr-page {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%);
+      color: var(--adr-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    /* �”€�”€�”€ Shell �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-shell {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px 20px;
+    }
+
+    /* �”€�”€�”€ Header �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--adr-border);
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+    }
+
+    .adr-back {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid #14532d;
+      background: #14532d;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(20, 83, 45, .28), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transition: all .25s ease;
+    }
+
+    .adr-back:hover {
+      border-color: #0f3d22;
+      background: #0f3d22;
+      box-shadow: 0 6px 16px rgba(20, 83, 45, .34), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transform: translateX(-2px);
+    }
+
+    .adr-back:active {
+      transform: translateX(0);
+      background: #0b2e19;
+      box-shadow: 0 2px 6px rgba(20, 83, 45, .3), inset 0 1px 2px rgba(0, 0, 0, .18);
+    }
+
+    .adr-back i { display: inline-block; line-height: 1; }
+
+    .adr-header-title {
+      flex: 1;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* Balances the back button so the title stays truly centred. */
+    .adr-header-spacer { flex: 0 0 40px; width: 40px; }
+
+    .adr-header-action {
+      color: var(--adr-green);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .adr-header-action i { font-size: 12px; }
+
+    /* �”€�”€�”€ Subtitle �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-subtitle {
+      font-size: 13px;
+      color: var(--adr-muted);
+      margin-top: 2px;
+    }
+
+    /* �”€�”€�”€ Info Banner �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-info-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--adr-green-light);
+      border-radius: var(--adr-radius);
+      margin-top: 16px;
+      position: relative;
+    }
+
+    .adr-info-banner-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #bbf7d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+      color: var(--adr-green);
+    }
+
+    .adr-info-banner-text {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--adr-green-dark);
+      line-height: 1.4;
+    }
+
+    .adr-info-banner-close {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--adr-muted);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .adr-info-banner-close:hover { background: rgba(0,0,0,0.05); }
+
+    /* �”€�”€�”€ Section �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-section { margin-top: 20px; }
+
+    .adr-section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--adr-text);
+      margin-bottom: 12px;
+    }
+
+    /* �”€�”€�”€ Address Card �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-card {
+      background: #ffffff;
+      border: 1px solid #a3e635;
+      border-radius: var(--adr-radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .adr-card:hover { border-color: #84cc16; }
+
+    .adr-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .adr-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--adr-green-light);
+      color: var(--adr-green);
+    }
+
+    .adr-label i { font-size: 11px; }
+
+    .adr-label--other {
+      background: #f3f4f6;
+      color: var(--adr-muted);
+    }
+
+    .adr-default-badge {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--adr-green);
+      background: var(--adr-green-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .adr-card-menu {
+      margin-left: auto;
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: transparent;
+      color: var(--adr-muted);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .adr-card-menu:hover { background: #f3f4f6; }
+
+    .adr-card-address {
+      font-size: 14px;
+      color: var(--adr-text);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .adr-card-contact {
+      font-size: 13px;
+      color: var(--adr-muted);
+    }
+
+    .adr-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+      padding-top: 12px;
+      padding-bottom: 4px;
+      border-top: none;
+      background: #14532d;
+      margin: 12px -16px -16px -16px;
+      padding: 14px 16px 12px;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .adr-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 0;
+      transition: opacity 0.2s;
+    }
+
+    .adr-action-btn:hover { opacity: 0.7; }
+
+    .adr-action-btn--edit { color: #ffffff; }
+    .adr-action-btn--edit i { font-size: 12px; }
+
+    .adr-action-btn--remove { color: #fca5a5; margin-left: auto; }
+    .adr-action-btn--remove i { font-size: 12px; }
+
+    /* �”€�”€�”€ Add New Button �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-add-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      border: 2px dashed var(--adr-border);
+      border-radius: var(--adr-radius);
+      background: transparent;
+      color: var(--adr-green);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .adr-add-btn:hover {
+      border-color: var(--adr-green);
+      background: var(--adr-green-light);
+    }
+
+    .adr-add-btn i { font-size: 14px; }
+
+    /* �”€�”€�”€ Empty State �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-empty {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .adr-empty-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--adr-green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+      color: var(--adr-green);
+    }
+
+    .adr-empty h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .adr-empty p {
+      font-size: 13px;
+      color: var(--adr-muted);
+      margin-bottom: 20px;
+    }
+
+    /* �”€�”€�”€ Form Group �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-form-group {
+      margin-bottom: 16px;
+    }
+
+    .adr-form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--adr-text);
+      margin-bottom: 8px;
+    }
+
+    .adr-form-label small {
+      font-weight: 400;
+      color: var(--adr-muted);
+      font-size: 12px;
+    }
+
+    .adr-form-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--adr-border);
+      border-radius: var(--adr-radius-sm);
+      font-size: 14px;
+      color: var(--adr-text);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .adr-form-input:focus {
+      border-color: var(--adr-green);
+      box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.1);
+    }
+
+    .adr-form-input::placeholder { color: #9ca3af; }
+
+    textarea.adr-form-input {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.5;
+    }
+
+    /* �”€�”€�”€ Address Type Selector �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-type-selector {
+      display: flex;
+      gap: 10px;
+    }
+
+    .adr-type-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 8px;
+      border: 2px solid var(--adr-border);
+      border-radius: var(--adr-radius-sm);
+      background: #fff;
+      color: var(--adr-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .adr-type-btn i { font-size: 18px; }
+
+    .adr-type-btn:hover { border-color: #d1d5db; }
+
+    .adr-type-btn.active {
+      border-color: var(--adr-green);
+      background: var(--adr-green-light);
+      color: var(--adr-green);
+    }
+
+    /* �”€�”€�”€ Row (City/Pincode side by side) �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-form-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .adr-form-row .adr-form-group {
+      flex: 1;
+    }
+
+    /* �”€�”€�”€ State Dropdown �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-form-select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--adr-border);
+      border-radius: var(--adr-radius-sm);
+      font-size: 14px;
+      color: var(--adr-text);
+      background: #fff;
+      outline: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .adr-form-select:focus {
+      border-color: var(--adr-green);
+      box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.1);
+    }
+
+    /* �”€�”€�”€ Checkbox �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-checkbox-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 0;
+    }
+
+    .adr-checkbox-wrap input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--adr-green);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .adr-checkbox-label strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--adr-text);
+    }
+
+    .adr-checkbox-label span {
+      font-size: 12px;
+      color: var(--adr-muted);
+    }
+
+    /* �”€�”€�”€ Save / Cancel Buttons �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-save-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: var(--adr-radius);
+      background: var(--adr-green);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+
+    .adr-save-btn:hover { background: var(--adr-green-dark); }
+
+    .adr-cancel-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--adr-border);
+      border-radius: var(--adr-radius);
+      background: #fff;
+      color: var(--adr-text);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 10px;
+    }
+
+    .adr-cancel-btn:hover { background: #f9fafb; }
+
+    /* �”€�”€�”€ Toast �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-toast {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1a1a1a;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+
+    .adr-toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .adr-toast i { color: #4ade80; }
+
+    /* �”€�”€�”€ View Toggling �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .adr-view { display: none; }
+    .adr-view.active { display: block; }
+
+    /* �”€�”€�”€ Map Modal �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .vnp-addr-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 999999; align-items: flex-end; justify-content: center; padding: 0; transition: opacity .3s ease; }
+    .vnp-addr-overlay.open { display: flex; }
+    .vnp-addr-overlay.closing { opacity: 0; }
+    .vnp-addr-overlay.closing .vnp-addr-modal { transform: translateY(100%); }
+    .vnp-addr-modal { background: rgba(255,255,255,.96); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); width: 100%; max-width: 480px; max-height: 92vh; border-radius: 28px 28px 0 0; overflow-y: auto; animation: vnpSlideUp .4s cubic-bezier(.4,0,.2,1); box-shadow: 0 -8px 40px rgba(0,0,0,.18); transition: transform .35s cubic-bezier(.4,0,.2,1); }
+    @keyframes vnpSlideUp { from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1} }
+    .vnp-addr-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 20px 14px; }
+    .vnp-addr-modal-header h3 { margin: 0; font-size: 19px; font-weight: 900; color: #1a2e1a; }
+    .vnp-addr-modal-close { width: 36px; height: 36px; border-radius: 50%; border: none; background: #f3f4f6; color: #6b7280; font-size: 16px; display: grid; place-items: center; cursor: pointer; transition: all .25s; }
+    .vnp-addr-modal-close:hover { background: #fee2e2; color: #dc2626; transform: rotate(90deg); }
+    .vnp-addr-map-wrap { position: relative; width: 100%; height: 280px; background: #e8f5e9; border-radius: 0; overflow: hidden; }
+    #vnp-addr-map { width: 100%; height: 100%; z-index: 1; }
+    .vnp-addr-map-pin { display: none; }
+    .vnp-addr-map-pin svg { width: 100%; height: 100%; }
+    .vnp-addr-map-pin.dropping { animation: pinDrop .5s cubic-bezier(.34,1.56,.64,1) both; }
+    @keyframes pinDrop { 0%{transform:translate(-50%,-200px) scale(.5);opacity:0} 60%{transform:translate(-50%,0) scale(1.1);opacity:1} 80%{transform:translate(-50%,-8px) scale(.95)} 100%{transform:translate(-50%,-100%) scale(1);opacity:1} }
+    .vnp-addr-map-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 401; background: rgba(20,71,47,.88); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; font-size: 11px; font-weight: 700; padding: 6px 16px; border-radius: 20px; pointer-events: none; box-shadow: 0 2px 10px rgba(0,0,0,.15); white-space: nowrap; }
+    .vnp-addr-accuracy { position: absolute; bottom: 10px; left: 12px; z-index: 401; background: rgba(255,255,255,.9); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 8px; padding: 4px 10px; font-size: 10px; font-weight: 700; color: #6B8E48; display: none; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+    .vnp-addr-accuracy.show { display: flex; align-items: center; gap: 4px; }
+    .vnp-addr-loading { display: none; position: absolute; inset: 0; background: rgba(232,245,233,.85); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 402; align-items: center; justify-content: center; flex-direction: column; gap: 10px; border-radius: 0; }
+    .vnp-addr-loading.show { display: flex; }
+    .vnp-addr-spinner { width: 32px; height: 32px; border: 3px solid rgba(107,142,72,.2); border-top-color: #6B8E48; border-radius: 50%; animation: spinOnce .7s linear infinite; }
+    .vnp-addr-loading span { font-size: 12px; font-weight: 700; color: #6B8E48; }
+    @keyframes spinOnce { from{transform:rotate(0)}to{transform:rotate(360deg)} }
+    .vnp-addr-toolbar { display: flex; gap: 8px; padding: 12px 20px 0; position: relative; z-index: 500; }
+    .vnp-addr-search-wrap { flex: 1; position: relative; }
+    .vnp-addr-search-wrap > i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 13px; pointer-events: none; }
+    .vnp-addr-search { width: 100%; padding: 11px 14px 11px 36px; border: 1.5px solid #e5e7eb; border-radius: 12px; font-size: 13px; font-weight: 600; color: #000 !important; -webkit-text-fill-color: #000 !important; background: #fff !important; outline: none; transition: all .2s; }
+    .vnp-addr-search:focus { border-color: #6B8E48; background: #fff; box-shadow: 0 0 0 3px rgba(107,142,72,.1); }
+    .vnp-addr-search::placeholder { color: #b0b8c4; }
+    .vnp-addr-loc-btn { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 0 16px; border: 1.5px solid #e5e7eb; border-radius: 12px; background: #fff; color: #6B8E48; font-size: 12px; font-weight: 800; cursor: pointer; white-space: nowrap; transition: all .25s; }
+    .vnp-addr-loc-btn:hover { border-color: #6B8E48; background: #f0f5eb; transform: translateY(-1px); }
+    .vnp-addr-loc-btn:active { transform: scale(.96); }
+    .vnp-addr-loc-btn.spinning i { animation: spinOnce .8s linear; }
+    .vnp-autocomplete { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #fff; border-radius: 14px; box-shadow: 0 8px 32px rgba(0,0,0,.14); max-height: 240px; overflow-y: auto; z-index: 600; display: none; }
+    .vnp-autocomplete.show { display: block; animation: acDropIn .25s ease both; }
+    @keyframes acDropIn { from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)} }
+    .vnp-ac-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; border-bottom: 1px solid #f3f4f6; cursor: pointer; transition: background .15s; }
+    .vnp-ac-item:last-child { border-bottom: none; }
+    .vnp-ac-item:hover, .vnp-ac-item.active { background: #f0f5eb; }
+    .vnp-ac-item-icon { width: 32px; height: 32px; border-radius: 8px; background: #f0f5eb; display: grid; place-items: center; flex-shrink: 0; color: #6B8E48; font-size: 13px; margin-top: 2px; }
+    .vnp-ac-item-text { flex: 1; min-width: 0; }
+    .vnp-ac-item-name { font-size: 13px; font-weight: 700; color: #000 !important; -webkit-text-fill-color: #000 !important; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .vnp-ac-item-detail { font-size: 11px; color: #333 !important; -webkit-text-fill-color: #333 !important; font-weight: 600; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .vnp-ac-loading { padding: 16px; text-align: center; font-size: 12px; color: #9ca3af; font-weight: 600; }
+    .vnp-ac-loading::after { content: ''; display: inline-block; width: 16px; height: 16px; border: 2px solid #e5e7eb; border-top-color: #6B8E48; border-radius: 50%; animation: spinOnce .7s linear infinite; vertical-align: middle; margin-left: 8px; }
+    .vnp-saved-addrs { padding: 0 20px; margin-top: 14px; }
+    .vnp-saved-addrs-title { font-size: 11px; font-weight: 800; color: #9ca3af; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+    .vnp-saved-addr-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: rgba(232,240,223,.6); border: 1px solid rgba(107,142,72,.12); border-radius: 14px; margin-bottom: 8px; cursor: pointer; transition: all .25s; }
+    .vnp-saved-addr-item:hover { background: rgba(232,240,223,.7); border-color: rgba(107,142,72,.25); transform: translateY(-1px); }
+    .vnp-saved-addr-item.active { border-color: #6B8E48; background: rgba(232,240,223,.8); box-shadow: 0 2px 10px rgba(107,142,72,.12); }
+    .vnp-saved-addr-icon { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #e8f0df, #d4e4c8); display: grid; place-items: center; font-size: 14px; color: #6B8E48; flex-shrink: 0; }
+    .vnp-saved-addr-info { flex: 1; min-width: 0; }
+    .vnp-saved-addr-label { font-size: 13px; font-weight: 800; color: #1a2e1a; }
+    .vnp-saved-addr-text { font-size: 11px; color: #6b7280; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+    .vnp-saved-addr-del { width: 28px; height: 28px; border-radius: 50%; border: none; background: transparent; color: #d1d5db; font-size: 12px; display: grid; place-items: center; cursor: pointer; transition: all .2s; flex-shrink: 0; }
+    .vnp-saved-addr-del:hover { background: #fee2e2; color: #dc2626; }
+    .vnp-addr-form { padding: 16px 20px 90px; }
+    .vnp-addr-form-row { margin-bottom: 14px; position: relative; }
+    .vnp-addr-form-row label { display: block; font-size: 11px; font-weight: 800; color: #6b7280; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .4px; }
+    .vnp-addr-input-wrap { position: relative; }
+    .vnp-addr-input-wrap i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 14px; transition: color .2s; pointer-events: none; z-index: 1; }
+    .vnp-addr-input-wrap input { width: 100%; padding: 13px 14px 13px 40px; border: 1.5px solid #e5e7eb; border-radius: 13px; font-size: 14px; font-weight: 600; color: #1a2e1a; background: #fafafa; transition: all .2s; outline: none; }
+    .vnp-addr-input-wrap input:focus { border-color: #6B8E48; background: #fff; box-shadow: 0 0 0 3px rgba(107,142,72,.1); }
+    .vnp-addr-input-wrap input:focus + i, .vnp-addr-input-wrap input:focus ~ i { color: #6B8E48; }
+    .vnp-addr-input-wrap input[readonly] { background: #f0fdf4; color: #6b7280; cursor: pointer; }
+    .vnp-addr-input-wrap input.valid { border-color: #6B8E48; }
+    .vnp-addr-input-wrap input.invalid { border-color: #ef4444; }
+    .vnp-addr-validation { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 14px; pointer-events: none; }
+    .vnp-addr-validation.ok { color: #6B8E48; }
+    .vnp-addr-validation.bad { color: #ef4444; }
+    .vnp-addr-label-btns { display: flex; gap: 8px; }
+    .vnp-label-btn { display: flex; align-items: center; gap: 7px; padding: 10px 20px; border: 2px solid #e5e7eb; border-radius: 12px; background: #fff; font-size: 13px; font-weight: 800; color: #6b7280; cursor: pointer; transition: all .25s cubic-bezier(.4,0,.2,1); }
+    .vnp-label-btn i { font-size: 13px; }
+    .vnp-label-btn:hover { border-color: #6B8E48; color: #6B8E48; transform: translateY(-1px); }
+    .vnp-label-btn:active { transform: scale(.96); }
+    .vnp-label-btn.active { background: linear-gradient(135deg, #14472F, #1a5c38); color: #fff; border-color: #14472F; box-shadow: 0 4px 14px rgba(20,71,47,.3); }
+    .vnp-addr-save-btn { width: 100%; padding: 16px; border: none; border-radius: 16px; background: linear-gradient(135deg, #14472F, #1a5c38, #1f6e42); color: #fff; font-size: 16px; font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: all .3s cubic-bezier(.4,0,.2,1); box-shadow: 0 8px 28px rgba(20,71,47,.35); margin-top: 4px; position: relative; overflow: hidden; }
+    .vnp-addr-save-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent); transition: left .5s ease; }
+    .vnp-addr-save-btn:hover::before { left: 100%; }
+    .vnp-addr-save-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(22,163,74,.45); }
+    .vnp-addr-save-btn:active { transform: translateY(0) scale(.98); }
+    .vnp-addr-save-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .vnp-addr-extra { padding: 0 20px; }
+    .vnp-addr-extra .vnp-addr-form-row { margin-bottom: 14px; }
+    .vnp-addr-extra .vnp-addr-form-row label { display: block; font-size: 11px; font-weight: 800; color: #6b7280; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .4px; }
+    .vnp-addr-extra input, .vnp-addr-extra textarea, .vnp-addr-extra select { width: 100%; padding: 13px 14px; border: 1.5px solid #e5e7eb; border-radius: 13px; font-size: 14px; font-weight: 600; color: #1a2e1a; background: #fafafa; transition: all .2s; outline: none; font-family: inherit; }
+    .vnp-addr-extra input:focus, .vnp-addr-extra textarea:focus, .vnp-addr-extra select:focus { border-color: #6B8E48; background: #fff; box-shadow: 0 0 0 3px rgba(107,142,72,.1); }
+    .vnp-addr-extra select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }
+    .vnp-addr-extra textarea { resize: vertical; min-height: 80px; }
+    .vnp-addr-extra .vnp-addr-form-row-inline { display: flex; gap: 12px; }
+    .vnp-addr-extra .vnp-addr-form-row-inline > div { flex: 1; }
+    .vnp-addr-extra .vnp-addr-checkbox { display: flex; align-items: flex-start; gap: 10px; padding: 12px 0; }
+    .vnp-addr-extra .vnp-addr-checkbox input[type="checkbox"] { width: 20px; height: 20px; accent-color: #14472F; margin-top: 2px; flex-shrink: 0; }
+    .vnp-addr-extra .vnp-addr-checkbox label { font-size: 13px; font-weight: 600; color: #1a2e1a; text-transform: none; letter-spacing: 0; margin-bottom: 0; }
+    .vnp-addr-extra .vnp-addr-checkbox label span { display: block; font-size: 11px; font-weight: 500; color: #6b7280; }
+    @media (min-width: 480px) { .vnp-addr-modal { border-radius: 28px; margin: auto; max-height: 85vh; } }
+
+    /* �”€�”€�”€ Responsive �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    @media (min-width: 768px) {
+      .adr-shell { max-width: 100%; padding: 0 24px 30px; }
+      .adr-header { padding: 18px 16px; }
+      .adr-header-title { font-size: 22px; }
+      .adr-section-title { font-size: 19px; }
+    }
+
+    @media (min-width: 1024px) {
+      .adr-shell { max-width: 100%; padding: 0 32px 40px; }
+      .adr-header-title { font-size: 24px; }
+    }
+  </style>
+</head>
+<body class="adr-page">
+  <main class="adr-shell">
+
+    <!-- �•��•��•� LIST VIEW �•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•� -->
+    <div class="adr-view active" id="adr-view-list">
+      <header class="adr-header">
+        <a class="adr-back" href="account.html" aria-label="Go back">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <h1 class="adr-header-title">Addresses</h1>
+        <span class="adr-header-spacer" aria-hidden="true"></span>
+      </header>
+
+
+
+
+      <section class="adr-section">
+        <h2 class="adr-section-title">Saved Addresses</h2>
+        <button class="adr-add-btn" onclick="openMapModal()" style="margin-bottom:14px;background:linear-gradient(135deg, #14472F, #1a5c38, #6B8E48);color:#fff;border:2px solid #14472F;border-radius:14px;font-weight:700;">
+          <i class="fas fa-plus"></i> Add New Address
+        </button>
+        <div id="adr-list"></div>
+        <div class="adr-empty" id="adr-empty" style="display:none;">
+          <div class="adr-empty-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h3>No saved addresses</h3>
+          <p>Add your first address for faster checkout</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- �•��•��•� FORM VIEW �•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•� -->
+    <div class="adr-view" id="adr-view-form">
+      <header class="adr-header">
+        <a class="adr-back" href="javascript:void(0)" onclick="showList()" aria-label="Go back">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <h1 class="adr-header-title" id="adr-page-title">Manage Address</h1>
+        <span class="adr-header-spacer" aria-hidden="true"></span>
+      </header>
+
+      <section class="adr-section" style="margin-top:16px;">
+        <div class="adr-form-group">
+          <label class="adr-form-label" for="adr-phone">Mobile Number</label>
+          <input type="tel" class="adr-form-input" id="adr-phone" placeholder="+91 98765 43210" maxlength="15" inputmode="tel">
+        </div>
+
+        <div class="adr-form-group">
+          <label class="adr-form-label" for="adr-address">Location</label>
+          <textarea class="adr-form-input" id="adr-address" placeholder="Flat/House no., Building name, Street, Area..."></textarea>
+        </div>
+
+        <button class="adr-save-btn" onclick="saveAddress()">Save Address</button>
+        <button class="adr-cancel-btn" onclick="showList()">Cancel</button>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Address Map Modal -->
+  <div id="vnp-addr-modal" class="vnp-addr-overlay" onclick="if(event.target===this)closeMapModal()">
+    <div class="vnp-addr-modal">
+      <div class="vnp-addr-modal-header">
+        <h3><i class="fas fa-location-dot" style="color:#14472F;margin-right:8px;"></i>Select Delivery Address</h3>
+        <button class="vnp-addr-modal-close" onclick="closeMapModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="vnp-addr-map-wrap">
+        <div id="vnp-addr-map"></div>
+        <div class="vnp-addr-map-pin">
+          <svg viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 24 16 24s16-12 16-24C32 7.16 24.84 0 16 0z" fill="#14472F"/>
+            <circle cx="16" cy="15" r="7" fill="#fff"/>
+            <circle cx="16" cy="15" r="3.5" fill="#6B8E48"/>
+          </svg>
+        </div>
+        <div class="vnp-addr-loading" id="vnp-addr-loading">
+          <div class="vnp-addr-spinner"></div>
+          <span>Finding location...</span>
+        </div>
+        <div class="vnp-addr-map-hint"><i class="fas fa-hand-pointer" style="margin-right:4px;"></i>Tap map to move pin</div>
+        <div class="vnp-addr-accuracy" id="vnp-addr-accuracy"><i class="fas fa-signal"></i><span></span></div>
+      </div>
+      <div class="vnp-addr-toolbar">
+        <div class="vnp-addr-search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" class="vnp-addr-search" id="vnp-addr-search" placeholder="Search area, landmark..." autocomplete="off" />
+          <div class="vnp-autocomplete" id="vnp-autocomplete"></div>
+        </div>
+        <button class="vnp-addr-loc-btn" id="vnp-loc-btn" onclick="useMyLocation()"><i class="fas fa-crosshairs"></i> Loc</button>
+      </div>
+      <div class="vnp-saved-addrs" id="vnp-saved-addrs" style="display:none;"></div>
+      <div class="vnp-addr-form">
+        <div class="vnp-addr-form-row">
+          <label>Label</label>
+          <div class="vnp-addr-label-btns">
+            <button class="vnp-label-btn active" data-label="Home" onclick="selectAddrLabel(this)"><i class="fas fa-house"></i> Home</button>
+            <button class="vnp-label-btn" data-label="Work" onclick="selectAddrLabel(this)"><i class="fas fa-briefcase"></i> Work</button>
+            <button class="vnp-label-btn" data-label="Other" onclick="selectAddrLabel(this)"><i class="fas fa-location-dot"></i> Other</button>
+          </div>
+        </div>
+        <div class="vnp-addr-form-row">
+          <label>Name</label>
+          <div class="vnp-addr-input-wrap">
+            <input type="text" id="vnp-addr-name" placeholder="Recipient name" />
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+        <div class="vnp-addr-form-row">
+          <label>Address</label>
+          <div class="vnp-addr-input-wrap">
+            <input type="text" id="vnp-addr-input" placeholder="e.g. Flat 2D, Tower A, MG Road, Chennai" />
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+        </div>
+        <div class="vnp-addr-form-row">
+          <label>Flat / House No.</label>
+          <div class="vnp-addr-input-wrap">
+            <input type="text" id="vnp-addr-flat" placeholder="e.g. Flat 2D, Tower A" />
+            <i class="fas fa-building"></i>
+          </div>
+        </div>
+        <div class="vnp-addr-form-row">
+          <label>Building & Block No. <small style="font-weight:400;text-transform:none;letter-spacing:0;color:#9ca3af;">(Optional)</small></label>
+          <div class="vnp-addr-input-wrap">
+            <input type="text" id="vnp-addr-building" placeholder="Building & Block No. (Optional)" />
+            <i class="fas fa-city"></i>
+          </div>
+        </div>
+        <div class="vnp-addr-form-row">
+          <label>Landmark & Area Name <small style="font-weight:400;text-transform:none;letter-spacing:0;color:#9ca3af;">(Optional)</small></label>
+          <div class="vnp-addr-input-wrap">
+            <input type="text" id="vnp-addr-landmark" placeholder="Landmark & Area Name (Optional)" />
+            <i class="fas fa-landmark"></i>
+          </div>
+        </div>
+        <div class="vnp-addr-form-row">
+          <label>Phone Number</label>
+          <div class="vnp-addr-input-wrap">
+            <input type="tel" id="vnp-addr-phone" placeholder="10-digit mobile number" maxlength="10" oninput="validateModalPhone(this)" />
+            <i class="fas fa-phone"></i>
+            <span class="vnp-addr-validation" id="vnp-phone-validation"></span>
+          </div>
+        </div>
+        <div style="margin:18px 0 4px;padding-top:14px;border-top:1px solid #f0f2ee;">
+          <label style="font-size:13px;font-weight:800;color:#1a2e1a;letter-spacing:.3px;margin-bottom:10px;display:block;text-transform:none;">Add receiver details <small style="font-weight:500;color:#6b7280;font-size:11px;margin-left:6px;">for elderly / family orders</small></label>
+          <div class="vnp-addr-form-row">
+            <label>Receiver's Name <small style="font-weight:400;text-transform:none;letter-spacing:0;color:#9ca3af;">(Optional)</small></label>
+            <div class="vnp-addr-input-wrap">
+              <input type="text" id="vnp-addr-receiver-name" placeholder="Receiver's Name" />
+              <i class="fas fa-user-tag"></i>
+            </div>
+          </div>
+          <div class="vnp-addr-form-row">
+            <label>Receiver's Phone Number <small style="font-weight:400;text-transform:none;letter-spacing:0;color:#9ca3af;">(Optional)</small></label>
+            <div class="vnp-addr-input-wrap" style="display:flex;align-items:center;padding-left:0;">
+              <span style="padding:0 12px;font-size:14px;font-weight:800;color:#1a2e1a;border-right:1.5px solid #e5e7eb;flex-shrink:0;">+91</span>
+              <input type="tel" id="vnp-addr-receiver-phone" placeholder="Receiver's Phone Number" oninput="validateModalPhone(this)" style="border:none;padding-left:12px;flex:1;" maxlength="15" />
+              <span class="vnp-addr-validation" id="vnp-receiver-phone-validation" style="right:12px;"></span>
+            </div>
+          </div>
+        </div>
+        <button class="vnp-addr-save-btn" id="vnp-save-btn" onclick="saveMapAddress()">Save Address <i class="far fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="adr-toast" id="adr-toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="adr-toast-msg"></span>
+  </div>
+
+
+
+  <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+  <script src="assets-ui/js/main.js"></script>
+  <script src="assets-ui/js/account.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    var ADDRESSES_KEY = 'vpnSavedAddresses';
+    var editIndex = -1;
+
+    function getAddresses() {
+      try { return JSON.parse(localStorage.getItem(ADDRESSES_KEY) || '[]'); }
+      catch (e) { return []; }
+    }
+
+    function showToast(msg) {
+      var toast = document.getElementById('adr-toast');
+      document.getElementById('adr-toast-msg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(function() { toast.classList.remove('show'); }, 2000);
+    }
+
+    /* �”€�”€�”€ View switching �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    window.showList = function() {
+      document.getElementById('adr-view-list').classList.add('active');
+      document.getElementById('adr-view-form').classList.remove('active');
+      editIndex = -1;
+      renderAddresses();
+    };
+
+    window.showForm = function(index) {
+      editIndex = index;
+      clearForm();
+      if (index >= 0) {
+        var addrs = getAddresses();
+        var addr = addrs[index];
+        if (addr) {
+          document.getElementById('adr-page-title').textContent = 'Edit Address';
+          document.getElementById('adr-phone').value = addr.phone || '';
+          document.getElementById('adr-address').value = addr.address || '';
+        }
+      } else {
+        document.getElementById('adr-page-title').textContent = 'Manage Address';
+      }
+      document.getElementById('adr-view-list').classList.remove('active');
+      document.getElementById('adr-view-form').classList.add('active');
+      window.scrollTo(0, 0);
+    };
+
+    function clearForm() {
+      document.getElementById('adr-phone').value = '';
+      document.getElementById('adr-address').value = '';
+    }
+
+    /* �”€�”€�”€ Type selector �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    window.selectType = function(btn) {
+      document.querySelectorAll('#adr-type-selector .adr-type-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+    };
+
+    /* �”€�”€�”€ Render list �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    function renderAddresses() {
+      var addrs = getAddresses();
+      var list = document.getElementById('adr-list');
+      var empty = document.getElementById('adr-empty');
+
+      if (addrs.length === 0) {
+        list.innerHTML = '';
+        empty.style.display = '';
+        return;
+      }
+
+      empty.style.display = 'none';
+
+      var html = '';
+      addrs.forEach(function(addr, i) {
+        var typeLabel = addr.type || addr.label || 'Home';
+        var labelClass = typeLabel === 'Other' ? 'adr-label--other' : '';
+        var defaultBadge = addr.isDefault ? '<span class="adr-default-badge">Default</span>' : '<span class="adr-card-menu" onclick="adrMenu(' + i + ')"><i class="fas fa-ellipsis-v"></i></span>';
+
+        html += '<div class="adr-card">';
+        html += '<div class="adr-card-header">';
+        html += '<span class="adr-label ' + labelClass + '">';
+        if (typeLabel === 'Home') html += '<i class="fas fa-home"></i> ';
+        else if (typeLabel === 'Work') html += '<i class="fas fa-briefcase"></i> ';
+        else html += '<i class="fas fa-star"></i> ';
+        html += typeLabel + '</span>';
+        html += defaultBadge;
+        html += '</div>';
+        html += '<div class="adr-card-address">';
+        var p = [];
+        if (addr.address) p.push(addr.address);
+        if (addr.flat) p.push(addr.flat);
+        if (addr.building) p.push(addr.building);
+        if (addr.landmark) p.push(addr.landmark + ' (Landmark)');
+        if (addr.city) p.push(addr.city + (addr.pincode ? ' - ' + addr.pincode : ''));
+        if (addr.state) p.push(addr.state);
+        html += p.join(', ');
+        html += '</div>';
+        html += '<div class="adr-card-contact">' + (addr.name || '') + ' &bull; ' + (addr.phone || '') + '</div>';
+        if (addr.receiverName || addr.receiverPhone) {
+          html += '<div class="adr-card-contact" style="margin-top:4px;color:#15803d;font-weight:600;font-size:12px;"><i class="fas fa-user-tag" style="margin-right:4px;"></i>Receiver: ' + (addr.receiverName || '�€”') + (addr.receiverPhone ? ' &bull; +91 ' + addr.receiverPhone : '') + '</div>';
+        }
+        html += '<div class="adr-card-actions">';
+        html += '<button class="adr-action-btn adr-action-btn--edit" onclick="showForm(' + i + ')"><i class="fas fa-pen"></i> Edit</button>';
+        html += '<button class="adr-action-btn adr-action-btn--remove" onclick="deleteAddress(' + i + ')"><i class="fas fa-trash"></i> Remove</button>';
+        html += '</div></div>';
+      });
+
+      list.innerHTML = html;
+    }
+
+    /* �”€�”€�”€ Delete �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    window.deleteAddress = function(index) {
+      if (!confirm('Are you sure you want to delete this address?')) return;
+      var addrs = getAddresses();
+      addrs.splice(index, 1);
+      localStorage.setItem(ADDRESSES_KEY, JSON.stringify(addrs));
+      renderAddresses();
+      showToast('Address deleted');
+    };
+
+    /* �”€�”€�”€ Menu �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    window.adrMenu = function(index) {
+      var addrs = getAddresses();
+      var addr = addrs[index];
+      if (!addr) return;
+      var action = prompt('Type "default" to set as default, or "delete" to remove:');
+      if (!action) return;
+      action = action.trim().toLowerCase();
+      if (action === 'default') {
+        addrs.forEach(function(a, i) { a.isDefault = (i === index); });
+        localStorage.setItem(ADDRESSES_KEY, JSON.stringify(addrs));
+        renderAddresses();
+        showToast('Default address updated');
+      } else if (action === 'delete') {
+        window.deleteAddress(index);
+      }
+    };
+
+    /* �”€�”€�”€ Save (inline form) �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    window.saveAddress = function() {
+      var phone = document.getElementById('adr-phone').value.trim();
+      var address = document.getElementById('adr-address').value.trim();
+
+      if (!phone || phone.replace(/\D/g, '').length < 10) { alert('Please enter a valid 10-digit mobile number.'); return; }
+      if (!address) { alert('Please enter your address.'); return; }
+
+      var addrs = getAddresses();
+
+      if (editIndex >= 0 && editIndex < addrs.length) {
+        addrs[editIndex].phone = phone;
+        addrs[editIndex].address = address;
+      }
+
+      localStorage.setItem(ADDRESSES_KEY, JSON.stringify(addrs));
+      showToast('Address updated');
+      showList();
+    };
+
+    /* �”€�”€�”€ Cart badge �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    function updateCartBadge() {
+      var badge = document.getElementById('nav-cart-badge');
+      if (!badge) return;
+      var cart;try{cart=JSON.parse(localStorage.getItem('cart')||'[]')}catch(e){cart=[]}
+      var count = 0;
+      cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+      if (count > 0) { badge.textContent = count; badge.style.display = ''; }
+      else { badge.style.display = 'none'; }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderAddresses();
+      updateCartBadge();
+    });
+
+    window.updateCartBadge = updateCartBadge;
+    window.getAddresses = getAddresses;
+    window.ADDRESSES_KEY = ADDRESSES_KEY;
+    window.renderAddresses = renderAddresses;
+    window.showToast = showToast;
+  })();
+  </script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+  /* �•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•�
+     Map Modal �€” Photon + OpenStreetMap (mirrors shop-cart)
+     �•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•��•� */
+  var vnpMap = null;
+  var vnpMarker = null;
+  var vnpAccuracyCircle = null;
+  var vnpSelectedLat = 11.6643;
+  var vnpSelectedLng = 78.1465;
+  var vnpSelectedLabel = 'Home';
+  var vnpGreenIcon = null;
+  var vnpAcIndex = -1;
+  var vnpDetectedCountryCode = 'IN';
+  var vnpDetectedCity = '';
+  var vnpDeliveryAvailable = true;
+  var vnpIpCountry = '';
+  var vnpIpCity = '';
+
+  var COUNTRY_NAME_MAP = {
+    'india': 'IN', 'republic of india': 'IN',
+    'singapore': 'SG',
+    'united states': 'US', 'united states of america': 'US', 'usa': 'US',
+    'united arab emirates': 'AE', 'uae': 'AE',
+    'united kingdom': 'GB', 'uk': 'GB', 'great britain': 'GB',
+    'australia': 'AU',
+    'malaysia': 'MY',
+    'saudi arabia': 'SA',
+    'canada': 'CA',
+    'germany': 'DE',
+    'france': 'FR',
+    'japan': 'JP',
+    'china': 'CN',
+    'brazil': 'BR',
+    'mexico': 'MX'
+  };
+
+  var SUPPORTED_COUNTRIES = ['IN', 'SG', 'US', 'AE', 'GB', 'AU', 'MY', 'SA', 'CA', 'DE', 'FR', 'JP', 'CN', 'BR', 'MX'];
+  var SUPPORTED_CITIES_IN = ['salem'];
+
+  function detectIpCountry() {
+    return fetch('https://ip-api.com/json/?fields=status,countryCode,city')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.status === 'success') {
+          vnpIpCountry = (data.countryCode || '').toUpperCase();
+          vnpIpCity = (data.city || '').toLowerCase();
+          localStorage.setItem('vpnexues_detected_country', vnpIpCountry);
+          localStorage.setItem('vpnexues_detected_city', vnpIpCity);
+        }
+        return data;
+      })
+      .catch(function() { return { status: 'error' }; });
+  }
+
+var PHONE_CONFIG = {
+    IN: { digits: 10, pattern: /^[6-9]/, placeholder: '10-digit Indian mobile number' },
+    SG: { digits: 8, pattern: /^[89]/, placeholder: '8-digit Singaporean mobile number' },
+    US: { digits: 10, pattern: /^[2-9]/, placeholder: '10-digit US mobile number' },
+    AE: { digits: 9, pattern: /^[5]/, placeholder: '9-digit UAE mobile number' },
+    GB: { digits: 10, pattern: /^7/, placeholder: '10-digit UK mobile number (starts with 7)' },
+    AU: { digits: 9, pattern: /^4/, placeholder: '9-digit Australian mobile number (starts with 4)' },
+    MY: { digits: 10, pattern: /^1/, placeholder: '10-digit Malaysian mobile number (starts with 1)' },
+    SA: { digits: 9, pattern: /^5/, placeholder: '9-digit Saudi mobile number (starts with 5)' },
+    CA: { digits: 10, pattern: /^[2-9]/, placeholder: '10-digit Canadian mobile number' },
+    DE: { digits: 11, pattern: /^1[5-7]/, placeholder: '11-digit German mobile number (starts with 15/16/17)' },
+    FR: { digits: 9, pattern: /^[67]/, placeholder: '9-digit French mobile number (starts with 6/7)' },
+    JP: { digits: 10, pattern: /^[7-9]/, placeholder: '10-digit Japanese mobile number (starts with 7-9)' },
+    CN: { digits: 11, pattern: /^1[3-9]/, placeholder: '11-digit Chinese mobile number (starts with 1)' },
+    BR: { digits: 11, pattern: /^9/, placeholder: '11-digit Brazilian mobile number (starts with 9)' },
+    MX: { digits: 10, pattern: /^[1-9]/, placeholder: '10-digit Mexican mobile number' }
+  };
+
+  function getPhoneConfig() {
+    return PHONE_CONFIG[vnpDetectedCountryCode] || PHONE_CONFIG.IN;
+  }
+
+  function selectAddrLabel(btn) {
+    document.querySelectorAll('#vnp-addr-modal .vnp-label-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    vnpSelectedLabel = btn.getAttribute('data-label');
+  }
+
+  function openMapModal() {
+    detectIpCountry().then(function() {
+      var country = vnpIpCountry || (localStorage.getItem('vpnexues_detected_country') || '').toUpperCase();
+      var city = vnpIpCity || (localStorage.getItem('vpnexues_detected_city') || '').toLowerCase();
+
+var pattern = patterns[detectedCountry];
+        if (detectedCountry === 'GB') {
+            deliveryAllowed = true;
+        } else if (pattern && !pattern.test(city)) {
+            deliveryAllowed = false;
+        }
+
+      if (!deliveryAllowed) {
+        vnpDeliveryAvailable = false;
+        showComingSoonToast();
+        return;
+      }
+
+      vnpDetectedCountryCode = country;
+      vnpDetectedCity = city;
+      vnpDeliveryAvailable = true;
+
+      var modal = document.getElementById('vnp-addr-modal');
+      modal.classList.remove('closing');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      clearMapForm();
+      renderModalSavedAddresses();
+      setTimeout(function() { initAddrMap(); }, 200);
+    });
+  }
+
+  function showComingSoonToast() {
+    if (document.getElementById('vpnexues-coming-soon-toast')) return;
+    if (!document.getElementById('vpnexues-coming-soon-style')) {
+      var style = document.createElement('style');
+      style.id = 'vpnexues-coming-soon-style';
+      style.textContent = [
+        '#vpnexues-coming-soon-toast{position:fixed;bottom:24px;right:24px;z-index:99999;max-width:380px;background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.15);padding:16px 18px;display:flex;align-items:flex-start;gap:12px;font-family:inherit;transform:translateY(120%);opacity:0;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .4s ease;pointer-events:none;}',
+        '#vpnexues-coming-soon-toast.vpnexues-cs-show{transform:translateY(0);opacity:1;pointer-events:auto;}',
+        '#vpnexues-coming-soon-toast .vpnexues-cs-icon{width:36px;height:36px;border-radius:50%;background:#fef3c7;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}',
+        '#vpnexues-coming-soon-toast .vpnexues-cs-body{flex:1;}',
+        '#vpnexues-coming-soon-toast .vpnexues-cs-title{font-size:13px;font-weight:700;color:#1c2820;margin:0 0 4px;line-height:1.3;}',
+        '#vpnexues-coming-soon-toast .vpnexues-cs-desc{font-size:12px;color:#5C6672;margin:0 0 10px;line-height:1.4;}',
+        '#vpnexues-coming-soon-toast .vpnexues-cs-btn{background:#2d6a30;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s;}',
+        '#vpnexues-coming-soon-toast .vpnexues-cs-btn:hover{background:#1f5f23;}',
+        '#vpnexues-coming-soon-toast .vpnexues-cs-close{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;border:none;background:transparent;color:#9CA3AF;font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;}',
+        '#vpnexues-coming-soon-toast .vpnexues-cs-close:hover{background:rgba(0,0,0,.05);}',
+        '@media(max-width:480px){#vpnexues-coming-soon-toast{bottom:16px;right:16px;left:16px;max-width:none;}}'
+      ].join('');
+      document.head.appendChild(style);
+    }
+    var toast = document.createElement('div');
+    toast.id = 'vpnexues-coming-soon-toast';
+    toast.innerHTML = [
+      '<div class="vpnexues-cs-icon">&#9200;</div>',
+      '<div class="vpnexues-cs-body">',
+      '  <p class="vpnexues-cs-title">Currently No Delivery</p>',
+      '  <p class="vpnexues-cs-desc">We currently deliver only in Salem (India), Singapore, UAE & USA. Delivery to your region is coming soon!</p>',
+      '  <button class="vpnexues-cs-btn" onclick="document.getElementById(\'vpnexues-coming-soon-toast\').remove()">Got it</button>',
+      '</div>',
+      '<button class="vpnexues-cs-close" onclick="document.getElementById(\'vpnexues-coming-soon-toast\').remove()" aria-label="Dismiss">&times;</button>'
+    ].join('');
+    document.body.appendChild(toast);
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        toast.classList.add('vpnexues-cs-show');
+      });
+    });
+    setTimeout(function() {
+      if (toast.parentNode) {
+        toast.classList.remove('vpnexues-cs-show');
+        setTimeout(function() { if (toast.parentNode) toast.remove(); }, 400);
+      }
+    }, 6000);
+  }
+
+  function closeMapModal() {
+    var modal = document.getElementById('vnp-addr-modal');
+    modal.classList.add('closing');
+    setTimeout(function() {
+      modal.classList.remove('open', 'closing');
+      document.body.style.overflow = '';
+      closeMapAutocomplete();
+    }, 350);
+  }
+
+  function clearMapForm() {
+    document.getElementById('vnp-addr-input').value = '';
+    document.getElementById('vnp-addr-name').value = '';
+    document.getElementById('vnp-addr-flat').value = '';
+    if (document.getElementById('vnp-addr-building')) document.getElementById('vnp-addr-building').value = '';
+    if (document.getElementById('vnp-addr-landmark')) document.getElementById('vnp-addr-landmark').value = '';
+    if (document.getElementById('vnp-addr-receiver-name')) document.getElementById('vnp-addr-receiver-name').value = '';
+    if (document.getElementById('vnp-addr-receiver-phone')) document.getElementById('vnp-addr-receiver-phone').value = '';
+    document.getElementById('vnp-addr-phone').value = '';
+    document.getElementById('vnp-phone-validation').textContent = '';
+    document.getElementById('vnp-phone-validation').className = 'vnp-addr-validation';
+    var phoneInput = document.getElementById('vnp-addr-phone');
+    phoneInput.classList.remove('valid', 'invalid');
+    if (document.getElementById('vnp-receiver-phone-validation')) { document.getElementById('vnp-receiver-phone-validation').textContent=''; document.getElementById('vnp-receiver-phone-validation').className='vnp-addr-validation'; }
+    if (document.getElementById('vnp-addr-receiver-phone')) document.getElementById('vnp-addr-receiver-phone').classList.remove('valid','invalid');
+    document.querySelectorAll('#vnp-addr-modal .vnp-label-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelector('#vnp-addr-modal .vnp-label-btn[data-label="Home"]').classList.add('active');
+    vnpSelectedLabel = 'Home';
+    vnpSelectedLat = 11.6643;
+    vnpSelectedLng = 78.1465;
+  }
+
+  function showMapLoading(show) {
+    var el = document.getElementById('vnp-addr-loading');
+    if (el) { if (show) el.classList.add('show'); else el.classList.remove('show'); }
+  }
+
+  function initAddrMap() {
+    if (vnpMap) { vnpMap.invalidateSize(); return; }
+    showMapLoading(true);
+    vnpMap = L.map('vnp-addr-map', { zoomControl: true, attributionControl: false }).setView([vnpSelectedLat, vnpSelectedLng], 18);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(vnpMap);
+    vnpGreenIcon = L.divIcon({
+      className: '',
+      html: '<div class="vnp-pin-drop"><svg width="28" height="36" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 24 16 24s16-12 16-24C32 7.16 24.84 0 16 0z" fill="#14472F"/><circle cx="16" cy="15" r="7" fill="#fff"/><circle cx="16" cy="15" r="3.5" fill="#6B8E48"/></svg></div>',
+      iconSize: [28, 36],
+      iconAnchor: [14, 36],
+      popupAnchor: [0, -36]
+    });
+    vnpMarker = L.marker([vnpSelectedLat, vnpSelectedLng], { draggable: true, icon: vnpGreenIcon }).addTo(vnpMap);
+    vnpMap.on('click', function(e) {
+      vnpSelectedLat = e.latlng.lat;
+      vnpSelectedLng = e.latlng.lng;
+      vnpMarker.setLatLng(e.latlng);
+      animateMapPinDrop();
+      reverseGeocodePhotonMap(e.latlng.lat, e.latlng.lng);
+    });
+    vnpMarker.on('dragend', function() {
+      var pos = vnpMarker.getLatLng();
+      vnpSelectedLat = pos.lat;
+      vnpSelectedLng = pos.lng;
+      reverseGeocodePhotonMap(pos.lat, pos.lng);
+    });
+    setTimeout(function() { showMapLoading(false); }, 500);
+  }
+
+  function animateMapPinDrop() {
+    var pin = document.querySelector('#vnp-addr-modal .vnp-addr-map-pin');
+    if (pin) { pin.classList.remove('dropping'); void pin.offsetWidth; pin.classList.add('dropping'); }
+  }
+
+  function reverseGeocodePhotonMap(lat, lng) {
+    var url = 'https://photon.komoot.io/reverse?lat=' + lat + '&lon=' + lng + '&lang=en&limit=1';
+    fetch(url).then(function(r) { return r.json(); }).then(function(data) {
+      if (data.features && data.features.length) {
+        var props = data.features[0].properties;
+        var cc = (props.country_code || '').toUpperCase();
+        var city = (props.city || props.town || props.village || props.hamlet || '').toLowerCase();
+
+        if (cc && SUPPORTED_COUNTRIES.indexOf(cc) !== -1) {
+          vnpDetectedCountryCode = cc;
+        } else if (props.country) {
+          var lower = props.country.toLowerCase();
+          for (var k in COUNTRY_NAME_MAP) {
+            if (lower.indexOf(k) !== -1) { vnpDetectedCountryCode = COUNTRY_NAME_MAP[k]; break; }
+          }
+        }
+        vnpDetectedCity = city;
+
+        updatePhoneField();
+        var addr = formatPhotonAddr(props);
+        if (addr && addr !== 'Unknown location') {
+          document.getElementById('vnp-addr-input').value = addr;
+        }
+      }
+    }).catch(function() {});
+  }
+
+  function updatePhoneField() {
+    var phoneInput = document.getElementById('vnp-addr-phone');
+    var cfg = getPhoneConfig();
+    phoneInput.maxLength = cfg.digits;
+    phoneInput.placeholder = cfg.placeholder;
+    phoneInput.value = '';
+    var el = document.getElementById('vnp-phone-validation');
+    el.textContent = '';
+    el.className = 'vnp-addr-validation';
+    phoneInput.classList.remove('valid', 'invalid');
+  }
+
+  function formatPhotonAddr(p) {
+    var parts = [];
+    if (p.name && p.name !== p.city && p.name !== p.state) parts.push(p.name);
+    if (p.street) parts.push(p.street);
+    if (p.city) parts.push(p.city);
+    if (p.state) parts.push(p.state);
+    if (p.postcode) parts.push(p.postcode);
+    if (p.country) parts.push(p.country);
+    return parts.join(', ') || p.label || 'Unknown location';
+  }
+
+  function useMyLocation() {
+    var btn = document.getElementById('vnp-loc-btn');
+    btn.classList.add('spinning');
+    showMapLoading(true);
+    if (!navigator.geolocation) { btn.classList.remove('spinning'); showMapLoading(false); return; }
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      vnpSelectedLat = pos.coords.latitude;
+      vnpSelectedLng = pos.coords.longitude;
+      var accuracy = pos.coords.accuracy;
+      if (vnpMap) {
+        vnpMap.setView([vnpSelectedLat, vnpSelectedLng], 18);
+        vnpMarker.setLatLng([vnpSelectedLat, vnpSelectedLng]);
+        animateMapPinDrop();
+        if (vnpAccuracyCircle) vnpMap.removeLayer(vnpAccuracyCircle);
+        vnpAccuracyCircle = L.circle([vnpSelectedLat, vnpSelectedLng], {
+          radius: accuracy,
+          color: accuracy <= 15 ? '#6B8E48' : accuracy <= 50 ? '#84cc16' : '#f59e0b',
+          fillColor: accuracy <= 15 ? '#6B8E48' : accuracy <= 50 ? '#84cc16' : '#f59e0b',
+          fillOpacity: 0.12, weight: 2, dashArray: '6, 8'
+        }).addTo(vnpMap);
+        var accEl = document.getElementById('vnp-addr-accuracy');
+        if (accEl) {
+          accEl.classList.add('show');
+          accEl.querySelector('span').textContent = '~' + Math.round(accuracy) + 'm accuracy';
+          accEl.style.color = accuracy <= 15 ? '#6B8E48' : accuracy <= 50 ? '#65a30d' : '#d97706';
+        }
+      }
+      reverseGeocodePhotonMap(vnpSelectedLat, vnpSelectedLng);
+      btn.classList.remove('spinning');
+      showMapLoading(false);
+    }, function(err) {
+      btn.classList.remove('spinning');
+      showMapLoading(false);
+    }, { enableHighAccuracy: true, timeout: 10000 });
+  }
+
+  function renderModalSavedAddresses() {
+    var container = document.getElementById('vnp-saved-addrs');
+    if (!container) return;
+    try { var saved = JSON.parse(localStorage.getItem('vpnSavedAddresses') || '[]'); } catch(e) { var saved = []; }
+    if (!saved.length) { container.style.display = 'none'; return; }
+    container.style.display = '';
+    var html = '<div class="vnp-saved-addrs-title">Saved Addresses</div>';
+    saved.forEach(function(addr, i) {
+      var labelType = addr.type || addr.label || 'Saved';
+      var icon = labelType === 'Home' ? 'fa-house' : labelType === 'Work' ? 'fa-briefcase' : 'fa-location-dot';
+      html += '<div class="vnp-saved-addr-item" onclick="pickModalSavedAddress(' + i + ')">' +
+          '<div class="vnp-saved-addr-icon"><i class="fas ' + icon + '"></i></div>' +
+          '<div class="vnp-saved-addr-info"><div class="vnp-saved-addr-label">' + labelType + '</div><div class="vnp-saved-addr-text">' + (addr.address || '') + '</div></div>' +
+          '<button class="vnp-saved-addr-del" onclick="event.stopPropagation();deleteModalSavedAddress(' + i + ')"><i class="fas fa-trash-alt"></i></button>' +
+      '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  function pickModalSavedAddress(index) {
+    try { var saved = JSON.parse(localStorage.getItem('vpnSavedAddresses') || '[]'); } catch(e) { var saved = []; }
+    if (!saved[index]) return;
+    var data = saved[index];
+    if (data.lat && data.lng) {
+      vnpSelectedLat = data.lat; vnpSelectedLng = data.lng;
+      if (vnpMap) { vnpMap.setView([data.lat, data.lng], 18); vnpMarker.setLatLng([data.lat, data.lng]); animateMapPinDrop(); }
+    }
+    document.getElementById('vnp-addr-input').value = data.address || '';
+    document.getElementById('vnp-addr-name').value = data.name || '';
+    if (data.flat) document.getElementById('vnp-addr-flat').value = data.flat;
+    if (data.building && document.getElementById('vnp-addr-building')) document.getElementById('vnp-addr-building').value = data.building;
+    if (data.landmark && document.getElementById('vnp-addr-landmark')) document.getElementById('vnp-addr-landmark').value = data.landmark;
+    if (data.phone) { document.getElementById('vnp-addr-phone').value = data.phone; validateModalPhone(document.getElementById('vnp-addr-phone')); }
+    if (data.receiverName && document.getElementById('vnp-addr-receiver-name')) document.getElementById('vnp-addr-receiver-name').value = data.receiverName;
+    if (data.receiverPhone && document.getElementById('vnp-addr-receiver-phone')) { document.getElementById('vnp-addr-receiver-phone').value = data.receiverPhone; validateModalPhone(document.getElementById('vnp-addr-receiver-phone')); }
+    var pickLabel = data.type || data.label || 'Home';
+    document.querySelectorAll('#vnp-addr-modal .vnp-label-btn').forEach(function(b) { b.classList.remove('active'); if (b.getAttribute('data-label') === pickLabel) b.classList.add('active'); });
+    vnpSelectedLabel = pickLabel;
+  }
+
+  function deleteModalSavedAddress(index) {
+    try { var saved = JSON.parse(localStorage.getItem('vpnSavedAddresses') || '[]'); } catch(e) { var saved = []; }
+    saved.splice(index, 1);
+    localStorage.setItem('vpnSavedAddresses', JSON.stringify(saved));
+    renderModalSavedAddresses();
+  }
+
+  function validateModalPhone(input) {
+    var val = input.value.replace(/\D/g, '');
+    input.value = val;
+    var cfg = getPhoneConfig();
+    var el = document.getElementById('vnp-phone-validation');
+    if (val.length === 0) { el.textContent = ''; el.className = 'vnp-addr-validation'; input.classList.remove('valid', 'invalid'); }
+    else if (val.length === cfg.digits && cfg.pattern.test(val)) { el.innerHTML = '<i class="fas fa-check-circle"></i>'; el.className = 'vnp-addr-validation ok'; input.classList.add('valid'); input.classList.remove('invalid'); }
+    else if (val.length >= cfg.digits) { el.innerHTML = '<i class="fas fa-exclamation-circle"></i>'; el.className = 'vnp-addr-validation bad'; input.classList.add('invalid'); input.classList.remove('valid'); }
+    else { el.textContent = ''; el.className = 'vnp-addr-validation'; input.classList.remove('valid', 'invalid'); }
+  }
+
+  function saveMapAddress() {
+    var name = document.getElementById('vnp-addr-name').value.trim();
+    var addr = document.getElementById('vnp-addr-input').value.trim();
+    var flat = document.getElementById('vnp-addr-flat').value.trim();
+    var building = (document.getElementById('vnp-addr-building') ? document.getElementById('vnp-addr-building').value.trim() : '');
+    var landmark = (document.getElementById('vnp-addr-landmark') ? document.getElementById('vnp-addr-landmark').value.trim() : '');
+    var phone = document.getElementById('vnp-addr-phone').value.trim();
+    var receiverName = (document.getElementById('vnp-addr-receiver-name') ? document.getElementById('vnp-addr-receiver-name').value.trim() : '');
+    var receiverPhoneRaw = (document.getElementById('vnp-addr-receiver-phone') ? document.getElementById('vnp-addr-receiver-phone').value.trim().replace(/\D/g,'') : '');
+    if (!name) { alert('Please enter a recipient name.'); return; }
+    if (!addr) { alert('Please select a location on the map.'); return; }
+    var cfg = getPhoneConfig();
+    if (!phone || phone.length !== cfg.digits) { alert('Please enter a valid ' + cfg.digits + '-digit phone number.'); return; }
+    if (receiverPhoneRaw && receiverPhoneRaw.length !== cfg.digits) { alert('Receiver phone must be ' + cfg.digits + ' digits or leave empty.'); return; }
+    var fullAddr = addr + (flat ? ', ' + flat : '') + (building ? ', ' + building : '') + (landmark ? ', ' + landmark + ' (Landmark)' : '');
+    var addrData = {
+      type: vnpSelectedLabel,
+      label: vnpSelectedLabel,
+      name: name,
+      phone: phone,
+      address: fullAddr,
+      flat: flat,
+      building: building,
+      landmark: landmark,
+      receiverName: receiverName,
+      receiverPhone: receiverPhoneRaw,
+      isDefault: false,
+      lat: vnpSelectedLat,
+      lng: vnpSelectedLng,
+      countryCode: vnpDetectedCountryCode
+    };
+
+    var addrs;try{addrs=JSON.parse(localStorage.getItem('vpnSavedAddresses')||'[]')}catch(e){addrs=[]}
+    if (addrs.length === 0) addrData.isDefault = true;
+    addrs.push(addrData);
+    localStorage.setItem('vpnSavedAddresses', JSON.stringify(addrs));
+    closeMapModal();
+    renderAddresses();
+    showToast('Address saved');
+  }
+
+  /* Photon Search Autocomplete */
+  (function() {
+    var searchTimer = null;
+    var searchInput = document.getElementById('vnp-addr-search');
+    if (!searchInput) return;
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimer);
+      var val = this.value.trim();
+      if (val.length < 2) { closeMapAutocomplete(); return; }
+      searchTimer = setTimeout(function() { searchMapPhoton(val); }, 350);
+    });
+    searchInput.addEventListener('keydown', function(e) {
+      var acEl = document.getElementById('vnp-autocomplete');
+      var items = acEl ? acEl.querySelectorAll('.vnp-ac-item') : [];
+      if (e.key === 'ArrowDown') { e.preventDefault(); vnpAcIndex = Math.min(vnpAcIndex + 1, items.length - 1); items.forEach(function(it, i) { it.classList.toggle('active', i === vnpAcIndex); }); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); vnpAcIndex = Math.max(vnpAcIndex - 1, 0); items.forEach(function(it, i) { it.classList.toggle('active', i === vnpAcIndex); }); }
+      else if (e.key === 'Enter') { e.preventDefault(); if (vnpAcIndex >= 0 && items[vnpAcIndex]) { items[vnpAcIndex].click(); } else { closeMapAutocomplete(); } }
+      else if (e.key === 'Escape') { closeMapAutocomplete(); }
+    });
+    searchInput.addEventListener('blur', function() { setTimeout(closeMapAutocomplete, 200); });
+  })();
+
+  function searchMapPhoton(query) {
+    var acEl = document.getElementById('vnp-autocomplete');
+    acEl.innerHTML = '<div class="vnp-ac-loading">Searching</div>';
+    acEl.classList.add('show');
+    var url = 'https://photon.komoot.io/api/?q=' + encodeURIComponent(query) + '&limit=5&lang=en&lat=' + vnpSelectedLat + '&lon=' + vnpSelectedLng;
+    fetch(url).then(function(r) { return r.json(); }).then(function(data) {
+      if (!data.features || !data.features.length) { acEl.innerHTML = '<div class="vnp-ac-loading" style="color:#9ca3af;">No results found</div>'; return; }
+      var html = '';
+      data.features.forEach(function(f, i) {
+        var p = f.properties;
+        var name = p.name || p.label || 'Location';
+        var detail = [p.city, p.state, p.country].filter(Boolean).join(', ');
+        var icon = p.type === 'city' || p.type === 'town' ? 'fa-city' : p.type === 'house' || p.type === 'building' ? 'fa-house' : 'fa-location-dot';
+        html += '<div class="vnp-ac-item" data-index="' + i + '" onclick="pickMapAutocomplete(' + i + ')">' +
+            '<div class="vnp-ac-item-icon"><i class="fas ' + icon + '"></i></div>' +
+            '<div class="vnp-ac-item-text"><div class="vnp-ac-item-name">' + name + '</div><div class="vnp-ac-item-detail">' + detail + '</div></div>' +
+        '</div>';
+      });
+      acEl.innerHTML = html;
+      acEl.dataset.features = JSON.stringify(data.features);
+    }).catch(function() {
+      acEl.innerHTML = '<div class="vnp-ac-loading" style="color:#ef4444;">Search failed</div>';
+    });
+  }
+
+  function pickMapAutocomplete(index) {
+    var acEl = document.getElementById('vnp-autocomplete');
+    try { var features = JSON.parse(acEl.dataset.features); } catch(e) { return; }
+    if (!features[index]) return;
+    var f = features[index];
+    var coords = f.geometry.coordinates;
+    var lat = coords[1], lng = coords[0];
+    vnpSelectedLat = lat; vnpSelectedLng = lng;
+    if (vnpMap) { vnpMap.setView([lat, lng], 18); vnpMarker.setLatLng([lat, lng]); animateMapPinDrop(); }
+    document.getElementById('vnp-addr-input').value = formatPhotonAddr(f.properties);
+    document.getElementById('vnp-addr-search').value = '';
+    closeMapAutocomplete();
+  }
+
+  function closeMapAutocomplete() {
+    var acEl = document.getElementById('vnp-autocomplete');
+    if (acEl) { acEl.classList.remove('show'); acEl.innerHTML = ''; }
+    vnpAcIndex = -1;
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('vnp-addr-modal').classList.contains('open')) {
+      closeMapModal();
+    }
+  });
+  </script>
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

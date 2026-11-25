@@ -1,0 +1,3628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPNexues - Checkout</title>
+<link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+<link rel="shortcut icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" type="image/x-icon" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1B4332;
+    --leaf:#3F8F52;
+    --leaf-dark:#2F6E3E;
+    --sun:#F2A93B;
+    --cream:#f2fbf3;
+    --card:#FFFFFF;
+    --sage:#EEF3EA;
+    --ink:#22301F;
+    --muted:#7A8471;
+    --line:#E7E3D6;
+    --danger:#C6493F;
+    --shadow: 0 8px 24px rgba(27,67,50,0.08);
+    --shadow-lift: 0 16px 40px rgba(27,67,50,0.14);
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:110px;
+  }
+
+  .display{font-family:'Fraunces', serif;}
+  ::selection{background:#3F8F52; color:#fff;}
+
+  a, button{font-family:inherit;}
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    background:#fff;
+    color:var(--ink);
+    padding:14px 20px;
+    display:flex; align-items:center; gap:14px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+    border-radius:0 0 20px 20px;
+  }
+  .back-btn{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--sage);
+    border:none; color:var(--leaf-dark); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:background .2s ease, transform .15s ease;
+    flex-shrink:0;
+  }
+  .back-btn:hover{background:#d4e4c8;}
+  .back-btn:active{transform:scale(0.92);}
+  .topbar-title{font-size:17px; font-weight:700; letter-spacing:.2px; color:var(--ink);}
+  .topbar-sub{font-size:11.5px; color:var(--muted); margin-top:2px; display:flex; align-items:center; gap:5px;}
+  .topbar-sub svg{width:13px; height:13px; color:var(--leaf);}
+  .brand-logo{
+    width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0;
+    margin-left:auto;
+  }
+  .brand-area{display:none;}
+  .topbar-page-title{display:none;}
+  .topbar-mid{display:none;}
+  .topbar-secure{display:none;}
+  .topbar-title, .topbar-sub{display:none;}
+
+  .wrap{max-width:640px; margin:0 auto; padding:18px 16px 8px;}
+
+  /* ---------- SECTION CARD ---------- */
+  .card{
+    background:var(--card);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow);
+    padding:18px;
+    margin-bottom:14px;
+    border:1px solid rgba(27,67,50,0.05);
+  }
+  .card-head{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:12px;
+  }
+  .card-head h2{
+    font-size:14.5px; text-transform:uppercase; letter-spacing:.8px;
+    color:var(--muted); font-weight:700;
+  }
+  .link-btn{
+    background:none; border:none; color:var(--leaf-dark); font-weight:700;
+    font-size:13.5px; cursor:pointer; padding:4px 2px; border-radius:6px;
+    display:flex; align-items:center; gap:4px;
+  }
+  .link-btn:hover{text-decoration:underline;}
+
+  /* ---------- ADDRESS ---------- */
+  .addr-row{display:flex; gap:12px; align-items:flex-start;}
+  .addr-icon{
+    width:38px; height:38px; border-radius:10px; background:var(--sage);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--leaf-dark);
+  }
+  .addr-tag{
+    display:inline-block; font-size:11px; font-weight:800; letter-spacing:.4px;
+    background:var(--sage); color:var(--leaf-dark); padding:2px 9px; border-radius:20px;
+    margin-bottom:5px; text-transform:uppercase;
+  }
+  .addr-text{font-size:14.5px; line-height:1.5; color:var(--ink);}
+  .addr-name{font-weight:700; font-size:15px;}
+  .addr-phone{color:var(--muted); font-size:13px; margin-top:3px;}
+
+  /* ---------- FRESHNESS TIMELINE (signature element) ---------- */
+  .fresh-card{
+    background:linear-gradient(135deg, var(--forest), #234A38);
+    color:#fff;
+    border-radius:var(--radius-lg);
+    padding:20px 18px 16px;
+    margin-bottom:14px;
+    position:relative;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .fresh-card::before{
+    content:"";
+    position:absolute; right:-30px; top:-30px; width:140px; height:140px;
+    background:radial-gradient(circle, rgba(242,169,59,0.18), transparent 70%);
+  }
+  .order-strip-row{
+    display:flex; align-items:center; position:relative; z-index:1;
+  }
+  .order-strip-block{flex:1;}
+  .order-strip-block.align-right{text-align:right;}
+  .order-id-value{
+    font-family:'Fraunces', serif; font-size:19px; font-weight:600; margin-top:2px; letter-spacing:.3px;
+  }
+  .order-strip-divider{
+    width:1px; align-self:stretch; background:rgba(255,255,255,0.16); margin:0 18px;
+  }
+  .trust-strip{
+    display:flex; align-items:center; gap:7px; color:#CFE3D3; font-size:12px; font-weight:600;
+    margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.12); position:relative; z-index:1;
+  }
+
+  .fresh-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; position:relative; z-index:1;}
+  .fresh-eta-label{font-size:12px; color:#000; letter-spacing:.4px; text-transform:uppercase; font-weight:700;}
+  .fresh-eta-value{font-family:'Fraunces', serif; font-size:26px; font-weight:600; margin-top:2px;}
+  .fresh-badge{
+    background:#E8F0E4; border:1px solid rgba(27,67,50,0.15);
+    color:#000; font-size:12px; font-weight:700; padding:6px 11px; border-radius:20px;
+    display:flex; align-items:center; gap:5px;
+  }
+  .addr-header-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .addr-avatar{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--forest),#2e7d32);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .addr-header-text{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .addr-details-grid{display:flex;flex-direction:column;gap:0}
+  .addr-row{display:flex;align-items:baseline;padding:7px 0;border-bottom:1px solid #f3f3f3}
+  .addr-row:last-child{border-bottom:none}
+  .addr-key{width:90px;flex-shrink:0;font-size:12px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px}
+  .addr-val{font-size:14px;font-weight:500;color:#000;line-height:1.4}
+
+  .vine-track{
+    position:relative; display:flex; justify-content:space-between; z-index:1;
+    padding:0 4px;
+  }
+  .vine-line{
+    position:absolute; top:15px; left:22px; right:22px; height:2px;
+    background:rgba(255,255,255,0.18); z-index:0;
+  }
+  .vine-fill{
+    position:absolute; top:15px; left:22px; height:2px;
+    background:var(--sun); z-index:0; transition:width .6s ease;
+  }
+  .vine-step{
+    display:flex; flex-direction:column; align-items:center; gap:8px; position:relative; z-index:1;
+    width:70px;
+  }
+  .vine-dot{
+    width:32px; height:32px; border-radius:50%;
+    background:rgba(255,255,255,0.1); border:2px solid rgba(255,255,255,0.25);
+    display:flex; align-items:center; justify-content:center;
+    transition:all .3s ease;
+  }
+  .vine-dot svg{width:15px; height:15px;}
+  .vine-step.done .vine-dot{background:var(--sun); border-color:var(--sun); color:var(--forest);}
+  .vine-step.active .vine-dot{background:#fff; border-color:#fff; color:var(--leaf-dark); box-shadow:0 0 0 5px rgba(255,255,255,0.15);}
+  .vine-step span{font-size:11px; color:#CFE3D3; text-align:center; font-weight:600;}
+  .vine-step.done span, .vine-step.active span{color:#fff;}
+
+  .order-toggle{
+    width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16);
+    border-radius:var(--radius-sm); padding:11px 14px; display:flex; align-items:center; justify-content:space-between;
+    color:#fff; font-size:13.5px; font-weight:700; cursor:pointer; margin-top:2px; position:relative; z-index:1;
+    transition:background .2s ease;
+  }
+  .order-toggle:hover{background:rgba(255,255,255,0.14);}
+  .order-toggle svg{transition:transform .25s ease;}
+  .order-toggle.open svg{transform:rotate(180deg);}
+
+  .order-details{
+    max-height:0; overflow:hidden; transition:max-height .35s ease, margin-top .35s ease;
+    position:relative; z-index:1;
+  }
+  .order-details.open{max-height:600px; margin-top:12px;}
+  .order-details #itemList{
+    background:#fff; border-radius:var(--radius-md); padding:6px 14px;
+  }
+  .order-details .item-row{color:var(--ink);}
+  .edit-order-btn{
+    width:100%; background:rgba(255,255,255,0.1); border:1px dashed rgba(255,255,255,0.3);
+    color:#fff; border-radius:var(--radius-sm); padding:10px; margin-top:10px; font-weight:700;
+    font-size:13px; cursor:pointer;
+  }
+  .edit-order-btn:hover{background:rgba(255,255,255,0.16);}
+
+  /* ---------- ITEMS ---------- */
+  .item-row{
+    display:flex; align-items:center; gap:12px; padding:10px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .item-row:last-child{border-bottom:none;}
+  .item-thumb{
+    width:52px; height:52px; border-radius:12px; background:var(--sage);
+    display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;
+  }
+  .item-info{flex:1; min-width:0;}
+  .item-name{font-weight:700; font-size:14.5px;}
+  .item-meta{font-size:12px; color:var(--muted); margin-top:2px;}
+  .item-price{font-weight:700; font-size:14.5px; min-width:56px; text-align:right;}
+  .item-price .old{
+    display:block; font-size:11px; color:#1a1a1a; text-decoration:line-through; font-weight:500;
+  }
+
+  .stepper{
+    display:flex; align-items:center; gap:0; border:1.5px solid var(--leaf); border-radius:20px; overflow:hidden;
+    background:var(--sage); flex-shrink:0;
+  }
+  .stepper button{
+    width:26px; height:26px; border:none; background:transparent; color:var(--leaf-dark);
+    font-size:15px; font-weight:800; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .stepper button:active{background:rgba(63,143,82,0.18);}
+  .stepper .qty{width:20px; text-align:center; font-weight:700; font-size:13px;}
+
+  /* ---------- COUPON STRIP ---------- */
+  .coupon-strip{
+    display:flex; align-items:center; gap:12px;
+    background:linear-gradient(90deg, #FFF6E6, #FFFDF7);
+    border:1px dashed var(--sun);
+    border-radius:var(--radius-md);
+    padding:12px 14px;
+    margin-bottom:14px;
+    cursor:pointer;
+  }
+  .coupon-icon{
+    width:36px; height:36px; border-radius:10px; background:var(--sun); color:#fff;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .coupon-title{font-weight:700; font-size:14px;}
+  .coupon-sub{font-size:12px; color:var(--muted); margin-top:1px;}
+  .coupon-strip.applied{border-style:solid; border-color:var(--leaf); background:linear-gradient(135deg,#F0F8EC,#F8FCF6);}
+  .coupon-strip.applied .coupon-icon{background:var(--leaf);}
+  .coupon-chevron{margin-left:auto; color:var(--muted); flex-shrink:0;}
+
+  /* ---------- PAYMENT METHODS ---------- */
+  .pay-option{
+    display:flex; align-items:center; gap:13px;
+    padding:13px 12px; border:1.5px solid var(--line); border-radius:var(--radius-md);
+    margin-bottom:12px; cursor:pointer; transition:border-color .15s ease, background .15s ease;
+    background:#fff;
+  }
+  .pay-option:last-child{margin-bottom:0;}
+  .pay-option:hover{border-color:var(--leaf);}
+  .pay-option.selected{
+    border-color:var(--leaf); background:var(--sage);
+  }
+  .pay-icon{
+    width:40px; height:40px; border-radius:10px; background:var(--sage); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; color:var(--leaf-dark);
+    box-shadow:inset 0 0 0 1px rgba(27,67,50,0.06);
+  }
+  .pay-option.selected .pay-icon{background:#fff; box-shadow:0 2px 6px rgba(27,67,50,0.12);}
+  .pay-label{font-weight:700; font-size:14.5px;}
+  .pay-sub{font-size:12px; color:var(--muted); margin-top:1px;}
+  .pay-radio{
+    width:20px; height:20px; border-radius:50%; border:2px solid var(--line);
+    margin-left:auto; flex-shrink:0; position:relative; transition:border-color .15s ease;
+  }
+  .pay-option.selected .pay-radio{border-color:var(--leaf);}
+  .pay-option.selected .pay-radio::after{
+    content:""; position:absolute; inset:3px; border-radius:50%; background:var(--leaf);
+  }
+  .pay-recommend{
+    font-size:10px; font-weight:800; color:var(--leaf-dark); background:var(--sage);
+    padding:2px 7px; border-radius:20px; margin-left:8px; text-transform:uppercase; letter-spacing:.3px;
+  }
+
+  .upi-apps-panel{
+    background:var(--sage); border-radius:var(--radius-md); padding:14px;
+    margin:-2px 0 12px; animation:slideDown .25s ease;
+  }
+  @keyframes slideDown{ from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);} }
+  .upi-apps-title{font-size:12.5px; font-weight:700; color:var(--muted); margin-bottom:10px; text-transform:uppercase; letter-spacing:.4px;}
+  .upi-apps-grid{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  @media (max-width:420px){ .upi-apps-grid{grid-template-columns:1fr;} }
+  .upi-app-chip{
+    display:flex; align-items:center; gap:10px; background:#fff; border:1.5px solid var(--line);
+    border-radius:var(--radius-sm); padding:9px 11px; cursor:pointer; transition:border-color .15s ease;
+  }
+  .upi-app-chip:hover{border-color:var(--leaf);}
+  .upi-app-chip.selected{border-color:var(--leaf); background:#fff; box-shadow:0 0 0 1px var(--leaf);}
+  .upi-app-icon{
+    width:32px; height:32px; border-radius:9px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    box-shadow:0 0 0 1px var(--line), 0 1px 3px rgba(27,67,50,0.08); overflow:hidden;
+  }
+  .upi-app-chip span{font-size:13px; font-weight:600; flex:1;}
+  .upi-app-radio{
+    width:16px; height:16px; border-radius:50%; border:2px solid var(--line); flex-shrink:0; position:relative;
+  }
+  .upi-app-chip.selected .upi-app-radio{border-color:var(--leaf);}
+  .upi-app-chip.selected .upi-app-radio::after{
+    content:""; position:absolute; inset:2px; border-radius:50%; background:var(--leaf);
+  }
+  .payment-detail-panel{
+    background:var(--sage); border-radius:var(--radius-md); padding:14px;
+    margin:-2px 0 12px; animation:slideDown .25s ease;
+    overflow:hidden;
+  }
+  .payment-detail-title{font-size:12.5px; font-weight:700; color:#000; margin-bottom:10px; text-transform:uppercase; letter-spacing:.4px;}
+  .card-field-grid{display:grid; grid-template-columns:1fr 1fr; gap:9px;}
+  .card-field{grid-column:span 2;}
+  .card-field.half{grid-column:span 1;}
+  .card-field label{display:block; font-size:11.5px; font-weight:700; color:#000; margin-bottom:5px;}
+  .card-field input{
+    width:100%; border:1.5px solid var(--line); border-radius:var(--radius-sm);
+    padding:11px 12px; font-family:inherit; font-size:13.5px; color:#000; background:#fff;
+  }
+  .card-field input::placeholder{ color:#000; opacity:1; }
+  .card-field input:focus{outline:none; border-color:var(--leaf); box-shadow:0 0 0 2px rgba(63,143,82,0.12);}
+  .saved-payment-note{font-size:11.5px; color:#000; margin-top:10px; line-height:1.4;}
+  .payment-choice-list{display:grid; gap:8px; max-height:320px; overflow-y:auto; padding-right:4px;}
+  .payment-choice-list::-webkit-scrollbar{width:5px;}
+  .payment-choice-list::-webkit-scrollbar-track{background:transparent;}
+  .payment-choice-list::-webkit-scrollbar-thumb{background:#c5d1be; border-radius:10px;}
+  .order-items::-webkit-scrollbar{width:5px;}
+  .order-items::-webkit-scrollbar-track{background:transparent;}
+  .order-items::-webkit-scrollbar-thumb{background:#c5d1be; border-radius:10px;}
+  .payment-choice{
+    display:flex; align-items:center; gap:10px; background:#fff; border:1.5px solid var(--line);
+    border-radius:var(--radius-sm); padding:10px 11px; cursor:pointer; transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .payment-choice:hover{border-color:var(--leaf);}
+  .payment-choice.selected{border-color:var(--leaf); box-shadow:0 0 0 1px var(--leaf);}
+  .payment-choice-mark{
+    width:18px; height:18px; border-radius:50%; border:2px solid var(--line);
+    flex-shrink:0; position:relative; margin-left:auto;
+  }
+  .payment-choice.selected .payment-choice-mark{border-color:var(--leaf);}
+  .payment-choice.selected .payment-choice-mark::after{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--leaf);}
+  .payment-choice-icon{
+    width:34px; height:34px; border-radius:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    box-shadow:0 0 0 1px var(--line), 0 1px 3px rgba(27,67,50,0.08); background:#fff;
+  }
+  .payment-choice-content{flex:1; min-width:0;}
+  .payment-choice-main{font-size:13.5px; font-weight:700; color:var(--ink);}
+  .payment-choice-sub{font-size:11.5px; color:var(--muted); margin-top:1px;}
+  .nb-search{
+    position:relative; margin-bottom:10px;
+  }
+  .nb-search input{
+    width:100%; border:1.5px solid var(--line); border-radius:10px;
+    padding:10px 34px 10px 12px; font-family:inherit; font-size:13px; color:var(--ink); background:#fff;
+  }
+  .nb-search input:focus{outline:none; border-color:var(--leaf); box-shadow:0 0 0 2px rgba(63,143,82,0.12);}
+  .nb-search input::-webkit-search-cancel-button{-webkit-appearance:none;}
+  .nb-search-clear{
+    position:absolute; top:50%; right:8px; transform:translateY(-50%);
+    border:none; background:none; color:var(--muted); cursor:pointer;
+    font-size:16px; line-height:1; padding:2px 4px; display:none;
+  }
+  .nb-search.has-value .nb-search-clear{display:block;}
+  .nb-empty{font-size:12px; color:var(--muted); text-align:center; padding:14px 0;}
+  .bank-logo-wrap{position:relative; display:flex; width:34px; height:34px;}
+  .bank-logo-wrap > svg{position:absolute; inset:0;}
+  .payment-choice-icon .bank-logo{
+    position:absolute; inset:0; width:34px; height:34px; object-fit:cover;
+    border-radius:10px; display:block; box-shadow:0 0 0 1px var(--line);
+  }
+  @media (max-width:380px){ .card-field.half{grid-column:span 2;} }
+
+  /* ---------- TIP ---------- */
+  .tip-row{display:flex; gap:9px; flex-wrap:wrap;}
+  .tip-chip{
+    border:1.5px solid var(--line); background:#fff; border-radius:20px;
+    padding:9px 16px; font-weight:700; font-size:13.5px; cursor:pointer; color:var(--ink);
+    transition:all .15s ease;
+  }
+  .tip-chip.active{background:var(--leaf); border-color:var(--leaf); color:#fff;}
+  .tip-note{font-size:12px; color:var(--muted); margin-top:10px; line-height:1.5;}
+
+  /* ---------- BILL SUMMARY ---------- */
+  .bill-row{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:14px; padding:7px 0; color:#000;
+  }
+  .bill-row .label{color:#000; display:flex; align-items:center; gap:5px;}
+  .bill-row .value{font-weight:600; color:#000;}
+  .bill-row .label .info-dot{
+    width:14px; height:14px; border-radius:50%; background:var(--line); color:var(--muted);
+    font-size:9px; display:flex; align-items:center; justify-content:center; font-weight:800; cursor:default;
+  }
+  .bill-row.discount .value{color:var(--leaf-dark); font-weight:700;}
+  .bill-total{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:8px; border-top:2px solid #E0E6D6;
+  }
+  .bill-total .label{font-weight:700; font-size:16px; color:#000;}
+  .bill-total .value{font-weight:800; font-size:20px; color:#000;}
+  .savings-banner{
+    background:#F4FAF2; color:#000; font-size:12.5px; font-weight:600;
+    border-radius:var(--radius-sm); padding:9px 12px; margin-top:12px;
+    display:flex; align-items:center; gap:7px;
+  }
+
+  /* ---------- PAY BUTTON (inside order summary) ---------- */
+  .paybar{
+    position:static; margin-top:16px; text-align:center;
+  }
+  .paybar-total{ display:none; }
+  .pay-cta{
+    width:100%; background:var(--leaf); color:#fff; border:none; border-radius:var(--radius-md);
+    padding:15px 18px; font-weight:800; font-size:15.5px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    box-shadow:0 6px 16px rgba(63,143,82,0.35);
+    transition:transform .12s ease, background .2s ease;
+  }
+  .pay-cta:hover{background:var(--leaf-dark);}
+  .pay-cta:active{transform:scale(0.98);}
+  .pay-cta:disabled{background:#B9C4B4; box-shadow:none; cursor:not-allowed;}
+  .pay-cta .spinner{
+    width:18px; height:18px; border:2.5px solid rgba(255,255,255,0.4); border-top-color:#fff;
+    border-radius:50%; animation:spin .7s linear infinite; display:none;
+  }
+  .pay-cta.loading .spinner{display:block;}
+  .pay-cta.loading .cta-label{display:none;}
+  .paybar-secure-note{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    font-size:12px; color:var(--muted); font-weight:600; margin-top:10px;
+  }
+  .paybar-secure-note svg{ color:var(--leaf); }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- FULL-SCREEN SUCCESS VIEW ---------- */
+  .success-view{
+    display:none;
+    position:fixed; inset:0; z-index:200; overflow-y:auto;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(63,143,82,0.12), transparent 55%),
+      var(--cream);
+  }
+  .success-view.show{display:block;}
+
+  /* ---------- FULL-SCREEN FAILURE VIEW ---------- */
+  .fail-view{
+    display:none;
+    position:fixed; inset:0; z-index:200; overflow-y:auto;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(198,73,63,0.12), transparent 55%),
+      var(--cream);
+  }
+  .fail-view.show{display:block;}
+  .fail-ring circle{stroke:var(--danger);}
+  .fail-cross path{stroke:var(--danger);}
+  .fail-badge{
+    display:inline-flex; align-items:center; gap:6px; background:#fde8e8; color:var(--danger);
+    font-size:12.5px; font-weight:800; padding:6px 14px; border-radius:20px; margin-bottom:14px;
+    text-transform:uppercase; letter-spacing:.4px;
+  }
+  .fail-cta{
+    width:100%; background:var(--leaf); color:#fff; border:none; border-radius:var(--radius-md);
+    padding:15px; font-weight:800; font-size:15.5px; cursor:pointer; margin-bottom:12px;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    box-shadow:0 6px 16px rgba(63,143,82,0.3); transition:background .2s ease, transform .12s ease;
+  }
+  .fail-cta:hover{background:var(--leaf-dark);}
+  .fail-cta:active{transform:scale(0.98);}
+
+  /* ---------- PAYMENT PROCESSING OVERLAY ---------- */
+  .pay-overlay{
+    display:none; position:fixed; inset:0; z-index:300;
+    background:linear-gradient(180deg,#0f0f23 0%,#1a1a2e 50%,#16213e 100%);
+    flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff;
+  }
+  .pay-overlay.show{display:flex;}
+  .pay-app-icon{
+    width:80px; height:80px; border-radius:20px; margin-bottom:20px;
+    display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:900; color:#fff;
+    box-shadow:0 12px 40px rgba(0,0,0,0.4); animation:payIconPulse 1.2s ease infinite;
+  }
+  @keyframes payIconPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+  .pay-app-name{font-size:22px; font-weight:800; margin-bottom:6px;}
+  .pay-app-status{font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:30px;}
+  .pay-spinner{
+    width:44px; height:44px; border:3px solid rgba(255,255,255,0.15); border-top-color:#fff;
+    border-radius:50%; animation:pgSpin .8s linear infinite; margin-bottom:30px;
+  }
+  .pay-amount-display{
+    font-size:36px; font-weight:800; margin-bottom:8px;
+  }
+  .pay-order-id{font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:40px;}
+  .pay-result-btns{display:flex; gap:12px; width:100%; max-width:280px;}
+  .pay-result-btns button{
+    flex:1; padding:14px; border-radius:12px; border:none; font-weight:700; font-size:14px;
+    cursor:pointer; transition:all .15s ease;
+  }
+  .pay-result-btns button:active{transform:scale(0.96);}
+  .pay-btn-success{background:#22c55e; color:#fff;}
+  .pay-btn-success:hover{background:#16a34a;}
+  .pay-btn-fail{background:rgba(255,255,255,0.1); color:#fff; border:1.5px solid rgba(255,255,255,0.2);}
+  .pay-btn-fail:hover{background:rgba(255,255,255,0.15);}
+  .pay-timer{
+    position:absolute; top:16px; right:16px; font-size:13px; color:rgba(255,255,255,0.5);
+    display:flex; align-items:center; gap:6px;
+  }
+  .pay-timer.warning{color:#fbbf24;}
+  .pay-timer svg{animation:payTimerBlink 1s infinite;}
+  @keyframes payTimerBlink{0%,100%{opacity:1;}50%{opacity:.4;}}
+  .pay-cancel-btn{
+    position:absolute; top:16px; left:16px; width:36px; height:36px; border-radius:50%;
+    background:rgba(255,255,255,0.1); border:none; color:#fff; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .pay-cancel-btn:hover{background:rgba(255,255,255,0.2);}
+
+
+
+
+  .success-inner{
+    max-width:440px; margin:0 auto; padding:56px 24px 40px;
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    animation:successRise .55s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes successRise{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+
+  .success-check-wrap{ position:relative; width:120px; height:120px; margin-bottom:26px; }
+  .success-ring{
+    position:absolute; inset:0; width:100%; height:100%;
+  }
+  .success-ring circle{
+    fill:none; stroke:var(--leaf); stroke-width:4; stroke-linecap:round;
+    stroke-dasharray:340; stroke-dashoffset:340; transform:rotate(-90deg); transform-origin:60px 60px;
+    animation:ringDraw .7s ease forwards;
+  }
+  .success-check{ position:absolute; inset:0; width:100%; height:100%; }
+  .success-check path{
+    fill:none; stroke:var(--leaf); stroke-width:6; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:70; stroke-dashoffset:70;
+    animation:checkDraw .45s ease forwards .6s;
+  }
+  @keyframes ringDraw{ to{stroke-dashoffset:0;} }
+  @keyframes checkDraw{ to{stroke-dashoffset:0;} }
+
+  .success-badge{
+    display:inline-flex; align-items:center; gap:6px; background:var(--sage); color:var(--leaf-dark);
+    font-size:12.5px; font-weight:800; padding:6px 14px; border-radius:20px; margin-bottom:14px;
+    text-transform:uppercase; letter-spacing:.4px;
+  }
+  .success-inner h1{
+    font-family:'Fraunces', serif; font-size:30px; font-weight:600; color:var(--ink); margin-bottom:10px;
+  }
+  .success-sub{color:var(--muted); font-size:14.5px; line-height:1.6; margin-bottom:26px; max-width:360px;}
+
+  .success-card{
+    width:100%; background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow);
+    padding:18px 20px; margin-bottom:26px; text-align:left;
+  }
+  .success-row{ display:flex; justify-content:space-between; align-items:center; padding:8px 0; font-size:14px; }
+  .success-row .label{ color:var(--muted); }
+  .success-row .value{ font-weight:700; color:var(--ink); }
+  .success-row .value.accent{ color:var(--leaf-dark); font-family:'Fraunces', serif; font-size:16px; }
+  .success-divider{ border-top:1px dashed var(--line); margin:6px 0; }
+
+  .success-cta{
+    width:100%; background:var(--leaf); color:#fff; border:none; border-radius:var(--radius-md);
+    padding:15px; font-weight:800; font-size:15.5px; cursor:pointer; margin-bottom:12px;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    box-shadow:0 6px 16px rgba(63,143,82,0.3); transition:background .2s ease, transform .12s ease;
+  }
+  .success-cta:hover{ background:var(--leaf-dark); }
+  .success-cta:active{ transform:scale(0.98); }
+  .success-secondary{
+    background:none; border:none; color:var(--muted); font-weight:700; font-size:14px; cursor:pointer;
+    padding:8px; text-decoration:underline;
+  }
+
+  /* ---------- COUPON MODAL ---------- */
+  .coupon-overlay{
+    position:fixed; inset:0; background:rgba(27,49,31,0.5); z-index:100;
+    display:flex; align-items:flex-end; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+    -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px);
+  }
+  .coupon-overlay.show{opacity:1; pointer-events:all;}
+  .coupon-modal{
+    background:#fff; border-radius:24px 24px 0 0;
+    width:100%; max-width:640px; max-height:85vh; overflow:hidden;
+    display:flex; flex-direction:column;
+    transform:translateY(30px); transition:transform .3s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 -8px 40px rgba(27,67,50,0.12);
+  }
+  .coupon-overlay.show .coupon-modal{transform:translateY(0);}
+
+  .coupon-modal-head{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    padding:18px 22px 0; gap:12px; flex-shrink:0;
+  }
+  .coupon-modal-title{
+    font-family:'Fraunces',serif; font-size:18px; font-weight:600; color:var(--ink);
+  }
+  .coupon-modal-sub{font-size:12px; color:var(--muted); margin-top:2px;}
+  .coupon-modal-close{
+    width:36px; height:36px; border-radius:50%; border:none; background:var(--sage);
+    color:var(--forest); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; flex-shrink:0; transition:background .15s ease;
+  }
+  .coupon-modal-close:hover{background:#d4e4c8;}
+
+  .coupon-input-section{padding:14px 22px 0; flex-shrink:0;}
+  .coupon-input-wrap{
+    display:flex; align-items:center; gap:0; position:relative;
+    border:1.5px solid var(--line); border-radius:14px; overflow:hidden;
+    background:#fff; transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .coupon-input-wrap:focus-within{border-color:var(--leaf); box-shadow:0 0 0 3px rgba(63,143,82,0.1);}
+  .coupon-input-icon{
+    margin-left:14px; color:var(--muted); flex-shrink:0;
+    display:flex; align-items:center;
+  }
+  .coupon-input-wrap input{
+    flex:1; border:none; outline:none; padding:13px 10px; font-size:14px;
+    font-family:inherit; text-transform:uppercase; letter-spacing:.6px;
+    color:var(--ink); background:transparent; min-width:0;
+  }
+  .coupon-input-wrap input::placeholder{text-transform:none; letter-spacing:0; color:var(--muted);}
+  .coupon-input-clear{
+    display:flex; align-items:center; justify-content:center; border:none; background:none;
+    color:var(--muted); cursor:pointer; padding:6px 4px; flex-shrink:0;
+  }
+  .coupon-input-clear:hover{color:var(--ink);}
+  .coupon-apply-btn{
+    background:var(--forest); color:#fff; border:none; border-radius:12px;
+    padding:12px 22px; font-weight:700; font-size:13.5px; cursor:pointer;
+    flex-shrink:0; margin:4px; transition:background .15s ease;
+  }
+  .coupon-apply-btn:hover{background:var(--leaf-dark);}
+  .coupon-apply-btn:disabled{background:#B9C4B4; cursor:not-allowed;}
+  .coupon-input-msg{
+    font-size:12.5px; font-weight:600; margin-top:8px; min-height:0;
+    transition:all .2s ease; padding:0 2px;
+  }
+  .coupon-input-msg.error{color:var(--danger);}
+  .coupon-input-msg.success{color:var(--leaf-dark);}
+  .coupon-input-msg.loading{color:var(--muted);}
+
+  .coupon-bestsaver{padding:16px 22px 0; flex-shrink:0;}
+  .coupon-bestsaver-badge{
+    font-size:10px; font-weight:800; letter-spacing:.8px; text-transform:uppercase;
+    color:var(--leaf-dark); background:var(--sage); border:1px solid #D9E7D0;
+    padding:4px 10px; border-radius:20px; display:inline-block; margin-bottom:10px;
+  }
+  .coupon-bestsaver-card{
+    border:2px solid var(--leaf); border-radius:12px; padding:14px 16px;
+    background:linear-gradient(135deg,#F0F8EC,#F8FCF6); position:relative;
+    display:flex; flex-direction:column;
+  }
+  .coupon-bestsaver-card .cb-row{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
+  .coupon-bestsaver-card .cb-info{flex:1; min-width:0;}
+  .coupon-bestsaver-card .cb-code{font-weight:800; font-size:15px; color:var(--forest); letter-spacing:.3px;}
+  .coupon-bestsaver-card .cb-benefit{font-size:13px; font-weight:700; color:var(--ink); margin-top:3px;}
+  .coupon-bestsaver-card .cb-savings{font-size:12px; color:var(--leaf-dark); font-weight:700; margin-top:4px;}
+  .coupon-bestsaver-card .cb-cta{
+    background:var(--forest); color:#fff; border:none; border-radius:10px;
+    padding:10px 22px; font-weight:700; font-size:13px; cursor:pointer;
+    flex-shrink:0; transition:background .15s ease; min-height:40px;
+  }
+  .coupon-bestsaver-card .cb-cta:hover{background:var(--leaf-dark);}
+  .coupon-bestsaver-card .cb-cta:disabled{background:#B9C4B4; cursor:not-allowed;}
+
+  .coupon-section-label{
+    padding:16px 22px 8px; flex-shrink:0;
+  }
+  .coupon-section-title{font-size:15px; font-weight:700; color:var(--ink); margin-bottom:1px;}
+  .coupon-section-sub{font-size:12px; color:var(--muted);}
+
+  .coupon-list{padding:0 22px 16px; overflow-y:auto; flex:1; min-height:0;}
+
+  .coupon-card{
+    border:1.5px solid var(--line); border-radius:12px; padding:14px 16px;
+    margin-bottom:10px; transition:border-color .15s ease, background .15s ease;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .coupon-card:last-child{margin-bottom:0;}
+  .coupon-card:hover{border-color:#c4d4b8;}
+  .coupon-card.locked{opacity:0.7;}
+  .coupon-card.locked:hover{opacity:0.88;}
+  .coupon-card.applied{
+    border-color:var(--leaf); background:linear-gradient(135deg,#F0F8EC,#F8FCF6);
+  }
+  .coupon-card.best{border-color:var(--leaf); border-width:2px;}
+
+  .coupon-card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
+  .coupon-card-info{flex:1; min-width:0;}
+  .coupon-card-code{
+    font-weight:800; font-size:15px; color:var(--forest); letter-spacing:.3px;
+    display:flex; align-items:center; gap:7px; line-height:1.2;
+  }
+  .coupon-card-code .cc-check{
+    width:20px; height:20px; border-radius:50%; background:var(--leaf);
+    display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .coupon-card-code .cc-check svg{width:12px; height:12px;}
+  .coupon-card-benefit{font-size:13.5px; font-weight:700; color:var(--ink); margin-top:4px; line-height:1.3;}
+  .coupon-card-desc{font-size:12px; color:var(--muted); margin-top:3px; line-height:1.4;}
+
+  .coupon-card-tag{
+    display:inline-flex; align-items:center; gap:3px; font-size:10.5px; font-weight:600;
+    letter-spacing:.2px; padding:4px 8px; border-radius:6px; margin-top:8px;
+  }
+  .coupon-card-tag.min-order{background:#FEF3C7; color:#92400E;}
+  .coupon-card-tag.first-order{background:#DBEAFE; color:#1E40AF;}
+  .coupon-card-tag.category{background:#F3E8FF; color:#6B21A8;}
+  .coupon-card-tag.expiry{background:#FEE2E2; color:#991B1B;}
+  .coupon-card-tag.free-delivery{background:#D1FAE5; color:#065F46;}
+
+  .coupon-card-unlock{
+    display:flex; align-items:center; gap:6px; font-size:12px; font-weight:600;
+    color:#92400E; margin-top:10px; background:#FFFBEB; border:1px solid #FDE68A;
+    border-radius:8px; padding:8px 12px;
+  }
+  .coupon-card-unlock svg{flex-shrink:0;}
+  .coupon-card-unlock strong{color:#92400E;}
+
+  .coupon-card-cta{display:flex; align-items:center; gap:8px; margin-top:auto; padding-top:10px;}
+  .coupon-card-apply{
+    background:var(--forest); color:#fff; border:none; border-radius:10px;
+    padding:10px 24px; font-weight:700; font-size:13px; cursor:pointer;
+    transition:background .15s ease; min-height:40px;
+  }
+  .coupon-card-apply:hover{background:var(--leaf-dark);}
+  .coupon-card-apply:disabled{background:#B9C4B4; cursor:not-allowed;}
+  .coupon-card-add{
+    background:var(--sun); color:#fff; border:none; border-radius:10px;
+    padding:10px 24px; font-weight:700; font-size:13px; cursor:pointer;
+    transition:background .15s ease; min-height:40px;
+  }
+  .coupon-card-add:hover{background:#E0952A;}
+  .coupon-card-applied-badge{
+    display:flex; align-items:center; gap:6px; font-size:13px; font-weight:700;
+    color:var(--leaf-dark);
+  }
+  .coupon-card-applied-badge svg{flex-shrink:0;}
+  .coupon-card-remove{
+    background:none; border:none; color:var(--muted); font-weight:600; font-size:12px;
+    cursor:pointer; padding:6px 4px; text-decoration:underline; margin-left:8px;
+  }
+  .coupon-card-remove:hover{color:var(--danger);}
+
+  .coupon-card-footer{display:flex; align-items:center; justify-content:space-between; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);}
+  .coupon-card-discount{font-size:12.5px; color:var(--leaf-dark); font-weight:700;}
+
+  .coupon-empty{
+    padding:48px 22px; text-align:center; flex-shrink:0;
+  }
+  .coupon-empty svg{margin:0 auto 16px; display:block; opacity:0.4;}
+  .coupon-empty-title{font-weight:700; font-size:17px; color:var(--ink); margin-bottom:6px;}
+  .coupon-empty-desc{font-size:14px; color:var(--muted); line-height:1.5; margin-bottom:20px;}
+  .coupon-empty-cta{
+    background:var(--forest); color:#fff; border:none; border-radius:12px;
+    padding:13px 30px; font-weight:700; font-size:14px; cursor:pointer;
+    transition:background .15s ease; display:inline-block;
+  }
+  .coupon-empty-cta:hover{background:var(--leaf-dark);}
+
+  /* ---- REPLACE CONFIRM DIALOG ---- */
+  .coupon-confirm-overlay{
+    position:fixed; inset:0; background:rgba(27,49,31,0.5); z-index:120;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .2s ease;
+  }
+  .coupon-confirm-overlay.show{opacity:1; pointer-events:all;}
+  .coupon-confirm-dialog{
+    background:#fff; border-radius:20px; padding:28px 24px 22px;
+    max-width:360px; width:calc(100% - 48px); text-align:center;
+    box-shadow:0 20px 60px rgba(27,67,50,0.18);
+    transform:scale(0.95); transition:transform .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .coupon-confirm-overlay.show .coupon-confirm-dialog{transform:scale(1);}
+  .coupon-confirm-icon{margin-bottom:14px;}
+  .coupon-confirm-title{font-family:'Fraunces',serif; font-size:18px; font-weight:600; color:var(--ink); margin-bottom:8px;}
+  .coupon-confirm-desc{font-size:13.5px; color:var(--muted); line-height:1.5; margin-bottom:20px;}
+  .coupon-confirm-actions{display:flex; gap:10px;}
+  .coupon-confirm-keep{
+    flex:1; padding:12px; border-radius:12px; border:1.5px solid var(--line);
+    background:#fff; color:var(--ink); font-weight:700; font-size:13.5px;
+    cursor:pointer; font-family:inherit; transition:border-color .15s ease;
+  }
+  .coupon-confirm-keep:hover{border-color:var(--leaf);}
+  .coupon-confirm-replace{
+    flex:1; padding:12px; border-radius:12px; border:none;
+    background:var(--forest); color:#fff; font-weight:700; font-size:13.5px;
+    cursor:pointer; font-family:inherit; transition:background .15s ease;
+  }
+  .coupon-confirm-replace:hover{background:var(--leaf-dark);}
+
+  .toast{
+    position:fixed; bottom:104px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--forest); color:#fff; padding:12px 20px; border-radius:30px; font-size:13.5px;
+    font-weight:600; box-shadow:var(--shadow-lift); z-index:110; opacity:0; pointer-events:none;
+    transition:all .3s ease; display:flex; align-items:center; gap:8px; white-space:nowrap;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+  /* ---- DESKTOP COUPON MODAL (min-width: 992px) ---- */
+  @media(min-width:992px){
+    .coupon-overlay{align-items:center;}
+    .coupon-modal{
+      border-radius:24px; max-height:80vh; width:560px;
+      box-shadow:0 24px 80px rgba(27,67,50,0.18);
+      transform:scale(0.96) translateY(10px); transition:transform .3s cubic-bezier(.2,.8,.2,1);
+    }
+    .coupon-overlay.show .coupon-modal{transform:scale(1) translateY(0);}
+    .coupon-list{padding:0 22px 22px;}
+  }
+
+  /* ---- TABLET COUPON MODAL ---- */
+  @media(min-width:768px) and (max-width:991px){
+    .coupon-modal{max-width:560px;}
+  }
+
+  .field-toggle{
+    display:flex; align-items:center; justify-content:space-between; padding-top:10px; margin-top:8px;
+    border-top:1px solid var(--line);
+  }
+  .field-toggle span{font-size:13.5px; font-weight:600; color:var(--ink);}
+  .switch{width:42px; height:24px; border-radius:20px; background:var(--line); position:relative; cursor:pointer; flex-shrink:0; transition:background .2s ease;}
+  .switch::after{content:""; position:absolute; width:18px; height:18px; border-radius:50%; background:#fff; top:3px; left:3px; transition:all .2s ease; box-shadow:0 1px 3px rgba(0,0,0,0.3);}
+  .switch.on{background:var(--leaf);}
+  .switch.on::after{left:21px;}
+
+  textarea.instr{
+    width:100%; border:1.5px solid var(--line); border-radius:var(--radius-sm); padding:11px 13px;
+    font-family:inherit; font-size:13.5px; resize:none; margin-top:10px;
+  }
+  textarea.instr:focus{outline:none; border-color:var(--leaf);}
+
+  /* ---------- DESKTOP REDESIGN SUPPORT (hidden on mobile) ---------- */
+  .back-btn{order:1;}
+  .topbar-mid{order:2; flex:1; min-width:0;}
+  .brand-logo{order:3;}
+  .topbar-secure{display:none;}
+  .checkout-progress{display:none;}
+  .fresh-section-label{display:none;}
+  .fresh-change{display:none;}
+  .fresh-head{display:block;}
+  .fresh-badge{display:none;}
+  .fresh-edit{display:none;}
+  .paybar-label{display:none;}
+  .paybar-secure-note{display:none;}
+  .order-items{display:block; padding:8px 0 4px; border-bottom:1px dashed var(--line); margin-bottom:10px; }
+  .oi-row{ display:flex; align-items:center; gap:10px; padding:8px 0; }
+  .oi-thumb{ width:60px; height:60px; border-radius:14px; background:var(--sage); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; overflow:hidden; }
+  .oi-info{ flex:1; min-width:0; }
+  .oi-name{ font-size:13px; font-weight:700; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .oi-meta{ font-size:11px; color:var(--muted); margin-top:1px; }
+  .oi-price{ font-size:13px; font-weight:700; color:var(--ink); flex-shrink:0; }
+  .order-column{display:block;}
+  .tip-card{display:none !important;}
+
+  @media (max-width:400px){
+    .vine-step{width:58px;}
+    .vine-step span{font-size:10px;}
+  }
+
+  /* ============ DESKTOP REDESIGN (min-width: 992px) ============ */
+  @media (min-width: 992px){
+
+    body{ background:#F2F5EE; padding-bottom:0; }
+
+    /* ---- HEADER ---- */
+    .topbar{
+      position:relative; max-width:1180px; margin:16px auto 0; padding:12px 24px;
+      border-radius:16px; border:1px solid #E2E8D8;
+      background:#fff;
+      box-shadow:0 2px 16px rgba(27,67,50,0.06); top:12px;
+      gap:10px; align-items:center;
+    }
+    .topbar .back-btn{ order:1; border-radius:50%; width:38px; height:38px; }
+    .topbar .brand-logo{ order:2; margin-left:4px; }
+    .topbar .brand-area{ order:3; margin-left:0; display:block; }
+    .topbar .brand-name{ font-size:17px; font-weight:800; letter-spacing:.2px; color:var(--ink); line-height:1.15; }
+    .topbar .brand-tagline{ font-size:11px; color:var(--muted); margin-top:1px; letter-spacing:.3px; }
+    .topbar .topbar-mid{ display:none; }
+    .topbar-page-title{
+      display:block; position:absolute; left:50%; transform:translateX(-50%);
+      font-size:19px; font-weight:800; letter-spacing:.5px; color:var(--ink); white-space:nowrap;
+    }
+    .topbar-page-title::after{
+      content:''; display:block; width:28px; height:3px; border-radius:3px;
+      background:var(--leaf); margin:4px auto 0;
+    }
+    .topbar .topbar-secure{
+      order:4; margin-left:auto; display:inline-flex; align-items:center; gap:7px;
+      color:#1B4332; background:linear-gradient(135deg,#E8F5E3,#D4EDDA); border:1px solid #B8D8B0;
+      padding:8px 16px; border-radius:30px; font-size:12.5px; font-weight:700;
+      letter-spacing:.3px; white-space:nowrap;
+      box-shadow:0 2px 8px rgba(63,143,82,0.1);
+    }
+    .topbar-secure svg{ color:var(--leaf); }
+
+    /* ---- MAIN LAYOUT ---- */
+    .wrap{
+      max-width:1180px; padding:28px 0 72px;
+      display:grid; grid-template-columns:minmax(0,1fr) 420px;
+      grid-template-areas:
+        "progress progress"
+        "leftcol summary";
+      gap:22px;
+    }
+    .left-col{ grid-area:leftcol; display:flex; flex-direction:column; gap:16px; align-self:stretch; }
+    .left-col > .card,
+    .left-col > .coupon-strip{ margin-bottom:0; }
+    .wrap .pay-card{ display:flex; flex-direction:column; }
+    .wrap #billSummaryCard{ grid-area:summary; display:flex; flex-direction:column; align-self:stretch; overflow:hidden; }
+
+    /* ---- CHECKOUT PROGRESS ---- */
+    .checkout-progress{
+      grid-area:progress; display:flex; align-items:center; justify-content:center;
+      background:#fff; border:1px solid #E9EDE2; border-radius:16px;
+      padding:15px 24px; box-shadow:0 2px 10px rgba(27,67,50,0.04);
+    }
+    .cp-step{ display:flex; align-items:center; gap:9px; }
+    .cp-dot{
+      width:30px; height:30px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:12px; font-weight:800; color:#9aa692;
+      background:#F0F3EA; border:1.5px solid #DDE3D4;
+    }
+    .cp-step.done .cp-dot{ background:var(--leaf); border-color:var(--leaf); color:#fff; }
+    .cp-step.active .cp-dot{ background:var(--forest); border-color:var(--forest); color:#fff; box-shadow:0 0 0 5px rgba(27,67,50,0.10); }
+    .cp-label{ font-size:13px; font-weight:700; color:#9aa692; white-space:nowrap; }
+    .cp-step.done .cp-label{ color:var(--leaf-dark); }
+    .cp-step.active .cp-label{ color:var(--forest); font-weight:800; }
+    .cp-line{ width:56px; height:2px; border-radius:2px; background:#E2E7D9; margin:0 14px; }
+    .cp-line.done{ background:var(--leaf); }
+
+    /* ---- SHARED CARD STYLE ---- */
+    .card{
+      border-radius:16px; border:1px solid #E9EDE2;
+      box-shadow:0 2px 14px rgba(27,67,50,0.08);
+      padding:26px 28px; margin-bottom:0;
+    }
+    .card-head{ margin-bottom:18px; }
+    .card-head h2{ font-size:13px; color:var(--muted); letter-spacing:1.2px; }
+    .card-head h2::before{
+      content:''; display:inline-block; width:8px; height:8px; border-radius:50%;
+      background:var(--leaf); margin-right:8px; vertical-align:1px;
+    }
+
+    /* ---- DELIVERY INFORMATION ---- */
+    .fresh-card{
+      background:#fff; color:var(--ink);
+      border:1px solid #E9EDE2; border-radius:14px;
+      box-shadow:0 2px 14px rgba(27,67,50,0.08);
+      padding:22px 24px 20px; margin-bottom:0; overflow:visible;
+    }
+    .fresh-card::before{ display:none; }
+    .fresh-head{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding-bottom:12px; border-bottom:1px dashed var(--line); margin-bottom:14px;
+    }
+    .fresh-section-label{
+      display:flex; align-items:center; gap:8px;
+      font-size:13px; text-transform:uppercase; letter-spacing:1.1px;
+      font-weight:700; color:var(--muted);
+    }
+    .fresh-section-label svg{ color:var(--leaf); }
+    .fresh-badge{
+      display:inline-block; font-size:10.5px; font-weight:800; letter-spacing:.5px;
+      background:var(--sage); color:#000; padding:3px 10px; border-radius:20px;
+      margin-bottom:7px; text-transform:uppercase;
+    }
+    .fresh-badge:empty{ display:none; }
+    .fresh-change{
+      display:inline-flex; align-items:center; gap:5px;
+      font-size:12px; font-weight:700; color:var(--leaf-dark);
+      background:var(--sage); border:1px solid #DCE9D4; border-radius:20px;
+      padding:6px 14px; cursor:pointer; font-family:inherit; line-height:1.4;
+      transition:background .15s ease, border-color .15s ease;
+    }
+    .fresh-change svg{ color:var(--leaf); }
+    .fresh-change:hover{ background:#E2EDDB; border-color:var(--leaf); }
+    .fresh-card .fresh-top{ margin-bottom:0; }
+    .fresh-card .fresh-eta-label{ color:#000; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+    .fresh-card .addr-structured .addr-name{ font-size:17px; font-weight:800; color:#000; line-height:1.5; }
+    .fresh-card .addr-structured .addr-line{ font-size:14px; font-weight:400; color:#000 !important; line-height:1.7; }
+    .fresh-card .addr-structured .addr-line b{ font-weight:700; }
+    .fresh-card .addr-structured .addr-phone-row{ font-size:14px; font-weight:400; color:#000 !important; line-height:1.7; }
+    .fresh-card .addr-structured .addr-phone-row b{ font-weight:700; }
+
+    /* ---- DELIVERY INFO EDIT STATE ---- */
+    .fresh-card.editing .fresh-top{ display:none; }
+    .fresh-card.editing .fresh-edit{ display:block; animation:freshEditIn .22s ease; }
+    @keyframes freshEditIn{ from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:none;} }
+    .fresh-edit-title{ font-size:13px; font-weight:800; color:var(--ink); margin-bottom:14px; }
+    .fresh-edit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .fresh-field{ display:flex; flex-direction:column; gap:6px; }
+    .fresh-field-full{ grid-column:1 / -1; }
+    .fresh-field label{ font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.3px; }
+    .fresh-field input, .fresh-field textarea{
+      width:100%; border:1.5px solid var(--line); border-radius:10px;
+      padding:10px 12px; font-family:inherit; font-size:13.5px; color:var(--ink);
+      background:#fff; box-sizing:border-box; transition:border-color .15s ease, box-shadow .15s ease;
+    }
+    .fresh-field input:focus, .fresh-field textarea:focus{
+      outline:none; border-color:var(--leaf); box-shadow:0 0 0 3px rgba(63,143,82,0.12);
+    }
+    .fresh-field textarea{ resize:vertical; min-height:58px; line-height:1.5; }
+    .fresh-edit-actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:18px; }
+    .fresh-btn-cancel, .fresh-btn-save{
+      font-family:inherit; font-size:13px; font-weight:800; border-radius:10px;
+      padding:10px 22px; cursor:pointer; transition:background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .fresh-btn-cancel{
+      background:#fff; color:var(--muted); border:1.5px solid var(--line);
+    }
+    .fresh-btn-cancel:hover{ border-color:var(--leaf); color:var(--leaf-dark); }
+    .fresh-btn-save{
+      background:var(--leaf); color:#fff; border:1.5px solid var(--leaf);
+    }
+    .fresh-btn-save:hover{ background:var(--leaf-dark); border-color:var(--leaf-dark); }
+
+    /* ---- COUPON ---- */
+    .coupon-strip{
+      background:linear-gradient(90deg,#F2F7F1,#FBFDF9);
+      border:1.5px dashed var(--leaf); border-radius:16px;
+      padding:16px 18px; margin-bottom:0;
+      box-shadow:0 2px 10px rgba(27,67,50,0.04);
+    }
+    .coupon-strip .coupon-icon{ background:var(--leaf); }
+    .coupon-title{ font-weight:600; color:#000; }
+    .coupon-sub{ color:#888; }
+    .coupon-strip.applied{ border-style:solid; border-color:var(--leaf); background:linear-gradient(135deg,#F0F8EC,#F8FCF6); }
+    .coupon-strip.applied .coupon-icon{ background:var(--leaf); }
+
+    /* ---- PAYMENT METHODS ---- */
+    .left-col .pay-card{ flex:1; }
+    .pay-card .card-head{ margin-bottom:14px; }
+    #payOptions{ display:flex; flex-direction:column; gap:12px; }
+    #payOptions:has(.pay-panel-col) .pay-panel-col{ display:contents; }
+    #payOptions:has(.upi-apps-panel), #payOptions:has(.payment-detail-panel){
+      display:grid; grid-template-columns:280px 1fr; column-gap:22px; align-items:start;
+    }
+    #payOptions .pay-nav-col{
+      grid-column:1; grid-row:1; display:flex; flex-direction:column; gap:12px; min-width:0;
+    }
+    #payOptions:not(:has(.upi-apps-panel)):not(:has(.payment-detail-panel)) .pay-nav-col{ gap:12px; }
+    #payOptions .pay-option{
+      width:100%; box-sizing:border-box; margin-bottom:0; padding:16px 16px;
+      border-radius:12px; border:1.5px solid #E0E6D6; background:#fff;
+      transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+      cursor:pointer;
+    }
+    #payOptions .pay-panel-col{ grid-column:2; grid-row:1; min-width:0; }
+    #payOptions .pay-option:not(.selected):hover{
+      border-color:var(--leaf); background:#FAFCF7;
+      box-shadow:0 4px 14px rgba(27,67,50,0.08);
+    }
+    #payOptions .pay-option.selected{
+      border-color:var(--leaf);
+      background:linear-gradient(135deg, #ffffff 0%, #f1f8ed 50%, #dcefd6 100%);
+      box-shadow:0 0 0 3px rgba(63,143,82,0.12);
+    }
+    #payOptions .pay-label{ font-weight:600; color:#000; }
+    #payOptions .pay-sub{ color:#888; }
+    #payOptions .pay-option.selected .pay-label{ color:var(--forest); }
+    #payOptions .pay-option.selected .pay-icon{ background:#fff; box-shadow:0 2px 6px rgba(27,67,50,0.12); }
+    #payOptions .pay-option.selected .pay-radio{
+      border-color:var(--leaf); background:var(--leaf);
+    }
+    #payOptions .pay-option.selected .pay-radio::after{
+      content:"\2713"; position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-size:12px; font-weight:900; background:none;
+    }
+    .pay-option:focus-visible,
+    .upi-app-chip:focus-visible,
+    .payment-choice:focus-visible{
+      outline:2px solid var(--leaf); outline-offset:2px;
+    }
+    #payOptions .upi-apps-panel, #payOptions .payment-detail-panel{
+      grid-column:2; grid-row:1; align-self:start; box-sizing:border-box; margin:0;
+      border:1px solid #E4EBDF; background:#fff; border-radius:14px; padding:20px;
+      max-height:440px; overflow-y:auto;
+    }
+    #payOptions .upi-apps-panel::-webkit-scrollbar, #payOptions .payment-detail-panel::-webkit-scrollbar{width:5px;}
+    #payOptions .upi-apps-panel::-webkit-scrollbar-track, #payOptions .payment-detail-panel::-webkit-scrollbar-track{background:transparent;}
+    #payOptions .upi-apps-panel::-webkit-scrollbar-thumb, #payOptions .payment-detail-panel::-webkit-scrollbar-thumb{background:#c5d1be; border-radius:10px;}
+    #payOptions .upi-apps-grid{ grid-template-columns:1fr; gap:10px; }
+    #payOptions .upi-apps-title{ font-size:13px; margin-bottom:14px; }
+
+    /* ---- TIP ---- */
+    .tip-card{ }
+    .tip-row{ gap:10px; }
+    .tip-chip{
+      border-radius:12px; padding:11px 20px; font-size:14px; border:1.5px solid #E0E6D6;
+    }
+    .tip-chip:hover{ border-color:var(--leaf); }
+    .tip-chip.active{
+      background:var(--forest); border-color:var(--forest); color:#fff;
+      box-shadow:0 4px 12px rgba(27,67,50,0.18);
+    }
+
+    /* ---- ORDER SUMMARY (right column) ---- */
+    #billSummaryCard{
+      border-radius:16px; padding:26px 26px 20px; margin-bottom:0;
+    }
+    #billSummaryCard .os-items-wrap{ flex:1; min-height:0; overflow-y:auto; }
+    #billSummaryCard .card-head{ padding-bottom:14px; border-bottom:1px dashed var(--line); margin-bottom:6px; }
+    #billSummaryCard .card-head h2{ color:var(--muted); font-size:15px; letter-spacing:1.4px; }
+    .order-items{ display:block; padding:6px 0 4px; border-bottom:1px dashed var(--line); margin-bottom:10px; max-height:240px; overflow-y:auto; }
+    .oi-row{ display:flex; align-items:center; gap:11px; padding:9px 0; }
+    .oi-thumb{ width:40px; height:40px; border-radius:10px; background:var(--sage); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+    .oi-info{ flex:1; min-width:0; }
+    .oi-name{ font-size:13.5px; font-weight:700; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .oi-meta{ font-size:11.5px; color:var(--muted); margin-top:1px; }
+    .oi-price{ font-size:13.5px; font-weight:700; color:var(--ink); flex-shrink:0; }
+    .bill-row{ font-size:13.5px; padding:7px 0; }
+    .bill-total{ padding-top:10px; border-top:2px solid #E0E6D6; margin-top:4px; }
+    .bill-total .label{ font-size:17px; }
+    .bill-total .value{ font-size:24px; }
+    .savings-banner{ border-radius:10px; }
+
+    .os-delivery-info{
+      margin-top:14px; padding-top:14px; border-top:1px dashed var(--line);
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .os-delivery-section{}
+    .os-delivery-label{
+      display:flex; align-items:center; gap:6px; font-size:11px; font-weight:700;
+      text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin-bottom:3px;
+    }
+    .os-delivery-label svg{ color:var(--leaf); flex-shrink:0; }
+    .os-delivery-value{ font-size:13.5px; font-weight:600; color:var(--ink); line-height:1.4; }
+
+    .paybar{ padding-top:16px; }
+    .pay-cta{
+      height:54px; border-radius:14px; font-size:16px;
+      box-shadow:0 8px 20px rgba(63,143,82,0.32);
+    }
+    .paybar-secure-note{ padding-top:4px; }
+
+    /* ---- WHY CHOOSE US BOX ---- */
+    .os-why-box{
+      margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);
+    }
+    .os-why-title{
+      font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.8px;
+      color:var(--muted); margin-bottom:12px;
+    }
+    .os-why-grid{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px;
+    }
+    .os-why-item{
+      display:flex; align-items:center; gap:10px;
+      background:linear-gradient(135deg, #f0f7ee, #e8f5e9);
+      border:1px solid #d5e8d0; border-radius:10px; padding:10px 12px;
+    }
+    .os-why-icon{
+      width:32px; height:32px; border-radius:8px;
+      background:var(--forest); color:#fff;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .os-why-icon svg{ color:#fff; }
+    .os-why-text{ min-width:0; }
+    .os-why-label{ font-size:12px; font-weight:700; color:var(--ink); line-height:1.3; }
+    .os-why-desc{ font-size:10.5px; color:var(--muted); line-height:1.3; margin-top:1px; }
+
+    /* ---- TRUST BANNER ---- */
+    .os-trust-banner{
+      margin-top:auto; padding-top:14px;
+      display:flex; flex-direction:column; gap:8px;
+    }
+    .os-trust-strip{
+      display:flex; align-items:center; gap:12px;
+      background:linear-gradient(135deg, #e8f5e9, #f1f8ed);
+      border:1px solid #c8e6c9; border-radius:10px;
+      padding:12px 14px;
+    }
+    .os-trust-strip-icon{
+      width:32px; height:32px; border-radius:8px;
+      background:var(--forest);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .os-trust-strip-icon svg{ color:#fff; }
+    .os-trust-strip-text{ display:flex; flex-direction:column; min-width:0; }
+    .os-trust-strip-title{ font-size:13px; font-weight:700; color:var(--ink); line-height:1.3; }
+    .os-trust-strip-desc{ font-size:11px; color:var(--muted); line-height:1.3; margin-top:1px; }
+  }
+
+  /* ============ DESKTOP TEAM-STYLE BACKGROUND (min-width: 1024px) ============ */
+  @media (min-width: 1024px){
+    .os-delivery-desktop-hide{display:none !important}
+    body{
+      min-height:100vh;
+      background-color:#fff;
+      background-image:
+        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20120%20160'%3E%3Cg%20opacity='0.2'%20transform='rotate(-10%2060%2080)'%3E%3Cpath%20d='M60%2010%20C30%2040%2C%2010%2080%2C%2020%20140%20C20%20140%2C%2040%20100%2C%2060%2080%20C80%20100%2C%20100%20140%2C%20100%20140%20C110%2080%2C%2090%2040%2C%2060%2010Z'%20fill='%234d7c3f'%20opacity='0.5'/%3E%3C/g%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20120%20160'%3E%3Cg%20opacity='0.2'%20transform='rotate(170%2060%2080)'%3E%3Cpath%20d='M60%2010%20C30%2040%2C%2010%2080%2C%2020%20140%20C20%20140%2C%2040%20100%2C%2060%2080%20C80%20100%2C%20100%20140%2C%20100%20140%20C110%2080%2C%2090%2040%2C%2060%2010Z'%20fill='%234d7c3f'%20opacity='0.5'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:
+        left -15px top 10px,
+        right -15px bottom 20px;
+      background-size:
+        140px 187px,
+        140px 187px;
+    }
+
+    /* ---- PREMIUM PAYMENT CARD HOVER (1024px+) ---- */
+    #payOptions .pay-option:not(.selected),
+    #payOptions .upi-app-chip:not(.selected){
+      transition:border-color .25s ease, box-shadow .25s ease, background .25s ease, transform .25s ease;
+    }
+    #payOptions .pay-option:not(.selected):hover,
+    #payOptions .upi-app-chip:not(.selected):hover{
+      background:linear-gradient(135deg, #ffffff 0%, #f1f8ed 50%, #dcefd6 100%);
+      border-color:var(--leaf);
+      box-shadow:0 6px 20px rgba(63,143,82,0.16);
+      transform:translateY(-2px);
+    }
+    #payOptions .pay-option:not(.selected):hover .pay-icon{
+      background:#EAF4E4;
+    }
+    #payOptions .upi-app-chip:not(.selected):hover .upi-app-icon{
+      box-shadow:0 0 0 1px var(--leaf), 0 2px 8px rgba(63,143,82,0.15);
+    }
+
+    /* ---- SELECTED STATE: PREMIUM GRADIENT (1024px+) ---- */
+    #payOptions .upi-app-chip.selected{
+      background:linear-gradient(135deg, #ffffff 0%, #f1f8ed 50%, #dcefd6 100%);
+    }
+    #payOptions .payment-choice:not(.selected){
+      transition:border-color .25s ease, box-shadow .25s ease, background .25s ease, transform .25s ease;
+    }
+    #payOptions .payment-choice:not(.selected):hover{
+      background:linear-gradient(135deg, #ffffff 0%, #f1f8ed 50%, #dcefd6 100%);
+      border-color:var(--leaf);
+      box-shadow:0 6px 20px rgba(63,143,82,0.16);
+      transform:translateY(-2px);
+    }
+    #payOptions .payment-choice.selected{
+      background:linear-gradient(135deg, #ffffff 0%, #f1f8ed 50%, #dcefd6 100%);
+      border-color:var(--leaf);
+      box-shadow:0 0 0 3px rgba(63,143,82,0.12);
+    }
+  }
+
+  /* ============ MOBILE MODERN REDESIGN (max-width: 767px) ============ */
+  @media (max-width: 767px){
+
+    body{ background:var(--cream); padding-bottom:0; }
+
+    /* ---- TOPBAR (matches shop page mobile header) ---- */
+    .topbar{
+      position:sticky; top:0; z-index:40;
+      display:flex; align-items:center; justify-content:center;
+      background:#fff; color:var(--ink);
+      min-height:56px; padding:6px clamp(12px,3vw,24px);
+      box-shadow:0 2px 12px rgba(0,0,0,0.08);
+      border-radius:0 0 20px 20px;
+    }
+    .topbar .back-btn{
+      position:absolute; left:clamp(12px,3vw,24px); z-index:1;
+      width:34px; height:34px; border-radius:50%;
+      border:1.5px solid rgba(91,140,81,.28);
+      background:linear-gradient(145deg, #f4fbf1 0%, #e8f5e3 100%);
+      color:var(--leaf-dark); display:flex; align-items:center; justify-content:center;
+      cursor:pointer; flex-shrink:0;
+    }
+    .topbar .back-btn:active{transform:scale(0.92);}
+    .topbar .brand-logo{
+      width:32px; height:32px; border-radius:50%; object-fit:cover;
+      flex-shrink:0; margin-right:8px; margin-left:0 !important;
+      order:-1;
+    }
+    .topbar .brand-area{
+      display:block; margin:0; color:#1c2820;
+    }
+    .topbar .brand-name{
+      font-size:clamp(16px, 2.5vw, 22px); font-weight:900; letter-spacing:-.5px;
+      line-height:1; color:#1c2820;
+    }
+    .topbar .brand-tagline{
+      font-size:9px; font-weight:700; color:#263528; line-height:1.1; margin-top:2px;
+    }
+    .topbar .topbar-mid, .topbar .topbar-secure, .topbar .topbar-title, .topbar .topbar-sub{ display:none; }
+
+    /* ---- CHECKOUT PROGRESS (mobile) ---- */
+    .checkout-progress{
+      display:flex; align-items:center; justify-content:center;
+      background:#fff; border:1px solid #E9EDE2; border-radius:16px;
+      padding:12px 16px; margin-bottom:14px;
+      box-shadow:0 2px 10px rgba(27,67,50,0.04);
+    }
+    .cp-step{ display:flex; align-items:center; gap:6px; }
+    .cp-dot{
+      width:26px; height:26px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:11px; font-weight:800; color:#9aa692;
+      background:#F0F3EA; border:1.5px solid #DDE3D4;
+    }
+    .cp-step.done .cp-dot{ background:var(--leaf); border-color:var(--leaf); color:#fff; }
+    .cp-step.active .cp-dot{ background:var(--forest); border-color:var(--forest); color:#fff; box-shadow:0 0 0 4px rgba(27,67,50,0.10); }
+    .cp-label{ font-size:11px; font-weight:700; color:#9aa692; white-space:nowrap; }
+    .cp-step.done .cp-label{ color:var(--leaf-dark); }
+    .cp-step.active .cp-label{ color:var(--forest); font-weight:800; }
+    .cp-line{ width:32px; height:2px; border-radius:2px; background:#E2E7D9; margin:0 8px; }
+    .cp-line.done{ background:var(--leaf); }
+
+    .wrap{ max-width:640px; margin:0 auto; padding:16px 16px 8px; }
+
+    /* ---- MODERN CARD ---- */
+    .card{
+      background:#fff; border:1px solid #E9EDE2;
+      border-radius:16px; box-shadow:0 2px 12px rgba(27,67,50,0.06);
+      padding:16px; margin-bottom:14px;
+    }
+    .card-head{ margin-bottom:12px; }
+    .card-head h2{ font-size:13px; letter-spacing:1px; }
+
+    /* ---- DELIVERY INFORMATION (white card) ---- */
+    .fresh-card{
+      background:#fff; color:var(--ink);
+      border:1px solid #E9EDE2; border-radius:16px;
+      box-shadow:0 2px 12px rgba(27,67,50,0.06);
+      padding:16px; margin-bottom:14px; overflow:visible;
+    }
+    .fresh-card::before{ display:none; }
+    .fresh-head{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding-bottom:12px; border-bottom:1px dashed var(--line); margin-bottom:12px;
+    }
+    .fresh-section-label{
+      display:flex; align-items:center; gap:7px;
+      font-size:11.5px; text-transform:uppercase; letter-spacing:1px;
+      font-weight:700; color:var(--muted);
+    }
+    .fresh-section-label svg{ color:var(--leaf); }
+    .fresh-change{
+      display:inline-flex; align-items:center; gap:5px;
+      font-size:12px; font-weight:700; color:var(--leaf-dark);
+      background:var(--sage); border:1px solid #DCE9D4; border-radius:20px;
+      padding:7px 14px; cursor:pointer; font-family:inherit; line-height:1.3;
+      flex-shrink:0;
+    }
+    .fresh-change:active{ background:#E2EDDB; }
+    .fresh-badge{
+      display:inline-block; font-size:10.5px; font-weight:800; letter-spacing:.5px;
+      background:var(--sage); color:#000; padding:3px 10px; border-radius:20px;
+      margin-bottom:6px; text-transform:uppercase;
+    }
+    .fresh-badge:empty{ display:none; }
+    .fresh-card .fresh-top{ display:block; margin-bottom:0; }
+    .fresh-card .fresh-eta-label{ color:#000; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+    .fresh-card .addr-structured .addr-name{ font-size:16px; font-weight:800; color:#000; line-height:1.5; }
+    .fresh-card .addr-structured .addr-line{ font-size:14px; font-weight:400; color:#000 !important; line-height:1.7; }
+    .fresh-card .addr-structured .addr-line b{ font-weight:700; }
+    .fresh-card .addr-structured .addr-phone-row{ font-size:13.5px; font-weight:400; color:#000 !important; line-height:1.7; }
+    .fresh-card .addr-structured .addr-phone-row b{ font-weight:700; }
+
+  /* ---- STRUCTURED ADDRESS ---- */
+  .addr-structured{display:flex; flex-direction:column; gap:8px;}
+  .addr-structured .fresh-eta-label{font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.8px; margin-bottom:4px;}
+  .addr-structured .fresh-badge{display:inline-block; font-size:10px; font-weight:800; letter-spacing:.4px; background:var(--sage); color:var(--forest); padding:3px 10px; border-radius:20px; margin-bottom:6px; text-transform:uppercase;}
+  .addr-structured .fresh-badge:empty{display:none;}
+  .addr-structured .addr-name{font-size:16px; font-weight:800; color:#000; line-height:1.5;}
+  .addr-structured .addr-line{font-size:14px; font-weight:400; color:#000 !important; line-height:1.7; padding-left:2px;}
+  .addr-structured .addr-line b{font-weight:700;}
+  .addr-structured .addr-phone-row{font-size:13.5px; font-weight:400; color:#000 !important; margin-top:6px; line-height:1.7; padding-left:2px;}
+  .addr-structured .addr-phone-row b{font-weight:700;}
+
+    /* ---- DELIVERY EDIT STATE (mobile) ---- */
+    .fresh-card.editing .fresh-top{ display:none; }
+    .fresh-card.editing .fresh-edit{ display:block; animation:freshEditIn .22s ease; }
+    .fresh-edit-title{ font-size:13px; font-weight:800; color:var(--ink); margin-bottom:12px; }
+    .fresh-edit-grid{ display:grid; grid-template-columns:1fr; gap:12px; }
+    .fresh-field{ display:flex; flex-direction:column; gap:6px; }
+    .fresh-field label{ font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.3px; }
+    .fresh-field input, .fresh-field textarea{
+      width:100%; border:1.5px solid var(--line); border-radius:12px;
+      padding:12px 14px; font-family:inherit; font-size:14px; color:var(--ink);
+      background:#fff; box-sizing:border-box; -webkit-appearance:none;
+      transition:border-color .15s ease, box-shadow .15s ease;
+    }
+    .fresh-field input:focus, .fresh-field textarea:focus{
+      outline:none; border-color:var(--leaf); box-shadow:0 0 0 3px rgba(63,143,82,0.12);
+    }
+    .fresh-field textarea{ resize:vertical; min-height:64px; line-height:1.5; }
+    .fresh-edit-actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:16px; }
+    .fresh-btn-cancel, .fresh-btn-save{
+      font-family:inherit; font-size:13px; font-weight:800; border-radius:12px;
+      padding:12px 22px; cursor:pointer; border:1.5px solid transparent;
+      transition:background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .fresh-btn-cancel{ background:#fff; color:var(--muted); border-color:var(--line); }
+    .fresh-btn-save{ background:var(--leaf); color:#fff; border-color:var(--leaf); }
+
+    /* ---- COUPON STRIP (green, matches desktop) ---- */
+    .coupon-strip{
+      background:linear-gradient(90deg,#F2F7F1,#FBFDF9);
+      border:1.5px dashed var(--leaf); border-radius:16px;
+      padding:16px 18px; margin-bottom:14px;
+      box-shadow:0 2px 10px rgba(27,67,50,0.04);
+    }
+    .coupon-strip .coupon-icon{ background:var(--leaf); }
+    .coupon-title{ font-weight:600; color:#000; }
+    .coupon-sub{ color:#888; }
+    .coupon-strip.applied{ border-style:solid; border-color:var(--leaf); background:linear-gradient(135deg,#F0F8EC,#F8FCF6); }
+    .coupon-strip.applied .coupon-icon{ background:var(--leaf); }
+
+    /* ---- PAYMENT METHOD (stacked touch cards) ---- */
+    .pay-card .card-head{ margin-bottom:12px; }
+    #payOptions .pay-nav-col{ display:flex; flex-direction:column; gap:12px; }
+    #payOptions .pay-option{
+      display:flex; align-items:center; gap:13px; width:100%;
+      min-height:60px; padding:14px 14px; box-sizing:border-box;
+      border:1.5px solid var(--line); border-radius:14px; background:#fff;
+      margin-bottom:0;
+      transition:border-color .2s ease, background .2s ease, transform .2s ease;
+      cursor:pointer;
+    }
+    #payOptions .pay-option:active{ transform:scale(0.99); }
+    #payOptions .pay-option:focus-visible{
+      outline:2px solid var(--leaf); outline-offset:2px;
+    }
+    #payOptions .pay-option.selected{
+      border-color:var(--leaf); background:var(--sage);
+      box-shadow:0 0 0 1px var(--leaf);
+    }
+    #payOptions .pay-label{ font-weight:700; font-size:14.5px; color:#000; }
+    #payOptions .pay-sub{ font-size:12px; color:var(--muted); margin-top:1px; }
+    #payOptions .pay-radio{
+      width:20px; height:20px; border-radius:50%; border:2px solid var(--line);
+      margin-left:auto; flex-shrink:0; position:relative;
+    }
+    #payOptions .pay-option.selected .pay-radio{ border-color:var(--leaf); }
+    #payOptions .pay-option.selected .pay-radio::after{
+      content:""; position:absolute; inset:3px; border-radius:50%; background:var(--leaf);
+    }
+
+    /* ---- PAYMENT DETAILS / UPI APPS (clean sub-card) ---- */
+    #payOptions .upi-apps-panel, #payOptions .payment-detail-panel{
+      background:#fff; border:1px solid #E4EBDF; border-radius:14px;
+      box-shadow:0 2px 10px rgba(27,67,50,0.04);
+      padding:16px; margin:14px 0 0;
+    }
+    #payOptions .upi-apps-title{ font-size:12px; font-weight:700; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:.6px; }
+    #payOptions .upi-apps-grid{ grid-template-columns:1fr; gap:10px; }
+    #payOptions .upi-app-chip{
+      display:flex; align-items:center; gap:12px; width:100%;
+      min-height:54px; padding:10px 14px; box-sizing:border-box;
+      border:1.5px solid var(--line); border-radius:12px; background:#fff;
+      transition:border-color .2s ease, background .2s ease, transform .2s ease;
+      cursor:pointer;
+    }
+    #payOptions .upi-app-chip:active{ transform:scale(0.99); }
+    #payOptions .upi-app-chip:focus-visible{ outline:2px solid var(--leaf); outline-offset:2px; }
+    #payOptions .upi-app-chip.selected{
+      border-color:var(--leaf); background:var(--sage);
+      box-shadow:0 0 0 1px var(--leaf);
+    }
+    #payOptions .upi-app-icon{ width:34px; height:34px; border-radius:9px; flex-shrink:0; }
+    #payOptions .upi-app-chip span{ font-size:13.5px; font-weight:600; color:var(--ink); flex:1; }
+    #payOptions .upi-app-radio{
+      width:18px; height:18px; border-radius:50%; border:2px solid var(--line);
+      flex-shrink:0; position:relative;
+    }
+    #payOptions .upi-app-chip.selected .upi-app-radio{ border-color:var(--leaf); }
+    #payOptions .upi-app-chip.selected .upi-app-radio::after{
+      content:""; position:absolute; inset:2px; border-radius:50%; background:var(--leaf);
+    }
+
+    /* ---- CARD / NETBANKING DETAILS (mobile) ---- */
+    #payOptions .payment-detail-title{ font-size:12px; font-weight:700; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:.6px; }
+    #payOptions .card-field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    #payOptions .card-field{ grid-column:span 2; }
+    #payOptions .card-field.half{ grid-column:span 1; }
+    @media (max-width:380px){
+      #payOptions .card-field.half{ grid-column:span 2; }
+    }
+    #payOptions .card-field label{ display:block; font-size:11.5px; font-weight:700; color:#000; margin-bottom:6px; }
+    #payOptions .card-field input{
+      width:100%; border:1.5px solid var(--line); border-radius:12px;
+      padding:13px 14px; font-family:inherit; font-size:14px; color:#000; background:#fff;
+      box-sizing:border-box; -webkit-appearance:none;
+    }
+    #payOptions .card-field input::placeholder{ color:#000; opacity:.6; }
+    #payOptions .card-field input:focus{ outline:none; border-color:var(--leaf); box-shadow:0 0 0 3px rgba(63,143,82,0.12); }
+    #payOptions .saved-payment-note{ font-size:11.5px; color:#000; margin-top:12px; line-height:1.5; }
+    #payOptions .payment-choice{
+      display:flex; align-items:center; gap:12px; width:100%;
+      min-height:52px; padding:10px 12px; box-sizing:border-box;
+      border:1.5px solid var(--line); border-radius:12px; background:#fff;
+      transition:border-color .2s ease, background .2s ease, transform .2s ease;
+      cursor:pointer;
+    }
+    #payOptions .payment-choice:active{ transform:scale(0.99); }
+    #payOptions .payment-choice.selected{ border-color:var(--leaf); background:var(--sage); box-shadow:0 0 0 1px var(--leaf); }
+    #payOptions .nb-search input{ width:100%; border:1.5px solid var(--line); border-radius:12px; padding:12px 36px 12px 14px; font-family:inherit; font-size:13.5px; color:var(--ink); background:#fff; box-sizing:border-box; }
+    #payOptions .nb-search input:focus{ outline:none; border-color:var(--leaf); box-shadow:0 0 0 3px rgba(63,143,82,0.12); }
+
+    /* ---- ORDER SUMMARY (mobile) ---- */
+    #billSummaryCard{ border-radius:16px; padding:16px; }
+    .order-items{ padding:2px 0 4px; border-bottom:1px dashed var(--line); margin-bottom:8px; }
+    .oi-row{ display:flex; align-items:center; gap:12px; padding:8px 0; }
+    .oi-thumb{ width:52px; height:52px; border-radius:12px; background:var(--sage); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; overflow:hidden; }
+    .oi-info{ flex:1; min-width:0; }
+    .oi-name{ font-size:13.5px; font-weight:700; color:var(--ink); }
+    .oi-meta{ font-size:11.5px; color:var(--muted); margin-top:2px; }
+    .oi-price{ font-size:13.5px; font-weight:700; color:var(--ink); flex-shrink:0; }
+    .bill-row{ font-size:13.5px; padding:7px 0; }
+    .bill-row .label{ color:#000; }
+    .bill-row .value{ font-weight:600; color:#000; }
+    .bill-total{ padding-top:8px; border-top:2px solid #E0E6D6; margin-top:4px; }
+    .bill-total .label{ font-size:15px; font-weight:700; color:#000; }
+    .bill-total .value{ font-size:19px; font-weight:800; color:#000; }
+
+    .os-delivery-info{
+      margin-top:12px; padding-top:12px; border-top:1px dashed var(--line);
+      display:flex; flex-direction:column; gap:8px;
+    }
+    .os-delivery-label{
+      display:flex; align-items:center; gap:5px; font-size:10px; font-weight:700;
+      text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin-bottom:2px;
+    }
+    .os-delivery-label svg{ color:var(--leaf); flex-shrink:0; }
+    .os-delivery-value{ font-size:13px; font-weight:600; color:var(--ink); line-height:1.4; }
+
+    /* ---- PLACE ORDER (mobile) ---- */
+    .paybar{ margin-top:16px; }
+    .pay-cta{
+      width:100%; height:52px; background:var(--leaf); color:#fff; border:none;
+      border-radius:14px; padding:0 18px; font-weight:800; font-size:16px;
+      font-family:inherit; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      box-shadow:0 6px 16px rgba(63,143,82,0.32);
+      transition:transform .12s ease, background .2s ease;
+    }
+    .pay-cta:active{ transform:scale(0.98); }
+    .pay-cta:disabled{ background:#B9C4B4; box-shadow:none; cursor:not-allowed; }
+  }
+
+  /* ============ TABLET MODERN REDESIGN (768px - 1023px) ============ */
+  @media (min-width: 768px) and (max-width: 1023px){
+
+    body{ background:var(--cream); padding-bottom:0; }
+
+    .wrap{
+      display:block; max-width:920px; margin:0 auto; padding:28px 28px 60px;
+    }
+    .left-col{ display:block; }
+    .checkout-progress{ display:none; }
+
+    /* ---- MODERN CARD ---- */
+    .card{
+      background:#fff; border:1px solid #E9EDE2;
+      border-radius:16px; box-shadow:0 2px 14px rgba(27,67,50,0.07);
+      padding:24px; margin-bottom:16px;
+    }
+    .card-head{ margin-bottom:16px; }
+    .card-head h2{ font-size:13px; color:var(--muted); letter-spacing:1.2px; }
+    .card-head h2::before{
+      content:''; display:inline-block; width:8px; height:8px; border-radius:50%;
+      background:var(--leaf); margin-right:8px; vertical-align:1px;
+    }
+
+    /* ---- DELIVERY INFORMATION (white card, full width) ---- */
+    .fresh-card{
+      background:#fff; color:var(--ink);
+      border:1px solid #E9EDE2; border-radius:16px;
+      box-shadow:0 2px 14px rgba(27,67,50,0.07);
+      padding:22px 24px; margin-bottom:16px; overflow:visible;
+    }
+    .fresh-card::before{ display:none; }
+    .fresh-head{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding-bottom:12px; border-bottom:1px dashed var(--line); margin-bottom:14px;
+    }
+    .fresh-section-label{
+      display:flex; align-items:center; gap:8px;
+      font-size:13px; text-transform:uppercase; letter-spacing:1.1px;
+      font-weight:700; color:var(--muted);
+    }
+    .fresh-section-label svg{ color:var(--leaf); }
+    .fresh-change{
+      display:inline-flex; align-items:center; gap:5px;
+      font-size:12px; font-weight:700; color:var(--leaf-dark);
+      background:var(--sage); border:1px solid #DCE9D4; border-radius:20px;
+      padding:8px 16px; cursor:pointer; font-family:inherit; line-height:1.3;
+      flex-shrink:0;
+    }
+    .fresh-badge{
+      display:inline-block; font-size:10.5px; font-weight:800; letter-spacing:.5px;
+      background:var(--sage); color:#000; padding:3px 10px; border-radius:20px;
+      margin-bottom:6px; text-transform:uppercase;
+    }
+    .fresh-badge:empty{ display:none; }
+    .fresh-card .fresh-top{ display:block; margin-bottom:0; }
+    .fresh-card .fresh-eta-label{ color:#000; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+    .fresh-card .addr-structured .addr-name{ font-size:17px; font-weight:800; color:#000; line-height:1.5; }
+    .fresh-card .addr-structured .addr-line{ font-size:14px; font-weight:400; color:#000 !important; line-height:1.7; }
+    .fresh-card .addr-structured .addr-line b{ font-weight:700; }
+    .fresh-card .addr-structured .addr-phone-row{ font-size:14px; font-weight:400; color:#000 !important; line-height:1.7; }
+    .fresh-card .addr-structured .addr-phone-row b{ font-weight:700; }
+
+    /* ---- DELIVERY EDIT STATE (tablet) ---- */
+    .fresh-card.editing .fresh-top{ display:none; }
+    .fresh-card.editing .fresh-edit{ display:block; animation:freshEditIn .22s ease; }
+    .fresh-edit-title{ font-size:13px; font-weight:800; color:var(--ink); margin-bottom:14px; }
+    .fresh-edit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .fresh-field{ display:flex; flex-direction:column; gap:6px; }
+    .fresh-field-full{ grid-column:1 / -1; }
+    .fresh-field label{ font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.3px; }
+    .fresh-field input, .fresh-field textarea{
+      width:100%; border:1.5px solid var(--line); border-radius:12px;
+      padding:12px 14px; font-family:inherit; font-size:14px; color:var(--ink);
+      background:#fff; box-sizing:border-box;
+      transition:border-color .15s ease, box-shadow .15s ease;
+    }
+    .fresh-field input:focus, .fresh-field textarea:focus{ outline:none; border-color:var(--leaf); box-shadow:0 0 0 3px rgba(63,143,82,0.12); }
+    .fresh-field textarea{ resize:vertical; min-height:64px; line-height:1.5; }
+    .fresh-edit-actions{ display:flex; justify-content:flex-end; gap:10px; margin-top:16px; }
+    .fresh-btn-cancel, .fresh-btn-save{
+      font-family:inherit; font-size:13px; font-weight:800; border-radius:12px;
+      padding:12px 24px; cursor:pointer; border:1.5px solid transparent;
+      transition:background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .fresh-btn-cancel{ background:#fff; color:var(--muted); border-color:var(--line); }
+    .fresh-btn-save{ background:var(--leaf); color:#fff; border-color:var(--leaf); }
+
+    /* ---- PAYMENT METHOD (40% / 60% split) ---- */
+    .pay-card .card-head{ margin-bottom:16px; }
+    #payOptions:has(.upi-apps-panel), #payOptions:has(.payment-detail-panel){
+      display:grid; grid-template-columns:minmax(0,40%) minmax(0,60%);
+      column-gap:22px; align-items:start;
+    }
+    #payOptions .pay-nav-col{
+      grid-column:1; grid-row:1; display:flex; flex-direction:column; gap:12px; min-width:0;
+    }
+    #payOptions:has(.pay-panel-col) .pay-panel-col{
+      display:block; grid-column:2; grid-row:1; min-width:0;
+    }
+    #payOptions .pay-option{
+      display:flex; align-items:center; gap:12px; width:100%;
+      min-height:58px; padding:14px; box-sizing:border-box;
+      border:1.5px solid #E0E6D6; border-radius:12px; background:#fff;
+      margin-bottom:0;
+      transition:border-color .2s ease, background .2s ease;
+      cursor:pointer;
+    }
+    #payOptions .pay-option:focus-visible{ outline:2px solid var(--leaf); outline-offset:2px; }
+    #payOptions .pay-option.selected{ border-color:var(--leaf); background:var(--sage); box-shadow:0 0 0 1px var(--leaf); }
+    #payOptions .pay-label{ font-weight:600; font-size:14px; color:#000; }
+    #payOptions .pay-sub{ font-size:12px; color:var(--muted); margin-top:1px; }
+    #payOptions .pay-radio{
+      width:20px; height:20px; border-radius:50%; border:2px solid var(--line);
+      margin-left:auto; flex-shrink:0; position:relative;
+    }
+    #payOptions .pay-option.selected .pay-radio{ border-color:var(--leaf); background:#fff; }
+    #payOptions .pay-option.selected .pay-radio::after{
+      content:""; position:absolute; inset:3px; border-radius:50%; background:var(--leaf);
+    }
+
+    /* ---- UPI APPS / PAYMENT DETAILS (right panel) ---- */
+    #payOptions .upi-apps-panel, #payOptions .payment-detail-panel{
+      grid-column:2; grid-row:1; align-self:start; box-sizing:border-box; margin:0;
+      background:#fff; border:1px solid #E4EBDF; border-radius:14px;
+      box-shadow:0 2px 10px rgba(27,67,50,0.04);
+      padding:18px;
+    }
+    #payOptions .upi-apps-title{ font-size:12.5px; font-weight:700; color:var(--muted); margin-bottom:14px; text-transform:uppercase; letter-spacing:.6px; }
+    #payOptions .upi-apps-grid{ grid-template-columns:1fr; gap:10px; }
+    #payOptions .upi-app-chip{
+      display:flex; align-items:center; gap:12px; width:100%;
+      min-height:54px; padding:10px 14px; box-sizing:border-box;
+      border:1.5px solid var(--line); border-radius:12px; background:#fff;
+      transition:border-color .2s ease, background .2s ease;
+      cursor:pointer;
+    }
+    #payOptions .upi-app-chip:focus-visible{ outline:2px solid var(--leaf); outline-offset:2px; }
+    #payOptions .upi-app-chip.selected{
+      border-color:var(--leaf); background:var(--sage);
+      box-shadow:0 0 0 1px var(--leaf);
+    }
+    #payOptions .upi-app-icon{ width:34px; height:34px; border-radius:9px; flex-shrink:0; }
+    #payOptions .upi-app-chip span{ font-size:13.5px; font-weight:600; color:var(--ink); flex:1; }
+    #payOptions .upi-app-radio{
+      width:18px; height:18px; border-radius:50%; border:2px solid var(--line);
+      flex-shrink:0; position:relative;
+    }
+    #payOptions .upi-app-chip.selected .upi-app-radio{ border-color:var(--leaf); }
+    #payOptions .upi-app-chip.selected .upi-app-radio::after{
+      content:""; position:absolute; inset:2px; border-radius:50%; background:var(--leaf);
+    }
+
+    /* ---- CARD / NETBANKING DETAILS (tablet) ---- */
+    #payOptions .payment-detail-title{ font-size:12.5px; font-weight:700; color:var(--muted); margin-bottom:14px; text-transform:uppercase; letter-spacing:.6px; }
+    #payOptions .card-field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    #payOptions .card-field{ grid-column:span 2; }
+    #payOptions .card-field.half{ grid-column:span 1; }
+    #payOptions .card-field label{ display:block; font-size:11.5px; font-weight:700; color:#000; margin-bottom:6px; }
+    #payOptions .card-field input{
+      width:100%; border:1.5px solid var(--line); border-radius:12px;
+      padding:13px 14px; font-family:inherit; font-size:14px; color:#000; background:#fff;
+      box-sizing:border-box;
+    }
+    #payOptions .card-field input::placeholder{ color:#000; opacity:.6; }
+    #payOptions .card-field input:focus{ outline:none; border-color:var(--leaf); box-shadow:0 0 0 3px rgba(63,143,82,0.12); }
+    #payOptions .saved-payment-note{ font-size:11.5px; color:#000; margin-top:12px; line-height:1.5; }
+    #payOptions .payment-choice{
+      display:flex; align-items:center; gap:12px; width:100%;
+      min-height:52px; padding:10px 12px; box-sizing:border-box;
+      border:1.5px solid var(--line); border-radius:12px; background:#fff;
+      transition:border-color .2s ease, background .2s ease;
+      cursor:pointer;
+    }
+    #payOptions .payment-choice.selected{ border-color:var(--leaf); background:var(--sage); box-shadow:0 0 0 1px var(--leaf); }
+    #payOptions .nb-search input{ width:100%; border:1.5px solid var(--line); border-radius:12px; padding:12px 36px 12px 14px; font-family:inherit; font-size:13.5px; color:var(--ink); background:#fff; box-sizing:border-box; }
+    #payOptions .nb-search input:focus{ outline:none; border-color:var(--leaf); box-shadow:0 0 0 3px rgba(63,143,82,0.12); }
+
+    /* ---- ORDER SUMMARY (full width) ---- */
+    #billSummaryCard{ border-radius:16px; padding:24px; height:auto; display:flex; flex-direction:column; }
+    .order-items{ padding:2px 0 4px; border-bottom:1px dashed var(--line); margin-bottom:8px; }
+    .oi-row{ display:flex; align-items:center; gap:12px; padding:8px 0; }
+    .oi-thumb{ width:48px; height:48px; border-radius:12px; background:var(--sage); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; overflow:hidden; }
+    .oi-info{ flex:1; min-width:0; }
+    .oi-name{ font-size:13.5px; font-weight:700; color:var(--ink); }
+    .oi-meta{ font-size:11.5px; color:var(--muted); margin-top:2px; }
+    .oi-price{ font-size:13.5px; font-weight:700; color:var(--ink); flex-shrink:0; }
+    .bill-row{ font-size:13.5px; padding:7px 0; }
+    .bill-row .label{ color:#000; }
+    .bill-row .value{ font-weight:600; color:#000; }
+    .bill-total{ padding-top:8px; border-top:2px solid #E0E6D6; margin-top:4px; }
+    .bill-total .label{ font-size:15px; font-weight:700; color:#000; }
+    .bill-total .value{ font-size:20px; font-weight:800; color:#000; }
+
+    .os-delivery-info{
+      margin-top:14px; padding-top:14px; border-top:1px dashed var(--line);
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .os-delivery-label{
+      display:flex; align-items:center; gap:6px; font-size:11px; font-weight:700;
+      text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin-bottom:2px;
+    }
+    .os-delivery-label svg{ color:var(--leaf); flex-shrink:0; }
+    .os-delivery-value{ font-size:13.5px; font-weight:600; color:var(--ink); line-height:1.4; }
+
+    .os-trust-banner{ margin-top:auto; padding-top:14px; display:flex; flex-direction:column; gap:8px; }
+    .os-trust-strip{
+      display:flex; align-items:center; gap:10px;
+      background:linear-gradient(135deg, #e8f5e9, #f1f8ed);
+      border:1px solid #c8e6c9; border-radius:10px;
+      padding:10px 12px;
+    }
+    .os-trust-strip-icon{
+      width:30px; height:30px; border-radius:8px;
+      background:var(--forest);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .os-trust-strip-icon svg{ color:#fff; }
+    .os-trust-strip-text{ display:flex; flex-direction:column; min-width:0; }
+    .os-trust-strip-title{ font-size:12.5px; font-weight:700; color:var(--ink); line-height:1.3; }
+    .os-trust-strip-desc{ font-size:10.5px; color:var(--muted); line-height:1.3; margin-top:1px; }
+
+    /* ---- WHY CHOOSE US BOX (tablet) ---- */
+    .os-why-box{ margin-top:14px; padding-top:14px; border-top:1px dashed var(--line); }
+    .os-why-grid{ grid-template-columns:1fr 1fr; gap:10px; }
+    .os-why-item{ padding:10px 12px; }
+    .os-why-icon{ width:30px; height:30px; border-radius:8px; }
+    .os-why-label{ font-size:11.5px; }
+    .os-why-desc{ font-size:10px; }
+
+    /* ---- PLACE ORDER (tablet) ---- */
+    .paybar{ margin-top:18px; }
+    .pay-cta{
+      width:100%; height:52px; background:var(--leaf); color:#fff; border:none;
+      border-radius:14px; padding:0 18px; font-weight:800; font-size:16px;
+      font-family:inherit; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      box-shadow:0 6px 16px rgba(63,143,82,0.32);
+      transition:transform .12s ease, background .2s ease;
+    }
+    .pay-cta:active{ transform:scale(0.98); }
+    .pay-cta:disabled{ background:#B9C4B4; box-shadow:none; cursor:not-allowed; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<div id="checkoutView">
+<div class="topbar">
+  <button class="back-btn" aria-label="Go back" onclick="window.location.href='shop-cart.html'">
+    <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <img class="brand-logo" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" alt="VPNexues">
+  <div class="brand-area">
+    <div class="brand-name">VPNexues</div>
+    <div class="brand-tagline">விவசாயம் காப்போம்</div>
+  </div>
+  <div class="topbar-mid">
+    <div class="topbar-title">Payment</div>
+    <div class="topbar-sub">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      100% secure payment
+    </div>
+  </div>
+  <div class="topbar-page-title">Payment</div>
+  <div class="topbar-secure">
+    <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 118 0v3" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="15" r="1.3" fill="currentColor"/></svg>
+    Secure Checkout
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- CHECKOUT PROGRESS (desktop only) -->
+  <div class="checkout-progress">
+    <div class="cp-step done"><span class="cp-dot">&#10003;</span><span class="cp-label">Cart</span></div>
+    <div class="cp-line done"></div>
+    <div class="cp-step done"><span class="cp-dot">&#10003;</span><span class="cp-label">Delivery</span></div>
+    <div class="cp-line done"></div>
+    <div class="cp-step active"><span class="cp-dot">3</span><span class="cp-label">Payment</span></div>
+  </div>
+
+  <!-- LEFT COLUMN (all left-side cards) -->
+  <div class="left-col">
+
+  <!-- CUSTOMER INFO -->
+  <div class="fresh-card" id="freshCard">
+    <div class="fresh-head">
+      <div class="fresh-section-label">
+        <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M12 21s-7-5.6-7-11a7 7 0 1114 0c0 5.4-7 11-7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
+        Delivery Information
+      </div>
+      <button type="button" class="fresh-change" onclick="openAddressEditor()">Change <svg viewBox="0 0 24 24" fill="none" width="12" height="12"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="fresh-top" id="freshView">
+      <div class="addr-structured">
+        <div class="addr-header-row">
+          <div class="addr-avatar">
+            <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div class="addr-header-text">
+            <div class="fresh-eta-label">Delivering to</div>
+            <div class="fresh-badge" id="customerBadge"></div>
+          </div>
+        </div>
+        <div class="addr-details-grid">
+          <div class="addr-row"><span class="addr-key">Name</span><span class="addr-val" id="addrNameLine"></span></div>
+          <div class="addr-row"><span class="addr-key">Door No</span><span class="addr-val" id="addrDoor"></span></div>
+          <div class="addr-row"><span class="addr-key">Street</span><span class="addr-val" id="addrStreet"></span></div>
+          <div class="addr-row"><span class="addr-key">City</span><span class="addr-val" id="addrCity"></span></div>
+          <div class="addr-row"><span class="addr-key">Building</span><span class="addr-val" id="addrBuilding"></span></div>
+          <div class="addr-row"><span class="addr-key">Landmark</span><span class="addr-val" id="addrLandmark"></span></div>
+          <div class="addr-row"><span class="addr-key">Pin Code</span><span class="addr-val" id="addrPin"></span></div>
+          <div class="addr-row"><span class="addr-key">Phone</span><span class="addr-val" id="customerPhone"></span></div>
+          <div class="addr-row"><span class="addr-key">Receiver</span><span class="addr-val" id="addrReceiver"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="fresh-edit" id="freshEdit">
+      <div class="fresh-edit-title">Edit delivery address</div>
+      <div class="fresh-edit-grid">
+        <div class="fresh-field">
+          <label for="editLabel">Address tag</label>
+          <input type="text" id="editLabel" placeholder="e.g. HOME">
+        </div>
+        <div class="fresh-field">
+          <label for="editName">Full name</label>
+          <input type="text" id="editName">
+        </div>
+        <div class="fresh-field">
+          <label for="editDoor">Door No / Flat No</label>
+          <input type="text" id="editDoor" placeholder="e.g. 12/A, 3rd Floor">
+        </div>
+        <div class="fresh-field">
+          <label for="editStreet">Street Address / Area</label>
+          <input type="text" id="editStreet" placeholder="e.g. MG Road, Anna Nagar">
+        </div>
+        <div class="fresh-field">
+          <label for="editBuilding">Building & Block No. <small style="color:#9ca3af;font-weight:400;">(Optional)</small></label>
+          <input type="text" id="editBuilding" placeholder="e.g. Tower B, Block 5">
+        </div>
+        <div class="fresh-field">
+          <label for="editLandmark">Landmark & Area <small style="color:#9ca3af;font-weight:400;">(Optional)</small></label>
+          <input type="text" id="editLandmark" placeholder="e.g. Near Metro Station">
+        </div>
+        <div class="fresh-field">
+          <label for="editCity">City / District</label>
+          <input type="text" id="editCity" placeholder="e.g. Salem">
+        </div>
+        <div class="fresh-field">
+          <label for="editState">State</label>
+          <input type="text" id="editState" placeholder="e.g. Tamil Nadu">
+        </div>
+        <div class="fresh-field">
+          <label for="editPin">Pin Code</label>
+          <input type="text" id="editPin" placeholder="e.g. 636004" maxlength="6">
+        </div>
+        <div class="fresh-field">
+          <label for="editPhone">Phone number</label>
+          <input type="tel" id="editPhone">
+        </div>
+        <div class="fresh-field">
+          <label for="editReceiverName">Receiver's Name <small style="color:#9ca3af;font-weight:400;">(Optional)</small></label>
+          <input type="text" id="editReceiverName" placeholder="e.g. Father's name">
+        </div>
+        <div class="fresh-field">
+          <label for="editReceiverPhone">Receiver's Phone <small style="color:#9ca3af;font-weight:400;">(Optional)</small></label>
+          <input type="tel" id="editReceiverPhone" placeholder="e.g. +91 98765 43210">
+        </div>
+      </div>
+      <div class="fresh-edit-actions">
+        <button type="button" class="fresh-btn-cancel" onclick="cancelAddressEdit()">Cancel</button>
+        <button type="button" class="fresh-btn-save" onclick="saveAddress()">Save Address</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COUPON -->
+  <div class="coupon-strip" id="couponStrip" onclick="openCouponModal()">
+    <div class="coupon-icon">
+      <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="white" stroke-width="2" stroke-linejoin="round"/><circle cx="7" cy="7" r="1.5" fill="white"/></svg>
+    </div>
+    <div>
+      <div class="coupon-title" id="couponTitle">Apply coupon</div>
+      <div class="coupon-sub" id="couponSub">View offers available for your basket</div>
+    </div>
+    <svg class="coupon-chevron" viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- PAYMENT METHODS -->
+  <div class="card pay-card">
+    <div class="card-head">
+      <h2>Payment method</h2>
+    </div>
+    <div id="payOptions"></div>
+  </div>
+
+  <!-- TIP -->
+  <div class="card tip-card">
+    <div class="card-head">
+      <h2>Tip your delivery partner</h2>
+    </div>
+    <div class="tip-row" id="tipRow">
+      <button class="tip-chip active" data-tip="0">No tip</button>
+      <button class="tip-chip" data-tip="10">₹10</button>
+      <button class="tip-chip" data-tip="20">₹20</button>
+      <button class="tip-chip" data-tip="30">₹30</button>
+      <button class="tip-chip" data-tip="custom">Custom</button>
+    </div>
+    <div class="tip-note">100% of your tip goes directly to the person who picks, packs, and delivers your groceries.</div>
+  </div>
+
+  <!-- EMPTY CART STATE -->
+  <div class="card" id="emptyCartBanner" style="display:none; text-align:center; padding:30px 18px;">
+    <div style="font-size:48px; margin-bottom:12px;">🛒</div>
+    <div style="font-weight:700; font-size:17px; color:var(--ink); margin-bottom:6px;">Your cart is empty</div>
+    <div style="font-size:13.5px; color:var(--muted); margin-bottom:18px;">Add some fresh items to get started!</div>
+    <button class="success-cta" onclick="window.location.href='shop.html'" style="width:auto; display:inline-flex;">
+      Browse products
+      <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+  </div><!-- /left-col -->
+
+  <!-- ORDER SUMMARY (right column on desktop) -->
+  <div class="card" id="billSummaryCard">
+    <div class="card-head">
+      <h2>Order summary</h2>
+    </div>
+    <div class="os-items-wrap">
+      <div id="orderItems" class="order-items"></div>
+      <div class="bill-row">
+        <div class="label">Item total</div>
+        <div class="value" id="billItemTotal">₹0</div>
+      </div>
+      <div class="bill-row discount" id="billDiscountRow" style="display:none">
+        <div class="label" id="billDiscountLabel">Coupon discount</div>
+        <div class="value" id="billDiscount">-₹0</div>
+      </div>
+      <div class="bill-row">
+        <div class="label">Delivery fee <span class="info-dot">i</span></div>
+        <div class="value" id="billDelivery">₹0</div>
+      </div>
+      <div class="bill-row">
+        <div class="label">Handling &amp; packaging</div>
+        <div class="value" id="billHandling">₹0</div>
+      </div>
+      <div class="bill-row">
+        <div class="label">Taxes &amp; charges</div>
+        <div class="value" id="billTax">₹0</div>
+      </div>
+      <div class="bill-total">
+        <div class="label">To pay</div>
+        <div class="value" id="billGrandTotal">₹0</div>
+      </div>
+      <div class="savings-banner" id="savingsBanner" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" width="15" height="15"><path d="M12 2L14.5 8.5L21 9L16 13.5L17.5 20L12 16.5L6.5 20L8 13.5L3 9L9.5 8.5L12 2Z" fill="currentColor"/></svg>
+        <span id="savingsText">You're saving ₹0 on this order</span>
+      </div>
+    </div>
+
+    <!-- WHY CHOOSE US BOX -->
+    <div class="os-why-box">
+      <div class="os-why-title">Why shop with us</div>
+      <div class="os-why-grid">
+        <div class="os-why-item">
+          <div class="os-why-icon">
+            <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="os-why-text">
+            <div class="os-why-label">Fast Delivery</div>
+            <div class="os-why-desc">Within 30 minutes</div>
+          </div>
+        </div>
+        <div class="os-why-item">
+          <div class="os-why-icon">
+            <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" stroke="currentColor" stroke-width="2"/><line x1="4" y1="22" x2="4" y2="15" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div class="os-why-text">
+            <div class="os-why-label">Easy Returns</div>
+            <div class="os-why-desc">Hassle-free policy</div>
+          </div>
+        </div>
+        <div class="os-why-item">
+          <div class="os-why-icon">
+            <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="os-why-text">
+            <div class="os-why-label">100% Organic</div>
+            <div class="os-why-desc">Certified fresh produce</div>
+          </div>
+        </div>
+        <div class="os-why-item">
+          <div class="os-why-icon">
+            <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="os-why-text">
+            <div class="os-why-label">Quality Checked</div>
+            <div class="os-why-desc">Every order inspected</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="os-delivery-info os-delivery-desktop-hide">
+      <div class="os-delivery-section">
+        <div class="os-delivery-label">
+          <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Estimated Delivery
+        </div>
+        <div class="os-delivery-value" id="osDeliveryTime">Today, 6:00 PM – 7:00 PM</div>
+      </div>
+    </div>
+
+    <!-- PAY BUTTON -->
+    <div class="paybar">
+      <button class="pay-cta" id="payCta" onclick="startPayment()">
+        <span class="cta-label" id="payCtaLabel">Pay ₹0</span>
+        <div class="spinner"></div>
+      </button>
+    </div>
+
+    <!-- TRUST SECTION -->
+
+  </div>
+
+</div>
+
+</div><!-- /checkoutView -->
+
+<!-- FULL-SCREEN PAYMENT SUCCESS VIEW -->
+<div class="success-view" id="successView">
+  <div class="success-inner">
+    <div class="success-check-wrap">
+      <svg class="success-ring" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="54" />
+      </svg>
+      <svg class="success-check" viewBox="0 0 120 120">
+        <path d="M35 62L52 79L86 42" />
+      </svg>
+    </div>
+
+    <div class="success-badge">
+      <svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M12 2L14.5 8.5L21 9L16 13.5L17.5 20L12 16.5L6.5 20L8 13.5L3 9L9.5 8.5L12 2Z" fill="currentColor"/></svg>
+      Payment successful
+    </div>
+    <h1>Order received!</h1>
+    <p class="success-sub">Your fresh basket has been confirmed and our pickers are getting it ready. We'll keep you posted every step of the way.</p>
+
+    <div class="success-card">
+      <div class="success-row">
+        <span class="label">Order ID</span>
+        <span class="value" id="successOrderId">#HB-284719</span>
+      </div>
+      <div class="success-row">
+        <span class="label">Amount paid</span>
+        <span class="value" id="successAmount">₹0</span>
+      </div>
+      <div class="success-row">
+        <span class="label">Paid via</span>
+        <span class="value" id="successMethod">UPI � Google Pay</span>
+      </div>
+      <div class="success-divider"></div>
+      <div class="success-row">
+        <span class="label">Estimated delivery</span>
+        <span class="value accent">18–22 mins</span>
+      </div>
+    </div>
+
+    <button class="success-cta" onclick="window.location.href='order-tracking.html'">
+      Track my order
+      <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="success-secondary" onclick="continueToShop()">Continue to Shop</button>
+  </div>
+</div>
+
+<!-- FULL-SCREEN PAYMENT FAILURE VIEW -->
+<div class="fail-view" id="failView">
+  <div class="success-inner">
+    <div class="success-check-wrap">
+      <svg class="success-ring fail-ring" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="54" />
+      </svg>
+      <svg class="success-check fail-cross" viewBox="0 0 120 120">
+        <path d="M40 40L80 80M80 40L40 80" />
+      </svg>
+    </div>
+
+    <div class="fail-badge">
+      <svg viewBox="0 0 24 24" fill="none" width="13" height="13"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M15 9L9 15M9 9L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Payment failed
+    </div>
+    <h1>Payment declined</h1>
+    <p class="success-sub">Your payment could not be processed. No money has been deducted from your account. Please try again.</p>
+
+    <div class="success-card">
+      <div class="success-row">
+        <span class="label">Order ID</span>
+        <span class="value" id="failOrderId">#HB-000000</span>
+      </div>
+      <div class="success-row">
+        <span class="label">Amount</span>
+        <span class="value" id="failAmount">₹0</span>
+      </div>
+      <div class="success-row">
+        <span class="label">Payment method</span>
+        <span class="value" id="failMethod">Card</span>
+      </div>
+      <div class="success-divider"></div>
+      <div class="success-row">
+        <span class="label">Reason</span>
+        <span class="value" style="color:var(--danger);" id="failReason">Payment declined by bank</span>
+      </div>
+    </div>
+
+    <button class="fail-cta" onclick="backToCheckout()">
+      Try again
+      <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="success-secondary" onclick="continueToShop()">Continue to Shop</button>
+  </div>
+</div>
+
+
+
+<!-- COUPON MODAL -->
+<div class="coupon-overlay" id="couponOverlay">
+  <div class="coupon-modal">
+    <div class="coupon-modal-head">
+      <div class="coupon-modal-head-text">
+        <div class="coupon-modal-title">Offers &amp; Coupons</div>
+        <div class="coupon-modal-sub">Save more on your VP NEXUES order</div>
+      </div>
+      <button class="coupon-modal-close" onclick="closeCouponModal()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="coupon-input-section">
+      <div class="coupon-input-wrap" id="couponInputWrap">
+        <svg class="coupon-input-icon" viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
+        <input type="text" id="couponInput" placeholder="Enter coupon code" autocomplete="off" spellcheck="false">
+        <button class="coupon-input-clear" id="couponClearBtn" onclick="clearCouponInput()" style="display:none;" aria-label="Clear">
+          <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+        <button class="coupon-apply-btn" id="couponApplyBtn" onclick="applyCouponFromInput()">Apply</button>
+      </div>
+      <div class="coupon-input-msg" id="couponInputMsg"></div>
+    </div>
+
+    <div class="coupon-bestsaver" id="couponBestSaver" style="display:none;">
+      <div class="coupon-bestsaver-badge">BEST VALUE</div>
+      <div class="coupon-bestsaver-card" id="couponBestSaverCard"></div>
+    </div>
+
+    <div class="coupon-section-label">
+      <div class="coupon-section-title">Available offers</div>
+      <div class="coupon-section-sub" id="couponSectionSub">4 offers available for your basket</div>
+    </div>
+
+    <div class="coupon-list" id="couponList"></div>
+
+    <div class="coupon-empty" id="couponEmpty" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" width="48" height="48"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="7" r="1.5" fill="var(--line)"/></svg>
+      <div class="coupon-empty-title">No offers available</div>
+      <div class="coupon-empty-desc">We couldn't find any coupons that apply to your current cart.</div>
+      <button class="coupon-empty-cta" onclick="closeCouponModal()">Continue shopping</button>
+    </div>
+  </div>
+</div>
+
+<!-- REPLACE COUPON CONFIRM DIALOG -->
+<div class="coupon-confirm-overlay" id="couponConfirmOverlay">
+  <div class="coupon-confirm-dialog">
+    <div class="coupon-confirm-icon">
+      <svg viewBox="0 0 24 24" fill="none" width="28" height="28"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="var(--sun)" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="var(--sun)" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <div class="coupon-confirm-title">Replace coupon?</div>
+    <div class="coupon-confirm-desc" id="couponConfirmDesc"></div>
+    <div class="coupon-confirm-actions">
+      <button class="coupon-confirm-keep" id="couponConfirmKeep">Keep current</button>
+      <button class="coupon-confirm-replace" id="couponConfirmReplace">Replace coupon</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- PAYMENT PROCESSING OVERLAY -->
+<div class="pay-overlay" id="payOverlay">
+  <button class="pay-cancel-btn" onclick="payCancel()">
+    <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+  </button>
+  <div class="pay-timer" id="payTimerWrap">
+    <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <span id="payTimerText">5:00</span>
+  </div>
+  <div class="pay-app-icon" id="payAppIcon"></div>
+  <div class="pay-app-name" id="payAppName">Google Pay</div>
+  <div class="pay-app-status" id="payAppStatus">Opening payment app...</div>
+  <div class="pay-spinner" id="paySpinner"></div>
+  <div class="pay-amount-display" id="payAmountDisplay">₹0</div>
+  <div class="pay-order-id" id="payOrderIdDisplay">Order #HB-000000</div>
+  <div class="pay-result-btns" id="payResultBtns" style="display:none;">
+    <button class="pay-btn-fail" onclick="payResolve('failed')">Payment Failed</button>
+    <button class="pay-btn-success" onclick="payResolve('success')">Payment Success</button>
+  </div>
+</div>
+
+<script>
+/* ---------------- CURRENCY (same as shop-cart.html) ---------------- */
+var INR_RATE = 62;
+var PRICE_CONFIG = {
+  IN: { rate: INR_RATE, prefix: '\u20B9', locale: 'en-IN', digits: 0 },
+  SG: { rate: 1, prefix: 'S$', locale: 'en-SG', digits: 2 },
+  US: { rate: .74, prefix: '$', locale: 'en-US', digits: 2 },
+  AE: { rate: 2.72, prefix: 'AED ', locale: 'en-AE', digits: 2 }
+};
+function getShopPriceCountry() {
+  var country = (localStorage.getItem('country') || 'IN').toUpperCase();
+  return PRICE_CONFIG[country] ? country : 'IN';
+}
+function fmtPrice(v) {
+  var config = PRICE_CONFIG[getShopPriceCountry()];
+  var amount = Number(v || 0) * config.rate;
+  if(config.digits === 0) return config.prefix + Math.round(amount).toLocaleString(config.locale);
+  return config.prefix + amount.toLocaleString(config.locale, { minimumFractionDigits: config.digits, maximumFractionDigits: config.digits });
+}
+function fmtDual(v) { return fmtPrice(v); }
+
+var COUPON_CONFIG = {
+  IN: { coupon: 'WELCOME100', amount: 100, prefix: '₹', minOrder: 500, desc: 'Flat ₹100 off for new users! Min. order ₹500.' },
+  SG: { coupon: 'WELCOME2', amount: 2, prefix: 'S$', minOrder: 20, desc: 'Flat S$2 off for new users! Min. order S$20.' },
+  US: { coupon: 'WELCOME2', amount: 2, prefix: '$', minOrder: 15, desc: 'Flat $2 off for new users! Min. order $15.' },
+  AE: { coupon: 'WELCOME10', amount: 10, prefix: 'AED ', minOrder: 50, desc: 'Flat AED 10 off for new users! Min. order AED 50.' }
+};
+
+function updateWelcomeCoupon() {
+  var country = getShopPriceCountry();
+  var config = COUPON_CONFIG[country] || COUPON_CONFIG.IN;
+  var codeEl = document.getElementById('welcomeCouponCode');
+  var descEl = document.getElementById('welcomeCouponDesc');
+  var btn = document.getElementById('welcomeCouponBtn');
+  if (codeEl) codeEl.textContent = config.coupon;
+  if (descEl) descEl.textContent = config.desc;
+  if (btn) btn.onclick = function() { applyCouponByCode(config.coupon); };
+}
+function fmtCartAmount(v) {
+  var country = getShopPriceCountry();
+  if (country === 'IN') return '\u20B9' + Math.round(Number(v || 0)).toLocaleString('en-IN');
+  return fmtDual(v);
+}
+function getCartUnitPrice(item) {
+  var country = getShopPriceCountry();
+  var rawPrice = parseFloat(item.price) || 0;
+  if (country === 'IN') {
+    var inrPrice = parseFloat(item.inrPrice);
+    return !isNaN(inrPrice) ? inrPrice : rawPrice * PRICE_CONFIG.IN.rate;
+  }
+  return rawPrice;
+}
+function getCartUnitMrp(item) {
+  var country = getShopPriceCountry();
+  var rawPrice = parseFloat(item.price) || 0;
+  var rawMrp = parseFloat(item.mrp || item.originalPrice || item.old) || rawPrice;
+  if (country === 'IN') {
+    var inrMrp = parseFloat(item.inrOldPrice);
+    return !isNaN(inrMrp) ? inrMrp : rawMrp * PRICE_CONFIG.IN.rate;
+  }
+  return rawMrp;
+}
+
+/* ---------------- CART LOADING FROM LOCALSTORAGE ---------------- */
+function loadCartFromStorage() {
+  try {
+    var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (cart.length === 0) return [];
+    return cart.map(function(item, idx) {
+      var price = getCartUnitPrice(item);
+      var mrp = getCartUnitMrp(item);
+      var qty = item.qty || item.quantity || 1;
+      var name = item.name || item.title || "Product";
+      var weight = item.weight || item.unit || item.size || "";
+      var emoji = item.emoji || getProductEmoji(name);
+      return { id: idx + 1, name: name, meta: weight, emoji: emoji, price: price, mrp: mrp, qty: qty, img: item.img || item.image || '' };
+    });
+  } catch(e) { return []; }
+}
+
+var emojiMap = {
+  'carrot': '\uD83E\uDD55', 'carrots': '\uD83E\uDD55',
+  'tomato': '\uD83C\uDF45', 'tomatoes': '\uD83C\uDF45',
+  'onion': '\uD83E\uDDC5', 'onions': '\uD83E\uDDC5',
+  'potato': '\uD83E\uDD54', 'potatoes': '\uD83E\uDD54',
+  'brinjal': '\uD83C\uDF46', 'eggplant': '\uD83C\uDF46',
+  'ladies finger': '\uD83E\uDD57', 'okra': '\uD83E\uDD57',
+  'green chilli': '\uD83C\uDF36\uFE0F', 'chilli': '\uD83C\uDF36\uFE0F',
+  'capsicum': '\uD83C\uDF36\uFE0F', 'bell pepper': '\uD83C\uDF36\uFE0F',
+  'cabbage': '\uD83E\uDD6C', 'cauliflower': '\uD83E\uDD66',
+  'beetroot': '\uD83E\uDD62', 'radish': '\uD83E\uDD58',
+  'cucumber': '\uD83E\uDD52', 'garlic': '\uD83E\uDDC4', 'ginger': '\uD83E\uDDC2',
+  'peas': '\uD83E\uDED1', 'corn': '\uD83C\uDF3D',
+  'spinach': '\uD83E\uDD6C', 'palak': '\uD83E\uDD6C',
+  'mushroom': '\uD83C\uDF44', 'lemon': '\uD83C\uDF4B', 'lime': '\uD83C\uDF4B',
+  'apple': '\uD83C\uDF4E', 'banana': '\uD83C\uDF4C', 'mango': '\uD83C\uDF96\uFE0F',
+  'orange': '\uD83C\uDF4A', 'grapes': '\uD83C\uDF47', 'watermelon': '\uD83C\uDF49',
+  'papaya': '\uD83C\uDF4D', 'pineapple': '\uD83C\uDF4D', 'guava': '\uD83C\uDF53',
+  'coconut': '\uD83E\uDD65', 'box': '\uD83D\uDCE6', 'mixed vegetables': '\uD83E\uDD66\uD83C\uDF45\uD83E\uDD55',
+  'farm fresh': '\uD83C\uDF3E', 'organic': '\uD83C\uDF3F'
+};
+
+function getProductEmoji(name) {
+  var n = (name || '').toLowerCase().trim();
+  if (emojiMap[n]) return emojiMap[n];
+  for (var key in emojiMap) { if (n.indexOf(key) !== -1) return emojiMap[key]; }
+  return '\uD83D\uDCE6';
+}
+
+let items = loadCartFromStorage();
+
+const payMethods = [
+  { id:"cod", label:"Cash on Delivery", sub:"Pay in cash when your order arrives", iconType:"cash" }
+];
+
+const payMethodsIntl = [
+  { id:"cod", label:"Cash on Delivery", sub:"Pay in cash when your order arrives", iconType:"cash" }
+];
+
+function getPaymentSet(country){
+  return country === 'IN' ? payMethods : payMethodsIntl;
+}
+
+const upiApps = [
+  { id:"gpay", name:"Google Pay", color:"#fff", iconType:"gpay" },
+  { id:"phonepe", name:"PhonePe", color:"#fff", iconType:"phonepe" },
+  { id:"paytm", name:"Paytm", color:"#fff", iconType:"paytm" },
+  { id:"bhim", name:"BHIM UPI", color:"#fff", iconType:"bhim" },
+  { id:"amazonpay", name:"Amazon Pay", color:"#fff", iconType:"amazonpay" }
+];
+
+const netBankingBanks = [
+  { id:"sbi", name:"State Bank of India", sub:"SBI personal banking", short:"SBI", color:"#1F78C8", logo:"https://www.sbi.co.in/favicon.ico" },
+  { id:"hdfc", name:"HDFC Bank", sub:"NetBanking and PayZapp linked accounts", short:"HDFC", color:"#004C8F", logo:"https://www.google.com/s2/favicons?domain=hdfcbank.com&sz=64" },
+  { id:"icici", name:"ICICI Bank", sub:"Retail internet banking", short:"ICI", color:"#B95A18", logo:"https://www.icicibank.com/favicon.ico" },
+  { id:"axis", name:"Axis Bank", sub:"Axis internet banking", short:"AX", color:"#97144D", logo:"https://www.google.com/s2/favicons?domain=axisbank.com&sz=64" },
+  { id:"kotak", name:"Kotak Mahindra Bank", sub:"Kotak net banking", short:"K", color:"#003B7A", logo:"https://www.google.com/s2/favicons?domain=kotak.com&sz=64" },
+  { id:"bob", name:"Bank of Baroda", sub:"Baroda Connect", short:"BOB", color:"#F26B21", logo:"https://www.google.com/s2/favicons?domain=bankofbaroda.in&sz=64" },
+  { id:"canara", name:"Canara Bank", sub:"Canara net banking", short:"CB", color:"#00A0DF", logo:"https://www.canarabank.com/favicon.ico" },
+  { id:"pnb", name:"Punjab National Bank", sub:"PNB internet banking", short:"PNB", color:"#A20E37" },
+  { id:"indian", name:"Indian Bank", sub:"Indian Bank net banking", short:"IB", color:"#F58220" },
+  { id:"union", name:"Union Bank of India", sub:"Union internet banking", short:"UBI", color:"#005BAB", logo:"https://www.unionbankofindia.co.in/favicon.ico" },
+  { id:"idfc", name:"IDFC FIRST Bank", sub:"IDFC FIRST net banking", short:"IDFC", color:"#9D1D27", logo:"https://www.idfcfirstbank.com/favicon.ico" },
+  { id:"federal", name:"Federal Bank", sub:"FedNet banking", short:"FB", color:"#114B8B" },
+  { id:"indusind", name:"IndusInd Bank", sub:"IndusNet banking", short:"IND", color:"#8B1E2D", logo:"https://www.google.com/s2/favicons?domain=indusind.com&sz=64" },
+  { id:"yes", name:"YES Bank", sub:"YES online banking", short:"YES", color:"#00539F", logo:"https://www.google.com/s2/favicons?domain=yesbank.in&sz=64" }
+];
+
+/* ---------------- REAL-STYLE PAYMENT ICONS (custom drawn, not brand logo files) ---------------- */
+function iconMarkup(type){
+  switch(type){
+    case 'gpay':
+      return `<svg viewBox="0 0 40 40" width="24" height="24" aria-label="Google Pay"><path d="M20 11.5v5.2h7.3c-.3 1.7-1.3 3.1-2.7 4.1v3.4h4.4c2.6-2.4 4-5.9 4-10 0-.9-.1-1.8-.2-2.7H20z" fill="#4285F4"/><path d="M20 29c3.6 0 6.7-1.2 8.9-3.2l-4.4-3.4c-1.2.8-2.7 1.3-4.5 1.3-3.5 0-6.4-2.3-7.5-5.5H8v3.5C10.2 26 14.7 29 20 29z" fill="#34A853"/><path d="M12.5 18.2c-.3-.8-.4-1.7-.4-2.6s.1-1.8.4-2.6V9.5H8c-.9 1.8-1.4 3.9-1.4 6.1s.5 4.3 1.4 6.1l4.5-3.5z" fill="#FBBC05"/><path d="M20 9.9c2 0 3.7.7 5.1 2l3.8-3.7C26.7 6.1 23.6 5 20 5c-5.3 0-9.8 3-12 7.5l4.5 3.5c1.1-3.2 4-5.6 7.5-5.6z" fill="#EA4335"/></svg>`;
+    case 'phonepe':
+      return `<svg viewBox="0 0 40 40" width="24" height="24" aria-label="PhonePe"><circle cx="20" cy="20" r="17" fill="#5F259F"/><circle cx="20" cy="20" r="12.5" fill="none" stroke="#fff" stroke-width="1.8"/><text x="20" y="24.6" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">पे</text></svg>`;
+    case 'paytm':
+      return `<svg viewBox="0 0 64 40" width="30" height="24" aria-label="Paytm"><rect x="2" y="8" width="60" height="24" rx="7" fill="#fff"/><text x="8" y="25.5" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#002970">Pay</text><text x="33" y="25.5" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#00BAF2">tm</text></svg>`;
+    case 'bhim':
+      return `<svg viewBox="0 0 64 40" width="30" height="24" aria-label="BHIM UPI"><rect x="2" y="8" width="60" height="24" rx="7" fill="#fff"/><text x="7" y="24.5" font-family="Arial, sans-serif" font-size="11" font-weight="900" fill="#1f2933">BHIM</text><path d="M36 13l8 7-8 7V13z" fill="#F58220"/><path d="M45 13l8 7-8 7V13z" fill="#128807"/></svg>`;
+    case 'amazonpay':
+      return `<svg viewBox="0 0 70 40" width="31" height="24" aria-label="Amazon Pay"><rect x="2" y="8" width="66" height="24" rx="7" fill="#fff"/><text x="8" y="22" font-family="Arial, sans-serif" font-size="10" font-weight="800" fill="#232F3E">amazon</text><text x="44" y="22" font-family="Arial, sans-serif" font-size="10" font-weight="800" fill="#139AD6">pay</text><path d="M17 25c8 4.5 23 4.1 33-.6" stroke="#FF9900" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M47 23.6l4.5.3-1.5 3.3" stroke="#FF9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
+    case 'paypal':
+      return `<svg viewBox="0 0 40 40" width="22" height="22"><rect x="4" y="4" width="32" height="32" rx="8" fill="#003087"/><path d="M15 27l2.4-14h5.4c2.7 0 4.4 1.5 4 4-.5 3.2-2.9 4.8-6 4.8h-2l-.9 5.2H15z" fill="#009cde"/><path d="M18 27l2-11h4.6c2.3 0 3.7 1.2 3.4 3.4-.4 2.7-2.4 4.1-5 4.1h-1.7l-.8 3.5H18z" fill="#fff"/></svg>`;
+    case 'applepay':
+      return `<svg viewBox="0 0 40 40" width="22" height="22"><rect x="4" y="4" width="32" height="32" rx="8" fill="#000"/><rect x="10" y="17" width="15" height="4" rx="1.5" fill="#fff"/><path d="M12 24h11M13 27h9" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><circle cx="27" cy="15" r="2.4" fill="#fff"/></svg>`;
+    case 'card':
+      return `<svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 9.5H21.5" stroke="currentColor" stroke-width="1.8"/><rect x="5.5" y="14" width="5" height="1.8" rx="0.6" fill="currentColor"/></svg>`;
+    case 'bank':
+      return `<svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 3L21 8H3L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 8V19M9.5 8V19M14.5 8V19M19 8V19" stroke="currentColor" stroke-width="1.8"/><path d="M3 19H21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+    case 'cash':
+      return `<svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg>`;
+    case 'upi':
+      return `<svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M4 8L12 3L20 8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8" stroke="currentColor" stroke-width="1.8"/><path d="M3 18H21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+    default:
+      return `<svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>`;
+  }
+}
+
+function resolveUserCountry(){
+  var country = (localStorage.getItem('country') || 'IN').toUpperCase();
+  var valid = ['IN','US','AE','SG'];
+  return valid.indexOf(country) !== -1 ? country : 'IN';
+}
+
+let userCountry = resolveUserCountry();
+let selectedPayment = getPaymentSet(userCountry)[0].id;
+let selectedUpiApp = "gpay";
+let selectedBank = "sbi";
+let netBankSearch = "";
+let tipAmount = 0;
+let coupon = null; // {code, amount}
+
+/* ---------------- RENDER PAYMENT OPTIONS ---------------- */
+function renderPayOptions(){
+  const wrap = document.getElementById('payOptions');
+  const set = getPaymentSet(userCountry);
+  const nav = set.map(m => `
+    <div class="pay-option ${selectedPayment === m.id ? 'selected' : ''}" onclick="selectPayment('${m.id}')">
+      <div class="pay-icon">${iconMarkup(m.iconType)}</div>
+      <div>
+        <div class="pay-label">${m.label} ${m.recommend ? '<span class="pay-recommend">Fastest</span>' : ''}</div>
+        <div class="pay-sub">${m.sub}</div>
+      </div>
+      <div class="pay-radio"></div>
+    </div>
+  `).join('');
+  let panel = '';
+  if(selectedPayment === 'upi') panel = renderUpiApps();
+  else if(selectedPayment === 'card') panel = renderCardFields();
+  else if(selectedPayment === 'netbanking') panel = renderNetBankingOptions();
+  wrap.innerHTML = `<div class="pay-nav-col">${nav}</div><div class="pay-panel-col">${panel}</div>`;
+}
+
+function renderUpiApps(){
+  return `
+    <div class="upi-apps-panel">
+      <div class="upi-apps-title">Choose a UPI app</div>
+      <div class="upi-apps-grid">
+        ${upiApps.map(app => `
+          <div class="upi-app-chip ${selectedUpiApp === app.id ? 'selected' : ''}" onclick="event.stopPropagation(); selectUpiApp('${app.id}')">
+            <div class="upi-app-icon" style="background:${app.color}">${iconMarkup(app.iconType)}</div>
+            <span>${app.name}</span>
+            <div class="upi-app-radio"></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderCardFields(){
+  return `
+    <div class="payment-detail-panel" onclick="event.stopPropagation()">
+      <div class="payment-detail-title">Enter card details</div>
+      <div class="card-field-grid">
+        <div class="card-field">
+          <label for="cardNumber">Card number</label>
+          <input id="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="1234 5678 9012 3456">
+        </div>
+        <div class="card-field">
+          <label for="cardName">Name on card</label>
+          <input id="cardName" type="text" autocomplete="cc-name" placeholder="Cardholder name">
+        </div>
+        <div class="card-field half">
+          <label for="cardExpiry">Valid thru</label>
+          <input id="cardExpiry" type="text" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="MM/YY">
+        </div>
+        <div class="card-field half">
+          <label for="cardCvv">CVV</label>
+          <input id="cardCvv" type="password" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="123">
+        </div>
+      </div>
+      <div class="saved-payment-note">Your card details are encrypted before payment is processed.</div>
+    </div>
+  `;
+}
+
+function bankIconMarkup(bank){
+  const svg = `<svg viewBox="0 0 40 40" width="34" height="34" aria-label="${bank.name}"><rect x="2" y="2" width="36" height="36" rx="10" fill="${bank.color}"/><text x="20" y="24" font-family="Arial, sans-serif" font-size="${bank.short.length > 3 ? 9 : 11}" font-weight="900" fill="#fff" text-anchor="middle">${bank.short}</text></svg>`;
+  if(!bank.logo) return svg;
+  return `<span class="bank-logo-wrap">${svg}<img class="bank-logo" src="${bank.logo}" alt="${bank.name}" loading="lazy" onerror="this.remove()"></span>`;
+}
+
+function getFilteredBanks(){
+  const q = netBankSearch.trim().toLowerCase();
+  if(!q) return netBankingBanks;
+  return netBankingBanks.filter(b => b.name.toLowerCase().includes(q) || b.sub.toLowerCase().includes(q));
+}
+
+function bankChoicesMarkup(banks){
+  if(!banks.length) return `<div class="nb-empty">No banks found</div>`;
+  return banks.map(bank => `
+    <div class="payment-choice ${selectedBank === bank.id ? 'selected' : ''}" onclick="event.stopPropagation(); selectBank('${bank.id}')">
+      <div class="payment-choice-icon">${bankIconMarkup(bank)}</div>
+      <div class="payment-choice-content">
+        <div class="payment-choice-main">${bank.name}</div>
+        <div class="payment-choice-sub">${bank.sub}</div>
+      </div>
+      <div class="payment-choice-mark"></div>
+    </div>
+  `).join('');
+}
+
+function renderNetBankingOptions(){
+  return `
+    <div class="payment-detail-panel">
+      <div class="payment-detail-title">Select your bank</div>
+      <div class="nb-search ${netBankSearch ? 'has-value' : ''}">
+        <input id="nbSearchInput" type="search" placeholder="Search bank name..." value="${netBankSearch.replace(/"/g, '&quot;')}" autocomplete="off" oninput="filterBanks(this.value)">
+        <button type="button" class="nb-search-clear" onclick="clearBankSearch()" aria-label="Clear search">�</button>
+      </div>
+      <div class="payment-choice-list" id="nbBankList">
+        ${bankChoicesMarkup(getFilteredBanks())}
+      </div>
+    </div>
+  `;
+}
+
+function filterBanks(val){
+  netBankSearch = val;
+  const list = document.getElementById('nbBankList');
+  if(!list) return;
+  list.innerHTML = bankChoicesMarkup(getFilteredBanks());
+  const box = document.querySelector('.nb-search');
+  if(box) box.classList.toggle('has-value', !!val);
+}
+
+function clearBankSearch(){
+  netBankSearch = '';
+  const input = document.getElementById('nbSearchInput');
+  if(input) input.value = '';
+  const list = document.getElementById('nbBankList');
+  if(list) list.innerHTML = bankChoicesMarkup(getFilteredBanks());
+  const box = document.querySelector('.nb-search');
+  if(box) box.classList.remove('has-value');
+}
+
+function selectPayment(id){
+  selectedPayment = id;
+  renderPayOptions();
+}
+
+function selectUpiApp(id){
+  selectedUpiApp = id;
+  renderPayOptions();
+}
+
+function selectBank(id){
+  selectedBank = id;
+  renderPayOptions();
+}
+
+document.getElementById('payOptions').addEventListener('input', (e) => {
+  if(e.target.id === 'cardNumber'){
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
+  }
+  if(e.target.id === 'cardExpiry'){
+    var value = e.target.value.replace(/\D/g, '').slice(0, 4);
+    e.target.value = value.length > 2 ? value.slice(0, 2) + '/' + value.slice(2) : value;
+  }
+  if(e.target.id === 'cardCvv'){
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+  }
+});
+
+/* ---------------- TIP ---------------- */
+document.getElementById('tipRow').addEventListener('click', (e) => {
+  const chip = e.target.closest('.tip-chip');
+  if(!chip) return;
+  document.querySelectorAll('.tip-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  const val = chip.dataset.tip;
+  if(val === 'custom'){
+    const custom = prompt('Enter a custom tip amount (₹)', '25');
+    tipAmount = custom && !isNaN(custom) ? Math.max(0, parseInt(custom)) : 0;
+    chip.textContent = tipAmount > 0 ? `₹${tipAmount}` : 'Custom';
+  } else {
+    tipAmount = parseInt(val);
+  }
+  recalc();
+});
+
+/* ---------------- COUPON MODAL SYSTEM ---------------- */
+var COUPON_CATALOG = [
+  {
+    code: 'WELCOME100',
+    benefit: 'Flat \u20B9100 OFF',
+    desc: 'Get \u20B9100 off on your first VP NEXUES order.',
+    minOrder: 500,
+    maxDiscount: 100,
+    discountType: 'flat',
+    firstOrderOnly: true,
+    category: null,
+    freeDelivery: false,
+    expiryDate: '2026-12-31'
+  },
+  {
+    code: 'FRESH50',
+    benefit: 'Flat \u20B950 OFF',
+    desc: 'Flat \u20B950 off on orders above \u20B9299. Valid on fruits & vegetables.',
+    minOrder: 299,
+    maxDiscount: 50,
+    discountType: 'flat',
+    firstOrderOnly: false,
+    category: 'fruits-vegetables',
+    freeDelivery: false,
+    expiryDate: '2026-12-31'
+  },
+  {
+    code: 'FIRSTBASKET',
+    benefit: '15% OFF up to \u20B9100',
+    desc: '15% off up to \u20B9100 on your first VP NEXUES order.',
+    minOrder: 0,
+    maxDiscount: 100,
+    discountType: 'percent',
+    percentRate: 15,
+    firstOrderOnly: true,
+    category: null,
+    freeDelivery: false,
+    expiryDate: '2026-12-31'
+  },
+  {
+    code: 'NOFEE',
+    benefit: 'Free Delivery',
+    desc: 'Free delivery on this order, no minimum basket value.',
+    minOrder: 0,
+    maxDiscount: 0,
+    discountType: 'delivery',
+    firstOrderOnly: false,
+    category: null,
+    freeDelivery: true,
+    expiryDate: '2026-12-31'
+  }
+];
+
+function getCouponDiscount(coupon, itemTotal) {
+  if (coupon.discountType === 'flat') {
+    return Math.min(coupon.maxDiscount, itemTotal);
+  }
+  if (coupon.discountType === 'percent') {
+    return Math.min(Math.round(itemTotal * coupon.percentRate / 100), coupon.maxDiscount);
+  }
+  if (coupon.discountType === 'delivery') {
+    var country = getShopPriceCountry();
+    var dConfig = DELIVERY_CONFIG[country] || DELIVERY_CONFIG.IN;
+    return itemTotal >= dConfig.threshold ? 0 : dConfig.charge;
+  }
+  return 0;
+}
+
+function validateCoupon(code) {
+  var country = getShopPriceCountry();
+  var itemTotal = items.reduce(function(sum, it) { return sum + it.price * it.qty; }, 0);
+  var deliveryCharge = getDeliveryCharge(itemTotal);
+
+  var catalog = COUPON_CATALOG.slice();
+  var welcomeConfig = COUPON_CONFIG[country] || COUPON_CONFIG.IN;
+  var wc = {
+    code: welcomeConfig.coupon,
+    benefit: 'Flat ' + welcomeConfig.prefix + welcomeConfig.amount + ' OFF',
+    desc: welcomeConfig.desc,
+    minOrder: welcomeConfig.minOrder,
+    maxDiscount: welcomeConfig.amount,
+    discountType: 'flat',
+    firstOrderOnly: true,
+    category: null,
+    freeDelivery: false,
+    expiryDate: '2026-12-31'
+  };
+  catalog.push(wc);
+
+  var found = null;
+  for (var i = 0; i < catalog.length; i++) {
+    if (catalog[i].code === code.toUpperCase()) { found = catalog[i]; break; }
+  }
+  if (!found) return { valid: false, reason: 'invalid', message: 'Invalid coupon code. Please check the code and try again.' };
+
+  var today = new Date();
+  if (found.expiryDate && new Date(found.expiryDate) < today) {
+    return { valid: false, reason: 'expired', message: 'This coupon expired on ' + new Date(found.expiryDate).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) + '.' };
+  }
+
+  if (found.firstOrderOnly && !isFirstTimeUser()) {
+    return { valid: false, reason: 'not-eligible', message: 'This offer is available for first-time customers only.' };
+  }
+
+  if (itemTotal < found.minOrder) {
+    var needed = found.minOrder - itemTotal;
+    return { valid: false, reason: 'min-order', message: 'Minimum order ' + fmtCartAmount(found.minOrder) + ' required. Add ' + fmtCartAmount(needed) + ' more to unlock.' };
+  }
+
+  var discount = getCouponDiscount(found, itemTotal);
+  if (found.discountType === 'delivery' && deliveryCharge === 0) {
+    return { valid: false, reason: 'already-free', message: 'Your delivery is already free on this order.' };
+  }
+
+  return { valid: true, coupon: found, discount: discount };
+}
+
+function getCouponListData() {
+  var country = getShopPriceCountry();
+  var itemTotal = items.reduce(function(sum, it) { return sum + it.price * it.qty; }, 0);
+  var deliveryCharge = getDeliveryCharge(itemTotal);
+  var catalog = COUPON_CATALOG.slice();
+  var welcomeConfig = COUPON_CONFIG[country] || COUPON_CONFIG.IN;
+  catalog.push({
+    code: welcomeConfig.coupon,
+    benefit: 'Flat ' + welcomeConfig.prefix + welcomeConfig.amount + ' OFF',
+    desc: welcomeConfig.desc,
+    minOrder: welcomeConfig.minOrder,
+    maxDiscount: welcomeConfig.amount,
+    discountType: 'flat',
+    firstOrderOnly: true,
+    category: null,
+    freeDelivery: false,
+    expiryDate: '2026-12-31'
+  });
+
+  var deliveryCharge = getDeliveryCharge(itemTotal);
+  var bestSaving = 0;
+  var bestCode = null;
+  var result = [];
+
+  for (var i = 0; i < catalog.length; i++) {
+    var c = catalog[i];
+
+    if (c.freeDelivery && deliveryCharge === 0) continue;
+
+    var v = validateCoupon(c.code);
+    var saving = v.valid ? v.discount : 0;
+    if (c.firstOrderOnly && !isFirstTimeUser()) { saving = 0; }
+    if (saving > bestSaving) { bestSaving = saving; bestCode = c.code; }
+    var needed = Math.max(0, c.minOrder - itemTotal);
+    var potentialSaving = 0;
+    if (!v.valid && c.minOrder > 0) {
+      potentialSaving = getCouponDiscount(c, c.minOrder);
+    }
+    var displaySaving = saving || potentialSaving;
+    var isExpired = c.expiryDate && new Date(c.expiryDate) < new Date();
+    var isFirstOnlyBlocked = c.firstOrderOnly && !isFirstTimeUser();
+    var locked = !v.valid && v.reason !== 'invalid';
+    result.push({
+      code: c.code,
+      benefit: c.benefit,
+      desc: c.desc,
+      minOrder: c.minOrder,
+      discountType: c.discountType,
+      freeDelivery: c.freeDelivery,
+      firstOrderOnly: c.firstOrderOnly,
+      category: c.category,
+      expiryDate: c.expiryDate,
+      saving: displaySaving,
+      valid: v.valid,
+      locked: locked,
+      reason: v.reason,
+      message: v.message,
+      needed: needed,
+      isExpired: isExpired,
+      isFirstOnlyBlocked: isFirstOnlyBlocked,
+      isBest: c.code === bestCode && bestSaving > 0,
+      isApplied: coupon && coupon.code === c.code
+    });
+  }
+
+  result.sort(function(a, b) {
+    if (a.isApplied && !b.isApplied) return -1;
+    if (!a.isApplied && b.isApplied) return 1;
+    if (a.isBest && !b.isBest) return -1;
+    if (!a.isBest && b.isBest) return 1;
+    return b.saving - a.saving;
+  });
+
+  return result;
+}
+
+function renderCouponList() {
+  var list = document.getElementById('couponList');
+  var empty = document.getElementById('couponEmpty');
+  var bestSaver = document.getElementById('couponBestSaver');
+  var subEl = document.getElementById('couponSectionSub');
+  var data = getCouponListData();
+
+  if (data.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = '';
+    bestSaver.style.display = 'none';
+    if (subEl) subEl.textContent = '';
+    return;
+  }
+
+  empty.style.display = 'none';
+  if (subEl) subEl.textContent = data.length + ' offer' + (data.length !== 1 ? 's' : '') + ' available for your basket';
+
+  var bestItem = null;
+  for (var i = 0; i < data.length; i++) {
+    if (data[i].isBest) { bestItem = data[i]; break; }
+  }
+
+  if (bestItem && !bestItem.isApplied) {
+    bestSaver.style.display = '';
+    var bCard = document.getElementById('couponBestSaverCard');
+    bCard.innerHTML =
+      '<div class="cb-row">' +
+        '<div class="cb-info">' +
+          '<div class="cb-code">' + bestItem.code + '</div>' +
+          '<div class="cb-benefit">' + bestItem.benefit + '</div>' +
+          '<div class="cb-savings">You save ' + fmtCartAmount(bestItem.saving) + '</div>' +
+        '</div>' +
+        '<button class="cb-cta" onclick="applyCouponByCode(\'' + bestItem.code + '\')">Apply</button>' +
+      '</div>';
+  } else {
+    bestSaver.style.display = 'none';
+  }
+
+  var html = '';
+  for (var i = 0; i < data.length; i++) {
+    var d = data[i];
+    if (d.isBest && !d.isApplied) continue;
+    html += renderCouponCard(d);
+  }
+
+  if (!html) {
+    list.innerHTML = '<div style="text-align:center;padding:20px 0;color:var(--muted);font-size:13px;">One coupon can be applied at a time</div>';
+  } else {
+    list.innerHTML = html;
+  }
+}
+
+function renderCouponCard(d) {
+  var cls = 'coupon-card';
+  if (d.locked) cls += ' locked';
+  if (d.isApplied) cls += ' applied';
+  if (d.isBest) cls += ' best';
+
+  var tags = '';
+  if (d.minOrder > 0) tags += '<span class="coupon-card-tag min-order">Min. order ' + fmtCartAmount(d.minOrder) + '</span> ';
+  if (d.firstOrderOnly) tags += '<span class="coupon-card-tag first-order">First order only</span> ';
+  if (d.category) tags += '<span class="coupon-card-tag category">Fruits & Vegetables</span> ';
+  if (d.freeDelivery) tags += '<span class="coupon-card-tag free-delivery">Free delivery</span> ';
+  if (d.expiryDate) {
+    var exp = new Date(d.expiryDate);
+    var now = new Date();
+    var daysLeft = Math.ceil((exp - now) / 86400000);
+    if (daysLeft <= 7 && daysLeft > 0) {
+      tags += '<span class="coupon-card-tag expiry">Expires in ' + daysLeft + 'd</span> ';
+    } else if (daysLeft <= 0) {
+      tags += '<span class="coupon-card-tag expiry">Expired</span> ';
+    }
+  }
+
+  var savingsLine = '';
+  if (d.saving > 0 && d.valid) {
+    savingsLine = '<div style="font-size:12.5px;font-weight:700;color:var(--leaf-dark);margin-top:6px;">You save ' + fmtCartAmount(d.saving) + '</div>';
+  }
+
+  var unlock = '';
+  if (d.locked && d.reason === 'min-order' && d.needed > 0) {
+    unlock = '<div class="coupon-card-unlock">' +
+      '<svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#92400E" stroke-width="1.8"/><path d="M12 8v4M12 16h.01" stroke="#92400E" stroke-width="1.8" stroke-linecap="round"/></svg>' +
+      '<span>Add <strong>' + fmtCartAmount(d.needed) + '</strong> more to save ' + fmtCartAmount(d.saving || 0) + '</span>' +
+    '</div>';
+  }
+
+  var cta = '';
+  if (d.isApplied) {
+    cta = '<div class="coupon-card-cta">' +
+      '<div class="coupon-card-applied-badge">' +
+        '<svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="10" fill="var(--leaf)"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        'Applied' +
+      '</div>' +
+      '<button class="coupon-card-remove" onclick="removeCoupon()">Remove</button>' +
+    '</div>';
+  } else if (d.locked && d.reason === 'min-order') {
+    cta = '<div class="coupon-card-cta">' +
+      '<button class="coupon-card-add" onclick="closeCouponModal(); window.location.href=\'shop.html\'">Add more items</button>' +
+    '</div>';
+  } else if (d.locked) {
+    cta = '<div class="coupon-card-cta">' +
+      '<button class="coupon-card-apply" disabled style="font-size:12.5px;padding:12px 16px;">' + d.message + '</button>' +
+    '</div>';
+  } else if (d.valid) {
+    cta = '<div class="coupon-card-cta">' +
+      '<button class="coupon-card-apply" onclick="applyCouponByCode(\'' + d.code + '\')">Apply</button>' +
+    '</div>';
+  }
+
+  return '<div class="' + cls + '">' +
+    '<div class="coupon-card-top">' +
+      '<div class="coupon-card-info">' +
+        '<div class="coupon-card-code">' + d.code + '</div>' +
+        '<div class="coupon-card-benefit">' + d.benefit + '</div>' +
+        '<div class="coupon-card-desc">' + d.desc + '</div>' +
+        savingsLine +
+        '<div>' + tags + '</div>' +
+      '</div>' +
+    '</div>' +
+    unlock +
+    cta +
+  '</div>';
+}
+
+function openCouponModal() {
+  document.getElementById('couponOverlay').classList.add('show');
+  document.getElementById('couponInputMsg').textContent = '';
+  document.getElementById('couponInputMsg').className = 'coupon-input-msg';
+  renderCouponList();
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCouponModal() {
+  document.getElementById('couponOverlay').classList.remove('show');
+  document.getElementById('couponConfirmOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+  document.getElementById('couponInput').value = '';
+  document.getElementById('couponClearBtn').style.display = 'none';
+  document.getElementById('couponInputMsg').textContent = '';
+  document.getElementById('couponInputMsg').className = 'coupon-input-msg';
+}
+
+document.getElementById('couponOverlay').addEventListener('click', function(e) {
+  if (e.target.id === 'couponOverlay') closeCouponModal();
+});
+
+document.getElementById('couponInput').addEventListener('input', function() {
+  var val = this.value.trim();
+  document.getElementById('couponClearBtn').style.display = val ? 'flex' : 'none';
+});
+
+function clearCouponInput() {
+  var inp = document.getElementById('couponInput');
+  inp.value = '';
+  document.getElementById('couponClearBtn').style.display = 'none';
+  document.getElementById('couponInputMsg').textContent = '';
+  document.getElementById('couponInputMsg').className = 'coupon-input-msg';
+  inp.focus();
+}
+
+function applyCouponFromInput() {
+  var inp = document.getElementById('couponInput');
+  var code = inp.value.trim().toUpperCase();
+  if (!code) {
+    showCouponMsg('Enter a coupon code first', 'error');
+    return;
+  }
+  applyCouponByCode(code);
+}
+
+function applyCouponByCode(code) {
+  var msgEl = document.getElementById('couponInputMsg');
+  var applyBtn = document.getElementById('couponApplyBtn');
+  msgEl.textContent = 'Checking coupon...';
+  msgEl.className = 'coupon-input-msg loading';
+  applyBtn.disabled = true;
+
+  setTimeout(function() {
+    applyBtn.disabled = false;
+    var result = validateCoupon(code);
+    if (!result.valid) {
+      msgEl.textContent = result.message;
+      msgEl.className = 'coupon-input-msg error';
+      return;
+    }
+
+    if (coupon && coupon.code !== code) {
+      showReplaceConfirm(code, result.discount);
+      return;
+    }
+
+    coupon = { code: code, amount: result.discount };
+    msgEl.textContent = 'Coupon applied successfully. You saved ' + fmtCartAmount(result.discount) + '!';
+    msgEl.className = 'coupon-input-msg success';
+    updateCouponStrip();
+    recalc();
+    renderCouponList();
+    setTimeout(closeCouponModal, 800);
+    toast('Coupon ' + code + ' applied');
+  }, 500);
+}
+
+function showReplaceConfirm(newCode, newDiscount) {
+  var overlay = document.getElementById('couponConfirmOverlay');
+  var desc = document.getElementById('couponConfirmDesc');
+  var keepBtn = document.getElementById('couponConfirmKeep');
+  var replaceBtn = document.getElementById('couponConfirmReplace');
+
+  desc.textContent = 'You already applied ' + coupon.code + '. Replace it with ' + newCode + '?';
+  keepBtn.textContent = 'Keep ' + coupon.code;
+  replaceBtn.textContent = 'Replace coupon';
+  overlay.classList.add('show');
+
+  keepBtn.onclick = function() {
+    overlay.classList.remove('show');
+    renderCouponList();
+  };
+
+  replaceBtn.onclick = function() {
+    coupon = { code: newCode, amount: newDiscount };
+    overlay.classList.remove('show');
+    updateCouponStrip();
+    recalc();
+    renderCouponList();
+    closeCouponModal();
+    toast('Coupon replaced with ' + newCode);
+  };
+}
+
+function removeCoupon() {
+  coupon = null;
+  updateCouponStrip();
+  recalc();
+  renderCouponList();
+  toast('Coupon removed');
+}
+
+function showCouponMsg(msg, type) {
+  var el = document.getElementById('couponInputMsg');
+  el.textContent = msg;
+  el.className = 'coupon-input-msg ' + (type || '');
+}
+
+function updateCouponStrip(){
+  const strip = document.getElementById('couponStrip');
+  const title = document.getElementById('couponTitle');
+  const sub = document.getElementById('couponSub');
+  if(coupon){
+    strip.classList.add('applied');
+    title.innerHTML = '<svg viewBox="0 0 24 24" fill="none" width="14" height="14" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10" fill="var(--leaf)"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' + coupon.code + ' applied';
+    sub.textContent = 'You saved ' + fmtCartAmount(coupon.amount) + ' with this coupon';
+  } else {
+    strip.classList.remove('applied');
+    title.textContent = 'Apply coupon';
+    sub.textContent = 'View offers available for your basket';
+  }
+}
+
+/* ---------------- BILL CALCULATION ---------------- */
+var DELIVERY_CONFIG = {
+  IN: { threshold: 100, charge: 40 },
+  SG: { threshold: 2, charge: 1 },
+  US: { threshold: 2, charge: 1 },
+  AE: { threshold: 5, charge: 3 }
+};
+
+function getDeliveryCharge(itemTotal){
+  var country = getShopPriceCountry();
+  var config = DELIVERY_CONFIG[country] || DELIVERY_CONFIG.IN;
+  if(itemTotal >= config.threshold) return 0;
+  return config.charge;
+}
+
+function isFirstTimeUser(){
+  try {
+    var orders = JSON.parse(localStorage.getItem('vpnexues_orders') || '[]');
+    return orders.length === 0;
+  } catch(e) { return true; }
+}
+
+function recalc(){
+  const itemTotal = items.reduce((sum, it) => sum + it.price * it.qty, 0);
+  const mrpTotal = items.reduce((sum, it) => sum + it.mrp * it.qty, 0);
+  const deliveryCharge = getDeliveryCharge(itemTotal);
+  const discount = coupon ? Math.round(Math.min(coupon.amount, itemTotal)) : 0;
+  const grandTotal = Math.max(0, itemTotal - discount + tipAmount + deliveryCharge);
+  const totalSavings = Math.round((mrpTotal - itemTotal) + discount);
+
+  document.getElementById('billItemTotal').textContent = fmtCartAmount(itemTotal);
+
+  var deliveryEl = document.getElementById('billDelivery');
+  if(deliveryCharge > 0){
+    deliveryEl.textContent = fmtCartAmount(deliveryCharge);
+    deliveryEl.style.color = '';
+  } else {
+    deliveryEl.textContent = 'FREE';
+    deliveryEl.style.color = '';
+  }
+
+  document.getElementById('billHandling').textContent = fmtCartAmount(0);
+  try { document.getElementById('billTip').textContent = fmtCartAmount(tipAmount); } catch(e) {}
+  document.getElementById('billTax').textContent = fmtCartAmount(0);
+  document.getElementById('billGrandTotal').textContent = fmtCartAmount(grandTotal);
+  try { document.getElementById('paybarAmt').textContent = fmtCartAmount(grandTotal); } catch(e) {}
+  document.getElementById('payCtaLabel').textContent = items.length === 0 ? 'Cart is empty' : (selectedPayment === 'cod' ? 'Place Order' : 'Pay ' + fmtCartAmount(grandTotal));
+
+  var country = getShopPriceCountry();
+  var dConfig = DELIVERY_CONFIG[country] || DELIVERY_CONFIG.IN;
+  var deliveryThreshold = dConfig.threshold;
+
+  if(deliveryCharge > 0){
+    var remaining = deliveryThreshold - itemTotal;
+    if(remaining > 0){
+      deliveryEl.innerHTML = fmtCartAmount(deliveryCharge) + ' <span style="font-size:11px; color:var(--muted); font-weight:500;">Add ' + fmtCartAmount(remaining) + ' for free delivery</span>';
+    }
+  }
+
+  var couponCount = COUPON_CATALOG.length + (isFirstTimeUser() ? 1 : 0);
+  document.getElementById('couponSub').textContent = 'View ' + couponCount + ' offers available for your basket';
+
+  const discRow = document.getElementById('billDiscountRow');
+  if(discount > 0){
+    discRow.style.display = 'flex';
+    document.getElementById('billDiscountLabel').textContent = coupon ? coupon.code : 'Coupon discount';
+    document.getElementById('billDiscount').textContent = '\u2212' + fmtCartAmount(discount);
+  } else {
+    discRow.style.display = 'none';
+  }
+
+  const savingsBanner = document.getElementById('savingsBanner');
+  if(totalSavings > 0){
+    savingsBanner.style.display = 'flex';
+    document.getElementById('savingsText').textContent = "You're saving " + fmtCartAmount(totalSavings) + ' on this order';
+  } else {
+    savingsBanner.style.display = 'none';
+  }
+
+  const payCta = document.getElementById('payCta');
+  payCta.disabled = items.length === 0;
+  updateOrderSummaryDeliveryInfo();
+
+  const emptyBanner = document.getElementById('emptyCartBanner');
+  const billCard = document.getElementById('billSummaryCard');
+  const couponEl = document.getElementById('couponStrip');
+  if(items.length === 0){
+    emptyBanner.style.display = 'block';
+    billCard.style.display = 'none';
+    couponEl.style.display = 'none';
+  } else {
+    emptyBanner.style.display = 'none';
+    billCard.style.display = 'block';
+    couponEl.style.display = '';
+  }
+}
+
+/* ==================== PAYMENT SIMULATION ==================== */
+var currentOrderId = 'HB-' + Math.floor(200000 + Math.random() * 99999);
+var payTimerInterval = null;
+var payTimerSeconds = 300;
+var payCtx = null;
+
+var upiAppInfo = {
+  gpay:      { name:'Google Pay',    color:'#4285F4', letter:'G' },
+  phonepe:   { name:'PhonePe',       color:'#5F259F', letter:'P' },
+  paytm:     { name:'Paytm',         color:'#002970', letter:'P' },
+  bhim:      { name:'BHIM UPI',      color:'#1a1a2e', letter:'B' },
+  amazonpay: { name:'Amazon Pay',    color:'#232F3E', letter:'A' }
+};
+
+function getSelectedBankName(){
+  const bank = netBankingBanks.find(b => b.id === selectedBank);
+  return bank ? bank.name : 'Selected bank';
+}
+
+function validateCardPayment(){
+  if(selectedPayment !== 'card') return true;
+  const cardNumber = document.getElementById('cardNumber');
+  const cardName = document.getElementById('cardName');
+  const cardExpiry = document.getElementById('cardExpiry');
+  const cardCvv = document.getElementById('cardCvv');
+  const numberDigits = cardNumber ? cardNumber.value.replace(/\D/g, '') : '';
+  const cvvDigits = cardCvv ? cardCvv.value.replace(/\D/g, '') : '';
+  if(numberDigits.length < 12){ toast('Enter a valid card number'); if(cardNumber) cardNumber.focus(); return false; }
+  if(!cardName || !cardName.value.trim()){ toast('Enter the name on card'); if(cardName) cardName.focus(); return false; }
+  if(!cardExpiry || !/^\d{2}\/\d{2}$/.test(cardExpiry.value)){ toast('Enter card expiry as MM/YY'); if(cardExpiry) cardExpiry.focus(); return false; }
+  if(cvvDigits.length < 3){ toast('Enter card CVV'); if(cardCvv) cardCvv.focus(); return false; }
+  return true;
+}
+
+function validateDeliveryInfo(){
+  var user;
+  try { user = JSON.parse(localStorage.getItem('vpnexuesUser')); } catch(e) { user = null; }
+  if(!user || !user.name){
+    toast('Please login to continue with payment');
+    if(typeof vpnOpenModal === 'function'){ setTimeout(function(){ vpnOpenModal('login'); }, 600); }
+    return false;
+  }
+  var addr;
+  try { addr = JSON.parse(localStorage.getItem('vpnAddress')); } catch(e) { addr = null; }
+  if(!addr || !addr.doorNo || !addr.street || !addr.city || !addr.pinCode){
+    toast('Please add your full delivery address (Door No, Street, City, Pin Code)');
+    var card = document.getElementById('freshCard');
+    if(card) openAddressEditor();
+    return false;
+  }
+  if(!addr.phone || !addr.phone.trim()){
+    toast('Please enter your phone number');
+    return false;
+  }
+  return true;
+}
+
+function startPayment(){
+  if(items.length === 0){ toast('Your order is empty'); return; }
+  if(!validateDeliveryInfo()) return;
+  if(!validateCardPayment()) return;
+
+  const finalAmount = document.getElementById('billGrandTotal').textContent;
+  var cartBeforeClear = [];
+  try { cartBeforeClear = JSON.parse(localStorage.getItem('cart') || '[]'); } catch(e) {}
+
+  const methodMap = {
+    upi: 'UPI \u00B7 ' + (upiApps.find(a => a.id === selectedUpiApp)?.name || 'Google Pay'),
+    card: 'Credit / Debit Card',
+    netbanking: 'Netbanking \u00B7 ' + getSelectedBankName(),
+    cod: 'Cash on Delivery',
+    paypal: 'PayPal',
+    applepay: 'Apple Pay',
+    gpay_intl: 'Google Pay'
+  };
+
+  payCtx = { methodMap, finalAmount, cartBeforeClear };
+
+  var iconEl = document.getElementById('payAppIcon');
+  var nameEl = document.getElementById('payAppName');
+  var statusEl = document.getElementById('payAppStatus');
+
+  if(selectedPayment === 'upi'){
+    var app = upiAppInfo[selectedUpiApp] || upiAppInfo.gpay;
+    iconEl.style.background = app.color;
+    iconEl.innerHTML = '';
+    iconEl.textContent = app.letter;
+    nameEl.textContent = app.name;
+    statusEl.textContent = 'Opening ' + app.name + '...';
+  } else if(selectedPayment === 'card'){
+    iconEl.style.background = 'linear-gradient(135deg,#1a1a2e,#2d3748)';
+    iconEl.innerHTML = '<svg viewBox="0 0 24 24" fill="none" width="32" height="32"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="#fff" stroke-width="1.8"/><path d="M2.5 9.5H21.5" stroke="#fff" stroke-width="1.8"/><rect x="5.5" y="14" width="5" height="1.8" rx="0.6" fill="#fff"/></svg>';
+    nameEl.textContent = 'Card Payment';
+    statusEl.textContent = 'Processing your card...';
+  } else if(selectedPayment === 'netbanking'){
+    var bank = netBankingBanks.find(b => b.id === selectedBank) || netBankingBanks[0];
+    iconEl.style.background = bank.color;
+    iconEl.innerHTML = '';
+    iconEl.textContent = bank.short;
+    nameEl.textContent = bank.name;
+    statusEl.textContent = 'Redirecting to ' + bank.name + '...';
+  } else if(selectedPayment === 'cod'){
+    iconEl.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+    iconEl.innerHTML = '';
+    iconEl.textContent = '\uD83D\uDCB5';
+    nameEl.textContent = 'Cash on Delivery';
+    statusEl.textContent = 'Confirming your order...';
+  } else {
+    iconEl.style.background = 'linear-gradient(135deg,#1a1a2e,#2d3748)';
+    iconEl.innerHTML = '';
+    iconEl.textContent = '\uD83D\uDCB3';
+    nameEl.textContent = methodMap[selectedPayment] || 'Online Payment';
+    statusEl.textContent = 'Processing payment...';
+  }
+
+  document.getElementById('payAmountDisplay').textContent = finalAmount;
+  document.getElementById('payOrderIdDisplay').textContent = 'Order #' + currentOrderId;
+  document.getElementById('payResultBtns').style.display = 'none';
+  document.getElementById('paySpinner').style.display = '';
+  document.getElementById('payOverlay').classList.add('show');
+  startPayTimer();
+
+  setTimeout(function(){
+    document.getElementById('paySpinner').style.display = 'none';
+    document.getElementById('payAppStatus').textContent = 'Choose payment result:';
+    document.getElementById('payResultBtns').style.display = 'flex';
+  }, 3000);
+}
+
+function startPayTimer(){
+  clearInterval(payTimerInterval);
+  payTimerSeconds = 300;
+  updatePayTimerDisplay();
+  payTimerInterval = setInterval(function(){
+    payTimerSeconds--;
+    updatePayTimerDisplay();
+    if(payTimerSeconds <= 0){ clearInterval(payTimerInterval); payResolve('failed', 'Payment timed out'); }
+  }, 1000);
+}
+function updatePayTimerDisplay(){
+  var m = Math.floor(payTimerSeconds / 60);
+  var s = payTimerSeconds % 60;
+  document.getElementById('payTimerText').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+  document.getElementById('payTimerWrap').className = 'pay-timer' + (payTimerSeconds <= 60 ? ' warning' : '');
+}
+
+function payResolve(status, reason){
+  clearInterval(payTimerInterval);
+  document.getElementById('payOverlay').classList.remove('show');
+  if(!payCtx) return;
+  if(status === 'success'){
+    showPaymentSuccess(payCtx.methodMap, payCtx.finalAmount, payCtx.cartBeforeClear, 'pay_' + Date.now());
+  } else {
+    showPaymentFailure(payCtx.methodMap, payCtx.finalAmount, payCtx.cartBeforeClear, reason || 'Payment failed');
+  }
+  payCtx = null;
+}
+
+function payCancel(){
+  clearInterval(payTimerInterval);
+  document.getElementById('payOverlay').classList.remove('show');
+  payCtx = null;
+  toast('Payment cancelled');
+}
+
+function showPaymentSuccess(methodMap, finalAmount, cartBeforeClear, paymentId){
+  localStorage.removeItem('cart');
+  items = [];
+  document.getElementById('successOrderId').textContent = '#' + currentOrderId;
+  document.getElementById('successAmount').textContent = finalAmount;
+  document.getElementById('successMethod').textContent = methodMap[selectedPayment] || 'Card';
+  savePaymentRecord('paid', methodMap, finalAmount, cartBeforeClear, paymentId);
+  document.getElementById('checkoutView').style.display = 'none';
+  document.querySelector('.paybar').style.display = 'none';
+  var v = document.getElementById('successView');
+  v.classList.remove('show'); void v.offsetWidth; v.classList.add('show');
+  window.scrollTo(0, 0);
+}
+
+function showPaymentFailure(methodMap, finalAmount, cartBeforeClear, reason){
+  document.getElementById('failOrderId').textContent = '#' + currentOrderId;
+  document.getElementById('failAmount').textContent = finalAmount;
+  document.getElementById('failMethod').textContent = methodMap[selectedPayment] || 'Card';
+  document.getElementById('failReason').textContent = reason || 'Payment failed';
+  savePaymentRecord('failed', methodMap, finalAmount, cartBeforeClear, null, reason);
+  document.getElementById('checkoutView').style.display = 'none';
+  document.querySelector('.paybar').style.display = 'none';
+  var v = document.getElementById('failView');
+  v.classList.remove('show'); void v.offsetWidth; v.classList.add('show');
+  window.scrollTo(0, 0);
+}
+
+function savePaymentRecord(status, methodMap, finalAmount, cartBeforeClear, paymentId, failReason){
+  try {
+    var amountVal = parseFloat(finalAmount.replace(/[^\d.]/g, '')) || 0;
+    var orderItems = cartBeforeClear.length > 0 ? cartBeforeClear.map(function(c) {
+      return { name: c.name || c.title || 'Item', image: c.img || c.image || '', price: c.price || 0, qty: c.qty || c.quantity || 1 };
+    }) : items.map(function(c) {
+      return { name: c.name || 'Item', image: '', price: c.price || 0, qty: c.qty || 1 };
+    });
+    var orderToSave = {
+      id: '#' + currentOrderId, date: new Date().toISOString(),
+      status: status === 'paid' ? 'processing' : 'failed', total: amountVal, items: orderItems,
+      address: (function(){ try{return JSON.parse(localStorage.getItem('vpnAddress')||'null')}catch(e){return null} })(),
+      paymentMethod: methodMap[selectedPayment] || 'Card', storeName: 'Harvest Basket',
+      deliveryTime: status === 'paid' ? '18-22 mins' : 'N/A',
+      userId: localStorage.getItem('vpnexues_userId') || 'guest',
+      createdAt: new Date().toISOString()
+    };
+    var existingOrders;try{existingOrders=JSON.parse(localStorage.getItem('vpnexues_orders')||'[]')}catch(e){existingOrders=[]}
+    existingOrders.unshift(orderToSave);
+    localStorage.setItem('vpnexues_orders', JSON.stringify(existingOrders));
+    var paymentRecord = {
+      orderId: '#' + currentOrderId, amount: amountVal, method: methodMap[selectedPayment] || 'Card',
+      date: new Date().toISOString(), items: orderItems, status: status,
+      paymentId: paymentId || null, failReason: failReason || null
+    };
+    var existingPayments;try{existingPayments=JSON.parse(localStorage.getItem('vpnexues_payments')||'[]')}catch(e){existingPayments=[]}
+    existingPayments.unshift(paymentRecord);
+    localStorage.setItem('vpnexues_payments', JSON.stringify(existingPayments));
+  } catch(e) {}
+}
+
+function backToCheckout(){
+  document.getElementById('successView').classList.remove('show');
+  document.getElementById('failView').classList.remove('show');
+  document.getElementById('payOverlay').classList.remove('show');
+  document.getElementById('checkoutView').style.display = '';
+  document.querySelector('.paybar').style.display = '';
+  window.scrollTo(0, 0);
+  toast('Back to checkout');
+}
+
+function continueToShop(){
+  window.location.href = 'index.html?menu=open';
+}
+
+/* ---------------- MISC UI ---------------- */
+function toggleSwitch(el){
+  el.classList.toggle('on');
+}
+
+function scrollToBill(){
+  document.querySelectorAll('.card').forEach(c => {
+    if(c.querySelector('h2') && c.querySelector('h2').textContent.includes('Order summary')){
+      c.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  });
+}
+
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ---------------- LOAD CUSTOMER INFO ---------------- */
+function loadCustomerInfo(){
+  try {
+    var addr;try{addr=JSON.parse(localStorage.getItem('vpnAddress'))}catch(e){addr=null}
+    var user;try{user=JSON.parse(localStorage.getItem('vpnexuesUser'))}catch(e){user=null}
+    var nameLineEl = document.getElementById('addrNameLine');
+    var doorEl = document.getElementById('addrDoor');
+    var streetEl = document.getElementById('addrStreet');
+    var cityEl = document.getElementById('addrCity');
+    var pinEl = document.getElementById('addrPin');
+    var phoneEl = document.getElementById('customerPhone');
+    var buildingEl = document.getElementById('addrBuilding');
+    var landmarkEl = document.getElementById('addrLandmark');
+    var receiverEl = document.getElementById('addrReceiver');
+    var badgeEl = document.getElementById('customerBadge');
+    var displayName = (user && user.name) ? user.name : (addr && addr.name ? addr.name : '');
+    nameLineEl.textContent = displayName || '';
+    if(badgeEl){ badgeEl.textContent = (addr && addr.label) ? addr.label : 'HOME'; }
+    if(addr && (addr.doorNo || addr.street || addr.address || addr.city)){
+      if(addr.doorNo){ doorEl.textContent = addr.doorNo; }
+      else if(addr.address){ var p=addr.address.split(',').map(function(x){return x.trim()}).filter(Boolean); doorEl.textContent=(p[0]||''); }
+      else { doorEl.textContent=''; }
+      if(addr.street){ streetEl.textContent = addr.street; }
+      else if(addr.address){ var p=addr.address.split(',').map(function(x){return x.trim()}).filter(Boolean); streetEl.textContent=(p.length>2?p.slice(1,-2).join(', '):(p[1]||'')); }
+      else { streetEl.textContent=''; }
+      if(addr.city){ var cp=[addr.city, addr.state].filter(Boolean); cityEl.textContent=cp.join(', '); }
+      else if(addr.address){ var p=addr.address.split(',').map(function(x){return x.trim()}).filter(Boolean); cityEl.textContent=(p.length>2?p.slice(-2).join(', '):''); }
+      else { cityEl.textContent=''; }
+      if(addr.pinCode){ pinEl.textContent=addr.pinCode; pinEl.parentElement.style.display=''; }
+      else { pinEl.textContent=''; pinEl.parentElement.style.display='none'; }
+      if(addr.phone){ phoneEl.textContent=addr.phone; }
+      else { phoneEl.textContent=''; }
+      if(addr.building){ buildingEl.textContent=addr.building; buildingEl.parentElement.style.display=''; }
+      else if(addr.flat){ buildingEl.textContent=addr.flat; buildingEl.parentElement.style.display=''; }
+      else { buildingEl.textContent=''; buildingEl.parentElement.style.display='none'; }
+      if(addr.landmark){ landmarkEl.textContent=addr.landmark; landmarkEl.parentElement.style.display=''; }
+      else { landmarkEl.textContent=''; landmarkEl.parentElement.style.display='none'; }
+      if(addr.receiverName || addr.receiverPhone){ var rv=[]; if(addr.receiverName) rv.push(addr.receiverName); if(addr.receiverPhone) rv.push('+91 '+addr.receiverPhone); receiverEl.textContent=rv.join(' • '); receiverEl.parentElement.style.display=''; }
+      else { receiverEl.textContent=''; receiverEl.parentElement.style.display='none'; }
+    } else {
+      doorEl.textContent='No address selected'; doorEl.style.color='#999';
+      streetEl.innerHTML=''; cityEl.innerHTML='';
+      pinEl.innerHTML=''; pinEl.style.display='none';
+      phoneEl.innerHTML=''; if(badgeEl){badgeEl.textContent='';}
+      if(buildingEl){buildingEl.textContent=''; buildingEl.parentElement.style.display='none';}
+      if(landmarkEl){landmarkEl.textContent=''; landmarkEl.parentElement.style.display='none';}
+      if(receiverEl){receiverEl.textContent=''; receiverEl.parentElement.style.display='none';}
+    }
+  } catch(e) {}
+}
+
+/* ---------------- INLINE ADDRESS EDIT (desktop) ---------------- */
+function openAddressEditor(){
+  var card = document.getElementById('freshCard');
+  if(!card) return;
+  var addr;try{addr=JSON.parse(localStorage.getItem('vpnAddress'))}catch(e){addr=null}
+  var user;try{user=JSON.parse(localStorage.getItem('vpnexuesUser'))}catch(e){user=null}
+  addr = addr || {};
+  document.getElementById('editLabel').value = addr.label || '';
+  document.getElementById('editName').value = (user && user.name) ? user.name : (addr.name || '');
+  document.getElementById('editDoor').value = addr.doorNo || '';
+  document.getElementById('editStreet').value = addr.street || '';
+  if(document.getElementById('editBuilding')) document.getElementById('editBuilding').value = addr.building || addr.flat || '';
+  if(document.getElementById('editLandmark')) document.getElementById('editLandmark').value = addr.landmark || '';
+  document.getElementById('editCity').value = addr.city || '';
+  document.getElementById('editState').value = addr.state || '';
+  document.getElementById('editPin').value = addr.pinCode || '';
+  document.getElementById('editPhone').value = addr.phone || '';
+  if(document.getElementById('editReceiverName')) document.getElementById('editReceiverName').value = addr.receiverName || '';
+  if(document.getElementById('editReceiverPhone')) document.getElementById('editReceiverPhone').value = addr.receiverPhone || '';
+  card.classList.add('editing');
+  var first = document.getElementById('editName');
+  if(first) setTimeout(function(){ first.focus(); }, 60);
+}
+function saveAddress(){
+  var card = document.getElementById('freshCard');
+  if(!card) return;
+  var label = document.getElementById('editLabel').value.trim();
+  var name = document.getElementById('editName').value.trim();
+  var doorNo = document.getElementById('editDoor').value.trim();
+  var street = document.getElementById('editStreet').value.trim();
+  var building = (document.getElementById('editBuilding') ? document.getElementById('editBuilding').value.trim() : '');
+  var landmark = (document.getElementById('editLandmark') ? document.getElementById('editLandmark').value.trim() : '');
+  var city = document.getElementById('editCity').value.trim();
+  var state = document.getElementById('editState').value.trim();
+  var pinCode = document.getElementById('editPin').value.trim();
+  var phone = document.getElementById('editPhone').value.trim();
+  var receiverName = (document.getElementById('editReceiverName') ? document.getElementById('editReceiverName').value.trim() : '');
+  var receiverPhone = (document.getElementById('editReceiverPhone') ? document.getElementById('editReceiverPhone').value.trim().replace(/\D/g,'') : '');
+  if(!name){ alert('Please fill in your full name.'); return; }
+  if(!doorNo){ alert('Please enter your Door No / Flat No.'); return; }
+  if(!street){ alert('Please enter your Street Address.'); return; }
+  if(!city){ alert('Please enter your City / District.'); return; }
+  if(!pinCode || pinCode.length < 6){ alert('Please enter a valid 6-digit Pin Code.'); return; }
+  if(!phone){ alert('Please enter your phone number.'); return; }
+  if(receiverPhone && receiverPhone.length < 10){ alert('Receiver phone must be 10 digits or leave empty.'); return; }
+  var fullAddress = [doorNo, street, building, landmark ? landmark + ' (Landmark)' : '', city, state].filter(Boolean).join(', ');
+  var addr;try{addr=JSON.parse(localStorage.getItem('vpnAddress'))}catch(e){addr=null}
+  addr = addr || {};
+  addr.label = label || 'HOME';
+  addr.name = name;
+  addr.doorNo = doorNo;
+  addr.street = street;
+  addr.building = building;
+  addr.landmark = landmark;
+  addr.city = city;
+  addr.state = state;
+  addr.pinCode = pinCode;
+  addr.phone = phone;
+  addr.receiverName = receiverName;
+  addr.receiverPhone = receiverPhone;
+  addr.address = fullAddress;
+  localStorage.setItem('vpnAddress', JSON.stringify(addr));
+  card.classList.remove('editing');
+  loadCustomerInfo();
+  toast('Address saved successfully!');
+}
+function cancelAddressEdit(){
+  var card = document.getElementById('freshCard');
+  if(card) card.classList.remove('editing');
+}
+
+/* ---------------- RENDER ORDER SUMMARY ITEMS (desktop) ---------------- */
+function renderOrderItems(){
+  var el = document.getElementById('orderItems');
+  if(!el) return;
+  var totalQty = items.reduce(function(s,it){return s+it.qty;},0);
+  el.innerHTML = items.map(function(it){
+    var meta = it.meta || '';
+    var name = it.name || 'Item';
+    var thumb = it.img
+      ? '<img src="' + it.img + '" alt="' + name + '" style="width:100%;height:100%;object-fit:contain;border-radius:11px;">'
+      : (it.emoji || '\uD83D\uDCE6');
+    return '<div class="oi-row">' +
+      '<div class="oi-thumb">' + thumb + '</div>' +
+      '<div class="oi-info">' +
+        '<div class="oi-name">' + name + '</div>' +
+        '<div class="oi-meta">' + (meta ? meta + ' &middot; Qty ' + it.qty : 'Qty ' + it.qty) + '</div>' +
+      '</div>' +
+      '<div class="oi-price">' + fmtCartAmount(it.price * it.qty) + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function updateOrderSummaryDeliveryInfo(){
+  var timeEl = document.getElementById('osDeliveryTime');
+  if(timeEl){
+    var now = new Date();
+    var h = now.getHours();
+    var startH = Math.min(h + 1, 23);
+    var endH = Math.min(h + 2, 23);
+    var startM = h >= 21 ? '00' : '30';
+    var endM = h >= 20 ? '00' : '30';
+    timeEl.textContent = 'Today, ' + startH + ':' + startM + ' – ' + endH + ':' + endM;
+  }
+}
+
+/* ---------------- INIT ---------------- */
+loadCustomerInfo();
+renderPayOptions();
+updateWelcomeCoupon();
+updateCouponStrip();
+recalc();
+renderOrderItems();
+updateOrderSummaryDeliveryInfo();
+</script>
+
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

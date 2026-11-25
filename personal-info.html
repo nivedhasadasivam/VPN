@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Information | VPNexues</title>
+  <script>
+    (function () {
+      var authKeys = ["vpnexuesAuth", "vpnexuesLoggedIn", "vpnexuesSession", "isLoggedIn"];
+      var isLoggedIn = authKeys.some(function (key) {
+        return localStorage.getItem(key) === "true" || sessionStorage.getItem(key) === "true";
+      });
+      if (!isLoggedIn) {
+        window.location.replace("index.html?login=1");
+      }
+    })();
+  </script>
+  <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16">
+  <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+  <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.2">
+  <style>
+    @keyframes piCardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%);
+    }
+
+    body.pi-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%) !important;
+      color: #111827;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    .pi-shell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pi-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #ffffff;
+      margin: 0 -16px;
+    }
+
+    .pi-back {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid #14532d;
+      background: #14532d;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(20, 83, 45, .28), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transition: all .25s ease;
+    }
+
+    .pi-back:hover {
+      border-color: #0f3d22;
+      background: #0f3d22;
+      box-shadow: 0 6px 16px rgba(20, 83, 45, .34), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transform: translateX(-2px);
+    }
+
+    .pi-back:active {
+      transform: translateX(0);
+      background: #0b2e19;
+      box-shadow: 0 2px 6px rgba(20, 83, 45, .3), inset 0 1px 2px rgba(0, 0, 0, .18);
+    }
+
+    .pi-back i { display: inline-block; line-height: 1; }
+
+    .pi-title {
+      flex: 1;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    /* Balances the back button so the title stays truly centred. */
+    .pi-header-spacer { flex: 0 0 40px; width: 40px; }
+
+    /* ── Profile Banner ── */
+    .pi-banner {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 16px 0;
+      animation: piCardIn .45s ease both;
+    }
+
+    .pi-banner-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #14472F, #1a5c38, #1f6e42);
+    }
+
+    .pi-banner-bg::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.07);
+    }
+
+    .pi-banner-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
+    }
+
+    .pi-banner-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 28px 20px;
+    }
+
+    .pi-avatar-wrap { position: relative; flex-shrink: 0; }
+
+    .pi-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 3px solid rgba(255,255,255,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
+      overflow: hidden;
+    }
+
+    .pi-avatar img,
+    .pi-photo-preview img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .pi-photo-row { align-items: flex-start; }
+
+    .pi-photo-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pi-photo-preview {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #eaf5e8;
+      color: #5b8c51;
+      font-size: 20px;
+      overflow: hidden;
+    }
+
+    .pi-photo-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+
+    .pi-photo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border-radius: 9px;
+      background: #eaf5e8;
+      color: #14532d;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .pi-photo-input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+
+    .pi-photo-remove {
+      border: 0;
+      background: none;
+      color: #b42318;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .pi-photo-hint { width: 100%; font-size: 11px; color: #6b7280; }
+
+    .pi-banner-info { flex: 1; min-width: 0; }
+    .pi-banner-name { font-size: 20px; font-weight: 800; color: #fff; margin: 0 0 2px; }
+    .pi-banner-phone { font-size: 13px; color: rgba(255,255,255,.75); margin: 0; }
+
+    /* ── Card ── */
+    .pi-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: 18px;
+      padding: 0;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.04);
+      overflow: hidden;
+      animation: piCardIn .4s ease both;
+    }
+
+    .pi-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 20px;
+      margin: 0;
+      font-size: 15px;
+      font-weight: 800;
+      color: #111827;
+      border-bottom: 1px solid rgba(0,0,0,.05);
+      background: #fafcf9;
+    }
+
+    .pi-card-title i { color: #16a34a; font-size: 14px; }
+
+    /* ── Field Row ── */
+    .pi-field-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(0,0,0,.04);
+      transition: background .15s ease;
+    }
+
+    .pi-field-row:last-child { border-bottom: none; }
+    .pi-field-row:hover { background: #fafff8; }
+
+    .pi-field-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #16a34a;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pi-field-content { flex: 1; min-width: 0; }
+
+    .pi-field-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: 6px;
+    }
+
+    .pi-field-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 15px;
+      font-weight: 600;
+      color: #111827;
+      line-height: 1.5;
+    }
+
+    .pi-input {
+      width: 100%;
+      border: 1.5px solid #e5e7eb;
+      outline: none;
+      background: #f9fafb;
+      font-size: 14px;
+      font-weight: 500;
+      color: #111827;
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin-top: 4px;
+      font-family: inherit;
+      transition: all .2s ease;
+    }
+
+    .pi-input:focus {
+      border-color: #16a34a;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(22,163,74,.1);
+    }
+
+    .pi-input::placeholder { color: #9ca3af; }
+
+    .pi-input.pi-input-error {
+      border-color: #dc2626;
+    }
+
+    .pi-row.pi-row-error {
+      background: #fef2f2;
+    }
+
+    .pi-phone-edit-hint {
+      font-size: 11px;
+      color: #15803d;
+      font-weight: 600;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+
+    .pi-phone-edit-hint:hover { text-decoration: underline; }
+
+    /* ── Verified Badge ── */
+    .pi-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 10px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ── Save Button ── */
+    .pi-save-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #14472F, #1a5c38);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(20,71,47,.2);
+      margin-bottom: 18px;
+    }
+
+    .pi-save-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(20,71,47,.3);
+    }
+
+    .pi-save-btn:active { transform: scale(.98); }
+    .pi-save-btn i { font-size: 14px; }
+
+    /* ── Info Strip ── */
+    .pi-info-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      animation: piCardIn .4s ease both;
+    }
+
+    .pi-info-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .pi-info-item i { color: #16a34a; font-size: 12px; }
+
+    /* ── Toast ── */
+    .pi-toast {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1a1a1a;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+
+    .pi-toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .pi-toast i { color: #4ade80; }
+
+    .pi-toast.pi-toast-error { background: #dc2626; }
+    .pi-toast.pi-toast-error i { color: #fff; }
+
+    /* ── Responsive ── */
+    @media (min-width: 768px) {
+      .pi-shell { max-width: 100%; padding: 0 20px 24px; }
+      .pi-header { width: 100vw; margin-left: calc(-50vw + 50%); padding: 18px 24px; }
+      .pi-banner-content { padding: 28px 24px; }
+      .pi-banner-name { font-size: 20px; }
+    }
+
+    @media (min-width: 1024px) {
+      .pi-shell { max-width: 100%; padding: 0 40px 24px; }
+      .pi-banner-content { padding: 32px 28px; }
+      .pi-avatar { width: 80px; height: 80px; font-size: 28px; border-width: 4px; }
+      .pi-banner-name { font-size: 22px; }
+      .pi-banner-phone { font-size: 14px; }
+      .pi-card { border-radius: 18px; }
+      .pi-card-title { padding: 18px 24px; font-size: 15px; }
+      .pi-field-row { padding: 18px 24px; }
+      .pi-field-icon { width: 40px; height: 40px; font-size: 16px; }
+      .pi-field-label { font-size: 12px; }
+      .pi-field-value { font-size: 15px; }
+      .pi-input { padding: 12px 16px; font-size: 14px; }
+      .pi-save-btn { padding: 12px 20px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body class="pi-page">
+  <main class="pi-shell">
+
+    <!-- Header -->
+    <header class="pi-header">
+      <a class="pi-back" href="account.html" aria-label="Go back">
+        <i class="fas fa-chevron-left"></i>
+      </a>
+      <h1 class="pi-title">Personal Information</h1>
+      <span class="pi-header-spacer" aria-hidden="true"></span>
+    </header>
+
+    <!-- Profile Banner -->
+    <div class="pi-banner">
+      <div class="pi-banner-bg"></div>
+      <div class="pi-banner-content">
+        <div class="pi-avatar-wrap">
+          <div class="pi-avatar" id="pi-avatar"><img src="assets-ui/img/default-avatar.svg" alt="" /></div>
+        </div>
+        <div class="pi-banner-info">
+          <h2 class="pi-banner-name" id="pi-banner-name">Guest User</h2>
+          <p class="pi-banner-phone" id="pi-banner-phone"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal Details Card -->
+    <div class="pi-card">
+      <h3 class="pi-card-title"><i class="fas fa-id-card"></i> Personal Details</h3>
+
+      <div class="pi-field-row">
+        <div class="pi-field-icon"><i class="fas fa-user"></i></div>
+        <div class="pi-field-content">
+          <div class="pi-field-label">Full Name</div>
+          <input type="text" class="pi-input" id="pi-fullName" data-field="fullName" placeholder="Enter your full name">
+        </div>
+      </div>
+
+      <div class="pi-field-row pi-photo-row">
+        <div class="pi-field-icon"><i class="fas fa-image"></i></div>
+        <div class="pi-field-content">
+          <div class="pi-field-label">Profile Picture</div>
+          <div class="pi-photo-control">
+            <div class="pi-photo-preview" id="pi-photo-preview"><img src="assets-ui/img/default-avatar.svg" alt="" /></div>
+            <div class="pi-photo-actions">
+              <label class="pi-photo-btn" for="pi-photo"><i class="fas fa-camera"></i> Choose picture</label>
+              <input type="file" id="pi-photo" class="pi-photo-input" accept="image/*">
+              <button type="button" class="pi-photo-remove" id="pi-photo-remove" hidden>Remove</button>
+              <div class="pi-photo-hint">Square crop, saved on this device.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pi-field-row pi-row-phone-edit">
+        <div class="pi-field-icon"><i class="fas fa-phone"></i></div>
+        <div class="pi-field-content">
+          <div class="pi-field-label">Mobile Number</div>
+          <input type="tel" class="pi-input" id="pi-mobile" data-field="mobile" inputmode="tel" readonly placeholder="Tap to add number">
+          <div class="pi-phone-edit-hint" id="pi-phone-edit-hint">Tap to change number via OTP</div>
+        </div>
+      </div>
+
+      <div class="pi-field-row">
+        <div class="pi-field-icon"><i class="fas fa-envelope"></i></div>
+        <div class="pi-field-content">
+          <div class="pi-field-label">Email Address</div>
+          <input type="email" class="pi-input" id="pi-email" data-field="email" placeholder="Add your email">
+        </div>
+      </div>
+
+      <div class="pi-field-row">
+        <div class="pi-field-icon"><i class="fas fa-venus-mars"></i></div>
+        <div class="pi-field-content">
+          <div class="pi-field-label">Gender</div>
+          <select class="pi-input" id="pi-gender" data-field="gender" style="cursor:pointer; -webkit-appearance:none; -moz-appearance:none; appearance:none; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2314532d' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E&quot;); background-repeat:no-repeat; background-position:right 12px center; padding-right:32px;">
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="prefer_not_to_say">Prefer not to say</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <button class="pi-save-btn" type="button" id="pi-save-btn">
+      <i class="fas fa-check"></i>
+      <span>Save</span>
+    </button>
+
+    <!-- Account Overview Card -->
+    <div class="pi-card">
+      <h3 class="pi-card-title"><i class="fas fa-shield-halved"></i> Account Overview</h3>
+      <div class="pi-field-row">
+        <div class="pi-field-icon"><i class="fas fa-hashtag"></i></div>
+        <div class="pi-field-content">
+          <div class="pi-field-label">User ID</div>
+          <span class="pi-field-value" id="pi-user-id" style="font-family:monospace; font-size:13px;">--</span>
+        </div>
+      </div>
+      <div class="pi-field-row">
+        <div class="pi-field-icon"><i class="fas fa-user-check"></i></div>
+        <div class="pi-field-content">
+          <div class="pi-field-label">Account Status</div>
+          <span class="pi-field-value">
+            <span class="pi-verified"><i class="fas fa-check-circle"></i> Active</span>
+            <span style="font-size:12px; color:#111; margin-left:6px;">Customer account</span>
+          </span>
+        </div>
+      </div>
+      <div class="pi-field-row">
+        <div class="pi-field-icon"><i class="fas fa-calendar"></i></div>
+        <div class="pi-field-content">
+          <div class="pi-field-label">Member Since</div>
+          <span class="pi-field-value" id="pi-member-since" style="font-size:13px;">Welcome to VPNexues</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Strip -->
+    <div class="pi-info-strip">
+      <div class="pi-info-item">
+        <i class="fas fa-shield-halved"></i>
+        <span>Your data is encrypted and secure</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="pi-toast" id="pi-toast">
+    <i class="fas fa-check-circle"></i>
+    <span>Profile saved successfully!</span>
+  </div>
+
+  <!-- OTP Modal -->
+  <div class="pi-otp-overlay" id="pi-otp-overlay">
+    <div class="pi-otp-modal">
+      <div class="pi-otp-header">
+        <div class="pi-otp-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Change Phone Number</h3>
+        <p id="pi-otp-subtitle">Enter your new phone number to receive a verification code.</p>
+      </div>
+      <div class="pi-otp-body" id="pi-otp-body-step1">
+        <div class="pi-otp-field">
+          <label for="pi-otp-newPhone">New Phone Number</label>
+          <div class="pi-otp-phone-input">
+            <span class="pi-otp-country-code">+91</span>
+            <input type="tel" id="pi-otp-newPhone" placeholder="Enter 10-digit number" inputmode="tel" maxlength="10">
+          </div>
+        </div>
+        <button class="pi-otp-send-btn" id="pi-otp-send-btn">
+          <i class="fas fa-paper-plane"></i> Send OTP
+        </button>
+      </div>
+      <div class="pi-otp-body" id="pi-otp-body-step2" style="display:none;">
+        <div class="pi-otp-field">
+          <label for="pi-otp-code">Enter OTP</label>
+          <div class="pi-otp-code-inputs">
+            <input type="tel" maxlength="1" class="pi-otp-digit" data-idx="0" inputmode="numeric">
+            <input type="tel" maxlength="1" class="pi-otp-digit" data-idx="1" inputmode="numeric">
+            <input type="tel" maxlength="1" class="pi-otp-digit" data-idx="2" inputmode="numeric">
+            <input type="tel" maxlength="1" class="pi-otp-digit" data-idx="3" inputmode="numeric">
+          </div>
+          <div class="pi-otp-resend" id="pi-otp-resend-row">
+            <span>Didn't receive?</span>
+            <button type="button" id="pi-otp-resend-btn">Resend OTP</button>
+          </div>
+        </div>
+        <button class="pi-otp-verify-btn" id="pi-otp-verify-btn">
+          <i class="fas fa-check-circle"></i> Verify &amp; Update
+        </button>
+      </div>
+      <button class="pi-otp-close" id="pi-otp-close" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <style>
+    .pi-otp-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .pi-otp-overlay.show { display: flex; }
+
+    .pi-otp-modal {
+      background: #fff; border-radius: 20px; width: 100%; max-width: 400px;
+      position: relative; overflow: hidden;
+      animation: piOtpIn .35s cubic-bezier(.2,.8,.2,1);
+    }
+    @keyframes piOtpIn { from { opacity:0; transform:translateY(20px) scale(.96); } to { opacity:1; transform:translateY(0) scale(1); } }
+
+    .pi-otp-header {
+      background: linear-gradient(135deg, #14472F 0%, #1a5c38 100%);
+      padding: 28px 24px 22px; text-align: center; color: #fff;
+    }
+    .pi-otp-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px; font-size: 24px;
+    }
+    .pi-otp-header h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .pi-otp-header p { font-size: 13px; color: rgba(255,255,255,.8); }
+
+    .pi-otp-body { padding: 24px; }
+
+    .pi-otp-field { margin-bottom: 18px; }
+    .pi-otp-field label {
+      display: block; font-size: 12px; font-weight: 700; color: #6b7280;
+      text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px;
+    }
+
+    .pi-otp-phone-input {
+      display: flex; border: 2px solid #14532d; border-radius: 12px; overflow: hidden;
+    }
+    .pi-otp-country-code {
+      padding: 12px 14px; background: #f0fdf4; font-size: 15px; font-weight: 700;
+      color: #14532d; border-right: 2px solid #14532d; display: flex; align-items: center;
+    }
+    .pi-otp-phone-input input {
+      flex: 1; border: none; padding: 12px 14px; font-size: 15px;
+      outline: none; font-family: inherit; background: #fff;
+    }
+    .pi-otp-phone-input input:focus { background: #fafffe; }
+
+    .pi-otp-code-inputs {
+      display: flex; gap: 10px; justify-content: center;
+    }
+    .pi-otp-digit {
+      width: 52px; height: 56px; text-align: center; font-size: 22px; font-weight: 700;
+      border: 2px solid #14532d; border-radius: 12px; outline: none;
+      background: #f9fafb; color: #1a1a1a; font-family: inherit;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .pi-otp-digit:focus {
+      border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,.15); background: #fff;
+    }
+    .pi-otp-digit.filled { border-color: #16a34a; background: #f0fdf4; }
+
+    .pi-otp-resend {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 14px; font-size: 13px; color: #6b7280;
+    }
+    .pi-otp-resend button {
+      border: none; background: none; color: #15803d; font-weight: 700;
+      cursor: pointer; font-size: 13px; font-family: inherit;
+    }
+    .pi-otp-resend button:hover { text-decoration: underline; }
+    .pi-otp-resend button:disabled { color: #9ca3af; cursor: not-allowed; }
+
+    .pi-otp-send-btn, .pi-otp-verify-btn {
+      width: 100%; padding: 14px; border: none; border-radius: 12px;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: inherit; transition: all .2s;
+    }
+    .pi-otp-send-btn { background: #15803d; color: #fff; }
+    .pi-otp-send-btn:hover { background: #14532d; }
+    .pi-otp-send-btn:disabled { opacity: .6; cursor: not-allowed; }
+    .pi-otp-verify-btn { background: #16a34a; color: #fff; }
+    .pi-otp-verify-btn:hover { background: #15803d; }
+    .pi-otp-verify-btn:disabled { opacity: .6; cursor: not-allowed; }
+
+    .pi-otp-close {
+      position: absolute; top: 12px; right: 12px;
+      width: 32px; height: 32px; border: none; background: rgba(255,255,255,.2);
+      border-radius: 8px; color: #fff; font-size: 14px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pi-otp-close:hover { background: rgba(255,255,255,.3); }
+
+    .pi-otp-success {
+      text-align: center; padding: 40px 24px;
+    }
+    .pi-otp-success-icon {
+      width: 64px; height: 64px; border-radius: 50%; background: #dcfce7;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; font-size: 28px; color: #16a34a;
+    }
+    .pi-otp-success h4 { font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+    .pi-otp-success p { font-size: 14px; color: #6b7280; }
+  </style>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var PROFILE_KEY = 'vpnexues_profile';
+      var DEFAULT_AVATAR = 'assets-ui/img/default-avatar.svg';
+      var OTP_LENGTH = 4;
+      var generatedOtp = '';
+      var newPhoneValue = '';
+
+      function getUsers() {
+        try {
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          return Array.isArray(users) ? users : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function findUserByPhone(phone) {
+        var clean = phone.replace(/\D/g, '');
+        return getUsers().find(function(u) {
+          return (u.phone || '').replace(/\D/g, '') === clean;
+        }) || null;
+      }
+
+      function getProfile() {
+        try {
+          return JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function getLoggedInUser() {
+        try {
+          var user = JSON.parse(localStorage.getItem('vpnexuesUser') || 'null');
+          if (user && (user.phone || user.mobile)) return user;
+        } catch (e) {}
+        try {
+          var user = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
+          if (user && (user.phone || user.mobile)) return user;
+        } catch (e) {}
+        return null;
+      }
+
+      function saveProfile(data) {
+        localStorage.setItem(PROFILE_KEY, JSON.stringify(data));
+      }
+
+      function setProfilePicture(src) {
+        var targets = [
+          document.getElementById('pi-avatar'),
+          document.getElementById('pi-photo-preview')
+        ];
+        targets.forEach(function (el) {
+          if (!el) return;
+          var img = document.createElement('img');
+          img.src = src || DEFAULT_AVATAR;
+          img.alt = '';
+          el.innerHTML = '';
+          el.appendChild(img);
+        });
+        var removeBtn = document.getElementById('pi-photo-remove');
+        if (removeBtn) removeBtn.hidden = !src;
+      }
+
+      function readImageFile(file, callback) {
+        if (!file || file.type.indexOf('image/') !== 0) {
+          showToast('Please choose an image file.', true);
+          return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var img = new Image();
+          img.onload = function () {
+            var canvas = document.createElement('canvas');
+            canvas.width = 256;
+            canvas.height = 256;
+            var ctx = canvas.getContext('2d');
+            var side = Math.min(img.width, img.height);
+            var sx = (img.width - side) / 2;
+            var sy = (img.height - side) / 2;
+            ctx.drawImage(img, sx, sy, side, side, 0, 0, 256, 256);
+            try {
+              callback(canvas.toDataURL('image/jpeg', 0.85));
+            } catch (err) {
+              callback(e.target.result);
+            }
+          };
+          img.onerror = function () { showToast('Could not read that image.', true); };
+          img.src = e.target.result;
+        };
+        reader.onerror = function () { showToast('Could not read that image.', true); };
+        reader.readAsDataURL(file);
+      }
+
+      function syncPhoneToUser(phone) {
+        try {
+          var user = JSON.parse(localStorage.getItem('vpnexuesUser') || '{}');
+          user.phone = phone;
+          localStorage.setItem('vpnexuesUser', JSON.stringify(user));
+        } catch (e) {}
+        try {
+          var user = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+          user.phone = phone;
+          localStorage.setItem('loggedInUser', JSON.stringify(user));
+        } catch (e) {}
+        try {
+          var users = JSON.parse(localStorage.getItem('users') || '[]');
+          if (!Array.isArray(users)) users = [];
+          var currentPhone = '';
+          try {
+            var cur = JSON.parse(localStorage.getItem('vpnexuesUser') || '{}');
+            currentPhone = (cur.phone || '').replace(/\D/g, '');
+          } catch (e) {}
+          users.forEach(function(u) {
+            if ((u.phone || '').replace(/\D/g, '') === currentPhone) {
+              u.phone = phone;
+            }
+          });
+          localStorage.setItem('users', JSON.stringify(users));
+        } catch (e) {}
+      }
+
+      function updateBanner(name, phone) {
+        var nameEl = document.getElementById('pi-banner-name');
+        var phoneEl = document.getElementById('pi-banner-phone');
+        nameEl.textContent = name || 'Guest User';
+        phoneEl.textContent = phone ? '+91 ' + phone : '';
+        setProfilePicture(getProfile().picture || '');
+      }
+
+      function loadProfile() {
+        var profile = getProfile();
+        var loggedIn = getLoggedInUser();
+        var inputs = document.querySelectorAll('.pi-input[data-field]');
+        inputs.forEach(function(input) {
+          var field = input.getAttribute('data-field');
+          if (field === 'mobile') {
+            input.value = profile.mobile || (loggedIn && (loggedIn.phone || loggedIn.mobile)) || '';
+          } else if (field === 'fullName') {
+            input.value = profile.fullName || (loggedIn && (loggedIn.name || loggedIn.fullName)) || '';
+          } else if (field === 'email') {
+            input.value = profile.email || (loggedIn && loggedIn.email) || '';
+          } else {
+            input.value = profile[field] || '';
+          }
+        });
+        var name = (profile.fullName || (loggedIn && (loggedIn.name || loggedIn.fullName)) || '').trim();
+        var email = (profile.email || (loggedIn && loggedIn.email) || '').trim();
+        var mobile = (profile.mobile || (loggedIn && (loggedIn.phone || loggedIn.mobile)) || '').trim();
+        updateBanner(name, mobile);
+
+        var userId = profile.userId || (loggedIn && loggedIn.id) || '';
+        if (userId) {
+          document.getElementById('pi-user-id').textContent = '#' + String(userId).slice(0, 8).toUpperCase();
+        }
+
+        if (name || email || mobile) {
+          var profileData = { fullName: name, email: email, mobile: mobile };
+          if (profile.gender) profileData.gender = profile.gender;
+          if (profile.picture) profileData.picture = profile.picture;
+          saveProfile(profileData);
+        }
+      }
+
+      function saveAllFields() {
+        var profile = getProfile();
+        var inputs = document.querySelectorAll('.pi-input[data-field]');
+        inputs.forEach(function(input) {
+          var field = input.getAttribute('data-field');
+          profile[field] = input.value.trim();
+        });
+        saveProfile(profile);
+      }
+
+      function updateCartBadge() {
+        var badge = document.getElementById('nav-cart-badge');
+        if (badge) {
+          var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+          var count = 0;
+          cart.forEach(function (item) { count += (item.qty || item.quantity || 1); });
+          if (count > 0) {
+            badge.textContent = count;
+            badge.style.display = '';
+          } else {
+            badge.style.display = 'none';
+          }
+        }
+      }
+
+      /* ── OTP Functions ── */
+      function generateOtp() {
+        var otp = '';
+        for (var i = 0; i < OTP_LENGTH; i++) {
+          otp += Math.floor(Math.random() * 10);
+        }
+        return otp;
+      }
+
+      function showToast(msg, isError) {
+        var toast = document.getElementById('pi-toast');
+        toast.querySelector('span').textContent = msg;
+        if (isError) {
+          toast.classList.add('pi-toast-error');
+        } else {
+          toast.classList.remove('pi-toast-error');
+        }
+        toast.classList.add('show');
+        setTimeout(function() { toast.classList.remove('show', 'pi-toast-error'); }, 3000);
+      }
+
+      function openOtpModal() {
+        var overlay = document.getElementById('pi-otp-overlay');
+        overlay.classList.add('show');
+        document.getElementById('pi-otp-body-step1').style.display = '';
+        document.getElementById('pi-otp-body-step2').style.display = 'none';
+        document.getElementById('pi-otp-newPhone').value = '';
+        var subtitle = document.getElementById('pi-otp-subtitle');
+        subtitle.textContent = 'Enter your new phone number to receive a verification code.';
+        subtitle.style.color = '';
+        document.querySelectorAll('.pi-otp-digit').forEach(function(d) { d.value = ''; d.classList.remove('filled'); });
+        setTimeout(function() { document.getElementById('pi-otp-newPhone').focus(); }, 100);
+      }
+
+      function closeOtpModal() {
+        document.getElementById('pi-otp-overlay').classList.remove('show');
+        generatedOtp = '';
+        newPhoneValue = '';
+      }
+
+      function goToOtpStep() {
+        document.getElementById('pi-otp-body-step1').style.display = 'none';
+        document.getElementById('pi-otp-body-step2').style.display = '';
+        document.querySelector('.pi-otp-digit[data-idx="0"]').focus();
+      }
+
+      function startResendTimer() {
+        var btn = document.getElementById('pi-otp-resend-btn');
+        var sec = 30;
+        btn.disabled = true;
+        btn.textContent = 'Resend in ' + sec + 's';
+        var timer = setInterval(function() {
+          sec--;
+          if (sec <= 0) {
+            clearInterval(timer);
+            btn.disabled = false;
+            btn.textContent = 'Resend OTP';
+          } else {
+            btn.textContent = 'Resend in ' + sec + 's';
+          }
+        }, 1000);
+      }
+
+      function sendOtp() {
+        var phoneInput = document.getElementById('pi-otp-newPhone');
+        var phone = phoneInput.value.replace(/\D/g, '');
+        if (phone.length !== 10) {
+          showToast('Enter a valid 10-digit phone number', true);
+          phoneInput.focus();
+          return;
+        }
+
+        var existingUser = findUserByPhone(phone);
+        var currentUser = getLoggedInUser();
+        var currentPhone = (currentUser && currentUser.phone || '').replace(/\D/g, '');
+
+        if (existingUser && phone !== currentPhone) {
+          showToast('This phone number is already registered. Please login with that account.', true);
+          var subtitle = document.getElementById('pi-otp-subtitle');
+          subtitle.textContent = 'This number belongs to "' + (existingUser.name || 'User') + '". Login with that account instead.';
+          subtitle.style.color = '#fbbf24';
+          return;
+        }
+
+        if (phone === currentPhone) {
+          showToast('This is already your current number.', true);
+          return;
+        }
+
+        newPhoneValue = phone;
+        generatedOtp = generateOtp();
+
+        var subtitle = document.getElementById('pi-otp-subtitle');
+        subtitle.textContent = 'Enter your new phone number to receive a verification code.';
+        subtitle.style.color = '';
+
+        var sendBtn = document.getElementById('pi-otp-send-btn');
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+        setTimeout(function() {
+          sendBtn.disabled = false;
+          sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send OTP';
+          goToOtpStep();
+          startResendTimer();
+          showToast('OTP sent to +91 ' + phone + ' (Demo: ' + generatedOtp + ')');
+        }, 1200);
+      }
+
+      function verifyOtp() {
+        var digits = document.querySelectorAll('.pi-otp-digit');
+        var code = '';
+        digits.forEach(function(d) { code += d.value; });
+        if (code.length !== OTP_LENGTH) {
+          showToast('Enter the complete OTP', true);
+          return;
+        }
+        if (code !== generatedOtp) {
+          showToast('Invalid OTP. Please try again.', true);
+          digits.forEach(function(d) { d.value = ''; d.classList.remove('filled'); });
+          digits[0].focus();
+          return;
+        }
+
+        var verifyBtn = document.getElementById('pi-otp-verify-btn');
+        verifyBtn.disabled = true;
+        verifyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+
+        setTimeout(function() {
+          document.getElementById('pi-mobile').value = newPhoneValue;
+          syncPhoneToUser(newPhoneValue);
+          saveAllFields();
+
+          updateBanner(
+            document.getElementById('pi-fullName').value,
+            newPhoneValue
+          );
+
+          var body = document.querySelector('.pi-otp-modal');
+          body.innerHTML = '<div class="pi-otp-success"><div class="pi-otp-success-icon"><i class="fas fa-check"></i></div><h4>Phone Updated!</h4><p>Your mobile number has been changed to +91 ' + newPhoneValue + '</p></div>';
+
+          setTimeout(function() { closeOtpModal(); }, 2000);
+          showToast('Phone number updated successfully!');
+          verifyBtn.disabled = false;
+          verifyBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify &amp; Update';
+        }, 1200);
+      }
+
+      /* ── OTP Digit Input Navigation ── */
+      function setupOtpInputs() {
+        var digits = document.querySelectorAll('.pi-otp-digit');
+        digits.forEach(function(input, idx) {
+          input.addEventListener('input', function(e) {
+            var val = e.target.value.replace(/\D/g, '');
+            e.target.value = val;
+            if (val) {
+              e.target.classList.add('filled');
+              if (idx < digits.length - 1) {
+                digits[idx + 1].focus();
+              }
+            } else {
+              e.target.classList.remove('filled');
+            }
+          });
+          input.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace' && !e.target.value && idx > 0) {
+              digits[idx - 1].focus();
+              digits[idx - 1].value = '';
+              digits[idx - 1].classList.remove('filled');
+            }
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              verifyOtp();
+            }
+          });
+          input.addEventListener('paste', function(e) {
+            e.preventDefault();
+            var pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, OTP_LENGTH);
+            pasted.split('').forEach(function(ch, i) {
+              if (digits[i]) {
+                digits[i].value = ch;
+                digits[i].classList.add('filled');
+              }
+            });
+            if (pasted.length > 0) digits[Math.min(pasted.length, digits.length) - 1].focus();
+          });
+        });
+      }
+
+      /* ── Init ── */
+      document.addEventListener('DOMContentLoaded', function () {
+        loadProfile();
+        updateCartBadge();
+        setupOtpInputs();
+
+        var photoInput = document.getElementById('pi-photo');
+        photoInput.addEventListener('change', function (e) {
+          var file = e.target.files && e.target.files[0];
+          if (!file) return;
+          readImageFile(file, function (dataUrl) {
+            var profile = getProfile();
+            profile.picture = dataUrl;
+            saveProfile(profile);
+            setProfilePicture(dataUrl);
+            showToast('Profile picture updated!');
+          });
+        });
+
+        document.getElementById('pi-photo-remove').addEventListener('click', function () {
+          var profile = getProfile();
+          delete profile.picture;
+          saveProfile(profile);
+          photoInput.value = '';
+          updateBanner(document.getElementById('pi-fullName').value, document.getElementById('pi-mobile').value);
+          showToast('Profile picture removed!');
+        });
+
+        document.querySelectorAll('.pi-input[data-field]').forEach(function(input) {
+          if (input.getAttribute('data-field') !== 'mobile') {
+            input.addEventListener('input', function() {
+              saveAllFields();
+              var field = input.getAttribute('data-field');
+              if (field === 'fullName') {
+                updateBanner(input.value, document.getElementById('pi-mobile').value);
+              }
+            });
+          }
+        });
+
+        document.getElementById('pi-phone-edit-hint').addEventListener('click', function() {
+          openOtpModal();
+        });
+
+        document.getElementById('pi-mobile').addEventListener('click', function() {
+          openOtpModal();
+        });
+
+        document.getElementById('pi-otp-send-btn').addEventListener('click', sendOtp);
+        document.getElementById('pi-otp-verify-btn').addEventListener('click', verifyOtp);
+        document.getElementById('pi-otp-close').addEventListener('click', closeOtpModal);
+        document.getElementById('pi-otp-overlay').addEventListener('click', function(e) {
+          if (e.target === e.currentTarget) closeOtpModal();
+        });
+        document.getElementById('pi-otp-resend-btn').addEventListener('click', function() {
+          generatedOtp = generateOtp();
+          startResendTimer();
+          showToast('OTP resent (Demo: ' + generatedOtp + ')');
+        });
+
+        document.getElementById('pi-save-btn').addEventListener('click', function() {
+          var inputs = document.querySelectorAll('.pi-input[data-field]');
+          var emptyFields = [];
+          var fieldLabels = {
+            fullName: 'Full Name',
+            mobile: 'Mobile Number',
+            email: 'Email Address',
+            gender: 'Gender'
+          };
+
+          inputs.forEach(function(input) {
+            var field = input.getAttribute('data-field');
+            var row = input.closest('.pi-field-row');
+            if (!input.value.trim()) {
+              emptyFields.push(fieldLabels[field] || field);
+              input.classList.add('pi-input-error');
+              if (row) row.classList.add('pi-row-error');
+            } else {
+              input.classList.remove('pi-input-error');
+              if (row) row.classList.remove('pi-row-error');
+            }
+          });
+
+          if (emptyFields.length > 0) {
+            var toast = document.getElementById('pi-toast');
+            toast.classList.add('pi-toast-error');
+            toast.querySelector('span').textContent = 'Please fill: ' + emptyFields.join(', ');
+            toast.classList.add('show');
+            setTimeout(function() { toast.classList.remove('show', 'pi-toast-error'); }, 3000);
+            return;
+          }
+
+          saveAllFields();
+          var toast = document.getElementById('pi-toast');
+          toast.querySelector('span').textContent = 'Profile saved successfully!';
+          toast.classList.remove('pi-toast-error');
+          toast.classList.add('show');
+          setTimeout(function() { toast.classList.remove('show'); }, 2000);
+        });
+      });
+
+      window.updateCartBadge = updateCartBadge;
+    })();
+  </script>
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

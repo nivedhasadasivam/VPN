@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14532d">
+  <title>My Account | VPNexues</title>
+  <script>
+    (function () {
+      var authKeys = ["vpnexuesAuth", "vpnexuesLoggedIn", "vpnexuesSession", "vpnexuesUser", "isLoggedIn", "loggedInUser", "authToken", "userToken", "currentUser"];
+      var isLoggedIn = authKeys.some(function (key) {
+        return localStorage.getItem(key) === "true" || sessionStorage.getItem(key) === "true";
+      });
+      if (!isLoggedIn) {
+        window.location.replace("index.html?login=1");
+      }
+    })();
+  </script>
+  <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16">
+  <link rel="stylesheet" href="assets-ui/css/font-awesome.min.css?v=1.0">
+  <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.2">
+  <style>
+    /* ══════════════════════════════════════════════════════════════
+       VPNexues — My Account (app shell)
+       ══════════════════════════════════════════════════════════════ */
+    :root {
+      --acc-forest: #14532d;
+      --acc-forest-dark: #0f3d22;
+      --acc-leaf: #2f7d2c;
+      --acc-sage: #5b8c51;
+      --acc-gold: #ffdc3c;
+      --acc-ink: #1a1a1a;
+      --acc-muted: #6b7280;
+      --acc-line: rgba(21, 83, 45, .12);
+      --acc-paper: #ffffff;
+      --acc-danger: #b42318;
+      --acc-radius: 14px;
+      --acc-shadow: 0 4px 12px rgba(21, 102, 39, .08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; }
+
+    body.account-page {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--acc-ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      background: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+
+    :focus-visible { outline: 2px solid var(--acc-leaf); outline-offset: 2px; }
+
+    .acc-app {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 0 16px 36px;
+    }
+
+    /* ── Sticky top bar ─────────────────────────────────────────── */
+    .acc-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr) 40px;
+      align-items: center;
+      gap: 12px;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      padding: 14px 16px;
+      background: #D2E9CF;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .acc-icon-btn {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 40px;
+      display: grid;
+      place-items: center;
+      border: 1.5px solid rgba(91, 140, 81, .28);
+      border-radius: 50%;
+      background: linear-gradient(145deg, #f4fbf1 0%, #e8f5e3 100%);
+      color: #2f7d2c;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(21, 102, 39, .1), inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(91, 140, 81, .06);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .acc-icon-btn:hover {
+      border-color: rgba(91, 140, 81, .5);
+      box-shadow: 0 6px 16px rgba(21, 102, 39, .16), inset 0 1px 0 #fff;
+      transform: translateY(-1px);
+    }
+
+    .acc-icon-btn:active { transform: translateY(0); }
+
+    /* Back button — solid dark green (cart button keeps the light style) */
+    .acc-topbar > .acc-icon-btn {
+      border-color: #14532d;
+      background: #14532d;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(20, 83, 45, .28), inset 0 1px 0 rgba(255, 255, 255, .14);
+    }
+    .acc-topbar > .acc-icon-btn:hover {
+      border-color: #0f3d22;
+      background: #0f3d22;
+      box-shadow: 0 6px 16px rgba(20, 83, 45, .34), inset 0 1px 0 rgba(255, 255, 255, .14);
+    }
+    .acc-topbar > .acc-icon-btn:active {
+      background: #0b2e19;
+      box-shadow: 0 2px 6px rgba(20, 83, 45, .3), inset 0 1px 2px rgba(0, 0, 0, .18);
+    }
+
+    .acc-cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--acc-gold);
+      color: var(--acc-forest);
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1;
+      box-shadow: 0 0 0 2px #fff;
+    }
+
+    .acc-icon-btn i { display: inline-block; line-height: 1; }
+    .acc-topbar__actions { display: flex; justify-content: flex-end; gap: 8px; }
+
+    .acc-topbar__title { min-width: 0; text-align: center; }
+    .acc-topbar__title strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.01em;
+      color: var(--acc-ink);
+    }
+    .acc-topbar__title small { display: block; font-size: 10px; line-height: 1.1; color: var(--acc-muted); }
+
+    /* ── Profile hero ───────────────────────────────────────────── */
+    .acc-main { padding-top: 18px; }
+
+    .acc-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      border-radius: 22px;
+      color: #fff;
+      background: linear-gradient(135deg, #12462c 0%, #17623a 55%, #1f7a46 100%);
+      box-shadow: 0 14px 28px rgba(20, 83, 45, .2);
+    }
+
+    .acc-hero::before,
+    .acc-hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .06);
+      pointer-events: none;
+    }
+    .acc-hero::before { width: 160px; height: 160px; top: -80px; right: -50px; }
+    .acc-hero::after { width: 100px; height: 100px; bottom: -55px; left: -30px; }
+
+    .acc-hero__leaf {
+      position: absolute;
+      right: -12px;
+      bottom: -24px;
+      font-size: 112px;
+      line-height: 1;
+      color: rgba(255, 255, 255, .055);
+      transform: rotate(-18deg);
+      pointer-events: none;
+    }
+
+    .acc-hero__row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .acc-avatar {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      background: linear-gradient(145deg, #ffdc3c, #f4b523);
+      color: var(--acc-forest);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, .16), inset 0 1px 0 rgba(255, 255, 255, .6);
+    }
+    .acc-avatar img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .acc-hero__text { flex: 1; min-width: 0; }
+    .acc-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .68);
+    }
+    .acc-hero h1 {
+      margin: 3px 0 2px;
+      font-size: 19px;
+      font-weight: 750;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      overflow-wrap: anywhere;
+    }
+    .acc-hero p {
+      margin: 0;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, .75);
+      overflow-wrap: anywhere;
+    }
+
+    .acc-edit {
+      align-self: flex-start;
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border: 1px solid rgba(255, 255, 255, .26);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .acc-edit:hover { background: rgba(255, 255, 255, .22); transform: translateY(-1px); }
+
+    /* ── Overview stats ─────────────────────────────────────────── */
+    .acc-stats {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin: 14px 0 0;
+    }
+
+    .acc-stat {
+      display: block;
+      padding: 11px 6px;
+      border: 1px solid var(--acc-line);
+      border-radius: 15px;
+      background: var(--acc-paper);
+      text-align: center;
+      box-shadow: var(--acc-shadow);
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .acc-stat:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(20, 83, 45, .12); }
+    .acc-stat strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--acc-forest);
+    }
+    .acc-stat span { display: block; margin-top: 3px; font-size: 11px; font-weight: 600; color: var(--acc-muted); }
+
+    /* ── Sections & cards ───────────────────────────────────────── */
+    .acc-section { margin-top: 22px; }
+
+    .acc-section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 2px 10px;
+    }
+    .acc-section-head h2 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 750;
+      letter-spacing: -.01em;
+      color: var(--acc-ink);
+    }
+    .acc-section-head a { font-size: 12px; font-weight: 700; color: var(--acc-leaf); }
+    .acc-section-head a:hover { text-decoration: underline; }
+
+    .acc-card {
+      overflow: hidden;
+      border: 1px solid var(--acc-line);
+      border-radius: var(--acc-radius);
+      background: var(--acc-paper);
+      box-shadow: var(--acc-shadow);
+    }
+
+    /* Quick action tiles */
+    .acc-quick-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+
+    .acc-quick {
+      --acc-quick-pad: 13px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 7px;
+      min-height: 104px;
+      padding: var(--acc-quick-pad);
+      border: 1px solid var(--acc-line);
+      border-radius: var(--acc-radius);
+      background: var(--acc-paper);
+      box-shadow: var(--acc-shadow);
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .acc-quick:hover {
+      border-color: rgba(91, 140, 81, .45);
+      box-shadow: 0 10px 22px rgba(20, 83, 45, .12);
+      transform: translateY(-2px);
+    }
+    .acc-quick__icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+    .acc-quick strong { display: block; font-size: 13.5px; font-weight: 700; }
+    .acc-quick small { display: block; margin-top: 2px; font-size: 11.5px; color: var(--acc-muted); }
+    .acc-quick__arrow {
+      position: absolute;
+      top: var(--acc-quick-pad);
+      right: var(--acc-quick-pad);
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      line-height: 1;
+      color: #b3c0b4;
+    }
+
+    .acc-tint--green  { background: #eaf5e8; color: var(--acc-leaf); }
+    .acc-tint--blue   { background: #e8f1fb; color: #2563eb; }
+    .acc-tint--teal   { background: #e5f6f1; color: #0d9488; }
+    .acc-tint--purple { background: #f0ebfb; color: #7c3aed; }
+    .acc-tint--amber  { background: #fff5dc; color: #b7791f; }
+    .acc-tint--red    { background: #fdecea; color: var(--acc-danger); }
+
+    /* List rows */
+    .acc-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 70px;
+      padding: 11px 14px;
+      border: 0;
+      border-bottom: 1px solid var(--acc-line);
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+    .acc-row:last-child { border-bottom: 0; }
+    .acc-row:hover { background: #f7fbf6; }
+    .acc-row--static { cursor: default; }
+
+    .acc-row__icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      font-size: 16px;
+    }
+    .acc-row__text { flex: 1; min-width: 0; }
+    .acc-row__text strong { display: block; font-size: 14px; font-weight: 700; line-height: 1.25; }
+    .acc-row__text small { display: block; margin-top: 3px; font-size: 11.5px; color: var(--acc-muted); }
+    .acc-row__arrow {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      font-size: 12px;
+      line-height: 1;
+      color: #a8b6a9;
+    }
+
+    .acc-row--danger .acc-row__text strong { color: var(--acc-danger); }
+    .acc-row--danger:hover { background: #fff7f6; }
+
+    /* Toggle rows */
+    .acc-toggle {
+      position: relative;
+      width: 44px;
+      height: 26px;
+      flex: 0 0 44px;
+    }
+    .acc-toggle input { position: absolute; width: 0; height: 0; opacity: 0; }
+    .acc-toggle span {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: #d7ded7;
+      cursor: pointer;
+      transition: background .25s ease;
+    }
+    .acc-toggle span::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, .18);
+      transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .acc-toggle input:checked + span { background: linear-gradient(135deg, var(--acc-leaf), var(--acc-sage)); }
+    .acc-toggle input:checked + span::before { transform: translateX(18px); }
+    .acc-toggle input:focus-visible + span { outline: 2px solid var(--acc-forest); outline-offset: 2px; }
+
+    /* Logout & footer */
+    .acc-logout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1.5px solid var(--acc-forest);
+      border-radius: 15px;
+      background: var(--acc-forest);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 750;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(20, 83, 45, .18);
+      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .acc-logout:hover {
+      background: var(--acc-forest-dark);
+      box-shadow: 0 10px 22px rgba(20, 83, 45, .24);
+      transform: translateY(-2px);
+    }
+    .acc-logout:active { transform: translateY(0); }
+
+    .acc-footnote { margin: 22px 0 4px; text-align: center; font-size: 11px; color: #8a968b; }
+    .acc-footnote strong { color: var(--acc-leaf); }
+
+    /* ── Sidebar navigation & detail views ──────────────────────── */
+    .acc-nav { display: grid; gap: 6px; margin: 16px 0 0; }
+
+    .acc-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 13px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      background: transparent;
+      color: #4b5563;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .acc-nav-item > i:first-child { width: 18px; flex: 0 0 18px; text-align: center; font-size: 14px; }
+    .acc-nav-item:hover { background: #f1f6f0; color: var(--acc-forest); }
+    .acc-nav-item.active {
+      border-color: var(--acc-forest);
+      background: var(--acc-forest);
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(20, 83, 45, .18);
+    }
+    .acc-nav-caret {
+      display: inline-flex;
+      align-items: center;
+      margin-left: auto;
+      font-size: 11px;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+    .acc-nav-toggle[aria-expanded="true"] .acc-nav-caret { transform: rotate(90deg); }
+    .acc-nav-toggle.open-group { color: var(--acc-forest); }
+    .acc-nav-toggle.open-group.active { background: #e8f3e7; border-color: transparent; color: var(--acc-forest); box-shadow: none; }
+
+    .acc-nav-group { display: grid; gap: 3px; }
+    .acc-subnav {
+      display: grid;
+      gap: 2px;
+      margin: 2px 0 6px 22px;
+      padding-left: 12px;
+      border-left: 2px solid var(--acc-line);
+    }
+    .acc-subnav[hidden] { display: none; }
+    .acc-subitem {
+      display: block;
+      width: 100%;
+      padding: 8px 10px;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: #5b6b5e;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+    .acc-subitem:hover { background: #f1f6f0; color: var(--acc-forest); }
+    .acc-subitem.active { background: #e8f3e7; color: var(--acc-forest); font-weight: 750; }
+
+    .acc-view[hidden], .acc-detail[hidden] { display: none; }
+    .acc-view, .acc-detail { animation: accFadeIn .28s ease both; }
+    @keyframes accFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .acc-view-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .acc-view-kicker {
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--acc-leaf);
+    }
+    .acc-view-head h2 {
+      margin: 3px 0 0;
+      font-size: 19px;
+      font-weight: 750;
+      letter-spacing: -.02em;
+    }
+    .acc-view-link {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1.2;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--acc-leaf);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .acc-view-link:hover { text-decoration: underline; }
+    .acc-note { margin: 12px 2px 0; font-size: 12px; color: var(--acc-muted); }
+    .acc-view .acc-section { margin-top: 20px; }
+
+    /* Detail cards */
+    .acc-detail-card { padding: 4px 14px; }
+    .acc-detail-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--acc-line);
+      font-size: 13px;
+    }
+    .acc-detail-row:last-child { border-bottom: 0; }
+    .acc-detail-row span { color: var(--acc-muted); }
+    .acc-detail-row strong { font-weight: 700; text-align: right; overflow-wrap: anywhere; }
+
+    .acc-photo-row { align-items: flex-start; }
+    .acc-photo-control {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .acc-photo-preview {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #eaf5e8;
+      color: var(--acc-leaf);
+      font-size: 16px;
+      overflow: hidden;
+    }
+    .acc-photo-preview img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .acc-photo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eaf5e8;
+      color: var(--acc-forest);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .acc-photo-input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    .acc-photo-remove {
+      border: 0;
+      background: none;
+      color: var(--acc-danger);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .acc-detail-desc {
+      margin: 0;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--acc-line);
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--acc-muted);
+    }
+    .acc-pref-channels { display: grid; gap: 8px; padding: 14px 0; }
+    .acc-pref-channel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 11px;
+      border: 1px solid var(--acc-line);
+      border-radius: 11px;
+      background: var(--acc-paper);
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+    .acc-address-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--acc-line);
+      font-size: 13px;
+    }
+    .acc-address-item:last-child { border-bottom: 0; }
+    .acc-address-item i { color: var(--acc-leaf); }
+    .acc-address-item span { flex: 1; }
+    .acc-detail-empty { padding: 22px 0; text-align: center; font-size: 12.5px; color: var(--acc-muted); }
+
+    /* ── Order tracker ──────────────────────────────────────────── */
+    .trk-card { padding: 16px; }
+    .trk-card + .trk-card { margin-top: 14px; }
+    .trk-label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--acc-muted);
+    }
+    .trk-search { display: flex; gap: 8px; }
+    .trk-input {
+      flex: 1;
+      min-width: 0;
+      min-height: 42px;
+      padding: 10px 12px;
+      border: 1px solid var(--acc-line);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--acc-ink);
+      font: inherit;
+      font-size: 13px;
+    }
+    .trk-input:focus { outline: none; border-color: var(--acc-leaf); box-shadow: 0 0 0 3px rgba(47, 125, 44, .12); }
+    .trk-btn {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid var(--acc-forest);
+      border-radius: 12px;
+      background: var(--acc-forest);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .trk-btn:hover { background: var(--acc-forest-dark); transform: translateY(-1px); }
+    .trk-hint { margin: 9px 0 0; font-size: 11.5px; color: var(--acc-muted); }
+
+    .trk-headline { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .trk-id { font-size: 12px; color: var(--acc-muted); }
+    .trk-id strong { display: block; margin-top: 2px; font-size: 15px; font-weight: 800; color: var(--acc-ink); overflow-wrap: anywhere; }
+    .trk-badge {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e8f3e7;
+      color: var(--acc-forest);
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+    .trk-badge i { font-size: 9px; }
+    .trk-badge--cancelled { background: #fdecea; color: var(--acc-danger); }
+
+    .trk-progress { height: 7px; margin: 16px 0 7px; border-radius: 999px; background: #e8eee9; overflow: hidden; }
+    .trk-progress__bar {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--acc-leaf), #7cb85e);
+      transition: width .4s ease;
+    }
+    .trk-progress-label { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; color: var(--acc-muted); }
+
+    .trk-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-top: 16px; }
+    .trk-meta { padding: 10px 11px; border: 1px solid var(--acc-line); border-radius: 12px; background: #fbfdfb; }
+    .trk-meta span {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--acc-muted);
+    }
+    .trk-meta strong { display: block; margin-top: 4px; font-size: 12.5px; font-weight: 750; overflow-wrap: anywhere; }
+
+    .trk-card-title { display: flex; align-items: center; gap: 8px; margin: 20px 0 4px; font-size: 14px; font-weight: 750; }
+    .trk-card-title i { color: var(--acc-leaf); }
+
+    .trk-timeline { list-style: none; margin: 0; padding: 12px 0 0; }
+    .trk-step { position: relative; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding-bottom: 22px; }
+    .trk-step:last-child { padding-bottom: 0; }
+    .trk-step::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 34px;
+      bottom: -2px;
+      width: 2px;
+      background: var(--acc-line);
+    }
+    .trk-step:last-child::before { display: none; }
+    .trk-step.done::before { background: var(--acc-leaf); }
+    .trk-step__dot {
+      position: relative;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--acc-line);
+      border-radius: 50%;
+      background: #fff;
+      color: #9aa79d;
+      font-size: 13px;
+    }
+    .trk-step.done .trk-step__dot { border-color: var(--acc-leaf); background: var(--acc-leaf); color: #fff; }
+    .trk-step.current .trk-step__dot {
+      border-color: var(--acc-leaf);
+      background: #fff;
+      color: var(--acc-leaf);
+      box-shadow: 0 0 0 4px rgba(47, 125, 44, .12);
+    }
+    .trk-step__title { font-size: 13.5px; font-weight: 750; }
+    .trk-step.current .trk-step__title { color: var(--acc-leaf); }
+    .trk-step__time { margin-top: 2px; font-size: 11.5px; color: var(--acc-muted); }
+    .trk-step__note { margin-top: 5px; font-size: 12px; line-height: 1.5; color: var(--acc-muted); }
+
+    .trk-help {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 12px 13px;
+      border: 1px solid var(--acc-line);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f3f9f1, #fff);
+      font-size: 12px;
+    }
+    .trk-help a {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 750;
+      color: var(--acc-leaf);
+    }
+    .trk-help a i { font-size: 10px; line-height: 1; }
+
+    @media (max-width: 359px) {
+      .trk-search { flex-wrap: wrap; }
+      .trk-btn { width: 100%; }
+      .trk-summary { grid-template-columns: 1fr; }
+      .trk-help { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── Payments ───────────────────────────────────────────────── */
+    .pay-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+    .pay-stat {
+      padding: 12px 8px;
+      border: 1px solid var(--acc-line);
+      border-radius: 14px;
+      background: var(--acc-paper);
+      box-shadow: var(--acc-shadow);
+      text-align: center;
+    }
+    .pay-stat i { display: block; margin-bottom: 6px; font-size: 15px; color: var(--acc-leaf); }
+    .pay-stat strong { display: block; font-size: 15px; font-weight: 800; color: var(--acc-forest); }
+    .pay-stat span { display: block; margin-top: 2px; font-size: 10px; color: var(--acc-muted); }
+
+    .pay-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 20px 0 10px; }
+    .pay-head h3 { margin: 0; font-size: 14px; font-weight: 750; }
+    .pay-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border: 1px solid var(--acc-line);
+      border-radius: 10px;
+      background: #f7faf6;
+      color: var(--acc-leaf);
+      font-size: 11.5px;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .pay-action i { line-height: 1; }
+    .pay-action:hover { border-color: var(--acc-leaf); background: #eef6ec; }
+    .pay-action--solid { border-color: var(--acc-forest); background: var(--acc-forest); color: #fff; }
+    .pay-action--solid:hover { border-color: var(--acc-forest-dark); background: var(--acc-forest-dark); }
+
+    .pay-methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .pay-method { padding: 14px; border: 1px solid var(--acc-line); border-radius: 14px; background: linear-gradient(145deg, #f9fcf8, #fff); }
+    .pay-method.is-default { border-color: rgba(47, 125, 44, .35); }
+    .pay-method__top { display: flex; align-items: center; gap: 10px; }
+    .pay-method__icon {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #e8f1fb;
+      color: #2563eb;
+      font-size: 15px;
+    }
+    .pay-method__name { min-width: 0; font-size: 12.5px; font-weight: 750; overflow-wrap: anywhere; }
+    .pay-method__sub { margin-top: 2px; font-size: 11px; color: var(--acc-muted); overflow-wrap: anywhere; }
+    .pay-default {
+      margin-left: auto;
+      flex: 0 0 auto;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #e8f3e7;
+      color: var(--acc-forest);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .pay-method__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .pay-link { padding: 0; border: 0; background: none; color: var(--acc-leaf); font-size: 11.5px; font-weight: 750; cursor: pointer; }
+    .pay-link:hover { text-decoration: underline; }
+    .pay-link--muted { color: var(--acc-muted); }
+
+    .pay-add-form {
+      display: none;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px solid var(--acc-line);
+      border-radius: 12px;
+      background: #fbfdfb;
+    }
+    .pay-add-form.open { display: grid; }
+    .pay-add-form input, .pay-add-form select {
+      min-height: 38px;
+      padding: 8px 10px;
+      border: 1px solid var(--acc-line);
+      border-radius: 9px;
+      background: #fff;
+      color: var(--acc-ink);
+      font: inherit;
+      font-size: 12.5px;
+    }
+    .pay-add-form input:focus, .pay-add-form select:focus { outline: none; border-color: var(--acc-leaf); }
+    .pay-add-actions { display: flex; gap: 8px; }
+    .pay-add-actions .pay-action { flex: 1; }
+
+    .pay-transactions { display: grid; gap: 8px; }
+    .pay-tx { display: flex; align-items: center; gap: 11px; padding: 11px 12px; border: 1px solid var(--acc-line); border-radius: 12px; background: #fff; }
+    .pay-tx__icon { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border-radius: 10px; background: #eaf5e8; color: var(--acc-leaf); font-size: 14px; }
+    .pay-tx__body { flex: 1; min-width: 0; }
+    .pay-tx__title { font-size: 12.5px; font-weight: 750; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .pay-tx__meta { margin-top: 2px; font-size: 11px; color: var(--acc-muted); }
+    .pay-tx__right { flex: 0 0 auto; text-align: right; }
+    .pay-tx__amount { font-size: 12.5px; font-weight: 800; }
+    .pay-status { display: inline-block; margin-top: 3px; padding: 3px 7px; border-radius: 999px; background: #e8f3e7; color: var(--acc-forest); font-size: 9.5px; font-weight: 800; }
+    .pay-status--pending { background: #fff5dc; color: #b7791f; }
+    .pay-status--failed { background: #fdecea; color: var(--acc-danger); }
+    .pay-empty { padding: 20px 14px; border: 1px dashed rgba(21, 83, 45, .2); border-radius: 14px; text-align: center; font-size: 12px; color: var(--acc-muted); }
+    .pay-empty i { display: block; margin-bottom: 7px; font-size: 20px; color: #a9bda9; }
+    .pay-note { margin: 10px 2px 0; font-size: 11.5px; color: var(--acc-muted); }
+
+    @media (max-width: 359px) {
+      .pay-summary, .pay-methods { grid-template-columns: 1fr; }
+    }
+
+    /* ── Wishlist panel ─────────────────────────────────────────── */
+    .acc-panel[hidden] { display: none; }
+    .acc-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: end center;
+      padding: 16px;
+      background: rgba(10, 28, 16, .55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .acc-panel__card,
+    .acc-modal {
+      width: min(480px, 100%);
+      max-height: 86dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: 22px 22px 0 0;
+      background: var(--acc-paper);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, .2);
+      animation: accSlideUp .3s cubic-bezier(.25, .46, .45, .94);
+    }
+    .acc-grab { width: 38px; height: 4px; margin: 10px auto 0; border-radius: 999px; background: #d7ded7; }
+
+    .acc-panel__head,
+    .acc-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--acc-line);
+    }
+    .acc-panel__head h2,
+    .acc-modal-header h2 { margin: 0; font-size: 18px; font-weight: 750; letter-spacing: -.01em; }
+
+    .acc-modal-close,
+    .wishlist-panel__dialog header button {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--acc-line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--acc-muted);
+      font-size: 15px;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .acc-modal-close:hover,
+    .wishlist-panel__dialog header button:hover { background: #f1f5f1; transform: rotate(90deg); }
+
+    .wishlist-panel__items {
+      display: grid;
+      gap: 10px;
+      padding: 16px 20px 22px;
+      overflow-y: auto;
+    }
+    .wishlist-item {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border: 1px solid var(--acc-line);
+      border-radius: 14px;
+    }
+    .wishlist-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #eef5ee;
+    }
+    .wishlist-item strong { display: block; font-size: 13.5px; line-height: 1.3; }
+    .wishlist-item small { display: block; margin-top: 3px; font-size: 12px; color: var(--acc-muted); }
+    .wishlist-item__remove {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(180, 35, 24, .18);
+      border-radius: 50%;
+      background: #fdecea;
+      color: var(--acc-danger);
+      font-size: 13px;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .wishlist-item__remove:hover { background: var(--acc-danger); color: #fff; transform: scale(1.08); }
+    .wishlist-empty { padding: 26px 10px; text-align: center; font-size: 13px; color: var(--acc-muted); }
+
+    /* ── Delete-account sheet ───────────────────────────────────── */
+    .acc-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      align-items: end;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(10, 28, 16, .58);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .acc-modal-overlay.open { display: flex; }
+    .acc-modal { max-height: 90dvh; }
+
+    .acc-modal-body { flex: 1; min-height: 0; overflow-y: auto; padding: 18px 20px; }
+    .acc-modal-desc { margin: 0 0 14px; font-size: 13px; line-height: 1.6; color: var(--acc-muted); }
+
+    .acc-reasons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .acc-reason {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 9px 10px;
+      border: 1px solid var(--acc-line);
+      border-radius: 12px;
+      background: #fff;
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.25;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .acc-reason:hover { border-color: rgba(91, 140, 81, .5); background: #f7fbf6; }
+    .acc-reason input { width: 16px; height: 16px; flex: 0 0 16px; margin: 0; accent-color: var(--acc-leaf); }
+    .acc-reason:has(input:checked) { border-color: var(--acc-leaf); background: #eef7ed; color: var(--acc-forest); }
+    .acc-reason--wide { grid-column: 1 / -1; }
+
+    .acc-reason-textarea {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid var(--acc-line);
+      border-radius: 12px;
+      font: inherit;
+      font-size: 13px;
+      resize: vertical;
+      outline: none;
+    }
+    .acc-reason-textarea:focus { border-color: var(--acc-leaf); box-shadow: 0 0 0 3px rgba(47, 125, 44, .12); }
+    .acc-reason-textarea::placeholder { color: #9ca3af; }
+
+    .acc-modal-footer {
+      display: flex;
+      gap: 10px;
+      flex: 0 0 auto;
+      padding: 14px 20px 20px;
+      border-top: 1px solid var(--acc-line);
+    }
+    .acc-modal-cancel,
+    .acc-modal-confirm {
+      flex: 1;
+      padding: 13px 10px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .acc-modal-cancel { border: 1px solid var(--acc-line); background: #fff; color: #374151; }
+    .acc-modal-cancel:hover { background: #f4f6f4; }
+    .acc-modal-confirm { border: 1px solid var(--acc-danger); background: var(--acc-danger); color: #fff; }
+    .acc-modal-confirm:hover { background: #991b1b; transform: translateY(-1px); }
+
+    @keyframes accSlideUp {
+      from { opacity: 0; transform: translateY(36px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 420px) {
+      .acc-hero { padding: 16px; }
+      .acc-hero__row { gap: 10px; }
+      .acc-avatar {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+        border-radius: 14px;
+        font-size: 16px;
+      }
+      .acc-hero h1 { font-size: 16px; }
+      .acc-hero p { font-size: 11.5px; }
+      .acc-edit { padding: 5px 8px; font-size: 10px; }
+      .acc-photo-row { flex-direction: column; align-items: flex-start; }
+      .acc-photo-control { justify-content: flex-start; }
+    }
+
+    /* ── Responsive layouts ─────────────────────────────────────── */
+    @media (min-width: 600px) {
+      .acc-app { max-width: 560px; padding: 0 24px 44px; }
+      .acc-topbar { padding: 18px 16px; }
+      .acc-hero { padding: 24px; }
+      .acc-hero h1 { font-size: 21px; }
+      .acc-quick { --acc-quick-pad: 15px; min-height: 112px; }
+    }
+
+    @media (min-width: 768px) {
+      .acc-app { max-width: 760px; }
+      .acc-quick-grid { gap: 14px; }
+      .acc-quick { min-height: 116px; }
+      .acc-row { min-height: 74px; }
+    }
+
+    @media (min-width: 1025px) {
+      .acc-app {
+        max-width: 1120px;
+        padding: 0 32px 60px;
+      }
+      .acc-topbar { padding: 18px 16px; }
+      .acc-main { padding-top: 26px; }
+
+      .acc-layout {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 30px;
+        align-items: start;
+      }
+      .acc-side { position: sticky; top: 92px; }
+      .acc-hero { padding: 24px; }
+      .acc-nav { margin-top: 18px; }
+
+      .acc-content { display: block; }
+      .acc-view-head h2 { font-size: 21px; }
+      .acc-stats { margin: 0 0 20px; }
+      .acc-quick-grid { gap: 14px; }
+      .acc-quick { --acc-quick-pad: 16px; min-height: 120px; }
+      .acc-row { min-height: 76px; }
+      .acc-detail-card { padding: 6px 18px; }
+    }
+
+    @media (min-width: 1280px) {
+      .acc-app { max-width: 1200px; }
+      .acc-layout { grid-template-columns: 320px minmax(0, 1fr); gap: 36px; }
+      .acc-quick-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .acc-quick strong { font-size: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body class="account-page">
+  <div class="acc-app">
+    <header class="acc-topbar">
+      <a class="acc-icon-btn" href="index.html" aria-label="Go to home page">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </a>
+      <div class="acc-topbar__title">
+        <strong>My Account</strong>
+        <small>Everything in one place</small>
+      </div>
+      <div class="acc-topbar__actions">
+        <a class="acc-icon-btn" href="shop-cart.html" aria-label="Open cart">
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+          <span class="acc-cart-badge" id="acc-cart-badge" style="display:none">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="acc-main">
+      <div class="acc-layout">
+        <aside class="acc-side" aria-label="Account navigation">
+          <section class="acc-hero" aria-labelledby="acc-greeting">
+            <i class="fas fa-leaf acc-hero__leaf" aria-hidden="true"></i>
+            <div class="acc-hero__row">
+              <div class="acc-avatar" id="acc-avatar" aria-hidden="true"><img src="assets-ui/img/default-avatar.svg" alt="" /></div>
+              <div class="acc-hero__text">
+                <span class="acc-eyebrow"><i class="fas fa-seedling" aria-hidden="true"></i> VPNexues member</span>
+                <h1 id="acc-greeting">Welcome back!</h1>
+                <p id="acc-email">Your farm-fresh account</p>
+              </div>
+              <a class="acc-edit" href="personal-info.html">Edit</a>
+            </div>
+          </section>
+
+          <nav class="acc-nav" aria-label="Account sections">
+            <button type="button" class="acc-nav-item active" data-view="dashboard">
+              <i class="fas fa-th-large" aria-hidden="true"></i><span>Dashboard</span>
+            </button>
+
+            <a class="acc-nav-item" href="orders.html" data-view="orders">
+              <i class="fas fa-shopping-bag" aria-hidden="true"></i><span>My Orders</span>
+            </a>
+
+            <div class="acc-nav-group">
+              <button type="button" class="acc-nav-item acc-nav-toggle" data-toggle="settings" aria-expanded="false">
+                <i class="fas fa-user-cog" aria-hidden="true"></i><span>Account Settings</span>
+                <i class="fas fa-chevron-right acc-nav-caret" aria-hidden="true"></i>
+              </button>
+              <div class="acc-subnav" data-subnav="settings" hidden>
+                <button type="button" class="acc-subitem" data-detail="personal">Personal Information</button>
+                <button type="button" class="acc-subitem" data-detail="addresses">Addresses</button>
+                <button type="button" class="acc-subitem" data-detail="payments">Payments</button>
+                <button type="button" class="acc-subitem" data-detail="terms">Terms &amp; Conditions</button>
+              </div>
+            </div>
+
+            <div class="acc-nav-group">
+              <button type="button" class="acc-nav-item acc-nav-toggle" data-toggle="preferences" aria-expanded="false">
+                <i class="fas fa-sliders-h" aria-hidden="true"></i><span>Preferences</span>
+                <i class="fas fa-chevron-right acc-nav-caret" aria-hidden="true"></i>
+              </button>
+              <div class="acc-subnav" data-subnav="preferences" hidden>
+                <button type="button" class="acc-subitem" data-detail="order-updates">Order updates</button>
+                <button type="button" class="acc-subitem" data-detail="delivery-alerts">Delivery alerts</button>
+                <button type="button" class="acc-subitem" data-detail="offers">Offers &amp; news</button>
+              </div>
+            </div>
+
+            <button type="button" class="acc-nav-item" data-view="tracker">
+              <i class="fas fa-truck" aria-hidden="true"></i><span>Track Order</span>
+            </button>
+
+            <button type="button" class="acc-nav-item" data-view="actions">
+              <i class="fas fa-shield-alt" aria-hidden="true"></i><span>Account Actions</span>
+            </button>
+          </nav>
+        </aside>
+
+        <div class="acc-content">
+          <!-- Dashboard -->
+          <section class="acc-view" id="view-dashboard" aria-labelledby="acc-dash-title">
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Overview</span>
+                <h2 id="acc-dash-title">Your dashboard</h2>
+              </div>
+              <button type="button" class="acc-view-link" data-open-group="settings">Manage settings</button>
+            </div>
+
+            <section class="acc-stats" aria-label="Account overview">
+              <a class="acc-stat" href="orders.html">
+                <strong id="acc-orders-count">0</strong>
+                <span>Orders</span>
+              </a>
+              <button class="acc-stat" type="button" data-wishlist>
+                <strong id="acc-wishlist-count">0</strong>
+                <span>Wishlist</span>
+              </button>
+              <a class="acc-stat" href="addresses.html">
+                <strong id="acc-addresses-count">0</strong>
+                <span>Addresses</span>
+              </a>
+            </section>
+
+            <section class="acc-section" aria-labelledby="acc-quick-title">
+              <div class="acc-section-head">
+                <h2 id="acc-quick-title">Quick actions</h2>
+              </div>
+              <div class="acc-quick-grid">
+                <a class="acc-quick" href="orders.html">
+                  <span class="acc-quick__icon acc-tint--green"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
+                  <span><strong>My Orders</strong><small>Review your purchases</small></span>
+                  <i class="fas fa-chevron-right acc-quick__arrow" aria-hidden="true"></i>
+                </a>
+                <a class="acc-quick" href="payment-history.html">
+                  <span class="acc-quick__icon acc-tint--blue"><i class="far fa-credit-card" aria-hidden="true"></i></span>
+                  <span><strong>Payments</strong><small>Invoices &amp; history</small></span>
+                  <i class="fas fa-chevron-right acc-quick__arrow" aria-hidden="true"></i>
+                </a>
+                <a class="acc-quick" href="#tracker" data-view="tracker">
+                  <span class="acc-quick__icon acc-tint--teal"><i class="fas fa-truck" aria-hidden="true"></i></span>
+                  <span><strong>Track Order</strong><small>Live delivery status</small></span>
+                  <i class="fas fa-chevron-right acc-quick__arrow" aria-hidden="true"></i>
+                </a>
+                <a class="acc-quick" href="help-support.html">
+                  <span class="acc-quick__icon acc-tint--purple"><i class="fas fa-headset" aria-hidden="true"></i></span>
+                  <span><strong>Help &amp; Support</strong><small>We're here to help</small></span>
+                  <i class="fas fa-chevron-right acc-quick__arrow" aria-hidden="true"></i>
+                </a>
+              </div>
+            </section>
+          </section>
+
+          <!-- Detail: Personal Information -->
+          <section class="acc-detail" id="detail-personal" aria-labelledby="detail-personal-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Account Settings</span>
+                <h2 id="detail-personal-title">Personal Information</h2>
+              </div>
+              <a class="acc-view-link" href="personal-info.html">Edit</a>
+            </div>
+            <div class="acc-card acc-detail-card">
+              <div class="acc-detail-row acc-photo-row">
+                <span>Profile picture</span>
+                <div class="acc-photo-control">
+                  <div class="acc-photo-preview" id="acc-photo-preview"><img src="assets-ui/img/default-avatar.svg" alt="" /></div>
+                  <label class="acc-photo-btn" for="acc-photo"><i class="fas fa-camera" aria-hidden="true"></i> Choose</label>
+                  <input type="file" id="acc-photo" class="acc-photo-input" accept="image/*">
+                  <button type="button" class="acc-photo-remove" id="acc-photo-remove" hidden>Remove</button>
+                </div>
+              </div>
+              <div class="acc-detail-row"><span>Full name</span><strong id="detail-name">—</strong></div>
+              <div class="acc-detail-row"><span>Email address</span><strong id="detail-email">—</strong></div>
+              <div class="acc-detail-row"><span>Phone number</span><strong id="detail-phone">—</strong></div>
+              <div class="acc-detail-row"><span>Member since</span><strong id="detail-member">—</strong></div>
+            </div>
+            <p class="acc-note">Keep your contact details current so we can reach you about deliveries.</p>
+          </section>
+
+          <!-- Detail: Addresses -->
+          <section class="acc-detail" id="detail-addresses" aria-labelledby="detail-addresses-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Account Settings</span>
+                <h2 id="detail-addresses-title">Addresses</h2>
+              </div>
+              <a class="acc-view-link" href="addresses.html">Manage</a>
+            </div>
+            <div class="acc-card acc-detail-card" id="detail-address-list"></div>
+            <p class="acc-note">Addresses you save here are used at checkout.</p>
+          </section>
+
+          <!-- Detail: Payments -->
+          <section class="acc-detail" id="detail-payments" aria-labelledby="detail-payments-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Account Settings</span>
+                <h2 id="detail-payments-title">Payments</h2>
+              </div>
+              <a class="acc-view-link" href="payment-history.html">Full history</a>
+            </div>
+
+            <div class="pay-summary" aria-label="Payment overview">
+              <div class="pay-stat"><i class="far fa-credit-card" aria-hidden="true"></i><strong id="pay-method-count">0</strong><span>Saved methods</span></div>
+              <div class="pay-stat"><i class="fas fa-receipt" aria-hidden="true"></i><strong id="pay-tx-count">0</strong><span>Recent payments</span></div>
+              <div class="pay-stat"><i class="fas fa-rupee-sign" aria-hidden="true"></i><strong id="pay-total">₹0</strong><span>Total paid</span></div>
+            </div>
+
+            <div class="pay-head">
+              <h3>Saved payment methods</h3>
+              <button type="button" class="pay-action" id="pay-toggle-form"><i class="fas fa-plus" aria-hidden="true"></i> Add method</button>
+            </div>
+            <div class="pay-methods" id="pay-methods"></div>
+            <form class="pay-add-form" id="pay-add-form">
+              <input id="pay-new-label" type="text" placeholder="Card name / UPI ID" aria-label="Payment method name" required>
+              <input id="pay-new-detail" type="text" placeholder="Last 4 digits or UPI handle" aria-label="Payment details">
+              <select id="pay-new-type" aria-label="Payment type">
+                <option value="card">Debit / Credit card</option>
+                <option value="upi">UPI</option>
+                <option value="wallet">Wallet</option>
+              </select>
+              <div class="pay-add-actions">
+                <button class="pay-action pay-action--solid" type="submit">Save method</button>
+                <button class="pay-action" type="button" id="pay-cancel-form">Cancel</button>
+              </div>
+            </form>
+
+            <div class="pay-head">
+              <h3>Recent transactions</h3>
+              <a class="pay-action" href="payment-history.html">View all <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="pay-transactions" id="pay-transactions"></div>
+            <p class="pay-note" id="pay-note">Payments are processed securely. Saved methods stay on this device.</p>
+          </section>
+
+          <!-- Detail: Terms -->
+          <section class="acc-detail" id="detail-terms" aria-labelledby="detail-terms-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Account Settings</span>
+                <h2 id="detail-terms-title">Terms &amp; Conditions</h2>
+              </div>
+              <a class="acc-view-link" href="terms.html">Read full terms</a>
+            </div>
+            <div class="acc-card acc-detail-card">
+              <div class="acc-detail-row"><span>Service</span><strong>VPNexues farm-to-table</strong></div>
+              <div class="acc-detail-row"><span>Returns</span><strong>Fresh produce policy</strong></div>
+              <div class="acc-detail-row"><span>Privacy</span><strong>Data protected</strong></div>
+            </div>
+            <p class="acc-note">By using VPNexues you agree to our terms of service and privacy policy.</p>
+          </section>
+
+          <!-- Detail: Order updates -->
+          <section class="acc-detail" id="detail-order-updates" aria-labelledby="detail-order-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Preferences</span>
+                <h2 id="detail-order-title">Order updates</h2>
+              </div>
+              <a class="acc-view-link" href="notifications.html">All settings</a>
+            </div>
+            <div class="acc-card acc-detail-card">
+              <div class="acc-detail-row">
+                <span>Order notifications</span>
+                <label class="acc-toggle np-toggle" aria-label="Order updates"><input type="checkbox" data-key="np_order_updates" checked><span></span></label>
+              </div>
+              <p class="acc-detail-desc">Get notified when an order is placed, packed or shipped.</p>
+              <div class="acc-pref-channels">
+                <div class="acc-pref-channel"><span>Email notifications</span><label class="acc-toggle np-toggle" aria-label="Order updates by email"><input type="checkbox" data-key="np_order_email" checked><span></span></label></div>
+                <div class="acc-pref-channel"><span>Push notifications</span><label class="acc-toggle np-toggle" aria-label="Order updates by push"><input type="checkbox" data-key="np_order_push" checked><span></span></label></div>
+                <div class="acc-pref-channel"><span>SMS notifications</span><label class="acc-toggle np-toggle" aria-label="Order updates by SMS"><input type="checkbox" data-key="np_order_sms"><span></span></label></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Detail: Delivery alerts -->
+          <section class="acc-detail" id="detail-delivery-alerts" aria-labelledby="detail-delivery-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Preferences</span>
+                <h2 id="detail-delivery-title">Delivery alerts</h2>
+              </div>
+              <a class="acc-view-link" href="notifications.html">All settings</a>
+            </div>
+            <div class="acc-card acc-detail-card">
+              <div class="acc-detail-row">
+                <span>Delivery notifications</span>
+                <label class="acc-toggle np-toggle" aria-label="Delivery alerts"><input type="checkbox" data-key="np_delivery_updates" checked><span></span></label>
+              </div>
+              <p class="acc-detail-desc">Know when your delivery is out for delivery, delayed or delivered.</p>
+              <div class="acc-pref-channels">
+                <div class="acc-pref-channel"><span>Email notifications</span><label class="acc-toggle np-toggle" aria-label="Delivery alerts by email"><input type="checkbox" data-key="np_delivery_email" checked><span></span></label></div>
+                <div class="acc-pref-channel"><span>Push notifications</span><label class="acc-toggle np-toggle" aria-label="Delivery alerts by push"><input type="checkbox" data-key="np_delivery_push" checked><span></span></label></div>
+                <div class="acc-pref-channel"><span>SMS notifications</span><label class="acc-toggle np-toggle" aria-label="Delivery alerts by SMS"><input type="checkbox" data-key="np_delivery_sms"><span></span></label></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Detail: Offers -->
+          <section class="acc-detail" id="detail-offers" aria-labelledby="detail-offers-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Preferences</span>
+                <h2 id="detail-offers-title">Offers &amp; news</h2>
+              </div>
+              <a class="acc-view-link" href="notifications.html">All settings</a>
+            </div>
+            <div class="acc-card acc-detail-card">
+              <div class="acc-detail-row">
+                <span>Offers &amp; news</span>
+                <label class="acc-toggle np-toggle" aria-label="Offers and news"><input type="checkbox" data-key="np_offers"><span></span></label>
+              </div>
+              <p class="acc-detail-desc">Hear about farm-fresh arrivals, seasonal deals and farming tips.</p>
+              <div class="acc-pref-channels">
+                <div class="acc-pref-channel"><span>Email notifications</span><label class="acc-toggle np-toggle" aria-label="Offers by email"><input type="checkbox" data-key="np_offers_email"><span></span></label></div>
+                <div class="acc-pref-channel"><span>Push notifications</span><label class="acc-toggle np-toggle" aria-label="Offers by push"><input type="checkbox" data-key="np_offers_push"><span></span></label></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Track order -->
+          <section class="acc-view" id="view-tracker" aria-labelledby="acc-tracker-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Delivery</span>
+                <h2 id="acc-tracker-title">Track your order</h2>
+              </div>
+              <button type="button" class="acc-view-link" id="trk-refresh"><i class="fas fa-sync-alt" aria-hidden="true"></i> Refresh</button>
+            </div>
+
+            <form class="acc-card trk-card" id="trk-form">
+              <label class="trk-label" for="trk-order-input">Order number</label>
+              <div class="trk-search">
+                <input class="trk-input" id="trk-order-input" type="text" placeholder="e.g. VNX-48219" autocomplete="off">
+                <button class="trk-btn" type="submit"><i class="fas fa-search" aria-hidden="true"></i> Track</button>
+              </div>
+              <p class="trk-hint" id="trk-hint">Enter an order number to preview its delivery progress.</p>
+            </form>
+
+            <section class="acc-card trk-card" id="trk-result" aria-live="polite">
+              <div class="trk-headline">
+                <div class="trk-id">Order number<strong id="trk-order-id">—</strong></div>
+                <span class="trk-badge" id="trk-status-badge"><i class="fas fa-circle" aria-hidden="true"></i><span id="trk-status-text">—</span></span>
+              </div>
+
+              <div class="trk-progress" id="trk-progress" role="progressbar" aria-label="Delivery progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="trk-progress__bar" id="trk-progress-bar" style="width:0%"></div>
+              </div>
+              <div class="trk-progress-label"><span id="trk-step-label">Order placed</span><span id="trk-eta-label">—</span></div>
+
+              <div class="trk-summary">
+                <div class="trk-meta"><span>Placed on</span><strong id="trk-placed">—</strong></div>
+                <div class="trk-meta"><span>Est. delivery</span><strong id="trk-delivery">—</strong></div>
+                <div class="trk-meta"><span>Courier</span><strong id="trk-courier">—</strong></div>
+                <div class="trk-meta"><span>Tracking no.</span><strong id="trk-tracking">—</strong></div>
+              </div>
+
+              <h3 class="trk-card-title"><i class="fas fa-route" aria-hidden="true"></i> Delivery journey</h3>
+              <ol class="trk-timeline" id="trk-timeline"></ol>
+
+              <div class="trk-help">
+                <span>Need help with this delivery?</span>
+                <a href="help-support.html">Contact support <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+              </div>
+            </section>
+          </section>
+
+          <!-- Account actions -->
+          <section class="acc-view" id="view-actions" aria-labelledby="acc-actions-title" hidden>
+            <div class="acc-view-head">
+              <div>
+                <span class="acc-view-kicker">Security</span>
+                <h2 id="acc-actions-title">Account actions</h2>
+              </div>
+            </div>
+            <div class="acc-card">
+              <button class="acc-row acc-row--danger" type="button" id="acc-delete-btn">
+                <span class="acc-row__icon acc-tint--red"><i class="fas fa-trash-alt" aria-hidden="true"></i></span>
+                <span class="acc-row__text"><strong>Delete Account</strong><small>Permanently remove your account</small></span>
+                <i class="fas fa-chevron-right acc-row__arrow" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button class="acc-logout" type="button" data-logout>
+              <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+              <span>Logout</span>
+            </button>
+            <p class="acc-note">You'll be signed out on this device. Your saved addresses and orders stay safe until you log back in.</p>
+          </section>
+
+          <p class="acc-footnote"><strong>VPNexues</strong> · விவசாயம் காப்போம்</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Global mobile navigation -->
+  <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-item" data-nav-key="home">
+        <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="shop.html" class="nav-item" data-nav-key="categories">
+        <span class="nav-icon-wrap"><i class="fas fa-th-large nav-icon" aria-hidden="true"></i></span>
+        <span class="nav-label">Categories</span>
+      </a>
+      <a href="shop-cart.html" class="nav-item" data-nav-key="cart">
+        <span class="nav-icon-wrap">
+          <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+          <span class="nav-badge" id="nav-cart-badge" style="display:none">0</span>
+        </span>
+        <span class="nav-label">Cart</span>
+      </a>
+      <a href="account.html#dashboard" class="nav-item" data-nav-key="account">
+        <span class="nav-icon-wrap"><i class="far fa-user-circle nav-icon" aria-hidden="true"></i></span>
+        <span class="nav-label">Account</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Wishlist panel -->
+  <section class="acc-panel wishlist-panel" id="wishlist-panel" aria-label="Your wishlist" hidden>
+    <div class="acc-panel__card wishlist-panel__dialog">
+      <div class="acc-grab" aria-hidden="true"></div>
+      <header class="acc-panel__head">
+        <h2>My Wishlist</h2>
+        <button type="button" data-wishlist-close aria-label="Close wishlist"><i class="fas fa-times" aria-hidden="true"></i></button>
+      </header>
+      <div class="wishlist-panel__items" data-wishlist-items></div>
+    </div>
+  </section>
+
+  <!-- Delete-account sheet -->
+  <div class="acc-modal-overlay" id="acc-delete-modal">
+    <div class="acc-modal" role="dialog" aria-modal="true" aria-labelledby="acc-delete-title">
+      <div class="acc-grab" aria-hidden="true"></div>
+      <div class="acc-modal-header">
+        <h2 id="acc-delete-title">Delete Account</h2>
+        <button class="acc-modal-close" type="button" id="acc-modal-close" aria-label="Close dialog"><i class="fas fa-times" aria-hidden="true"></i></button>
+      </div>
+      <div class="acc-modal-body">
+        <p class="acc-modal-desc">We're sorry to see you go. Tell us why you're leaving so we can improve.</p>
+        <div class="acc-reasons">
+          <label class="acc-reason"><input type="radio" name="deleteReason" value="not_useful"> Not useful anymore</label>
+          <label class="acc-reason"><input type="radio" name="deleteReason" value="privacy"> Privacy concerns</label>
+          <label class="acc-reason"><input type="radio" name="deleteReason" value="switching"> Switching service</label>
+          <label class="acc-reason"><input type="radio" name="deleteReason" value="too_many"> Too many notifications</label>
+          <label class="acc-reason acc-reason--wide"><input type="radio" name="deleteReason" value="other"> Other</label>
+        </div>
+        <textarea class="acc-reason-textarea" id="acc-reason-text" placeholder="Additional comments (optional)" rows="3" style="display:none"></textarea>
+      </div>
+      <div class="acc-modal-footer">
+        <button class="acc-modal-cancel" type="button" id="acc-modal-cancel">Cancel</button>
+        <button class="acc-modal-confirm" type="button" id="acc-modal-confirm">Delete account</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets-ui/js/account.js"></script>
+
+  <script>
+    (function () {
+      function readJSON(key) {
+        try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) { return null; }
+      }
+      function setText(selector, value) {
+        var el = document.querySelector(selector);
+        if (el && value) el.textContent = value;
+      }
+      function setCount(selector, count) {
+        var el = document.querySelector(selector);
+        if (!el) return;
+        el.textContent = String(count || 0);
+      }
+      function initials(name) {
+        var parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+        if (!parts.length) return 'VP';
+        return (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
+      }
+      var DEFAULT_AVATAR = 'assets-ui/img/default-avatar.svg';
+      function setAvatar(src) {
+        var el = document.querySelector('#acc-avatar');
+        if (!el) return;
+        var img = document.createElement('img');
+        img.src = src || DEFAULT_AVATAR;
+        img.alt = '';
+        el.innerHTML = '';
+        el.appendChild(img);
+      }
+      function syncPhotoUI(src) {
+        setAvatar(src);
+        var preview = document.getElementById('acc-photo-preview');
+        var remove = document.getElementById('acc-photo-remove');
+        if (preview) {
+          var img = document.createElement('img');
+          img.src = src || DEFAULT_AVATAR;
+          img.alt = '';
+          preview.innerHTML = '';
+          preview.appendChild(img);
+        }
+        if (remove) remove.hidden = !src;
+      }
+      function readImageFile(file, callback) {
+        if (!file || file.type.indexOf('image/') !== 0) return;
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var img = new Image();
+          img.onload = function () {
+            var canvas = document.createElement('canvas');
+            canvas.width = 256;
+            canvas.height = 256;
+            var ctx = canvas.getContext('2d');
+            var side = Math.min(img.width, img.height);
+            var sx = (img.width - side) / 2;
+            var sy = (img.height - side) / 2;
+            ctx.drawImage(img, sx, sy, side, side, 0, 0, 256, 256);
+            try { callback(canvas.toDataURL('image/jpeg', 0.85)); }
+            catch (err) { callback(e.target.result); }
+          };
+          img.onerror = function () {};
+          img.src = e.target.result;
+        };
+        reader.onerror = function () {};
+        reader.readAsDataURL(file);
+      }
+
+      var accountNav = document.querySelector('.mobile-bottom-nav-global [data-nav-key="account"]');
+      if (accountNav) {
+        accountNav.classList.add('active');
+        accountNav.setAttribute('aria-current', 'page');
+      }
+
+      var user = readJSON('vpnexuesUser') || readJSON('loggedInUser') || readJSON('currentUser') || {};
+      var profile = readJSON('vpnexues_profile') || {};
+      var name = profile.fullName
+        || localStorage.getItem('vpnexues_userName')
+        || localStorage.getItem('vpnexuesName')
+        || user.name
+        || user.fullName
+        || '';
+      var email = profile.email
+        || localStorage.getItem('vpnexues_userEmail')
+        || localStorage.getItem('vpnexuesEmail')
+        || user.email
+        || '';
+      var displayName = String(name || '').trim().replace(/\s+/g, ' ');
+      var displayEmail = String(email || '').trim();
+      var picture = profile.picture || user.picture || user.photo || '';
+
+      if (displayName) setText('#acc-greeting', 'Welcome back, ' + displayName + '!');
+      syncPhotoUI(picture);
+      if (displayEmail) setText('#acc-email', displayEmail);
+
+      var photoInput = document.getElementById('acc-photo');
+      if (photoInput) {
+        photoInput.addEventListener('change', function (e) {
+          var file = e.target.files && e.target.files[0];
+          if (!file) return;
+          readImageFile(file, function (dataUrl) {
+            var current = readJSON('vpnexues_profile') || {};
+            current.picture = dataUrl;
+            localStorage.setItem('vpnexues_profile', JSON.stringify(current));
+            syncPhotoUI(dataUrl);
+          });
+        });
+      }
+      var photoRemove = document.getElementById('acc-photo-remove');
+      if (photoRemove) {
+        photoRemove.addEventListener('click', function () {
+          var current = readJSON('vpnexues_profile') || {};
+          delete current.picture;
+          localStorage.setItem('vpnexues_profile', JSON.stringify(current));
+          if (photoInput) photoInput.value = '';
+          syncPhotoUI('');
+        });
+      }
+
+      var cart = readJSON('cart') || [];
+      var cartCount = Array.isArray(cart)
+        ? cart.reduce(function (total, item) { return total + (item.qty || item.quantity || 1); }, 0)
+        : 0;
+      var savedAddresses = readJSON('vpnexuesAddresses') || readJSON('vpnSavedAddresses') || [];
+      if (!Array.isArray(savedAddresses)) savedAddresses = [];
+      setCount('#acc-orders-count', (readJSON('vpnexuesOrders') || []).length);
+      setCount('#acc-wishlist-count', (readJSON('vpnexuesWishlist') || []).length);
+      setCount('#acc-addresses-count', savedAddresses.length);
+      setCount('#acc-cart-badge', cartCount);
+      setCount('#nav-cart-badge', cartCount);
+
+      [document.getElementById('acc-cart-badge'), document.getElementById('nav-cart-badge')].forEach(function (badge) {
+        if (badge) badge.style.display = cartCount > 0 ? '' : 'none';
+      });
+
+      // Populate centre detail views.
+      function escapeHTML(value) {
+        return String(value == null ? '' : value).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      var phone = localStorage.getItem('vpnexuesPhone') || user.phone || user.mobile || '';
+      var loginTime = localStorage.getItem('vpnexuesLoginTime') || user.loginTime || '';
+      setText('#detail-name', displayName);
+      setText('#detail-email', displayEmail);
+      setText('#detail-phone', phone);
+      if (loginTime) {
+        var joined = new Date(loginTime);
+        if (!isNaN(joined.getTime())) setText('#detail-member', joined.toLocaleDateString());
+      }
+
+      var addresses = savedAddresses.slice();
+      var singleAddress = readJSON('vpnAddress');
+      if (!addresses.length && singleAddress && typeof singleAddress === 'object') addresses = [singleAddress];
+      var addressList = document.getElementById('detail-address-list');
+      if (addressList) {
+        addressList.innerHTML = addresses.length
+          ? addresses.map(function (a) {
+              var line = [a.line1 || a.address || a.street, a.line2, a.city, a.state, a.postalCode || a.zip, a.country]
+                .filter(Boolean).join(', ');
+              return '<div class="acc-address-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>' +
+                escapeHTML(line || 'Saved address') + '</span>' +
+                (a.isDefault || a.default ? '<strong>Default</strong>' : '') + '</div>';
+            }).join('')
+          : '<p class="acc-detail-empty">No saved addresses yet.</p>';
+      }
+
+      // Payments overview.
+      var methodKey = localStorage.getItem('vpnexuesPayments') != null ? 'vpnexuesPayments' : 'vpnexuesPaymentMethods';
+      var payMethods = readJSON(methodKey) || [];
+      if (!Array.isArray(payMethods)) payMethods = [];
+      var usingSampleMethods = payMethods.length === 0;
+      if (usingSampleMethods) {
+        payMethods = [{ id: 'sample-card', type: 'card', label: 'HDFC Bank Card', detail: '•••• 4242', expiry: '08/28', isDefault: true }];
+      }
+
+      var payTx = readJSON('vpnexues_payments') || [];
+      if (!Array.isArray(payTx)) payTx = [];
+      var usingSampleTx = payTx.length === 0;
+      if (usingSampleTx) {
+        payTx = [
+          { id: 'VNX-48219', title: 'Farm fresh vegetables', date: offsetDate(-3), amount: 842, status: 'success', method: 'card' },
+          { id: 'VNX-47702', title: 'Seasonal fruits box', date: offsetDate(-9), amount: 1260, status: 'success', method: 'upi' },
+          { id: 'VNX-46551', title: 'Organic grains', date: offsetDate(-17), amount: 540, status: 'refunded', method: 'card' }
+        ];
+      }
+
+      function methodMeta(method) {
+        var type = String(method.type || method.brand || 'card').toLowerCase();
+        if (/upi/.test(type)) return { icon: 'fas fa-mobile-alt', label: method.label || 'UPI', sub: method.detail || method.upi || 'UPI ID' };
+        if (/wallet|paytm|phonepe/.test(type)) return { icon: 'fas fa-wallet', label: method.label || 'Wallet', sub: method.detail || 'Wallet account' };
+        return {
+          icon: 'far fa-credit-card',
+          label: method.label || method.brand || 'Card',
+          sub: [method.brand, method.detail || (method.last4 ? '•••• ' + method.last4 : '')].filter(Boolean).join(' ') || 'Card details'
+        };
+      }
+      function savePayMethods() {
+        localStorage.setItem(methodKey, JSON.stringify(payMethods.map(function (m) {
+          return { id: m.id, type: m.type, label: m.label, detail: m.detail, expiry: m.expiry, isDefault: !!m.isDefault };
+        })));
+      }
+      function renderPayMethods() {
+        var wrap = document.getElementById('pay-methods');
+        if (!wrap) return;
+        wrap.innerHTML = payMethods.length
+          ? payMethods.map(function (m, i) {
+              var meta = methodMeta(m);
+              var isDefault = !!(m.isDefault || m.default);
+              return '<div class="pay-method' + (isDefault ? ' is-default' : '') + '">' +
+                '<div class="pay-method__top">' +
+                  '<span class="pay-method__icon"><i class="' + meta.icon + '" aria-hidden="true"></i></span>' +
+                  '<div><div class="pay-method__name">' + escapeHTML(meta.label) + '</div>' +
+                  '<div class="pay-method__sub">' + escapeHTML(meta.sub) + '</div></div>' +
+                  (isDefault ? '<span class="pay-default">Default</span>' : '') +
+                '</div><div class="pay-method__actions">' +
+                  (isDefault ? '' : '<button type="button" class="pay-link" data-pay-default="' + i + '">Set as default</button>') +
+                  '<button type="button" class="pay-link pay-link--muted" data-pay-remove="' + i + '">Remove</button>' +
+                '</div></div>';
+            }).join('')
+          : '<div class="pay-empty"><i class="far fa-credit-card" aria-hidden="true"></i>No saved payment methods yet.</div>';
+        setCount('#pay-method-count', payMethods.length);
+      }
+      function payStatus(status) {
+        var s = String(status || '').toLowerCase();
+        if (/fail|declin/.test(s)) return { label: 'Failed', cls: 'pay-status--failed' };
+        if (/pending|process/.test(s)) return { label: 'Pending', cls: 'pay-status--pending' };
+        if (/refund/.test(s)) return { label: 'Refunded', cls: 'pay-status--pending' };
+        return { label: 'Paid', cls: '' };
+      }
+      function renderPayTransactions() {
+        var wrap = document.getElementById('pay-transactions');
+        if (!wrap) return;
+        var total = 0;
+        payTx.forEach(function (t) {
+          if (payStatus(t.status).label === 'Paid') total += Number(t.amount || 0);
+        });
+        wrap.innerHTML = payTx.length
+          ? payTx.slice(0, 6).map(function (t) {
+              var state = payStatus(t.status);
+              var title = t.title || t.productNames ||
+                (Array.isArray(t.products) ? t.products.join(', ') : '') || 'Order payment';
+              var dateText = t.date || t.timestamp || t.createdAt || '';
+              if (dateText) dateText = formatDate(dateText);
+              var methodName = String(t.method || 'card');
+              var icon = /upi/i.test(methodName) ? 'fas fa-mobile-alt' : (/wallet/i.test(methodName) ? 'fas fa-wallet' : 'far fa-credit-card');
+              return '<div class="pay-tx">' +
+                '<span class="pay-tx__icon"><i class="' + icon + '" aria-hidden="true"></i></span>' +
+                '<div class="pay-tx__body"><div class="pay-tx__title">' + escapeHTML(String(title)) + '</div>' +
+                '<div class="pay-tx__meta">' + escapeHTML(String(t.orderId || t.id || '')) +
+                (dateText ? ' · ' + escapeHTML(dateText) : '') + '</div></div>' +
+                '<div class="pay-tx__right"><div class="pay-tx__amount">₹' +
+                Number(t.amount || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</div>' +
+                '<span class="pay-status ' + state.cls + '">' + state.label + '</span></div></div>';
+            }).join('')
+          : '<div class="pay-empty"><i class="fas fa-receipt" aria-hidden="true"></i>No transactions yet.</div>';
+        setCount('#pay-tx-count', payTx.length);
+        setText('#pay-total', '₹' + total.toLocaleString('en-IN', { maximumFractionDigits: 0 }));
+      }
+      renderPayMethods();
+      renderPayTransactions();
+      if (usingSampleMethods || usingSampleTx) {
+        setText('#pay-note', 'Sample data shown for preview. Your saved methods and transactions appear here automatically.');
+      }
+
+      var payForm = document.getElementById('pay-add-form');
+      function closePayForm() {
+        if (payForm) payForm.classList.remove('open');
+      }
+      var togglePayForm = document.getElementById('pay-toggle-form');
+      if (togglePayForm && payForm) {
+        togglePayForm.addEventListener('click', function () {
+          var open = payForm.classList.toggle('open');
+          if (open) {
+            var firstInput = document.getElementById('pay-new-label');
+            if (firstInput) firstInput.focus();
+          }
+        });
+      }
+      var cancelPayForm = document.getElementById('pay-cancel-form');
+      if (cancelPayForm) cancelPayForm.addEventListener('click', closePayForm);
+      if (payForm) {
+        payForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var labelInput = document.getElementById('pay-new-label');
+          var detailInput = document.getElementById('pay-new-detail');
+          var typeInput = document.getElementById('pay-new-type');
+          var label = labelInput ? String(labelInput.value || '').trim() : '';
+          if (!label) return;
+          if (usingSampleMethods) {
+            payMethods = [];
+            usingSampleMethods = false;
+          }
+          var isFirst = payMethods.length === 0;
+          payMethods.push({
+            id: 'pm-' + Date.now(),
+            type: typeInput ? typeInput.value : 'card',
+            label: label,
+            detail: detailInput ? String(detailInput.value || '').trim() : '',
+            isDefault: isFirst
+          });
+          savePayMethods();
+          renderPayMethods();
+          payForm.reset();
+          closePayForm();
+          setText('#pay-note', 'Payment method saved on this device.');
+        });
+      }
+      var payMethodsWrap = document.getElementById('pay-methods');
+      if (payMethodsWrap) {
+        payMethodsWrap.addEventListener('click', function (e) {
+          var defBtn = e.target.closest('[data-pay-default]');
+          var rmBtn = e.target.closest('[data-pay-remove]');
+          if (defBtn) {
+            var defIndex = Number(defBtn.getAttribute('data-pay-default'));
+            payMethods.forEach(function (m, i) { m.isDefault = i === defIndex; });
+            savePayMethods();
+            renderPayMethods();
+          }
+          if (rmBtn) {
+            var rmIndex = Number(rmBtn.getAttribute('data-pay-remove'));
+            payMethods.splice(rmIndex, 1);
+            if (payMethods.length && !payMethods.some(function (m) { return m.isDefault || m.default; })) {
+              payMethods[0].isDefault = true;
+            }
+            usingSampleMethods = false;
+            savePayMethods();
+            renderPayMethods();
+            setText('#pay-note', 'Payment method removed.');
+          }
+        });
+      }
+
+      // Sidebar dropdown navigation with centre detail views.
+      var navItems = Array.prototype.slice.call(document.querySelectorAll('.acc-nav-item'));
+      var toggles = Array.prototype.slice.call(document.querySelectorAll('.acc-nav-toggle[data-toggle]'));
+      var subitems = Array.prototype.slice.call(document.querySelectorAll('.acc-subitem[data-detail]'));
+      var views = Array.prototype.slice.call(document.querySelectorAll('.acc-view'));
+      var details = Array.prototype.slice.call(document.querySelectorAll('.acc-detail'));
+
+      function setGroupOpen(group, open) {
+        var toggle = toggles.filter(function (t) { return t.getAttribute('data-toggle') === group; })[0];
+        var subnav = document.querySelector('.acc-subnav[data-subnav="' + group + '"]');
+        if (toggle) {
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          toggle.classList.toggle('open-group', !!open);
+        }
+        if (subnav) subnav.hidden = !open;
+      }
+
+      function openGroup(group) {
+        toggles.forEach(function (t) {
+          var other = t.getAttribute('data-toggle');
+          if (other !== group) {
+            setGroupOpen(other, false);
+            t.classList.remove('active');
+          }
+        });
+        setGroupOpen(group, true);
+      }
+
+      function clearActive() {
+        navItems.forEach(function (item) { item.classList.remove('active'); });
+        subitems.forEach(function (item) { item.classList.remove('active'); });
+      }
+
+      function setHash(hash) {
+        if (window.history && history.replaceState) history.replaceState(null, '', '#' + hash);
+      }
+
+      function showView(view, updateHash) {
+        var target = document.getElementById('view-' + view);
+        if (!target) return;
+        clearActive();
+        views.forEach(function (v) { v.hidden = v !== target; });
+        details.forEach(function (d) { d.hidden = true; });
+        var nav = navItems.filter(function (n) { return n.getAttribute('data-view') === view; })[0];
+        if (nav) nav.classList.add('active');
+        if (updateHash) setHash(view);
+      }
+
+      function showDetail(id, updateHash) {
+        var target = document.getElementById('detail-' + id);
+        if (!target) return;
+        clearActive();
+        views.forEach(function (v) { v.hidden = true; });
+        details.forEach(function (d) { d.hidden = d !== target; });
+        var sub = subitems.filter(function (s) { return s.getAttribute('data-detail') === id; })[0];
+        if (sub) {
+          sub.classList.add('active');
+          var group = sub.closest('.acc-nav-group');
+          var toggle = group && group.querySelector('.acc-nav-toggle');
+          if (toggle) {
+            openGroup(toggle.getAttribute('data-toggle'));
+            toggle.classList.add('active');
+          }
+        }
+        if (updateHash) setHash('detail-' + id);
+      }
+
+      navItems.forEach(function (item) {
+        if (!item.hasAttribute('data-view')) return;
+        item.addEventListener('click', function (e) {
+          var view = item.getAttribute('data-view');
+          if (view === 'orders') {
+            e.preventDefault();
+            window.location.href = 'orders.html';
+            return;
+          }
+          showView(view, true);
+        });
+      });
+
+      document.querySelectorAll('[data-view]:not(.acc-nav-item)').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          showView(el.getAttribute('data-view'), true);
+        });
+      });
+
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+          var group = toggle.getAttribute('data-toggle');
+          var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+          if (isOpen) {
+            setGroupOpen(group, false);
+            toggle.classList.remove('active');
+          } else {
+            openGroup(group);
+          }
+          if (!isOpen) {
+            var first = document.querySelector('.acc-subnav[data-subnav="' + group + '"] .acc-subitem');
+            if (first) showDetail(first.getAttribute('data-detail'), true);
+          }
+        });
+      });
+
+      subitems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          showDetail(item.getAttribute('data-detail'), true);
+        });
+      });
+
+      document.querySelectorAll('[data-open-group]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var group = btn.getAttribute('data-open-group');
+          openGroup(group);
+          var first = document.querySelector('.acc-subnav[data-subnav="' + group + '"] .acc-subitem');
+          if (first) showDetail(first.getAttribute('data-detail'), true);
+        });
+      });
+
+      function route() {
+        var hash = (window.location.hash || '').replace(/^#/, '');
+        if (!hash || hash === 'dashboard') return showView('dashboard', false);
+        if (hash === 'actions') return showView('actions', false);
+        if (hash === 'tracker') return showView('tracker', false);
+        if (hash === 'settings') return showDetail('personal', false);
+        if (hash === 'preferences') return showDetail('order-updates', false);
+        if (hash.indexOf('detail-') === 0) return showDetail(hash.slice(7), false);
+        showView('dashboard', false);
+      }
+
+      window.addEventListener('hashchange', route);
+      route();
+
+      // Order tracker.
+      var trackerSteps = [
+        { key: 'placed', title: 'Order placed', note: 'We received your order.', icon: 'fas fa-receipt' },
+        { key: 'packed', title: 'Packed', note: 'Your farm-fresh items are packed.', icon: 'fas fa-box' },
+        { key: 'shipped', title: 'Shipped', note: 'Your parcel left our farm hub.', icon: 'fas fa-truck' },
+        { key: 'out', title: 'Out for delivery', note: 'The courier is on the way to you.', icon: 'fas fa-shipping-fast' },
+        { key: 'delivered', title: 'Delivered', note: 'Enjoy your fresh order!', icon: 'fas fa-home' }
+      ];
+      var statusLabels = {
+        placed: 'Order placed', packed: 'Packed', shipped: 'Shipped',
+        out: 'Out for delivery', delivered: 'Delivered', cancelled: 'Cancelled'
+      };
+      var currentOrder = null;
+
+      function formatDate(date) {
+        try {
+          return new Date(date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+        } catch (e) { return String(date || ''); }
+      }
+      function offsetDate(days) {
+        var d = new Date();
+        d.setHours(12, 0, 0, 0);
+        d.setDate(d.getDate() + days);
+        return formatDate(d);
+      }
+      function demoOrder(id) {
+        return {
+          id: id || 'VNX-48219',
+          status: 'out',
+          placed: offsetDate(-3),
+          delivery: offsetDate(2),
+          courier: 'VPNexues Fresh Express',
+          tracking: 'TRK8892014567',
+          times: {
+            placed: offsetDate(-3),
+            packed: offsetDate(-2),
+            shipped: offsetDate(-1),
+            out: offsetDate(0)
+          }
+        };
+      }
+      function orderFromSaved(saved) {
+        if (!saved || typeof saved !== 'object') return null;
+        if (!saved.id && !saved.orderId && !saved.orderNumber && !saved.date && !saved.createdAt && !saved.status) return null;
+        var status = String(saved.status || saved.state || '').toLowerCase();
+        var mapped = 'placed';
+        if (/deliver/.test(status)) mapped = 'delivered';
+        else if (/cancel/.test(status)) mapped = 'cancelled';
+        else if (/out|transit|way/.test(status)) mapped = 'out';
+        else if (/ship|dispatch/.test(status)) mapped = 'shipped';
+        else if (/pack|process|confirm/.test(status)) mapped = 'packed';
+        return {
+          id: saved.id || saved.orderId || saved.orderNumber || 'VNX-00000',
+          status: mapped,
+          placed: formatDate(saved.date || saved.createdAt || saved.placedAt || new Date()),
+          delivery: formatDate(saved.eta || saved.deliveryDate || saved.expectedDelivery || offsetDate(2)),
+          courier: saved.courier || saved.courierName || 'VPNexues Fresh Express',
+          tracking: saved.trackingNo || saved.trackingNumber || saved.awb || '—'
+        };
+      }
+      function renderTracker(order) {
+        if (!order) return;
+        currentOrder = order;
+        var status = order.status || 'placed';
+        var currentIndex = 0;
+        for (var i = 0; i < trackerSteps.length; i++) {
+          if (trackerSteps[i].key === status) currentIndex = i;
+        }
+        var cancelled = status === 'cancelled';
+
+        setText('#trk-order-id', order.id);
+        setText('#trk-status-text', statusLabels[status] || status);
+        setText('#trk-placed', order.placed);
+        setText('#trk-delivery', order.delivery);
+        setText('#trk-courier', order.courier);
+        setText('#trk-tracking', order.tracking);
+        setText('#trk-step-label', cancelled ? 'Order cancelled' : trackerSteps[currentIndex].title);
+        setText('#trk-eta-label', cancelled ? '' : 'Est. ' + order.delivery);
+
+        var badge = document.getElementById('trk-status-badge');
+        if (badge) badge.classList.toggle('trk-badge--cancelled', cancelled);
+
+        var width = cancelled ? 0 : Math.round(((currentIndex + 1) / trackerSteps.length) * 100);
+        var bar = document.getElementById('trk-progress-bar');
+        if (bar) bar.style.width = width + '%';
+        var progress = document.getElementById('trk-progress');
+        if (progress) progress.setAttribute('aria-valuenow', String(width));
+
+        var timeline = document.getElementById('trk-timeline');
+        if (!timeline) return;
+        timeline.innerHTML = trackerSteps.map(function (step, i) {
+          var state = cancelled ? '' : (i < currentIndex ? 'done' : (i === currentIndex ? 'current' : ''));
+          var icon = !cancelled && i < currentIndex ? 'fas fa-check' : step.icon;
+          var time = order.times && order.times[step.key]
+            ? order.times[step.key]
+            : (i <= currentIndex ? (i === 0 ? order.placed : order.delivery) : 'Pending');
+          if (cancelled && i > 0) time = '—';
+          return '<li class="trk-step ' + state + '">' +
+            '<span class="trk-step__dot"><i class="' + icon + '" aria-hidden="true"></i></span>' +
+            '<div class="trk-step__body">' +
+              '<div class="trk-step__title">' + step.title + '</div>' +
+              '<div class="trk-step__time">' + escapeHTML(time) + '</div>' +
+              '<div class="trk-step__note">' + escapeHTML(step.note) + '</div>' +
+            '</div></li>';
+        }).join('');
+      }
+
+      var savedOrders = readJSON('vpnexuesOrders') || [];
+      if (!Array.isArray(savedOrders)) savedOrders = [];
+      var initialOrder = null;
+      for (var oi = 0; oi < savedOrders.length; oi++) {
+        initialOrder = orderFromSaved(savedOrders[oi]);
+        if (initialOrder) break;
+      }
+      renderTracker(initialOrder || demoOrder());
+
+      var trackerForm = document.getElementById('trk-form');
+      if (trackerForm) {
+        trackerForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var input = document.getElementById('trk-order-input');
+          var query = input ? String(input.value || '').trim().toUpperCase() : '';
+          if (!query) {
+            setText('#trk-hint', 'Please enter an order number to track.');
+            if (input) input.focus();
+            return;
+          }
+          var matched = null;
+          for (var si = 0; si < savedOrders.length; si++) {
+            var candidate = orderFromSaved(savedOrders[si]);
+            if (candidate && candidate.id.toUpperCase() === query) { matched = candidate; break; }
+          }
+          renderTracker(matched || demoOrder(query));
+          setText('#trk-hint', matched
+            ? 'Showing the latest update for ' + matched.id + '.'
+            : 'Preview for ' + query + '. Saved orders will appear when available.');
+        });
+      }
+
+      var refreshBtn = document.getElementById('trk-refresh');
+      if (refreshBtn) {
+        refreshBtn.addEventListener('click', function () {
+          renderTracker(currentOrder);
+          setText('#trk-hint', 'Updated just now.');
+        });
+      }
+
+      // Keyboard-friendly dialogs.
+      var deleteModal = document.getElementById('acc-delete-modal');
+      var deleteBtn = document.getElementById('acc-delete-btn');
+      var closeDelete = document.getElementById('acc-modal-close');
+      var wishlistPanel = document.getElementById('wishlist-panel');
+      var closeWishlist = document.querySelector('[data-wishlist-close]');
+      var lastFocused = null;
+
+      if (deleteBtn && deleteModal) {
+        deleteBtn.addEventListener('click', function () {
+          lastFocused = this;
+          var first = deleteModal.querySelector('input[name="deleteReason"]');
+          if (first) setTimeout(function () { first.focus(); }, 60);
+        });
+      }
+      if (closeDelete) closeDelete.addEventListener('click', function () {
+        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (deleteModal && deleteModal.classList.contains('open') && closeDelete) closeDelete.click();
+        if (wishlistPanel && !wishlistPanel.hidden && closeWishlist) closeWishlist.click();
+      });
+    })();
+  </script>
+
+  <script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

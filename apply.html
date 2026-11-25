@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--<< Header Area >>-->
+    <head>
+        <!-- ========== Meta Tags ========== -->
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="modinatheme">
+        <meta name="description" content="VPNexues ">
+        <!-- ======== Page title ============ -->
+        <title>VPNexues </title>
+        <!--<< Favicon >>-->
+        <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+        <link rel="shortcut icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" type="image/x-icon" />
+        <!--<< Bootstrap min.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <!--<< Font Awesome.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+        <!--<< Animate.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/animate.min.css?v=1.0">
+        <!--<< Magnific Popup.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/magnific-popup.css">
+        <!--<< MeanMenu.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+        <!--<< Odometer.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/odometer.css">
+        <!--<< Swiper Bundle.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/swiper-bundle.min.css">
+        <!--<< Nice Select.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/nice-select.css">
+        <!--<< Main.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/main.css">
+    <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+    body { background: linear-gradient(180deg, #eaf6ea 0%, #f6faf5 55%, #ffffff 100%) !important; background-attachment: fixed; }
+    .footer-section{background:rgba(184,212,185,0.7) !important;background-image:none !important;color:#fff !important}
+    .footer-section .widget-head h5,.footer-section .contact-list li .content h5,.footer-section .list-area li a,.footer-section .contact-list li .content p a,.footer-section .contact-list li .content .footer-location-off h4,.footer-section .contact-list li .content .footer-location-off span{color:#fff !important}
+    .footer-section .contact-list li .icon{background:#f5a623 !important;color:#fff !important}
+    .footer-section .footer-widget-items .contact-list li .icon{background:#f5a623 !important;color:#fff !important;width:50px !important;height:50px !important;min-width:50px !important;border-radius:50% !important;display:flex;align-items:center;justify-content:center}
+    .footer-section .footer-widget-items .contact-list li{align-items:center !important}
+    .vnp-box-footer{background:#1E3917!important;background-image:none!important}
+    .vnp-box-footer::before{background:rgba(30,57,23,.85)!important}
+    .vnp-box-footer .footer-widget-wrapper{display:none!important}
+    .vnp-box-footer .footer-bottom{background:transparent!important;border:0!important}
+    .vnp-box-footer .footer-desktop-logo-copy{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1.1}
+    .vnp-box-footer .footer-desktop-logo-copy strong{font-size:24px;font-weight:800;color:#fff}
+    .vnp-box-footer .footer-desktop-logo-copy small{font-size:11px;font-weight:600;color:rgba(255,255,255,.76)}
+    .vnp-box-footer .footer-mobile-brand{display:none}
+    @media(min-width:768px){.vnp-box-footer{padding-top:46px!important}}
+    @media(max-width:767px){
+      .vnp-box-footer{padding:24px 0 0!important;background-position:center}
+      .vnp-box-footer .footer-widget-top{display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 18px 18px;text-align:center}
+      .vnp-box-footer .footer-widget-top .footer-desktop-logo{display:none}
+      .vnp-box-footer .footer-mobile-brand{display:inline-flex;align-items:center;gap:9px;color:#fff;text-decoration:none;text-align:left}
+      .vnp-box-footer .footer-mobile-brand img{width:38px;height:38px;flex:0 0 38px;object-fit:contain}
+      .vnp-box-footer .footer-mobile-brand-copy{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+      .vnp-box-footer .footer-mobile-brand-copy strong{color:#fff;font-size:19px;font-weight:800;line-height:1}
+      .vnp-box-footer .footer-mobile-brand-copy small{color:rgba(255,255,255,.76);font-size:9px;font-weight:600;line-height:1}
+      .vnp-box-footer .footer-bottom{padding:16px 0 18px}
+      .vnp-box-footer .footer-bottom-wrapper{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+      .vnp-box-footer .footer-bottom-wrapper .text-1{margin:0;font-size:10px;line-height:1.3}
+      .vnp-box-footer .footer-bottom-wrapper .social-icon{display:flex;gap:20px}
+      .vnp-box-footer .footer-bottom-wrapper .bottom-img{display:none}
+    }
+    .vnp-subs-popup{
+      display:none;align-items:center;gap:12px;background:#fff;border-radius:14px;
+      padding:14px 16px;box-shadow:0 16px 40px rgba(20,71,47,.18);
+      border:1px solid #eef3ec;
+    }
+    .vnp-subs-popup.show{display:flex;animation:vnpSubsPop .3s ease}
+    @keyframes vnpSubsPop{from{opacity:0;transform:translate(-50%,-50%) scale(.9)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    .vnp-subs-popup-icon{
+      width:38px;height:38px;flex:0 0 38px;border-radius:50%;
+      background:linear-gradient(135deg,#2f7d2c,#1f5f23);color:#fff;
+      display:flex;align-items:center;justify-content:center;font-size:16px;
+    }
+    .vnp-subs-popup.err .vnp-subs-popup-icon{background:linear-gradient(135deg,#c0392b,#922b21)}
+    .vnp-subs-popup-body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+    .vnp-subs-popup-title{font-size:14px;font-weight:800;color:#1a2b1e;line-height:1.2}
+    .vnp-subs-popup-desc{font-size:12px;color:#6b7280;line-height:1.4}
+    .vnp-subs-popup-close{border:none;background:none;color:#9ca3af;font-size:14px;cursor:pointer;padding:4px}
+    #vnp-subscribe-btn .vnp-subs-tick{margin-right:6px}
+    #vnp-subscribe-btn.vnp-subs-done{
+      background:#FFC107 !important;
+      background-image:none !important;
+      color:#1a2b1e !important;
+      border-color:#FFC107 !important;
+      box-shadow:0 8px 24px rgba(255,193,7,.35) !important;
+      font-weight:800;
+    }
+    #vnp-subscribe-btn.vnp-subs-done::before,
+    #vnp-subscribe-btn.vnp-subs-done::after{display:none !important}
+    #vnp-subscribe-btn.vnp-subs-done .vnp-subs-tick{
+      margin:0;width:22px;height:22px;border-radius:50%;
+      background:#1a2b1e;color:#FFC107;font-size:12px;
+      display:inline-flex;align-items:center;justify-content:center;
+      transform:none !important;
+    }
+    #vnp-subscribe-btn.vnp-subs-done{line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    @media(max-width:767px){
+      .vnp-subs-popup{
+        position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+        z-index:99999;width:82%;max-width:330px;flex-direction:column;
+        text-align:center;padding:28px 22px;background:#2f7d2c;border:none;
+      }
+      .vnp-subs-popup::before{
+        content:'';position:fixed;inset:0;background:rgba(15,30,20,.55);z-index:-1;
+      }
+      .vnp-subs-popup.show{animation:vnpSubsPopMob .3s ease}
+      @keyframes vnpSubsPopMob{from{opacity:0;transform:translate(-50%,-46%) scale(.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+      .vnp-subs-popup-body{align-items:center}
+      .vnp-subs-popup-title{color:#fff}
+      .vnp-subs-popup-desc{color:rgba(255,255,255,.9)}
+      .vnp-subs-popup-icon{background:#FFC107;color:#1a2b1e}
+      .vnp-subs-popup-close{position:absolute;top:10px;right:12px;color:rgba(255,255,255,.8)}
+      .vnp-subs-popup.err{background:#b03a2e}
+    }
+    @media(min-width:768px){
+      .vnp-subs-popup{
+        position:absolute;left:50%;bottom:120px;transform:translateX(-50%);
+        z-index:60;background:#2f7d2c;border:none;
+        flex-direction:column;text-align:center;gap:10px;padding:20px 26px;
+        min-width:240px;
+      }
+      .vnp-subs-popup.show{animation:vnpSubsPopDesk .3s ease}
+      @keyframes vnpSubsPopDesk{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+      .vnp-subs-popup .vnp-subs-popup-icon{
+        width:52px;height:52px;flex:0 0 52px;font-size:24px;
+        background:#FFC107;color:#1a2b1e;
+      }
+      .vnp-subs-popup-title{color:#fff;font-size:15px}
+      .vnp-subs-popup-desc{color:rgba(255,255,255,.85)}
+      .vnp-subs-popup-close{color:rgba(255,255,255,.8);position:absolute;top:10px;right:12px}
+      .vnp-subs-popup.err{background:#b03a2e}
+    }
+    @media(max-width:767px){
+    .jdblock-page{grid-template-columns:1fr !important;padding:16px !important;gap:16px !important}
+    .jdblock-sidebar{display:none !important}
+    .jdblock-job-header-top{padding:16px !important}
+    .jdblock-jh-icon-row{flex-direction:column;align-items:center;text-align:center;gap:12px}
+    .jdblock-jh-icon{width:48px;height:48px;font-size:20px}
+    .jdblock-jh-role{font-size:20px !important}
+    .jdblock-badge-row{justify-content:center}
+    .jdblock-jh-meta-strip{grid-template-columns:1fr 1fr !important;padding:0 !important}
+    .jdblock-meta-cell{padding:10px 12px !important;border-right:none !important;border-bottom:1px solid #f0f0f0}
+    .jdblock-meta-cell:nth-child(odd){border-right:1px solid #f0f0f0}
+    .jdblock-meta-cell:last-child,.jdblock-meta-cell:nth-child(4){border-bottom:none}
+    .jdblock-meta-val{font-size:13px !important}
+    .jdblock-jh-actions{flex-wrap:wrap;gap:8px;padding:12px 16px !important;justify-content:center}
+    .jdblock-btn-apply,.jdblock-btn-secondary{font-size:12px !important;padding:8px 14px !important;border-radius:36px !important}
+    .jdblock-btn-apply:active{background:#1a5e1f !important;color:#fff !important}
+    .jdblock-btn-secondary:active{background:#1a5e1f !important;color:#fff !important;border-color:#1a5e1f !important}
+    .jdblock-jh-email-note{margin-left:0 !important;text-align:center;width:100%;font-size:12px !important}
+    .jdblock-jd-card{padding:16px !important}
+    .jdblock-section-label{font-size:13px !important;padding:8px 14px !important}
+    .jdblock-jd-section p{font-size:14px !important;line-height:1.7 !important}
+    .jdblock-bullet-list li{font-size:13px !important;padding:6px 10px !important}
+    .jdblock-skill-wrap{gap:4px !important}
+    .jdblock-skill-tag{font-size:10px !important;padding:4px 10px !important;background:#e3f2fd !important;border-color:#90caf9 !important;color:#1565c0 !important}
+    .jdblock-skill-tag.jdblock-req{background:#e3f2fd !important;border-color:#90caf9 !important;color:#1565c0 !important}
+    .jdblock-perks-grid{grid-template-columns:1fr 1fr !important;gap:8px !important}
+    .jdblock-perk{padding:12px !important}
+    .jdblock-perk-name{font-size:12px !important}
+    .jdblock-perk-desc{font-size:11px !important}
+    .jdblock-company-row{grid-template-columns:1fr !important;gap:8px !important}
+    .jdblock-company-key{font-size:11px !important}
+    .jdblock-company-val{font-size:13px !important}
+    .jdblock-apply-card-head{padding:16px !important;flex-direction:column;gap:12px;text-align:center}
+    .jdblock-apply-card-head h3{font-size:18px !important}
+    .jdblock-apply-card-body{padding:16px !important}
+    .jdblock-form-row{grid-template-columns:1fr !important;gap:12px !important}
+    .jdblock-form-group label{font-size:12px !important}
+    .jdblock-form-group input,.jdblock-form-group select,.jdblock-form-group textarea{font-size:14px !important;padding:10px 12px !important}
+    .jdblock-btn-submit{font-size:14px !important;padding:12px 24px !important}
+    .jdblock-upload-box{padding:20px !important}
+    .back-to-top{bottom:80px !important;right:16px !important}
+    }
+    .jdblock-sidebar{position:sticky;top:100px;align-self:start}
+    /* ===== APPLY PAGE MODERN REDESIGN (structure/style only, no text changes) ===== */
+    .jdblock-breadcrumb{
+      background:linear-gradient(90deg,#14472f 0%,#1a5c35 60%,#2c7a46 100%);
+      border-bottom:0;padding:15px 40px;
+    }
+    .jdblock-breadcrumb-inner{max-width:1180px;color:rgba(255,255,255,.7)}
+    .jdblock-breadcrumb-inner a{color:rgba(255,255,255,.85)}
+    .jdblock-breadcrumb-inner a:hover{color:#fff;text-decoration:none}
+    .jdblock-breadcrumb-inner .jdblock-sep{color:rgba(255,255,255,.4)}
+    .jdblock-breadcrumb-inner .jdblock-current{color:#fff;font-weight:700}
+    .jdblock-page{
+      max-width:1320px;padding:46px 40px 96px;
+      background:
+        radial-gradient(1100px 420px at 88% -12%,rgba(122,182,72,.14),transparent 62%),
+        radial-gradient(900px 400px at -12% 24%,rgba(46,107,70,.12),transparent 55%),
+        #f7faf5;
+    }
+    .jdblock-job-header,.jdblock-jd-card,.jdblock-apply-card,.jdblock-s-card{
+      border-radius:20px;border:1px solid rgba(20,71,47,.08);
+      box-shadow:0 12px 34px rgba(20,71,47,.07),0 2px 8px rgba(20,71,47,.05);
+    }
+    .jdblock-job-header-top{
+      background:linear-gradient(135deg,#14472f 0%,#1a5c35 55%,#2c7a46 100%);
+      padding:38px 34px 30px;
+    }
+    .jdblock-job-header-top::before{
+      width:320px;height:320px;
+      background:radial-gradient(circle,rgba(255,255,255,.09),transparent 68%);
+    }
+    .jdblock-job-header-top::after{
+      width:230px;height:230px;
+      background:radial-gradient(circle,rgba(245,166,35,.2),transparent 68%);
+      bottom:-70px;right:100px;
+    }
+    .jdblock-jh-icon{
+      width:68px;height:68px;border-radius:18px;font-size:30px;
+      background:rgba(255,255,255,.14);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.28);
+    }
+    .jdblock-jh-role,.jdblock-apply-card-head h3,.jdblock-s-head h4,
+    .jdblock-sidebar-apply h4,.jdblock-jd-section h3{
+      font-family:'Plus Jakarta Sans',sans-serif;
+    }
+    .jdblock-jh-role{font-size:31px;font-weight:800;letter-spacing:-.3px}
+    .jdblock-badge{
+      font-size:12px;letter-spacing:.6px;padding:5px 14px;border-radius:99px;
+      border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);
+    }
+    .jdblock-badge:first-child{background:#f5a623;border-color:#f5a623;color:#1a2b1e;font-weight:800}
+    .jdblock-badge-new{background:rgba(245,166,35,.92);color:#1a2b1e;border-color:transparent}
+    .jdblock-jh-meta-strip{
+      border-top:1px solid rgba(20,71,47,.06);
+      background:linear-gradient(180deg,#ffffff,#fbfdf9);
+    }
+    .jdblock-meta-cell{padding:18px 22px;border-color:rgba(20,71,47,.06)}
+    .jdblock-meta-key{font-size:11px;letter-spacing:1.4px;color:#9aa8a0}
+    .jdblock-meta-val{font-size:15px;font-weight:700;color:#14472f}
+    .jdblock-jh-actions{padding:20px 30px;background:#fff}
+    .jdblock-btn-apply{
+      border-radius:50px;letter-spacing:.6px;
+      background:linear-gradient(135deg,#1a5c35,#2c7a46);
+      box-shadow:0 8px 20px rgba(26,92,53,.25);
+    }
+    .jdblock-btn-apply:hover{
+      background:linear-gradient(135deg,#14472f,#1a5c35);
+      transform:translateY(-2px);
+      box-shadow:0 12px 26px rgba(26,92,53,.3);
+    }
+    .jdblock-btn-secondary{
+      border-radius:50px;border-color:#dde8df;color:#14472f;background:#fbfdf9;
+    }
+    .jdblock-btn-secondary:hover{border-color:#1a5c35;color:#1a5c35;background:#fff}
+    .jdblock-jh-email-note{color:#9aa8a0;font-size:13px}
+    .jdblock-jd-card{padding:42px}
+    .jdblock-jd-section{margin-bottom:40px}
+    .jdblock-section-label{font-size:12px;letter-spacing:2.2px;color:#1a5c35;font-weight:800}
+    .jdblock-section-label::after{background:linear-gradient(90deg,rgba(46,107,70,.25),transparent)}
+    .jdblock-sub-head{color:#14472f;letter-spacing:1px}
+    .jdblock-bullet-list li{font-size:16px;color:#4a5160}
+    .jdblock-bullet-list li::before{
+      content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;
+      width:18px;height:18px;border-radius:50%;flex-shrink:0;
+      background:rgba(46,107,70,.12);color:#1a5c35;
+      display:inline-flex;align-items:center;justify-content:center;
+      font-size:9px;margin-top:4px;
+    }
+    .jdblock-skill-wrap{gap:8px;margin-top:16px}
+    .jdblock-skill-tag{
+      font-size:13px;padding:6px 15px;border-radius:99px;
+      border:1px solid #dbe7dc;background:#fff;color:#4a5160;
+      box-shadow:0 1px 3px rgba(20,71,47,.05);
+    }
+    .jdblock-skill-tag.jdblock-req{
+      background:linear-gradient(135deg,#eaf4ec,#dcefdf);
+      border-color:#9fd0b0;color:#14472f;font-weight:600;
+    }
+    .jdblock-perks-grid{gap:14px}
+    .jdblock-perk{
+      border-radius:14px;background:#fbfdf9;border:1px solid rgba(20,71,47,.07);
+      padding:18px;transition:all .25s;
+    }
+    .jdblock-perk:hover{
+      transform:translateY(-3px);background:#fff;
+      box-shadow:0 10px 24px rgba(20,71,47,.09);
+      border-color:rgba(46,107,70,.28);
+    }
+    .jdblock-perk-emoji{
+      width:42px;height:42px;border-radius:12px;font-size:20px;
+      background:rgba(46,107,70,.1);
+      display:flex;align-items:center;justify-content:center;margin-bottom:8px;
+    }
+    .jdblock-company-row{grid-template-columns:130px 1fr;gap:8px 16px}
+    .jdblock-company-key{font-size:11px;letter-spacing:.8px;color:#9aa8a0;display:flex;align-items:center;gap:6px}
+    .jdblock-company-key::before{content:'';width:6px;height:6px;border-radius:50%;background:#2e6b46;flex-shrink:0}
+    .jdblock-apply-card-head{
+      background:linear-gradient(135deg,#fbfdf9,#f1f8ee);
+      border-bottom:1px solid rgba(20,71,47,.06);padding:26px 34px;
+    }
+    .jdblock-apply-card-head h3{font-size:24px;font-weight:800;color:#14472f}
+    .jdblock-apply-card-body{padding:30px 34px}
+    .jdblock-form-row{gap:18px;margin-bottom:18px}
+    .jdblock-form-group label{font-size:11px;letter-spacing:1.3px;color:#14472f}
+    .jdblock-form-group input,.jdblock-form-group select,.jdblock-form-group textarea{
+      border-radius:11px;border:1px solid #dfe8e0;padding:12px 16px;
+      background:#fbfdf9;transition:all .2s;
+    }
+    .jdblock-form-group input:focus,.jdblock-form-group select:focus,.jdblock-form-group textarea:focus{
+      border-color:#2e6b46;background:#fff;
+      box-shadow:0 0 0 4px rgba(46,107,70,.1);
+    }
+    .jdblock-upload-box{
+      border-radius:14px;border:2px dashed #cfe0d2;background:#fbfdf9;padding:26px;
+    }
+    .jdblock-upload-box:hover{border-color:#2e6b46;background:#f4faf0}
+    .jdblock-upload-box .jdblock-upload-icon{
+      width:48px;height:48px;line-height:48px;border-radius:14px;
+      background:rgba(46,107,70,.1);color:#1a5c35;
+      display:inline-block;margin-bottom:10px;
+    }
+    .jdblock-btn-submit{
+      border-radius:50px;font-weight:700;letter-spacing:.8px;padding:15px;
+      background:linear-gradient(135deg,#1a5c35,#2c7a46);
+      box-shadow:0 10px 24px rgba(26,92,53,.22);
+    }
+    .jdblock-btn-submit:hover{
+      background:linear-gradient(135deg,#14472f,#1a5c35);
+      transform:translateY(-2px);
+      box-shadow:0 14px 28px rgba(26,92,53,.28);
+    }
+    .jdblock-s-card{border-radius:16px}
+    .jdblock-s-head{background:linear-gradient(135deg,#14472f,#1a5c35);padding:15px 22px}
+    .jdblock-s-head h4{font-size:12px;letter-spacing:2.2px;color:rgba(255,255,255,.88)}
+    .jdblock-s-body{padding:18px 20px}
+    .jdblock-sum-row{padding:11px 0;border-color:rgba(20,71,47,.06)}
+    .jdblock-sum-row i{
+      width:20px;height:20px;border-radius:50%;flex-shrink:0;
+      background:rgba(46,107,70,.12);color:#1a5c35;
+      display:inline-flex;align-items:center;justify-content:center;
+      font-size:11px;margin-top:0;
+    }
+    .jdblock-sum-label{font-size:11px;letter-spacing:.6px;color:#9aa8a0}
+    .jdblock-sum-val{font-weight:700;color:#14472f}
+    .jdblock-rel-link{border-radius:10px}
+    .jdblock-rel-link:hover{background:#f4faf0;border-color:rgba(20,71,47,.08)}
+    .jdblock-rel-link.jdblock-active{background:linear-gradient(135deg,#1a5c35,#2c7a46)}
+    .jdblock-rel-badge{border-radius:99px}
+    .jdblock-share-btn{border-radius:50px;background:#fbfdf9}
+    .jdblock-sidebar-apply{
+      background:linear-gradient(135deg,#14472f,#1a5c35);
+      border-radius:16px;
+      box-shadow:0 12px 30px rgba(20,71,47,.18);
+    }
+    .jdblock-sidebar-apply .jdblock-btn-apply{background:linear-gradient(135deg,#7ab648,#5da233);box-shadow:0 8px 18px rgba(122,182,72,.28)}
+    .jdblock-sidebar-apply .jdblock-btn-apply:hover{background:linear-gradient(135deg,#6aa53e,#4f8f2c)}
+    @media(max-width:900px){
+      .jdblock-breadcrumb{padding:12px 16px}
+      .jdblock-page{padding:28px 16px 56px}
+      .jdblock-job-header-top{padding:26px 22px 22px}
+      .jdblock-jh-icon{width:54px;height:54px;border-radius:14px;font-size:24px}
+      .jdblock-jd-card,.jdblock-apply-card-body{padding:22px 18px}
+      .jdblock-apply-card-head{padding:20px 18px}
+      .jdblock-jh-actions{padding:16px 18px}
+      .jdblock-btn-apply,.jdblock-btn-secondary{border-radius:50px}
+      .jdblock-jd-section{margin-bottom:30px}
+      .jdblock-perk{transform:none}
+    }
+    </style>
+    
+    <link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+</head>
+    <body>
+
+      
+        <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner">                
+                </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="V" class="letters-loading">
+                        V
+                    </span>
+                    <span data-text-preloader="P" class="letters-loading">
+                        P
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+                    <span data-text-preloader="e" class="letters-loading">
+                       e
+                    </span>
+                    <span data-text-preloader="x" class="letters-loading">
+                       x
+                    </span>
+                     <span data-text-preloader="u" class="letters-loading">
+                       u
+                    </span>
+                     <span data-text-preloader="e" class="letters-loading">
+                       e
+                    </span>
+                     <span data-text-preloader="s" class="letters-loading">
+                       s
+                    </span>
+                </div>
+                <p class="text-center">Loading</p>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back To Top Start -->
+        <button id="back-top" class="back-to-top" style="display:flex;align-items:center;justify-content:center;">
+             <i class="fas fa-chevron-up"></i>
+        </button>
+
+        <!-- MouseCursor Start -->
+        <div class="mouseCursor cursor-outer"></div>
+        <div class="mouseCursor cursor-inner"></div>
+
+          <!-- Offcanvas Area Start -->
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas-header-fixed">
+                            <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                                <div class="offcanvas__logo">
+                                    <a href="index.html">VPNexues</a>
+                                </div>
+                                <div class="offcanvas__close">
+                                    <button><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <h3 class="offcanvas-title">Hello There!</h3>
+                            <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022. </p>
+                            <div class="mobile-menu fix mt-15"></div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="https://www.facebook.com/vpnexues" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="offcanvas-scrollable-body">
+                            <div class="offcanvas__contact">
+                                <h3>Contact Us</h3>
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="icon"><i class="far fa-phone-alt"></i></div>
+                                        <div class="content">
+                                            <p>Call Us</p>
+                                            <h4><a href="tel:+91 9943994603">+91 9943994603</a></h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fal fa-envelope"></i></div>
+                                        <div class="content">
+                                            <p>Send Email</p>
+                                            <h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4>
+                                        </div>
+                                    </li>
+                                    <li style="align-items: flex-start;">
+                                        <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
+                                        <div class="content">
+                                            <p>Location</p>
+                                            <div class="footer-location-li"><h4>Singapore</h4><span style="color:#333;font-size: 14px;">412 Race Course Road, Singapore 218660, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                            <div class="footer-location-li"><h4>India</h4><span style="color:#333;font-size: 14px;">No 312/11, Siva towers, Perumal, Malai Road, Narasothipatti, Salem Tamil Nadu, India, 636004, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="shop.html" class="theme-btn">
+                                Shop Now
+                                <i class="far fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+
+        <!-- Header Top Start -->
+        <div class="header-top-section">
+            <div class="container">
+                <div class="header-top-wrapper">
+                    <ul class="header-contact-list">
+                        <li>
+                            <i class="fal fa-envelope"></i>
+                            <a href="mailto:support@vpnexues.com">
+                                support@vpnexues.com
+                            </a>
+                        </li>
+                        <li>
+                            <i class="far fa-phone-alt"></i>
+                            <a href="tel:+91 9943994603">
+                                +91 9943994603
+                            </a> |
+                            <a href="tel:+91 8148197842">
+                                 +91 8148197842</a>
+                           
+                        </li>
+                    </ul>
+                    <!-- <a href="index.html" class="top-logo">
+                        VPNexues
+                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/logo/black-logo.svg" alt="img">
+                    </a> -->
+                    <div class="head-right">
+                       
+
+                        <div class="line-shape"></div>
+                        <div class="social-icon">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                 <!-- Header Section Start -->
+        <header id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                <div class="header-main">
+                  <div class="vpn-logo-header">
+                        <div class="idlogo-vpn">
+                        <a href="index.html" class="top-logo"> VPNexues    </a>
+                        <span class="idlogo-vivasayam-txt">???????? ????????</span>
+                        </div>
+               
+                            </div>
+                              <div class="idlogo-vpn idlogo-vpn-mobile">
+                          <a href="index.html" class="header-logo"> VPNexues    </a>
+                            <span class="idlogo-vivasayam-txt" style="padding-left: 41px;position: relative;top:-8px">???????? ????????</span>
+                        </div>
+                      
+                        <div class="mean__menu-wrapper">
+                            
+                            <div class="main-menu">
+                               <nav id="mobile-menu">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li>
+                                            <a href="about.html">
+                                                About Us
+                                            </a>
+                                        </li>
+                                        <li class="has-dropdown">
+                                            <a href="javascript:void(0)">
+                                                Pages
+                                                <!-- <i class="fas fa-chevron-down"></i> -->
+                                            </a>
+                                            <ul class="submenu" style="display: block;">
+                                                <li><a href="our-services.html">Our Services</a></li>
+                                                <li><a href="team.html">Our Team</a></li>
+                                                <li><a href="pricing.html">Pricing Plan</a></li>
+                                                <li><a href="testimonial.html">Testimonails</a></li>
+                                                <!-- <li><a href="history.html">Our History</a></li> -->
+                                                <li><a href="faq.html">Faqs</a></li>
+                                                <li><a href="news.html">News</a></li>
+                                            </ul>
+                                        </li>
+                                       <!-- <li>
+                                            <a href="javascript:void(0)">
+                                                Services
+                                                <i class="fas fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="submenu" style="display: none;">
+                                                <li><a href="service.html">Our Services</a></li>
+                                                <li><a href="service-details.html">Service Details</a></li>
+                                            </ul>
+                                        </li> -->
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                Shop
+                                                
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="shop.html">Shop</a></li>
+                                                <li><a href="pricing.html?type=small-box" onclick="goPage('small-box')">Small Box</a></li>
+                                                <li><a href="pricing.html?type=big-box" onclick="goPage('big-box')">Big Box</a></li>
+                                                <li><a href="pricing.html?type=b2b" onclick="goPage('b2b')">B2B</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html">Support</a></li>
+                                        <li class="vpn-desktop-careers"><a href="careers.html">Careers</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <div class="header__hamburger my-auto">
+                                <div class="sidebar__toggle">
+                                    <div class="header-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+<div class="jdblock-breadcrumb">
+  <div class="jdblock-breadcrumb-inner">
+    <a href="index.html">Home</a>
+    <span class="jdblock-sep">/</span>
+    <a href="careers.html">Careers</a>
+    <span class="jdblock-sep">/</span>
+    <span class="jdblock-current" id="breadcrumb-current">Apply Now</span>
+  </div>
+</div>
+
+  <!-- PAGE -->
+<div class="jdblock-page">
+
+  <!-- --- LEFT --- -->
+  <div class="jdblock-left">
+
+    <!-- Job Header -->
+    <div class="jdblock-job-header jdblock-fade-up">
+      <div class="jdblock-job-header-top">
+        <div class="jdblock-jh-icon-row">
+          <div>
+            <div class="jdblock-badge-row" id="job-badges">
+              <span class="jdblock-badge">Internship</span>
+              <span class="jdblock-badge">Remote</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jdblock-jh-meta-strip" id="job-meta-strip">
+        <div class="jdblock-meta-cell">
+          <span class="jdblock-meta-key">Role Type</span>
+          <span class="jdblock-meta-val">Internship</span>
+        </div>
+        <div class="jdblock-meta-cell">
+          <span class="jdblock-meta-key">Location</span>
+          <span class="jdblock-meta-val">Remote (India)</span>
+        </div>
+        <div class="jdblock-meta-cell">
+          <span class="jdblock-meta-key">Duration</span>
+          <span class="jdblock-meta-val">6 Months</span>
+        </div>
+        <div class="jdblock-meta-cell">
+          <span class="jdblock-meta-key">Stipend</span>
+          <span class="jdblock-meta-val">Unpaid</span>
+        </div>
+        <div class="jdblock-meta-cell">
+          <span class="jdblock-meta-key">Posted</span>
+          <span class="jdblock-meta-val">2 days ago</span>
+        </div>
+      </div>
+
+      <div class="jdblock-jh-actions">
+        <a href="#apply" class="jdblock-btn-apply"><i class="jdblock-fas jdblock-fa-paper-plane"></i> Apply Now</a>
+        <a href="#" class="jdblock-btn-secondary"><i class="jdblock-fab jdblock-fa-whatsapp"></i> Share</a>
+        <span class="jdblock-jh-email-note">Or email: <a href="mailto:support@vpnexues.com">support@vpnexues.com</a></span>
+      </div>
+    </div>
+
+    <!-- JD Content -->
+    <div class="jdblock-jd-card jdblock-fade-up jdblock-delay-1">
+
+      <!-- About VPNexues -->
+      <div class="jdblock-jd-section">
+        <div class="jdblock-section-label">About VPNexues</div>
+        <p>VPNexues is Tamil Nadu's premier organic farm-to-table export company, founded in 2022. We connect farmers directly to consumers and businesses across Singapore, UAE, Europe, and India � eliminating middlemen and delivering the freshest certified organic produce worldwide.</p>
+        <p>We are building digital infrastructure to power real-world food exports. Our team is lean, ambitious, and deeply mission-driven.</p>
+      </div>
+
+      <!-- About the Role -->
+      <div class="jdblock-jd-section">
+        <div class="jdblock-section-label">About the Role</div>
+        <p id="about-role">As a <strong>Full Stack Web Developer Intern</strong>, you will work directly with our founding team to build and ship customer-facing web products end to end � Node.js and React on the frontend, Java on the backend, and MongoDB for data. This is a high-ownership role. You will write production code from day one.</p>
+      </div>
+
+      <!-- What You'll Do -->
+      <div class="jdblock-jd-section" id="jd-do-section">
+        <div class="jdblock-section-label">What You'll Be Doing</div>
+
+        <div class="jdblock-sub-head">Frontend Development (Node.js + React)</div>
+        <ul class="jdblock-bullet-list">
+          <li>Build responsive, accessible UI components using Node.js, React, and modern CSS</li>
+          <li>Develop product listing pages, checkout flows, and customer dashboards</li>
+          <li>Implement SEO best practices � metadata, structured data, Core Web Vitals</li>
+          <li>Translate Figma designs into pixel-perfect, production-ready interfaces</li>
+        </ul>
+
+        <div class="jdblock-sub-head">Backend Development (Java)</div>
+        <ul class="jdblock-bullet-list">
+          <li>Design and build REST APIs using Java (Spring Boot)</li>
+          <li>Implement business logic, authentication, and third-party integrations (payments, logistics, CRM)</li>
+          <li>Write clean, maintainable, well-documented server-side code</li>
+        </ul>
+
+        <div class="jdblock-sub-head">Database & Integration (MongoDB)</div>
+        <ul class="jdblock-bullet-list">
+          <li>Model and manage data using MongoDB � schemas, indexes, and aggregation queries</li>
+          <li>Connect frontend and backend systems through REST APIs</li>
+          <li>Write clean, well-documented code and participate in code reviews via GitHub</li>
+        </ul>
+      </div>
+
+      <!-- What We Expect -->
+      <div class="jdblock-jd-section" id="jd-expect-section">
+        <div class="jdblock-section-label">What We Expect From You</div>
+        <ul class="jdblock-bullet-list">
+          <li>Strong grasp of HTML, CSS, and modern JavaScript (ES6+)</li>
+          <li>Hands-on experience or strong coursework in React.js</li>
+          <li>Basic understanding of Node.js and REST APIs</li>
+          <li>Familiarity with Java fundamentals (Spring Boot is a plus)</li>
+          <li>Basic knowledge of MongoDB or any NoSQL database</li>
+        </ul>
+        <div class="jdblock-skill-wrap">
+          <span class="jdblock-skill-tag jdblock-req">Node.js</span>
+          <span class="jdblock-skill-tag jdblock-req">React</span>
+          <span class="jdblock-skill-tag jdblock-req">Java</span>
+          <span class="jdblock-skill-tag jdblock-req">MongoDB</span>
+          <span class="jdblock-skill-tag">Spring Boot</span>
+          <span class="jdblock-skill-tag">REST APIs</span>
+          <span class="jdblock-skill-tag">HTML / CSS</span>
+          <span class="jdblock-skill-tag">Git / GitHub</span>
+        </div>
+      </div>
+
+      <!-- Good to Have -->
+      <div class="jdblock-jd-section" id="jd-got-section">
+        <div class="jdblock-section-label">Good to Have</div>
+        <ul class="jdblock-bullet-list">
+          <li>Experience with TypeScript</li>
+          <li>Familiarity with Supabase, Firebase, or any BaaS platform</li>
+          <li>Basic understanding of SEO and web performance metrics</li>
+          <li>Prior internship, freelance, or personal project experience</li>
+          <li>Interest in agriculture, food exports, or sustainability</li>
+        </ul>
+      </div>
+
+      <!-- Life at VPNexues -->
+      <div class="jdblock-jd-section">
+        <div class="jdblock-section-label">Life at VPNexues</div>
+        <div class="jdblock-perks-grid">
+          <div class="jdblock-perk">
+            <div class="jdblock-perk-emoji">??</div>
+            <div class="jdblock-perk-name">Real Ownership</div>
+            <div class="jdblock-perk-desc">Ship code to real users from week one.</div>
+          </div>
+          <div class="jdblock-perk">
+            <div class="jdblock-perk-emoji">??</div>
+            <div class="jdblock-perk-name">Global Products</div>
+            <div class="jdblock-perk-desc">Used across Singapore, UAE & India.</div>
+          </div>
+          <div class="jdblock-perk">
+            <div class="jdblock-perk-emoji">??</div>
+            <div class="jdblock-perk-name">Founder Mentorship</div>
+            <div class="jdblock-perk-desc">Direct access, no middle layers.</div>
+          </div>
+          <div class="jdblock-perk">
+            <div class="jdblock-perk-emoji">??</div>
+            <div class="jdblock-perk-name">Fully Remote</div>
+            <div class="jdblock-perk-desc">Flexible hours, async-first culture.</div>
+          </div>
+          <div class="jdblock-perk">
+            <div class="jdblock-perk-emoji">??</div>
+            <div class="jdblock-perk-name">Certification</div>
+            <div class="jdblock-perk-desc">Letter + LinkedIn recommendation.</div>
+          </div>
+          <div class="jdblock-perk">
+            <div class="jdblock-perk-emoji">??</div>
+            <div class="jdblock-perk-name">PPO Potential</div>
+            <div class="jdblock-perk-desc">Top performers may get a full-time offer.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Info -->
+      <div class="jdblock-jd-section">
+        <div class="jdblock-section-label">Company Info</div>
+        <div class="jdblock-company-row">
+          <span class="jdblock-company-key">Website</span>
+          <span class="jdblock-company-val"><a href="https://www.vpnexues.com">www.vpnexues.com</a></span>
+          <span class="jdblock-company-key">India Office</span>
+          <span class="jdblock-company-val">No 312/11, Siva Towers, Salem, Tamil Nadu 636004</span>
+          <span class="jdblock-company-key">Singapore</span>
+          <span class="jdblock-company-val">412 Race Course Road, Singapore 218660</span>
+          <span class="jdblock-company-key">Email</span>
+          <span class="jdblock-company-val"><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></span>
+          <span class="jdblock-company-key">Phone</span>
+          <span class="jdblock-company-val">+91 9943994603 &nbsp;|&nbsp; +91 8148197842</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Apply Form -->
+    <div class="jdblock-apply-card jdblock-fade-up jdblock-delay-2" id="apply">
+      <div class="jdblock-apply-card-head">
+        <div>
+          <h3>Apply for this Role</h3>
+          <p>We'll get back to you within 3 business days.</p>
+        </div>
+        <a href="mailto:support@vpnexues.com" class="jdblock-btn-secondary" style="font-size:12px;padding:9px 16px;">
+          <i class="jdblock-fas jdblock-fa-envelope"></i> Email Instead
+        </a>
+      </div>
+      <div class="jdblock-apply-card-body">
+        <div class="jdblock-form-row">
+          <div class="jdblock-form-group"><label>Full Name *</label><input type="text" id="applyName" placeholder="Your full name" required></div>
+          <div class="jdblock-form-group"><label>Email Address *</label><input type="email" id="applyEmail" placeholder="you@example.com" required></div>
+        </div>
+        <div class="jdblock-form-row">
+          <div class="jdblock-form-group"><label>Phone Number</label><input type="tel" id="applyPhone" placeholder="+91 00000 00000"></div>
+          <div class="jdblock-form-group"><label>Current Location</label><input type="text" id="applyLocation" placeholder="City, Country"></div>
+        </div>
+        <div class="jdblock-form-row">
+          <div class="jdblock-form-group"><label>LinkedIn Profile (Optional)</label><input type="url" id="applyLinkedin" placeholder="https://linkedin.com/in/..."></div>
+          <div class="jdblock-form-group"><label>GitHub/Portfolio (Optional)</label><input type="url" id="applyGithub" placeholder="https://github.com/..."></div>
+        </div>
+        <div class="jdblock-form-row">
+          <div class="jdblock-form-group">
+            <label>Availability *</label>
+            <select id="applyAvailability">
+              <option value="">Select availability</option>
+              <option>Immediately</option>
+              <option>Within 2 weeks</option>
+              <option>Within 1 month</option>
+            </select>
+          </div>
+          <div class="jdblock-form-group">
+            <label>How did you hear about us?</label>
+            <select id="applySource">
+              <option value="">Select source</option>
+              <option>LinkedIn</option>
+              <option>Instagram</option>
+              <option>Friend / Referral</option>
+              <option>College / University</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="jdblock-form-group" style="margin-bottom:16px;">
+          <label>Why do you want to join VPNexues?</label>
+          <textarea id="applyWhy" placeholder="Tell us what excites you about this role and our mission..."></textarea>
+        </div>
+
+        <div style="background:#e8f5e9;border-radius:10px;padding:14px 18px;margin-bottom:16px;font-size:13px;color:#333;line-height:1.7;">
+          <strong style="color:#1a5e1f;">How to upload your resume:</strong>
+          <ol style="margin:6px 0 0 18px;padding:0;">
+            <li>Go to <a href="https://drive.google.com" target="_blank" style="color:#1a5e1f;font-weight:600;">drive.google.com</a> � Sign in with your Gmail</li>
+            <li>Click <strong>"+ New"</strong> ? <strong>"File upload"</strong> ? Select your resume (PDF/DOC)</li>
+            <li>Right-click the uploaded file ? <strong>Share</strong> ? <strong>"Anyone with the link"</strong></li>
+            <li>Click <strong>"Copy link"</strong> ? Paste it below</li>
+          </ol>
+        </div>
+
+        <div class="jdblock-form-group" style="margin-bottom:16px;">
+          <label>Resume (Google Drive Link) *</label>
+          <input type="url" id="resumeUrl" placeholder="https://drive.google.com/file/d/..." required>
+        </div>
+
+        <div style="text-align:center;margin-top:16px;">
+        <button class="jdblock-btn-submit" id="applySubmitBtn" type="button" style="width:auto;display:inline-block;padding:14px 50px;">
+          <i class="jdblock-fas jdblock-fa-paper-plane"></i> Submit Application
+        </button>
+        </div>
+        <p class="jdblock-submit-note">Or send your resume directly to <a href="mailto:support@vpnexues.com">support@vpnexues.com</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- --- SIDEBAR --- -->
+  <aside class="jdblock-sidebar">
+
+    <!-- Quick Apply CTA -->
+    <!-- <div class="jdblock-sidebar-apply jdblock-fade-up jdblock-delay-1">
+      <h4>Ready to join us?</h4>
+      <p>Own your work. Ship to real users. Grow fast.</p>
+      <a href="#apply" class="jdblock-btn-apply"><i class="jdblock-fas jdblock-fa-paper-plane"></i> Apply Now</a>
+      <div class="jdblock-or">� or �</div>
+      <a href="mailto:support@vpnexues.com" class="jdblock-email-link"><i class="jdblock-fas jdblock-fa-envelope" style="margin-right:6px;"></i>support@vpnexues.com</a>
+    </div> -->
+
+    <!-- Job Summary -->
+    <div class="jdblock-s-card jdblock-fade-up jdblock-delay-2">
+      <div class="jdblock-s-head"><h4>Job Summary</h4></div>
+      <div class="jdblock-s-body" id="job-summary-body">
+        <div class="jdblock-sum-row">
+          <i class="jdblock-fas jdblock-fa-briefcase"></i>
+          <div><div class="jdblock-sum-label">Role Type</div><div class="jdblock-sum-val">Internship � Full-time hours</div></div>
+        </div>
+        <div class="jdblock-sum-row">
+          <i class="jdblock-fas jdblock-fa-map-marker-alt"></i>
+          <div><div class="jdblock-sum-label">Location</div><div class="jdblock-sum-val">Remote � India preferred</div></div>
+        </div>
+        <div class="jdblock-sum-row">
+          <i class="jdblock-fas jdblock-fa-clock"></i>
+          <div><div class="jdblock-sum-label">Duration</div><div class="jdblock-sum-val">6 months</div></div>
+        </div>
+        <div class="jdblock-sum-row">
+          <i class="jdblock-fas jdblock-fa-rupee-sign"></i>
+          <div><div class="jdblock-sum-label">Stipend</div><div class="jdblock-sum-val">Unpaid</div></div>
+        </div>
+        <div class="jdblock-sum-row">
+          <i class="jdblock-fas jdblock-fa-calendar-alt"></i>
+          <div><div class="jdblock-sum-label">Start Date</div><div class="jdblock-sum-val">As soon as possible</div></div>
+        </div>
+        <div class="jdblock-sum-row">
+          <i class="jdblock-fas jdblock-fa-industry"></i>
+          <div><div class="jdblock-sum-label">Industry</div><div class="jdblock-sum-val">AgriTech � Organic Export</div></div>
+        </div>
+        <div class="jdblock-sum-row" style="border-bottom:none;">
+          <i class="jdblock-fas jdblock-fa-users"></i>
+          <div><div class="jdblock-sum-label">Team Size</div><div class="jdblock-sum-val">25 � 50 employees</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Jobs -->
+    <div class="jdblock-s-card jdblock-fade-up jdblock-delay-3">
+      <div class="jdblock-s-head"><h4>Related Jobs</h4></div>
+      <div class="jdblock-s-body" style="padding:12px 14px;">
+        <a href="#" class="jdblock-rel-link jdblock-active" id="rel-active">
+          <div><div class="jdblock-rel-role">Full Stack Web Developer Intern</div><div class="jdblock-rel-loc">Remote</div></div>
+          <span class="jdblock-rel-badge">Intern</span>
+        </a>
+        <a href="careers.html" class="jdblock-rel-link">
+          <div><div class="jdblock-rel-role">Marketing Intern</div><div class="jdblock-rel-loc">Remote</div></div>
+          <span class="jdblock-rel-badge">Fresher</span>
+        </a>
+        <a href="careers.html" class="jdblock-rel-link">
+          <div><div class="jdblock-rel-role">Sales Executive � Retail Sales</div><div class="jdblock-rel-loc">Salem, India</div></div>
+          <span class="jdblock-rel-badge">Fresher</span>
+        </a>
+        <a href="careers.html" class="jdblock-rel-link">
+          <div><div class="jdblock-rel-role">Graphic Designer</div><div class="jdblock-rel-loc">Remote</div></div>
+          <span class="jdblock-rel-badge">Intern</span>
+        </a>
+       
+      </div>
+    </div>
+
+    <!-- Share -->
+    <!-- <div class="jdblock-s-card jdblock-fade-up jdblock-delay-4">
+      <div class="jdblock-s-head"><h4>Share This Job</h4></div>
+      <div class="jdblock-s-body">
+        <div class="jdblock-share-row">
+          <a href="#" class="jdblock-share-btn"><i class="jdblock-fab jdblock-fa-linkedin-in"></i> LinkedIn</a>
+          <a href="#" class="jdblock-share-btn"><i class="jdblock-fab jdblock-fa-whatsapp"></i> WhatsApp</a>
+          <button class="jdblock-share-btn" onclick="navigator.clipboard.writeText(window.location.href)"><i class="jdblock-fas jdblock-fa-link"></i> Copy</button>
+        </div>
+      </div>
+    </div> -->
+
+  </aside>
+</div>
+
+
+        <!-- Footer Section Start -->
+        <footer class="footer-section fix section-padding bg-cover pb-0 vnp-box-footer" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bg.jpg');">
+            <div class="container">
+                <div class="footer-widget-top">
+                    <a href="index.html" class="logo-img footer-desktop-logo">
+                        <span class="footer-desktop-logo-copy"><strong>VPNexues</strong><small>???????? ????????</small></span>
+                    </a>
+                    <a href="index.html" class="footer-mobile-brand" aria-label="VPNexues home">
+                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues logo">
+                        <span class="footer-mobile-brand-copy"><strong>VPNexues</strong><small>???????? ????????</small></span>
+                    </a>
+                    <div class="content-items">
+                        <h3>Subscribe Our Newsletter To Get More Updates</h3>
+                        <form action="https://formsubmit.co/vpnexueshr@gmail.com,hemaanthvpnexues@gmail.com" method="POST" id="vnp-subscribe-form">
+                            <input type="hidden" name="_subject" value="New Newsletter Subscription - VPNexues">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="email" name="email" placeholder="Your email" id="vnp-subscribe-email" required>
+                            <button class="theme-btn" type="submit" id="vnp-subscribe-btn">Subscribe <i class="far fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="footer-bottom-wrapper">
+                            <p class="text-1">&copy; 2026 VPNexues Import &amp; Export. All Rights Reserved</p>
+                            <div class="social-icon">
+                                <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="bottom-img"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bottom.png" alt="img"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div id="vnp-subscribe-popup" class="vnp-subs-popup" role="alert" aria-live="polite">
+                    <div class="vnp-subs-popup-icon"><i class="fas fa-check"></i></div>
+                    <div class="vnp-subs-popup-body">
+                        <strong class="vnp-subs-popup-title">You're subscribed!</strong>
+                        <span class="vnp-subs-popup-desc">Thank you for joining the VPNexues newsletter.</span>
+                    </div>
+                    <button type="button" class="vnp-subs-popup-close" aria-label="Close"><i class="fas fa-times"></i></button>
+                </div>
+        </footer>
+        
+        
+
+        <!--<< All JS Plugins >>-->
+        <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+        <!--<< Bootstrap Js >>-->
+        <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+        <!--<< Nice Select Js >>-->
+        <script src="assets-ui/js/jquery.nice-select.min.js"></script>
+        <!--<< Odometer Js >>-->
+        <script src="assets-ui/js/odometer.min.js"></script>
+        <!--<< Appear Js >>-->
+        <script src="assets-ui/js/jquery.appear.min.js"></script>
+        <!--<< Swiper Slider Js >>-->
+        <script src="assets-ui/js/swiper-bundle.min.js"></script>
+        <!--<< MeanMenu Js >>-->
+        <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+        <!--<< Magnific Popup Js >>-->
+        <script src="assets-ui/js/jquery.magnific-popup.min.js"></script>
+        <!--<< Wow Animation Js >>-->
+        <script src="assets-ui/js/wow.min.js"></script>
+        <!--<< Gsap Animation Js >>-->
+        <script src="assets-ui/js/gsap.min.js"></script>
+        <!--<< ScrollTrigger Js >>-->
+        <script src="assets-ui/js/ScrollTrigger.min.js"></script>
+        <!--<< SplitText Js >>-->
+        <script src="assets-ui/js/SplitText.min.js"></script>
+        <!--<< splitType Js >>-->
+        <script src="assets-ui/js/splitType.js"></script>
+        <!--<< Main.js >>-->
+        <script src="assets-ui/js/main.js"></script>
+        <script src="assets-ui/js/job-data.js"></script>
+<script>
+function filterCards(val) {
+  document.querySelectorAll('.job-card').forEach(card => {
+    if (val === 'all' || card.dataset.type === val) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  const visible = document.querySelectorAll('.job-card:not([style*="none"])').length;
+  document.querySelector('.result-count').innerHTML = '<strong>' + visible + '</strong> positions available';
+}
+</script>
+<script>
+(function() {
+  var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/vpnexueshr@gmail.com,hemaanthvpnexues@gmail.com';
+
+  document.getElementById('applySubmitBtn').addEventListener('click', function() {
+    var name = document.getElementById('applyName').value.trim();
+    var email = document.getElementById('applyEmail').value.trim();
+    var phone = document.getElementById('applyPhone').value.trim();
+    var location = document.getElementById('applyLocation').value.trim();
+    var linkedin = document.getElementById('applyLinkedin').value.trim();
+    var github = document.getElementById('applyGithub').value.trim();
+    var availability = document.getElementById('applyAvailability').value;
+    var source = document.getElementById('applySource').value;
+    var whyJoin = document.getElementById('applyWhy').value.trim();
+    var resume = document.getElementById('resumeUrl').value.trim();
+
+    if (!name || !email) {
+      alert('Please fill in your Full Name and Email Address.');
+      return;
+    }
+    if (!resume) {
+      alert('Please upload your resume to Google Drive and paste the shareable link.');
+      return;
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var role = params.get('job') || 'unknown';
+
+    var formData = new FormData();
+    formData.append('_subject', 'Job Application - ' + role);
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
+    formData.append('Timestamp', new Date().toLocaleString('en-IN'));
+    formData.append('Name', name);
+    formData.append('Email', email);
+    formData.append('Phone', phone);
+    formData.append('Location', location);
+    formData.append('Role', role);
+    formData.append('LinkedIn', linkedin);
+    formData.append('GitHub', github);
+    formData.append('Resume Link', resume);
+    formData.append('Availability', availability);
+    formData.append('How did you hear about us', source);
+    formData.append('Why do you want to join', whyJoin);
+
+    var btn = document.getElementById('applySubmitBtn');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    fetch(FORMSUBMIT_URL, {
+      method: 'POST',
+      body: formData
+    }).then(function() {
+      var card = document.querySelector('.jdblock-apply-card');
+      card.innerHTML = '<div style="text-align:center;padding:50px 24px;"><div style="width:70px;height:70px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;"><i class="jdblock-fas jdblock-fa-check" style="font-size:32px;color:#1a5e1f;"></i></div><h3 style="color:#1a5e1f;margin-bottom:10px;">Application Submitted!</h3><p style="color:#666;font-size:14px;line-height:1.7;max-width:400px;margin:0 auto;">Thank you <strong>' + name + '</strong>! Your application for <strong>' + role.charAt(0).toUpperCase() + role.slice(1) + '</strong> has been received.</p><p style="color:#999;font-size:13px;margin-top:16px;">We will review your application and get back to you within 3 business days.</p><p style="color:#999;font-size:13px;margin-top:8px;">Please wait for our call or email.</p></div>';
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).catch(function() {
+      alert('Something went wrong. Please try again or email us at support@vpnexues.com');
+      btn.innerHTML = '<i class="jdblock-fas jdblock-fa-paper-plane"></i> Submit Application';
+      btn.disabled = false;
+    });
+  });
+})();
+</script>
+    <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="shop.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-store nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Shop</span>
+            </a>
+            <a href="shop-cart.html" class="nav-item">
+                <span class="nav-icon-wrap">
+                    <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+                    <span class="nav-badge" id="nav-cart-badge" style="display:none">0</span>
+                </span>
+                <span class="nav-label">Cart</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="vpnOpenModal('login'); return false;">
+                <span class="nav-icon-wrap"><i class="far fa-user nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Account</span>
+            </a>
+        </div>
+    </nav>
+    
+  <script>
+  (function() {
+    function updateCartBadge() {
+      var badge = document.getElementById("nav-cart-badge");
+      if (!badge) return;
+      var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      var count = 0;
+      cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = "";
+      } else {
+        badge.style.display = "none";
+      }
+    }
+    updateCartBadge();
+    window.updateCartBadge = updateCartBadge;
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var JOB_CONTENT = {
+      accountant: {
+        role: 'Accountant',
+        badges: ['Fresher', 'On-Site'],
+        type: 'Fresher',
+        loc: 'On-Site (Salem)',
+        locShort: 'Salem, India',
+        duration: 'Full-Time',
+        stipend: 'As per industry',
+        posted: '2 days ago',
+        badge: 'Fresher',
+        about: 'As an <strong>Accountant</strong>, you will manage bookkeeping, invoicing, and financial records to keep our farm-to-table export operations running smoothly and profitably. You will work closely with the founders and operations team to ensure accurate, transparent finances.',
+        do: [
+          { head: 'Bookkeeping & Records', items: ['Maintain day-to-day bookkeeping and bank reconciliation', 'Prepare invoices, payment tracking, and vendor records', 'Manage accounts payable and receivable', 'Keep accurate records for all export transactions'] },
+          { head: 'Tax & Compliance', items: ['Assist with GST filings and statutory compliance', 'Coordinate with auditors and tax consultants', 'Ensure timely filing of returns and documentation'] },
+          { head: 'Reporting & Planning', items: ['Support budgeting and monthly financial reporting', 'Track cash flow and cost of operations', 'Provide financial insights to support export decisions'] }
+        ],
+        expect: ['Bachelor\'s degree in Commerce, Accounting, or related field', 'Basic knowledge of Tally and MS Excel', 'Familiarity with GST and Indian accounting practices', 'Strong attention to detail and confidentiality', 'Ability to work with numbers and meet deadlines'],
+        skills: ['Tally', 'GST', 'Bookkeeping', 'MS Excel', 'Financial Reporting', 'Bank Reconciliation', 'Attention to Detail'],
+        goodToHave: ['Knowledge of export invoicing and Forex basics', 'Experience with accounting software (Zoho Books, QuickBooks)', 'Understanding of Indian labor and tax compliance', 'Interest in agriculture or food exports'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Entry Level � Full-Time' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'On-Site (Salem)' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: 'Full-Time' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'As per industry' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech � Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25 � 50 employees' }
+        ]
+      },
+      seo: {
+        role: 'SEO Content Writer',
+        badges: ['Fresher', 'Remote'],
+        type: 'Fresher',
+        loc: 'Remote (India)',
+        locShort: 'Remote',
+        duration: 'Full-Time',
+        stipend: 'As per industry',
+        posted: '2 days ago',
+        badge: 'Fresher',
+        about: 'As an <strong>SEO Content Writer</strong>, you will create SEO-optimized blog posts, product descriptions, and website content that drive organic traffic and showcase our organic produce to global audiences. You will shape the voice of VPNexues across all digital channels.',
+        do: [
+          { head: 'Content Creation', items: ['Write SEO-optimized blog posts, product pages, and landing pages', 'Create compelling meta titles, descriptions, and structured data', 'Produce content for social media and email newsletters'] },
+          { head: 'SEO Strategy', items: ['Conduct keyword research and implement on-page SEO strategies', 'Analyze content performance using Google Analytics and Search Console', 'Optimize existing content for search intent and readability'] }
+        ],
+        expect: ['Excellent written English with strong storytelling skills', 'Basic understanding of SEO principles and keyword research tools', 'Familiarity with WordPress or CMS platforms', 'Portfolio of published articles or content samples is a plus'],
+        skills: ['SEO Writing', 'Keyword Research', 'Content Strategy', 'WordPress', 'Google Analytics', 'Social Media'],
+        goodToHave: ['Basic HTML/CSS knowledge', 'Experience with tools like Ahrefs or SEMrush', 'Interest in agriculture, food exports, or sustainability'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Full-Time' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'Remote' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: 'Full-Time' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'As per industry' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech � Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25 � 50 employees' }
+        ]
+      },
+      sales: {
+        role: 'Sales & Marketing Executive',
+        badges: ['Fresher', 'Hybrid'],
+        type: 'Fresher',
+        loc: 'Hybrid',
+        locShort: 'Hybrid',
+        duration: 'Full-Time',
+        stipend: 'As per industry',
+        posted: '2 days ago',
+        badge: 'Fresher',
+        about: 'As a <strong>Sales & Marketing Executive</strong>, you will drive B2B and retail sales while executing marketing campaigns to promote our organic products across India and international markets. You will be the bridge between our farm-fresh produce and the customers who value quality.',
+        do: [
+          { head: 'Sales', items: ['Identify and pursue B2B sales opportunities with retailers and distributors', 'Build and maintain strong client relationships', 'Represent VPNexues at trade shows and industry events'] },
+          { head: 'Marketing', items: ['Develop and execute digital marketing campaigns across social media', 'Analyze sales data and market trends to optimize strategies', 'Coordinate promotional activity for seasonal produce'] }
+        ],
+        expect: ['Strong communication and interpersonal skills', 'Interest in organic food, agriculture, or sustainability', 'Basic knowledge of digital marketing channels', 'Willingness to travel occasionally for client meetings'],
+        skills: ['B2B Sales', 'Digital Marketing', 'Client Relations', 'Social Media', 'Negotiation'],
+        goodToHave: ['Experience with CRM tools', 'Understanding of export markets', 'Prior sales or marketing internship'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Full-Time' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'Hybrid' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: 'Full-Time' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'As per industry' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech � Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25 � 50 employees' }
+        ]
+      },
+      agriculture: {
+        role: 'Agriculture Executive',
+        badges: ['Full-Time', 'On-Site'],
+        type: 'Full-Time',
+        loc: 'On-Site (Salem)',
+        locShort: 'Salem, India',
+        duration: 'Full-Time',
+        stipend: 'As per industry',
+        posted: '2 days ago',
+        badge: 'Full-Time',
+        about: 'As an <strong>Agriculture Executive</strong>, you will manage farmer partnerships, coordinate organic certifications, and ensure quality supply chain operations for our export business. You will work directly with farming communities to uphold our organic standards.',
+        do: [
+          { head: 'Farmer Partnerships', items: ['Build and maintain relationships with organic farming partners', 'Conduct farm visits and provide technical guidance', 'Negotiate fair procurement terms with partner farms'] },
+          { head: 'Quality & Supply Chain', items: ['Coordinate organic certification processes and compliance', 'Monitor crop quality and supply chain logistics', 'Ensure timely procurement and delivery of produce'] }
+        ],
+        expect: ['Background in agriculture, agronomy, or related field', 'Understanding of organic farming practices and certifications', 'Strong organizational and communication skills', 'Willingness to travel to farm locations regularly'],
+        skills: ['Farm Management', 'Supply Chain', 'Organic Certification', 'Quality Control', 'Field Operations'],
+        goodToHave: ['Experience with farmer cooperatives or FPOs', 'Knowledge of export quality standards', 'Driving license and willingness to travel'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Full-Time' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'On-Site (Salem)' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: 'Full-Time' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'As per industry' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech � Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25 � 50 employees' }
+        ]
+      },
+      hr: {
+        role: 'HR Executive',
+        badges: ['Full-Time', 'On-Site'],
+        type: 'Full-Time',
+        loc: 'On-Site (Salem)',
+        locShort: 'Salem, India',
+        duration: 'Full-Time',
+        stipend: 'As per industry',
+        posted: '2 days ago',
+        badge: 'Full-Time',
+        about: 'As an <strong>HR Executive</strong>, you will manage recruitment, employee relations, and HR operations to build and sustain a motivated team across our farm and office locations. You will shape the culture and growth of VPNexues from the inside out.',
+        do: [
+          { head: 'Recruitment', items: ['Manage end-to-end recruitment and onboarding processes', 'Coordinate training and development programs', 'Build talent pipelines for current and future openings'] },
+          { head: 'People Operations', items: ['Handle employee relations, grievances, and engagement initiatives', 'Develop and implement HR policies and procedures', 'Maintain employee records and ensure compliance with labor laws'] }
+        ],
+        expect: ['Background in Human Resources or Business Administration', 'Strong interpersonal and conflict resolution skills', 'Familiarity with HR software and payroll systems', 'Knowledge of Indian labor laws and compliance'],
+        skills: ['Recruitment', 'Employee Relations', 'HR Operations', 'Compliance', 'Training & Dev'],
+        goodToHave: ['Experience with HRMS or payroll tools', 'Knowledge of statutory compliance', 'Interest in building company culture'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Full-Time' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'On-Site (Salem)' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: 'Full-Time' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'As per industry' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech � Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25 � 50 employees' }
+        ]
+      }
+      fullstack: {
+        role: 'Full Stack Web Developer Intern',
+        badges: ['Internship', 'Remote'],
+        type: 'Internship',
+        loc: 'Remote',
+        locShort: 'Remote',
+        duration: '9 months',
+        stipend: 'Stipend provided',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'Build next-generation dashboards and farmer portals end to end using Node.js, React, Java, and MongoDB.',
+        do: [
+          { head: 'Frontend', items: ['Build responsive dashboards with React', 'Implement UI/UX designs', 'Optimize frontend performance'] },
+          { head: 'Backend', items: ['Develop REST APIs with Node.js and Java', 'Design and manage MongoDB databases', 'Integrate third-party services'] }
+        ],
+        expect: ['Knowledge of JavaScript, React, and Node.js', 'Basic understanding of Java backend', 'Familiarity with MongoDB'],
+        skills: ['Node.js', 'React', 'Java', 'MongoDB', 'REST APIs', 'Git'],
+        goodToHave: ['Experience with cloud platforms', 'Knowledge of Docker', 'Previous project experience'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'Remote' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Stipend provided' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      'customer-support': {
+        role: 'Customer Support Intern',
+        badges: ['Internship', 'Remote'],
+        type: 'Internship',
+        loc: 'Remote',
+        locShort: 'Remote',
+        duration: '9 months',
+        stipend: 'Stipend provided',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'Handle customer communication, support requests and account coordination through phone, email and other channels while ensuring a positive customer experience.',
+        do: [
+          { head: 'Customer Support', items: ['Respond to customer inquiries via email, chat, and phone', 'Resolve product and service issues promptly', 'Document interactions in CRM'] },
+          { head: 'Coordination', items: ['Collaborate with logistics team', 'Maintain knowledge of organic products', 'Escalate complex issues'] }
+        ],
+        expect: ['Strong communication skills', 'Problem-solving aptitude', 'Basic knowledge of CRM tools'],
+        skills: ['Communication', 'Problem Solving', 'Customer Service', 'CRM', 'MS Office'],
+        goodToHave: ['Experience with helpdesk tools', 'Multilingual abilities'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'Remote' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Stipend provided' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      'supply-chain': {
+        role: 'Supply Chain / Export Documentation Intern',
+        badges: ['Internship', 'On-Site'],
+        type: 'Internship',
+        loc: 'On-Site (Salem)',
+        locShort: 'Salem, India',
+        duration: '9 months',
+        stipend: 'Stipend provided',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'Support logistics coordination, shipment documentation and export-related activities.',
+        do: [
+          { head: 'Logistics', items: ['Track inventory levels and coordinate replenishment', 'Assist in logistics planning and route optimization', 'Monitor delivery schedules'] },
+          { head: 'Data and Records', items: ['Process purchase orders and maintain vendor records', 'Support data analysis for supply chain efficiency', 'Document supply chain processes'] }
+        ],
+        expect: ['Basic knowledge of supply chain and logistics', 'Proficiency in MS Excel', 'Strong analytical skills'],
+        skills: ['Logistics', 'Inventory Management', 'Data Analysis', 'MS Excel', 'Procurement'],
+        goodToHave: ['Experience with ERP systems', 'Knowledge of cold chain logistics'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'On-Site (Salem)' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Stipend provided' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      'ea-director': {
+        role: 'Executive Assistant (EA) to Management',
+        badges: ['Full-Time', 'On-Site'],
+        type: 'Full-Time',
+        loc: 'On-Site (Salem)',
+        locShort: 'Salem, India',
+        duration: 'Full-Time',
+        stipend: 'As per industry',
+        posted: '2 days ago',
+        badge: 'Full-Time',
+        about: 'Support senior management with coordination, communication, documentation and day-to-day business operations.',
+        do: [
+          { head: 'Administrative Support', items: ['Manage Director calendar and meeting schedules', 'Prepare correspondence, reports, and presentations', 'Coordinate travel arrangements and itineraries'] },
+          { head: 'Communication', items: ['Handle confidential information with discretion', 'Liaise between departments and external stakeholders', 'Manage incoming and outgoing communications'] }
+        ],
+        expect: ['Strong organizational and time management skills', 'Excellent written and verbal communication', 'Proficiency in MS Office'],
+        skills: ['Administration', 'Scheduling', 'Communication', 'MS Office', 'Time Management'],
+        goodToHave: ['Experience as EA to C-level executives', 'Knowledge of project management tools'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Full-Time' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'On-Site (Salem)' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: 'Full-Time' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'As per industry' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      'pa-director': {
+        role: 'Personal Assistant (PA) to Director',
+        badges: ['Full-Time', 'On-Site'],
+        type: 'Full-Time',
+        loc: 'On-Site (Salem)',
+        locShort: 'Salem, India',
+        duration: 'Full-Time',
+        stipend: 'As per industry',
+        posted: '2 days ago',
+        badge: 'Full-Time',
+        about: 'Provide direct administrative and operational support to the Director and assist in managing day-to-day priorities.',
+        do: [
+          { head: 'Scheduling', items: ['Coordinate personal and professional appointments', 'Manage travel bookings and expense reports', 'Handle personal errands and special projects'] },
+          { head: 'Administration', items: ['Maintain confidential files and records', 'Ensure smooth daily operations for the Director', 'Coordinate with household and office staff'] }
+        ],
+        expect: ['Strong time management and organizational skills', 'Excellent communication abilities', 'Ability to handle personal matters with discretion'],
+        skills: ['Time Management', 'Travel Planning', 'Organization', 'Discretion', 'MS Office'],
+        goodToHave: ['Prior experience as PA', 'Multilingual abilities', 'Knowledge of luxury travel planning'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Full-Time' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'On-Site (Salem)' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: 'Full-Time' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'As per industry' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      quality: {
+        role: 'Produce Quality / Food Quality Intern',
+        badges: ['Internship', 'On-Site'],
+        type: 'Internship',
+        loc: 'On-Site (Salem)',
+        locShort: 'Salem, India',
+        duration: '9 months',
+        stipend: 'Stipend provided',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'Ensure that agricultural produce meets the required quality, freshness and safety standards.',
+        do: [
+          { head: 'Quality Control', items: ['Inspect incoming produce against quality parameters', 'Document quality control test results', 'Assist in maintaining organic certification standards'] },
+          { head: 'Reporting', items: ['Report quality deviations to senior team', 'Support lab testing and sampling activities', 'Maintain quality documentation and records'] }
+        ],
+        expect: ['Attention to detail and accuracy', 'Basic knowledge of quality control processes', 'Interest in food safety and organic standards'],
+        skills: ['Quality Control', 'Inspection', 'Documentation', 'Attention to Detail', 'MS Excel'],
+        goodToHave: ['Knowledge of organic certifications', 'Experience in food quality labs', 'ISO or FSSAI awareness'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'On-Site (Salem)' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Stipend provided' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      procurement: {
+        role: 'Farmer Relations / Procurement Intern',
+        badges: ['Internship', 'On-Site'],
+        type: 'Internship',
+        loc: 'On-Site (Salem)',
+        locShort: 'Salem, India',
+        duration: '9 months',
+        stipend: 'Stipend provided',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'Build and maintain relationships with farmers and suppliers, support sourcing of quality agricultural produce.',
+        do: [
+          { head: 'Vendor Management', items: ['Source and evaluate potential suppliers', 'Process purchase orders and track deliveries', 'Maintain procurement records and databases'] },
+          { head: 'Negotiation', items: ['Assist in contract negotiations', 'Compare pricing and quality across vendors', 'Build and maintain vendor relationships'] }
+        ],
+        expect: ['Basic knowledge of procurement processes', 'Proficiency in MS Excel', 'Strong negotiation and analytical skills'],
+        skills: ['Procurement', 'Vendor Management', 'Negotiation', 'MS Excel', 'Data Analysis'],
+        goodToHave: ['Knowledge of agricultural inputs', 'Experience with ERP procurement modules', 'Interest in sustainable sourcing'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'On-Site (Salem)' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Stipend provided' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      'software-tester': {
+        role: 'QA / Software Tester Intern',
+        badges: ['Internship', 'Remote'],
+        type: 'Internship',
+        loc: 'Remote',
+        locShort: 'Remote',
+        duration: '9 months',
+        stipend: 'Stipend provided',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'Test web and mobile applications, identify and report bugs, and ensure they meet quality and functional requirements.',
+        do: [
+          { head: 'Testing', items: ['Write and execute test cases for web and mobile apps', 'Identify, document, and track bugs to resolution', 'Perform regression and functional testing'] },
+          { head: 'Collaboration', items: ['Collaborate with developers on issue resolution', 'Contribute to test automation efforts', 'Maintain test documentation and test plans'] }
+        ],
+        expect: ['Knowledge of manual testing methodologies', 'Ability to write clear test cases', 'Attention to detail and analytical mindset'],
+        skills: ['Manual Testing', 'Test Cases', 'Bug Reporting', 'Test Automation', 'SQL'],
+        goodToHave: ['Experience with Selenium or Cypress', 'Knowledge of API testing', 'ISTQB certification'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'Remote' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Stipend provided' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      'digital-marketing': {
+        role: 'Digital Marketing Intern',
+        badges: ['Internship', 'Remote'],
+        type: 'Internship',
+        loc: 'Remote',
+        locShort: 'Remote',
+        duration: '9 months',
+        stipend: 'Stipend provided',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'Assist in social media management, email campaigns, SEO optimization, and digital advertising to promote our organic brand.',
+        do: [
+          { head: 'Content and Social', items: ['Manage social media accounts and create content', 'Assist in email marketing campaigns', 'Create graphics and content for digital channels'] },
+          { head: 'Analytics and SEO', items: ['Conduct keyword research for SEO optimization', 'Track and report campaign performance metrics', 'Support paid advertising campaigns'] }
+        ],
+        expect: ['Basic knowledge of digital marketing channels', 'Familiarity with social media platforms', 'Good written communication skills'],
+        skills: ['Social Media', 'SEO', 'Email Marketing', 'Google Analytics', 'Content Creation'],
+        goodToHave: ['Experience with Google Ads or Meta Ads', 'Knowledge of Canva or Figma', 'Prior marketing internship'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'Remote' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Stipend provided' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      },
+      'android-dev': {
+        role: 'Android Developer',
+        badges: ['Internship', 'Remote'],
+        type: 'Internship',
+        loc: 'Remote',
+        locShort: 'Remote',
+        duration: '9 months',
+        stipend: 'Stipend provided',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'Build and maintain Android applications for our organic marketplace, integrating APIs and delivering smooth user experiences.',
+        do: [
+          { head: 'App Development', items: ['Develop new features for Android applications', 'Integrate REST APIs and third-party services', 'Write clean, maintainable code following best practices'] },
+          { head: 'Quality', items: ['Fix bugs and optimize app performance', 'Collaborate with UI/UX designers for implementation', 'Write unit tests and integration tests'] }
+        ],
+        expect: ['Knowledge of Kotlin and Android SDK', 'Familiarity with REST APIs and JSON', 'Understanding of Material Design principles'],
+        skills: ['Kotlin', 'Android SDK', 'REST APIs', 'Firebase', 'Git', 'Material Design'],
+        goodToHave: ['Experience with Jetpack Compose', 'Knowledge of CI/CD for Android', 'Published apps on Play Store'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'Remote' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Stipend provided' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      }
+      'b2b-sales': {
+        role: 'B2B / Retail Sales Executive Intern',
+        badges: ['Internship', 'Remote / Field'],
+        type: 'Internship',
+        loc: 'Remote / Field',
+        locShort: 'Remote / Field',
+        duration: '9 months',
+        stipend: 'Performance-Based Stipend',
+        posted: '2 days ago',
+        badge: 'Internship',
+        about: 'We are looking for motivated B2B / Retail Sales Executive Interns to support business development, customer acquisition and sales activities for VP Nexues. Openings: 2.',
+        do: [
+          { head: 'Business Development', items: ['Identify and connect with potential B2B and retail customers', 'Generate and follow up on sales leads', 'Achieve assigned sales and business development targets'] },
+          { head: 'Customer Relations', items: ['Communicate with prospective customers and understand requirements', 'Present VP Nexues products and services professionally', 'Maintain customer and lead records'] }
+        ],
+        expect: ['Good communication and interpersonal skills', 'Basic understanding of sales and business development', 'Good negotiation and convincing skills', 'Self-motivated and target-oriented'],
+        skills: ['B2B Sales', 'Lead Generation', 'Negotiation', 'Communication', 'Relationship Building'],
+        goodToHave: ['Freshers with strong communication skills are welcome', 'Knowledge of CRM tools', 'Prior sales experience'],
+        summary: [
+          { icon: 'jdblock-fa-briefcase', label: 'Role Type', val: 'Internship' },
+          { icon: 'jdblock-fa-map-marker-alt', label: 'Location', val: 'Remote / Field' },
+          { icon: 'jdblock-fa-clock', label: 'Duration', val: '9 months' },
+          { icon: 'jdblock-fa-rupee-sign', label: 'Stipend', val: 'Performance-Based' },
+          { icon: 'jdblock-fa-calendar-alt', label: 'Start Date', val: 'As soon as possible' },
+          { icon: 'jdblock-fa-industry', label: 'Industry', val: 'AgriTech - Organic Export' },
+          { icon: 'jdblock-fa-users', label: 'Team Size', val: '25-50 employees' }
+        ]
+      }
+    };
+
+    var params = new URLSearchParams(window.location.search);
+    var role = (params.get('job') || '').toLowerCase();
+    var cfg = JOB_CONTENT[role];
+    if (!cfg) return;
+
+    function setBadges(arr) {
+      var b = document.getElementById('job-badges');
+      if (b) b.innerHTML = arr.map(function(x) { return '<span class="jdblock-badge">' + x + '</span>'; }).join('');
+    }
+    function setMeta(vals) {
+      var strip = document.getElementById('job-meta-strip');
+      if (!strip) return;
+      var cells = strip.querySelectorAll('.jdblock-meta-val');
+      vals.forEach(function(v, i) { if (cells[i]) cells[i].textContent = v; });
+    }
+    function setAbout(t) {
+      var el = document.getElementById('about-role');
+      if (el) el.innerHTML = t;
+    }
+    function setSection(id, inner) {
+      var el = document.getElementById(id);
+      if (el) el.innerHTML = inner;
+    }
+    function buildList(items) {
+      return '<ul class="jdblock-bullet-list">' + items.map(function(i) { return '<li>' + i + '</li>'; }).join('') + '</ul>';
+    }
+    function setSummary(rows) {
+      var el = document.getElementById('job-summary-body');
+      if (!el) return;
+      el.innerHTML = rows.map(function(r, i) {
+        return '<div class="jdblock-sum-row"' + (i === rows.length - 1 ? ' style="border-bottom:none;"' : '') + '><i class="jdblock-fas ' + r.icon + '"></i><div><div class="jdblock-sum-label">' + r.label + '</div><div class="jdblock-sum-val">' + r.val + '</div></div></div>';
+      }).join('');
+    }
+    function setRelated(roleName, loc, badge) {
+      var el = document.getElementById('rel-active');
+      if (!el) return;
+      var roleEl = el.querySelector('.jdblock-rel-role'); if (roleEl) roleEl.textContent = roleName;
+      var locEl = el.querySelector('.jdblock-rel-loc'); if (locEl) locEl.textContent = loc;
+      var b = el.querySelector('.jdblock-rel-badge'); if (b) b.textContent = badge;
+    }
+
+    setBadges(cfg.badges);
+    setMeta([cfg.type, cfg.loc, cfg.duration, cfg.stipend, cfg.posted]);
+    setAbout(cfg.about);
+    setSection('jd-do-section', '<div class="jdblock-section-label">What You\'ll Be Doing</div>' + cfg.do.map(function(g) {
+      return '<div class="jdblock-sub-head">' + g.head + '</div>' + buildList(g.items);
+    }).join(''));
+    setSection('jd-expect-section', '<div class="jdblock-section-label">What We Expect From You</div>' + buildList(cfg.expect) + '<div class="jdblock-skill-wrap">' + cfg.skills.map(function(s, i) {
+      return '<span class="jdblock-skill-tag' + (i < 4 ? ' jdblock-req' : '') + '">' + s + '</span>';
+    }).join('') + '</div>');
+    setSection('jd-got-section', '<div class="jdblock-section-label">Good to Have</div>' + buildList(cfg.goodToHave));
+    setSummary(cfg.summary);
+    setRelated(cfg.role, cfg.locShort, cfg.badge);
+    var bc = document.getElementById('breadcrumb-current'); if (bc) bc.textContent = cfg.role;
+    document.title = 'Apply � ' + cfg.role + ' | VPNexues';
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var form = document.getElementById('vnp-subscribe-form');
+    if (!form) return;
+    var popup = document.getElementById('vnp-subscribe-popup');
+    var popupTitle = popup ? popup.querySelector('.vnp-subs-popup-title') : null;
+    var popupDesc = popup ? popup.querySelector('.vnp-subs-popup-desc') : null;
+    var popupIcon = popup ? popup.querySelector('.vnp-subs-popup-icon i') : null;
+    var popupClose = popup ? popup.querySelector('.vnp-subs-popup-close') : null;
+    var btn = document.getElementById('vnp-subscribe-btn');
+    var emailInput = document.getElementById('vnp-subscribe-email');
+    var popupTimer = null;
+
+    function showPopup(type, title, desc, icon) {
+      if (!popup) return;
+      popup.className = 'vnp-subs-popup show' + (type === 'err' ? ' err' : '');
+      popupIcon.className = icon;
+      popupTitle.textContent = title;
+      popupDesc.textContent = desc;
+      clearTimeout(popupTimer);
+      popupTimer = setTimeout(hidePopup, 4000);
+    }
+    function hidePopup() {
+      if (popup) popup.className = 'vnp-subs-popup';
+    }
+    if (popupClose) popupClose.addEventListener('click', hidePopup);
+
+    function resetBtn() {
+      btn.disabled = false;
+      btn.innerHTML = 'Subscribe <i class="far fa-arrow-right"></i>';
+      btn.classList.remove('vnp-subs-done');
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = (emailInput.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showPopup('err', 'Invalid email address', 'Please enter a valid email address.', 'fas fa-exclamation-triangle');
+        return;
+      }
+      hidePopup();
+      btn.disabled = true;
+      btn.innerHTML = 'Subscribing... <i class="far fa-arrow-right"></i>';
+      var body = '_subject=New Newsletter Subscription - VPNexues&_template=table&_captcha=false&email=' + encodeURIComponent(email);
+      var controller = new AbortController();
+      var fetchTimer = setTimeout(function() { controller.abort(); }, 12000);
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+        body: body,
+        signal: controller.signal
+      }).then(function(res) {
+        clearTimeout(fetchTimer);
+        btn.innerHTML = '<i class="fas fa-check vnp-subs-tick"></i> Subscribed';
+        btn.classList.add('vnp-subs-done');
+        emailInput.value = '';
+        showPopup('ok', "You're subscribed!", 'Thank you for joining the VPNexues newsletter.', 'fas fa-check');
+        setTimeout(resetBtn, 4000);
+      }).catch(function() {
+        clearTimeout(fetchTimer);
+        resetBtn();
+        showPopup('err', 'Something went wrong', 'Please try again or email support@vpnexues.com.', 'fas fa-exclamation-triangle');
+        setTimeout(hidePopup, 5000);
+      });
+    });
+  })();
+  </script>
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+<script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+</body>
+</html>

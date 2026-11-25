@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="modinatheme">
+        <meta name="description" content="VPNexues">
+        <title>VPNexues </title>
+        <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+        <link rel="shortcut icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+        <link rel="stylesheet" href="assets-ui/css/animate.min.css?v=1.0">
+        <link rel="stylesheet" href="assets-ui/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+        <link rel="stylesheet" href="assets-ui/css/odometer.css">
+        <link rel="stylesheet" href="assets-ui/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets-ui/css/main.css">
+        <link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+    <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.4">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+    :root{--vc:#1a5e1f;--vc2:#2d8a33;--vc3:#4caf50;--vcp:#e8f5e9;--cr:#faf9f6;--cw:#fff;--ct:#333;--ctl:#666}
+    body { background: linear-gradient(180deg, #eaf6ea 0%, #f6faf5 55%, #ffffff 100%); background-attachment: fixed; }
+    .vpn-login-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1px solid rgba(74,124,63,.26);border-radius:30px;background:rgba(255,255,255,.92);color:#263226;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(42,70,36,.08);margin-right:8px;white-space:nowrap;line-height:1.4}
+    .vpn-login-btn i{color:#4a7c3f;font-size:13px}
+    .vpn-login-btn:hover{transform:translateY(-2px);border-color:rgba(74,124,63,.48);box-shadow:0 12px 28px rgba(42,70,36,.14);color:#1f5f23}
+    .vpn-login-btn:hover i{transform:scale(1.08)}
+    .vpn-login-btn:active{transform:translateY(0) scale(.98)}
+    .vpn-account-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border:1px solid rgba(74,124,63,.26);border-radius:30px;background:rgba(255,255,255,.92);color:#263226;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 8px 22px rgba(42,70,36,.08);margin-right:8px;white-space:nowrap;line-height:1.4;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,color .22s ease}
+    .vpn-account-btn i{color:#4a7c3f;transition:transform .22s ease}
+    .vpn-account-btn:hover{transform:translateY(-2px);border-color:rgba(74,124,63,.48);box-shadow:0 12px 28px rgba(42,70,36,.14);color:#1f5f23}
+    .vpn-account-btn:hover i{transform:scale(1.08)}
+    .vpn-account-btn:active{transform:translateY(0) scale(.98)}
+    .vpn-hidden{display:none!important}
+    @media(max-width:767px){.vpn-account-btn{display:none!important}.vpn-login-btn{padding:6px 11px;margin-right:4px;font-size:12px;gap:5px}.vpn-login-btn i{font-size:12px}}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    .footer-section{background:rgba(184,212,185,0.7) !important;background-image:none !important;color:#fff !important}
+    .footer-section .widget-head h5,.footer-section .contact-list li .content h5,.footer-section .list-area li a,.footer-section .contact-list li .content p a,.footer-section .contact-list li .content .footer-location-off h4,.footer-section .contact-list li .content .footer-location-off span{color:#fff !important}
+    .footer-section .contact-list li .icon{background:#f5a623 !important;color:#fff !important}
+.footer-section .footer-widget-items .contact-list li .icon{background:#f5a623 !important;color:#fff !important;width:50px !important;height:50px !important;min-width:50px !important;border-radius:50% !important;display:flex;align-items:center;justify-content:center}
+.footer-section .footer-widget-items .contact-list li{align-items:center !important}
+.vnp-box-footer{background:#1E3917!important;background-image:none!important}
+.vnp-box-footer::before{background:rgba(30,57,23,.85)!important}
+.vnp-box-footer .footer-widget-wrapper{display:none!important}
+.vnp-box-footer .footer-bottom{background:transparent!important;border:0!important}
+.vnp-box-footer .footer-desktop-logo-copy{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1.1}
+.vnp-box-footer .footer-desktop-logo-copy strong{font-size:24px;font-weight:800;color:#fff}
+.vnp-box-footer .footer-desktop-logo-copy small{font-size:11px;font-weight:600;color:rgba(255,255,255,.76)}
+.vnp-box-footer .footer-mobile-brand{display:none}
+@media(min-width:768px){.vnp-box-footer{padding-top:46px!important}}
+@media(max-width:767px){
+  .vnp-box-footer{padding:24px 0 0!important;background-position:center}
+  .vnp-box-footer .footer-widget-top{display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 18px 18px;text-align:center}
+  .vnp-box-footer .footer-widget-top .footer-desktop-logo{display:none}
+  .vnp-box-footer .footer-mobile-brand{display:inline-flex;align-items:center;gap:9px;color:#fff;text-decoration:none;text-align:left}
+  .vnp-box-footer .footer-mobile-brand img{width:38px;height:38px;flex:0 0 38px;object-fit:contain}
+  .vnp-box-footer .footer-mobile-brand-copy{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+  .vnp-box-footer .footer-mobile-brand-copy strong{color:#fff;font-size:19px;font-weight:800;line-height:1}
+  .vnp-box-footer .footer-mobile-brand-copy small{color:rgba(255,255,255,.76);font-size:9px;font-weight:600;line-height:1}
+  .vnp-box-footer .footer-bottom{padding:16px 0 18px}
+  .vnp-box-footer .footer-bottom-wrapper{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+  .vnp-box-footer .footer-bottom-wrapper .text-1{margin:0;font-size:10px;line-height:1.3}
+  .vnp-box-footer .footer-bottom-wrapper .social-icon{display:flex;gap:20px}
+  .vnp-box-footer .footer-bottom-wrapper .bottom-img{display:none}
+}
+    body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ct);overflow-x:hidden;background:var(--cw)}
+    img{max-width:100%;height:auto}
+    .sec-pad{padding:90px 0}
+    .container{max-width:1140px;margin:0 auto;padding:0 20px}
+    .sec-title{text-align:center;margin-bottom:50px}
+    .sec-title .sub{display:inline-block;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--vc3);margin-bottom:10px}
+    .sec-title h2{font-size:36px;font-weight:800;color:var(--vc);line-height:1.2}
+    .sec-title h2 em{font-family:'Playfair Display',serif;color:var(--vc2)}
+    .sec-title p{color:var(--ctl);font-size:15px;margin-top:10px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .cr-hero{position:relative;min-height:70vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,#0d3b0f 0%,var(--vc) 40%,var(--vc2) 100%)}
+    .cr-hero::before{content:'';position:absolute;inset:0;background:url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/farmer.png') center right/cover no-repeat;opacity:.4}
+    .cr-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,59,15,.93) 0%,rgba(26,94,31,.75) 40%,rgba(45,138,51,.25) 65%,transparent 100%)}
+    /* Desktop header nav blends with the green hero below (matches small-box/big-box) */
+    @media(min-width:768px){
+      #header-sticky{background:linear-gradient(180deg,#f7fbf5 0%,#eef6ea 100%);box-shadow:none;border-bottom:none}
+      #header-sticky .mega-menu-wrapper,
+      #header-sticky .header-main{background:transparent;box-shadow:none}
+      #header-sticky .mean__menu-wrapper,
+      #header-sticky .main-menu,
+      #header-sticky nav#mobile-menu,
+      #header-sticky nav#mobile-menu > ul{background:transparent !important;box-shadow:none !important;border:none !important;border-radius:0 !important}
+      #header-sticky .header-main .main-menu ul li > a{color:#1c4b2a}
+      #header-sticky .header-main .main-menu ul li:hover > a,
+      #header-sticky .header-main .main-menu ul li > a:hover{color:#f8b417}
+    }
+    .cr-hero .container{position:relative;z-index:2}
+    .cr-hero-left .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);padding:8px 18px;border-radius:50px;color:rgba(255,255,255,.9);font-size:13px;font-weight:500;margin-bottom:24px}
+    .cr-hero-left .eyebrow i{color:var(--vc3)}
+    .cr-hero-left h1{color:var(--cw);font-size:52px;font-weight:800;line-height:1.1;margin-bottom:6px}
+    .cr-hero-left h1 .highlight{display:block;font-size:64px;color:#a5d6a7;line-height:1}
+    .cr-hero-left .desc{color:rgba(255,255,255,.8);font-size:16px;line-height:1.8;margin:20px 0 30px;max-width:480px}
+    .cr-hero-left .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+    .cr-hero-left .btn-apply{background:var(--cw);color:var(--vc);padding:16px 40px;border-radius:50px;font-weight:700;font-size:16px;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+    .cr-hero-left .btn-apply:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,0,0,.25)}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .cr-stats{position:relative;z-index:3;margin-top:-50px}
+    .cr-stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--cw);border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.1);overflow:hidden}
+    .cr-stat{padding:30px 20px;text-align:center;border-right:1px solid #f0f0f0;transition:background .3s}
+    .cr-stat:last-child{border-right:none}
+    .cr-stat:hover{background:var(--vcp)}
+    .cr-stat .stat-icon{width:50px;height:50px;background:var(--vcp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transition:all .3s}
+    .cr-stat:hover .stat-icon{background:var(--vc);color:var(--cw)}
+    .cr-stat .stat-icon i{font-size:20px;color:var(--vc);transition:color .3s}
+    .cr-stat:hover .stat-icon i{color:var(--cw)}
+    .cr-stat .stat-num{font-size:32px;font-weight:800;color:var(--vc);line-height:1}
+    .cr-stat .stat-label{font-size:13px;color:var(--ctl);margin-top:4px;font-weight:500}
+    .cr-why{background:var(--cr)}
+    .cr-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .cr-why-card{background:var(--cw);border-radius:20px;padding:36px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:all .4s;border:1px solid #f0f0f0;position:relative;overflow:hidden}
+    .cr-why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--vc),var(--vc3));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+    .cr-why-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.1)}
+    .cr-why-card:hover::before{transform:scaleX(1)}
+    .cr-why-icon{width:70px;height:70px;background:var(--vcp);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;transition:all .4s}
+    .cr-why-card:hover .cr-why-icon{background:var(--vc);transform:rotateY(180deg)}
+    .cr-why-icon i{font-size:28px;color:#4caf50;transition:color .4s}
+    .cr-why-card:hover .cr-why-icon i{color:var(--cw)}
+    .cr-why-card h4{font-size:17px;font-weight:700;color:var(--ct);margin-bottom:10px}
+    .cr-why-card p{font-size:14px;color:var(--ctl);line-height:1.7}
+.cr-life{background:var(--cw)}
+    .cr-life .container{max-width:1300px}
+    .cr-life-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
+    .cr-life-swiper{display:none}
+    .cr-life-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;width:100%;aspect-ratio:7/4}
+    .cr-life-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+    .cr-life-card:hover img{transform:scale(1.08)}
+    .cr-life-card .overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.78));display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:14px 20px;transition:background .3s}
+    .cr-life-card:hover .overlay{background:linear-gradient(transparent 25%,rgba(26,94,31,.88))}
+    .cr-life-card .overlay h4{color:var(--cw);font-size:16px;font-weight:700;margin-bottom:4px}
+    .cr-life-card .overlay p{color:rgba(255,255,255,.9);font-size:12px;margin:0}
+    .cr-life-card .farm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;height:100%;overflow:hidden}
+    .cr-life-card .farm-grid img{width:100%;height:100%;object-fit:cover}
+    .cr-mission{background:var(--cw);position:relative;overflow:hidden}
+    .cr-mission .container{position:relative;z-index:2}
+    .cr-mission .sec-title h2{color:var(--vc)}
+    .cr-mission .sec-title p{color:var(--ctl)}
+    .cr-mission .sec-title .sub{color:var(--vc3)}
+    .cr-mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .cr-mission-card{background:var(--vcp);border-radius:20px;padding:32px 24px;text-align:center;transition:all .4s}
+    .cr-mission-card:hover{background:var(--vc);transform:translateY(-5px)}
+    .cr-mission-card:hover h4{color:var(--cw)}
+    .cr-mission-card:hover p{color:rgba(255,255,255,.85)}
+    .cr-mission-card i{font-size:32px;color:var(--vc3);margin-bottom:16px}
+    .cr-mission-card:hover i{color:var(--cw)}
+    .cr-mission-card h4{color:var(--vc);font-size:17px;font-weight:700;margin-bottom:8px}
+    .cr-mission-card p{color:var(--ctl);font-size:13px;line-height:1.7}
+    .cr-benefits{background:var(--cr)}
+    .cr-benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .cr-benefit{background:var(--cw);border-radius:18px;padding:30px 20px;text-align:center;border:1px solid #f0f0f0;transition:all .4s}
+    .cr-benefit:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.08);border-color:var(--vc3)}
+    .cr-benefit .b-icon{width:56px;height:56px;background:var(--vcp);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;transition:all .3s}
+    .cr-benefit:hover .b-icon{background:var(--vc)}
+    .cr-benefit .b-icon i{font-size:22px;color:#4caf50;transition:color .3s}
+    .cr-benefit:hover .b-icon i{color:var(--cw)}
+    .cr-benefit h5{font-size:14px;font-weight:700;color:var(--ct);margin-bottom:6px}
+    .cr-benefit p{font-size:12px;color:var(--ctl);line-height:1.6}
+.cr-hiring{background:var(--cr)}
+.cr-hiring .container{max-width:1400px}
+.cr-hiring-timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;padding:0}
+.cr-hiring-timeline::before{content:'';position:absolute;top:55px;left:4%;right:4%;height:3px;background:var(--vc);border-radius:2px}
+.cr-hire-step{text-align:center;position:relative;z-index:2;padding:24px 10px 20px;background:var(--vcp);border-radius:16px;margin:0 6px;transition:all .3s}
+.cr-hire-step:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(26,94,31,.1)}
+.cr-hire-step .step-num{width:56px;height:56px;background:var(--cw);border:3px solid var(--vc);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:20px;color:var(--vc);transition:all .4s;font-weight:700;position:relative}
+.cr-hire-step:hover .step-num{background:var(--vc);color:var(--cw);transform:scale(1.1);box-shadow:0 8px 25px rgba(26,94,31,.3)}
+.cr-hire-step h5{font-size:13px;font-weight:700;color:var(--ct);margin-bottom:4px}
+.cr-hire-step p{font-size:11px;color:var(--ctl);line-height:1.5}
+    .cr-testimonials{background:var(--cr)}
+    .cr-voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .cr-voice{background:var(--cw);border-radius:20px;padding:32px;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:all .4s;border:1px solid #f0f0f0}
+    .cr-voice:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+    .cr-voice .stars{color:#f5a623;font-size:14px;margin-bottom:16px}
+    .cr-voice blockquote{font-size:14px;color:var(--ctl);line-height:1.8;margin-bottom:20px;position:relative;padding-left:20px;border-left:3px solid var(--vc3)}
+    .cr-voice-author{display:flex;align-items:center;gap:14px}
+    .cr-voice-author .avatar{width:50px;height:50px;border-radius:50%;background:var(--vcp);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--vc)}
+    .cr-voice-author h5{font-size:15px;font-weight:700;color:var(--ct)}
+    .cr-voice-author span{font-size:12px;color:var(--ctl)}
+    .cr-values{background:var(--cw)}
+    .cr-values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .cr-value{background:var(--cr);border-radius:20px;padding:36px 28px;text-align:center;border:1px solid #f0f0f0;transition:all .4s;position:relative;overflow:hidden}
+    .cr-value::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--vc),var(--vc3));transform:scaleX(0);transition:transform .4s}
+    .cr-value:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+    .cr-value:hover::after{transform:scaleX(1)}
+    .cr-value i{font-size:36px;color:var(--vc3);margin-bottom:16px}
+    .cr-value h4{font-size:18px;font-weight:700;color:var(--ct);margin-bottom:8px}
+    .cr-value p{font-size:13px;color:var(--ctl);line-height:1.7}
+    .cr-faq{background:var(--cr)}
+    .cr-faq-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:start}
+    .cr-faq-left .sec-title{margin-bottom:32px}
+    .cr-faq-left .sec-title p{font-size:15px;color:var(--ctl);line-height:1.7;margin-top:12px}
+    .cr-faq-visual{margin-top:40px}
+    .cr-faq-badge{width:100px;height:100px;border-radius:24px;background:linear-gradient(135deg,var(--vc),#2e7d32);display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:24px;box-shadow:0 12px 32px rgba(46,125,50,.25)}
+    .cr-faq-badge svg{color:#fff}
+    .cr-faq-stat-row{display:flex;gap:16px}
+    .cr-faq-stat{background:#fff;border-radius:14px;padding:16px 20px;border:1px solid #e8f5e9;flex:1}
+    .cr-faq-stat-num{display:block;font-size:24px;font-weight:800;color:var(--vc);line-height:1}
+    .cr-faq-stat-label{display:block;font-size:12px;color:var(--ctl);margin-top:4px}
+    .cr-faq-list{display:flex;flex-direction:column;gap:10px}
+    .cr-faq-item{background:#fff;border-radius:14px;border:1px solid #f0f0f0;overflow:hidden;transition:all .3s}
+    .cr-faq-item.active{border-color:var(--vc3);box-shadow:0 4px 20px rgba(76,175,80,.12)}
+    .cr-faq-q{width:100%;padding:18px 22px;display:flex;align-items:center;gap:14px;background:none;border:none;cursor:pointer;font-size:15px;font-weight:600;color:var(--ct);text-align:left;font-family:inherit}
+    .cr-faq-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:#f0f7ee;color:var(--vc);font-size:13px;font-weight:800;flex-shrink:0;transition:all .3s}
+    .cr-faq-item.active .cr-faq-num{background:var(--vc);color:#fff}
+    .cr-faq-q i{font-size:14px;color:var(--vc);margin-left:auto;transition:transform .3s;flex-shrink:0}
+    .cr-faq-item.active .cr-faq-q i{transform:rotate(45deg)}
+    .cr-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+    .cr-faq-item.active .cr-faq-a{max-height:200px;padding:0 22px 18px 72px}
+    .cr-faq-a p{font-size:14px;color:var(--ctl);line-height:1.7}
+    .cr-positions{background:var(--cw)}
+    .cr-pos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .cr-pos{background:var(--cw);border:1px solid #eee;border-radius:20px;padding:28px;transition:all .4s;display:flex;flex-direction:column}
+    .cr-pos:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.08);border-color:var(--vc3)}
+    .cr-pos-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+    .cr-pos-icon{width:50px;height:50px;background:var(--vcp);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px}
+    .cr-pos-top h4{font-size:17px;font-weight:700;color:var(--ct);margin-bottom:4px}
+    .cr-pos-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .cr-pos-meta span{font-size:12px;color:var(--ctl);display:flex;align-items:center;gap:4px}
+    .cr-pos-desc{font-size:13px;color:var(--ctl);line-height:1.6;margin-bottom:14px;flex:1}
+    .cr-pos-skills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+    .cr-pos-skills span{background:var(--vcp);color:var(--vc);font-size:11px;padding:5px 12px;border-radius:20px;font-weight:500}
+    .cr-pos-btns{display:flex;gap:10px;margin-top:auto}
+    .cr-pos-btns .btn-apply-sm{background:var(--vc);color:var(--cw);padding:10px 22px;border-radius:25px;font-size:13px;font-weight:600;text-decoration:none;transition:all .3s;border:none;cursor:pointer;text-align:center;display:inline-block;width:100%;position:relative;overflow:hidden;z-index:1}
+    .cr-pos-btns .btn-apply-sm::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,transparent 0%,#f5a623 50%,transparent 100%);transform:translateX(100%);transition:none;z-index:-1;border-radius:25px}
+    .cr-pos-btns .btn-apply-sm.btn-apply-clicked::after{animation:waveBtn .45s ease forwards}
+    .cr-pos-btns .btn-apply-sm.btn-apply-clicked{background:var(--vc2);transform:scale(0.97)}
+    .cr-pos-btns .btn-apply-sm:hover{background:var(--vc2)}
+    .cr-pos-btns .btn-detail{background:transparent;color:var(--vc);padding:10px 22px;border-radius:25px;font-size:13px;font-weight:600;text-decoration:none;border:1.5px solid var(--vc);transition:all .3s;text-align:center;display:inline-block;width:100%}
+    .cr-pos-btns .btn-detail:hover{background:var(--vcp)}
+    .cr-final{background:var(--cw);padding:80px 0;text-align:center;color:var(--ct);position:relative;overflow:hidden}
+    .cr-final .container{position:relative;z-index:2}
+    .cr-final h2{font-size:36px;font-weight:800;margin-bottom:12px;color:var(--vc)}
+    .cr-final h2 em{color:var(--vc2)}
+    .cr-final .desc{font-size:16px;color:var(--ctl);margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .cr-final .btn-apply-lg{background:var(--vc);color:var(--cw);padding:16px 44px;border-radius:50px;font-weight:700;font-size:16px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;margin-bottom:24px}
+    .cr-final .btn-apply-lg:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(26,94,31,.35);background:var(--vc2)}
+    .cr-final .contact-info{display:flex;justify-content:center;gap:30px;flex-wrap:wrap}
+    .cr-final .contact-info a{color:var(--ctl);font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .3s}
+    .cr-final .contact-info a:hover{color:var(--vc)}
+    @media(max-width:1024px){.cr-hero-left .desc{margin-left:auto;margin-right:auto;text-align:center}.cr-hero-left .hero-btns{justify-content:center}.cr-stats-inner{grid-template-columns:repeat(2,1fr)}.cr-stat{border-bottom:1px solid #f0f0f0}.cr-why-grid,.cr-benefits-grid{grid-template-columns:repeat(2,1fr)}.cr-values-grid{grid-template-columns:repeat(2,1fr)}.cr-pos-grid{grid-template-columns:repeat(2,1fr)}.cr-hiring-timeline{grid-template-columns:repeat(3,1fr);gap:20px;justify-content:center}.cr-hiring-timeline::before{display:none}}
+    @media(max-width:767px){.sec-pad{padding:50px 0}.container{padding:0 16px}.sec-title{margin-bottom:32px}.sec-title .sub{font-size:11px;letter-spacing:2px;margin-bottom:8px}.sec-title h2{font-size:26px;line-height:1.25}.sec-title p{font-size:14px;margin-top:8px}.cr-hero{min-height:auto;padding:100px 0 40px}.cr-hero-left h1{font-size:30px}.cr-hero-left h1 .highlight{font-size:38px}.cr-hero-left .eyebrow{font-size:12px;padding:6px 14px;margin-bottom:18px}.cr-hero-left .desc{font-size:14px;line-height:1.7;margin-bottom:22px}.cr-hero-left .hero-btns{flex-direction:column;align-items:center;gap:10px}.cr-hero-left .hero-btns a{width:100%;max-width:260px;justify-content:center;padding:13px 24px;font-size:14px}.cr-stats{margin-top:-30px}.cr-stats-inner{grid-template-columns:1fr 1fr;gap:0}.cr-stat{padding:20px 12px;border-right:none;border-bottom:1px solid #f0f0f0}.cr-stat:nth-child(odd){border-right:1px solid #f0f0f0}.cr-stat:nth-last-child(-n+2){border-bottom:none}.cr-stat .stat-icon{width:40px;height:40px;margin-bottom:8px}.cr-stat .stat-icon i{font-size:16px}.cr-stat .stat-num{font-size:24px}.cr-stat .stat-label{font-size:11px}.cr-why-grid{grid-template-columns:1fr;gap:14px}.cr-why-card{padding:24px 20px}.cr-why-icon{width:56px;height:56px;border-radius:16px;margin-bottom:14px}.cr-why-icon i{font-size:22px}.cr-why-card h4{font-size:15px;margin-bottom:8px}.cr-why-card p{font-size:13px}.cr-life-card .farm-grid{grid-template-columns:repeat(3,1fr);gap:2px;height:100%}.cr-life-card .overlay h4{font-size:16px}.cr-life-card .overlay p{font-size:12px}.cr-mission-grid{grid-template-columns:1fr;gap:14px}.cr-mission-card{padding:24px 20px}.cr-mission-card i{font-size:26px;margin-bottom:12px}.cr-mission-card h4{font-size:15px}.cr-mission-card p{font-size:12px}.cr-benefits-grid{grid-template-columns:1fr 1fr;gap:12px}.cr-benefit{padding:20px 12px}.cr-benefit .b-icon{width:44px;height:44px;border-radius:12px;margin-bottom:10px}.cr-benefit .b-icon i{font-size:18px}.cr-benefit h5{font-size:12px;margin-bottom:4px}.cr-benefit p{font-size:11px}.cr-hiring-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.cr-hire-step{min-width:auto}.cr-hire-step .step-num{width:50px;height:50px;font-size:18px;margin-bottom:10px}.cr-hire-step h5{font-size:11px}.cr-hire-step p{font-size:10px}.cr-voices-grid{grid-template-columns:1fr;gap:14px}.cr-voice{padding:22px 18px}.cr-voice blockquote{font-size:13px;margin-bottom:14px;padding-left:16px}.cr-voice-author .avatar{width:42px;height:42px;font-size:16px}.cr-voice-author h5{font-size:14px}.cr-voice-author span{font-size:11px}.cr-values-grid{grid-template-columns:1fr 1fr;gap:14px}.cr-value{padding:22px 16px}.cr-value i{font-size:28px;margin-bottom:12px}.cr-value h4{font-size:14px;margin-bottom:6px}.cr-value p{font-size:11px}.cr-faq-q{padding:14px 18px;font-size:14px;gap:10px}.cr-faq-num{width:30px;height:30px;border-radius:8px;font-size:11px}.cr-faq-item.active .cr-faq-a{padding:0 18px 14px 56px}.cr-faq-a p{font-size:13px}.cr-faq-layout{grid-template-columns:1fr;gap:32px}.cr-faq-left .sec-title{text-align:center}.cr-faq-visual{display:none}.cr-pos-grid{grid-template-columns:1fr;gap:14px}.cr-pos{padding:22px 18px}.cr-pos-top h4{font-size:15px}.cr-pos-desc{font-size:12px}.cr-pos-btns{flex-direction:column;gap:8px}.cr-pos-btns a{width:100%;justify-content:center;padding:10px 16px;font-size:12px}.cr-final{padding:50px 0}.cr-final h2{font-size:26px}.cr-final .desc{font-size:14px;margin-bottom:22px}.cr-final .btn-apply-lg{padding:14px 32px;font-size:14px;width:100%;max-width:280px;justify-content:center}.cr-final .contact-info{flex-direction:column;align-items:center;gap:14px}.cr-final .contact-info a{font-size:13px}.cr-testimonials .sec-title h2{white-space:nowrap}.cr-testimonials .sec-title p{white-space:nowrap;font-size:13px}}
+    @media(max-width:400px){.cr-hero-left h1{font-size:26px}.cr-hero-left h1 .highlight{font-size:32px}.cr-stat .stat-num{font-size:22px}.cr-benefits-grid{grid-template-columns:1fr}.cr-values-grid{grid-template-columns:1fr}.cr-hiring-timeline{grid-template-columns:repeat(2,1fr)}}
+    @keyframes waveBtn{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+    .cr-back-to-top{position:fixed;bottom:90px;right:20px;width:46px;height:46px;background:var(--vc);color:var(--cw);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;z-index:99999;box-shadow:0 4px 14px rgba(26,94,31,.35);border:none;cursor:pointer;padding:0;opacity:0;visibility:hidden;transform:translateY(20px);transition:all .4s ease}
+    .cr-back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+    .cr-back-to-top:hover{background:var(--vc2);color:var(--cw);transform:translateY(-4px);box-shadow:0 8px 20px rgba(26,94,31,.45);outline:none}
+    .back-to-top{display:none!important}
+.offcanvas-header-fixed{position:sticky;top:0;background:var(--cw);z-index:10;padding-bottom:10px}
+.offcanvas-scrollable-body{overflow-y:auto;flex:1}
+.offcanvas__content{display:flex;flex-direction:column;height:100%}
+.offcanvas__wrapper{display:flex;flex-direction:column}
+    @media(max-width:767px){.cr-back-to-top{bottom:80px;right:16px;width:42px;height:42px;font-size:16px}}
+    @media(min-width:768px){.cr-hero{padding-top:100px}.cr-hero::before{background:url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/farmer1.png') center right/cover no-repeat}.cr-hero-left{transform:translateY(-30px)}.cr-why .sec-title{transform:translateY(-28px)}.cr-life .sec-title{transform:translateY(-60px)}.cr-life-grid{display:none}.cr-life-swiper{display:block;width:100%;position:relative;overflow:hidden;border-radius:20px;padding-bottom:46px;transform:translateY(-50px)}.cr-life-swiper .swiper-slide{width:100%;height:auto}.cr-life .cr-life-card{height:auto;aspect-ratio:7/4}.cr-life .cr-life-card .overlay{background:linear-gradient(transparent 40%,rgba(0,0,0,.78));padding:14px 20px}.cr-life .cr-life-card .overlay h4{font-size:20px;margin-bottom:4px}.cr-life .cr-life-card .overlay p{font-size:14px}.cr-life-swiper .swiper-pagination-bullet{width:10px;height:10px;background:#c8dcc9;opacity:1;transition:all .3s}.cr-life-swiper .swiper-pagination-bullet-active{background:var(--vc);transform:scale(1.35)}.cr-mission .sec-title{transform:translateY(-45px)}.cr-benefits .sec-title{transform:translateY(-45px)}.cr-hiring .container{transform:translateY(-70px)}.cr-mission .cr-mission-grid{transform:translateY(-45px)}.cr-benefits .cr-benefits-grid{transform:translateY(-45px)}.cr-testimonials .sec-title{transform:translateY(-70px)}.cr-testimonials .cr-voices-grid{transform:translateY(-70px)}.cr-values .sec-title{transform:translateY(-45px)}.cr-values .cr-values-grid{transform:translateY(-45px)}.cr-why,.cr-life,.cr-mission,.cr-benefits,.cr-hiring,.cr-testimonials,.cr-values{padding:56px 0}.cr-stats{margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);padding:0 40px}.cr-stats-inner{max-width:1400px;margin:0 auto}.container{max-width:1400px}.cr-life .container{max-width:1200px}.cr-faq-list{max-width:1000px}.cr-positions{transform:translateY(-40px)}.cr-positions .sec-title h2{font-size:80px}.fix-area{display:block!important}.footer-widget-wrapper .row{gap:0;display:flex;flex-wrap:nowrap}.header-right .theme-btn{display:none!important}}
+    </style>
+<style>
+        .vnp-box-footer{position:relative}
+        .vnp-subs-popup{
+          display:none;align-items:center;gap:12px;background:#fff;border-radius:14px;
+          padding:14px 16px;box-shadow:0 16px 40px rgba(20,71,47,.18);
+          border:1px solid #eef3ec;
+        }
+        .vnp-subs-popup.show{display:flex;animation:vnpSubsPop .3s ease}
+        @keyframes vnpSubsPop{from{opacity:0;transform:translate(-50%,-50%) scale(.9)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+        .vnp-subs-popup-icon{
+          width:38px;height:38px;flex:0 0 38px;border-radius:50%;
+          background:linear-gradient(135deg,#2f7d2c,#1f5f23);color:#fff;
+          display:flex;align-items:center;justify-content:center;font-size:16px;
+        }
+        .vnp-subs-popup.err .vnp-subs-popup-icon{background:linear-gradient(135deg,#c0392b,#922b21)}
+        .vnp-subs-popup-body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+        .vnp-subs-popup-title{font-size:14px;font-weight:800;color:#1a2b1e;line-height:1.2}
+        .vnp-subs-popup-desc{font-size:12px;color:#6b7280;line-height:1.4}
+        .vnp-subs-popup-close{border:none;background:none;color:#9ca3af;font-size:14px;cursor:pointer;padding:4px}
+        #vnp-subscribe-btn .vnp-subs-tick{margin-right:6px}
+        #vnp-subscribe-btn.vnp-subs-done{
+          background:#FFC107 !important;
+          background-image:none !important;
+          color:#1a2b1e !important;
+          border-color:#FFC107 !important;
+          box-shadow:0 8px 24px rgba(255,193,7,.35) !important;
+          font-weight:800;
+        }
+        #vnp-subscribe-btn.vnp-subs-done::before,
+        #vnp-subscribe-btn.vnp-subs-done::after{display:none !important}
+        #vnp-subscribe-btn.vnp-subs-done .vnp-subs-tick{
+          margin:0;width:22px;height:22px;border-radius:50%;
+          background:#1a2b1e;color:#FFC107;font-size:12px;
+          display:inline-flex;align-items:center;justify-content:center;
+          transform:none !important;
+        }
+        #vnp-subscribe-btn.vnp-subs-done{line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+        @media(max-width:767px){
+          .vnp-subs-popup{
+            position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+            z-index:99999;width:82%;max-width:330px;flex-direction:column;
+            text-align:center;padding:28px 22px;background:#2f7d2c;border:none;
+          }
+          .vnp-subs-popup::before{
+            content:'';position:fixed;inset:0;background:rgba(15,30,20,.55);z-index:-1;
+          }
+          .vnp-subs-popup.show{animation:vnpSubsPopMob .3s ease}
+          @keyframes vnpSubsPopMob{from{opacity:0;transform:translate(-50%,-46%) scale(.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+          .vnp-subs-popup-body{align-items:center}
+          .vnp-subs-popup-title{color:#fff}
+          .vnp-subs-popup-desc{color:rgba(255,255,255,.9)}
+          .vnp-subs-popup-icon{background:#FFC107;color:#1a2b1e}
+          .vnp-subs-popup-close{position:absolute;top:10px;right:12px;color:rgba(255,255,255,.8)}
+          .vnp-subs-popup.err{background:#b03a2e}
+        }
+        @media(min-width:768px){
+          .vnp-subs-popup{
+            position:absolute;left:50%;bottom:120px;transform:translateX(-50%);
+            z-index:60;background:#2f7d2c;border:none;
+            flex-direction:column;text-align:center;gap:10px;padding:20px 26px;
+            min-width:240px;
+          }
+          .vnp-subs-popup.show{animation:vnpSubsPopDesk .3s ease}
+          @keyframes vnpSubsPopDesk{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+          .vnp-subs-popup .vnp-subs-popup-icon{
+            width:52px;height:52px;flex:0 0 52px;font-size:24px;
+            background:#FFC107;color:#1a2b1e;
+          }
+          .vnp-subs-popup-title{color:#fff;font-size:15px}
+          .vnp-subs-popup-desc{color:rgba(255,255,255,.85)}
+          .vnp-subs-popup-close{color:rgba(255,255,255,.8);position:absolute;top:10px;right:12px}
+          .vnp-subs-popup.err{background:#b03a2e}
+        }
+    </style>    </head>
+    <body>
+
+        <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
+                <div class="txt-loading">
+                    <span data-text-preloader="V" class="letters-loading">V</span>
+                    <span data-text-preloader="P" class="letters-loading">P</span>
+                    <span data-text-preloader="N" class="letters-loading">N</span>
+                    <span data-text-preloader="e" class="letters-loading">e</span>
+                    <span data-text-preloader="x" class="letters-loading">x</span>
+                    <span data-text-preloader="u" class="letters-loading">u</span>
+                    <span data-text-preloader="e" class="letters-loading">e</span>
+                    <span data-text-preloader="s" class="letters-loading">s</span>
+                </div>
+                <p class="text-center">Loading</p>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back To Top Start -->
+        <button type="button" id="back-top" class="cr-back-to-top" aria-label="Back to top">
+             <i class="fa-solid fa-arrow-up"></i>
+        </button>
+
+        <!-- MouseCursor Start -->
+        <div class="mouseCursor cursor-outer"></div>
+        <div class="mouseCursor cursor-inner"></div>
+
+        <!-- Offcanvas Area Start -->
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <style>
+                            .offcanvas__logo { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; line-height: 1.05; background: url(https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg) no-repeat left center; background-size: 52px; padding-left: 66px; font-size: 24px; min-height: 60px; }
+                            .offcanvas__logo a { font-size: 24px; line-height: 1.05; }
+                            .offcanvas__logo .idlogo-vivasayam-txt { display: block; font-size: 10px; line-height: 1.25; font-weight: 600; letter-spacing: .2px; margin-top: 2px; white-space: nowrap; }
+                        </style>
+                        <div class="offcanvas-header-fixed">
+                            <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                                <div class="offcanvas__logo">
+                                    <a href="index.html">VPNexues</a><span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+                                </div>
+                                <div class="offcanvas__close">
+                                    <button><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <h3 class="offcanvas-title">Hello There!</h3>
+                            <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022. </p>
+                            <div class="mobile-menu fix mt-15"></div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="https://www.facebook.com/vpnexues" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="offcanvas-scrollable-body">
+                            <div class="offcanvas__contact">
+                                <h3>Contact Us</h3>
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="icon"><i class="far fa-phone-alt"></i></div>
+                                        <div class="content">
+                                            <p>Call Us</p>
+                                            <h4><a href="tel:+91 9943994603">+91 9943994603</a></h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fal fa-envelope"></i></div>
+                                        <div class="content">
+                                            <p>Send Email</p>
+                                            <h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4>
+                                        </div>
+                                    </li>
+                                    <li style="align-items: flex-start;">
+                                        <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
+                                        <div class="content">
+                                            <p>Location</p>
+                                            <div class="footer-location-li"><h4>Singapore</h4><span style="color:#333;font-size: 14px;">412 Race Course Road, Singapore 218660, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                            <div class="footer-location-li"><h4>India</h4><span style="color:#333;font-size: 14px;">No 312/11, Siva towers, Perumal, Malai Road, Narasothipatti, Salem Tamil Nadu, India, 636004, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="shop.html" class="theme-btn">
+                                Shop Now
+                                <i class="far fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+
+        <!-- Header Top Start -->
+        <div class="header-top-section">
+            <div class="container">
+                <div class="header-top-wrapper">
+                    <ul class="header-contact-list">
+                        <li>
+                            <i class="fal fa-envelope"></i>
+                            <a href="mailto:support@vpnexues.com">support@vpnexues.com</a>
+                        </li>
+                        <li>
+                            <i class="far fa-phone-alt"></i>
+                            <a href="tel:+91 9943994603">+91 9943994603</a> |
+                            <a href="tel:+91 8148197842">+91 8148197842</a>
+                        </li>
+                    </ul>
+                    <div class="head-right">
+                        <div class="line-shape"></div>
+                        <div class="social-icon">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Section Start -->
+        <header id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="vpn-logo-header">
+                        <div class="idlogo-vpn">
+                            <a href="index.html" class="top-logo"> VPNexues    </a>
+                            <span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+                        </div>
+                    </div>
+                    <div class="idlogo-vpn idlogo-vpn-mobile">
+                        <a href="index.html" class="header-logo"> VPNexues    </a>
+                        <span class="idlogo-vivasayam-txt" style="padding-left: 41px;position: relative;top:-8px">விவசாயம் காப்போம்</span>
+                    </div>
+
+                    <div class="mean__menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">About Us</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="javascript:void(0)">Pages</a>
+                                        <ul class="submenu" style="display: block;">
+                                            <li><a href="team.html">Our Team</a></li>
+                                            <li><a href="pricing.html">Pricing Plan</a></li>
+                                            <li><a href="testimonial.html">Testimonails</a></li>
+                                            <li><a href="faq.html">Faqs</a></li>
+                                            <li><a href="news.html">News</a></li>
+                                            <li><a href="gallery.html">Gallery</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Shop <i class="fas fa-chevron-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop</a></li>
+                                            <li><a href="pricing.html?type=small-box" onclick="goPage('small-box')">Small Box</a></li>
+                                            <li><a href="pricing.html?type=big-box" onclick="goPage('big-box')">Big Box</a></li>
+                                            <li><a href="pricing.html?type=b2b" onclick="goPage('b2b')">B2B</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Support</a></li>
+                                    <li class="vpn-desktop-careers"><a href="careers.html">Careers</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <button class="vpn-login-btn" onclick="vpnOpenModal('login')" aria-label="Login or Sign up">
+                            <i class="far fa-user"></i> Login
+                        </button>
+                        <a class="vpn-account-btn" href="account.html" aria-label="My Account">
+                            <i class="far fa-user-circle"></i> <span id="navAccountLabel">My Account</span>
+                        </a>
+                        <div class="header__hamburger my-auto">
+                            <div class="sidebar__toggle">
+                                <div class="header-bar">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </header>
+
+
+<!-- HERO -->
+<section class="cr-hero">
+  <div class="container">
+    <div class="cr-hero-left">
+      <div class="eyebrow"><i class="fa-solid fa-seedling"></i> We're Hiring</div>
+      <h1>Build the Future of<br><span class="highlight">Organic Agriculture</span></h1>
+      <p class="desc">Join Tamil Nadu's leading organic farm-to-table export company. Help us connect farmers to the world — remote-first, growth-focused, people-first.</p>
+      <div class="hero-btns">
+        <a href="#open-positions" class="btn-apply"><i class="fa-solid fa-briefcase"></i> View Open Roles</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="cr-stats">
+  <div class="container">
+    <div class="cr-stats-inner">
+      <div class="cr-stat"><div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div><div class="stat-num">16+</div><div class="stat-label">Open Roles</div></div>
+      <div class="cr-stat"><div class="stat-icon"><i class="fa-solid fa-earth-americas"></i></div><div class="stat-num">5+</div><div class="stat-label">Countries</div></div>
+      <div class="cr-stat"><div class="stat-icon"><i class="fa-solid fa-users"></i></div><div class="stat-num">50+</div><div class="stat-label">Team Members</div></div>
+      <div class="cr-stat"><div class="stat-icon"><i class="fa-solid fa-leaf"></i></div><div class="stat-num">100%</div><div class="stat-label">Remote Friendly</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY JOIN -->
+<section class="cr-why sec-pad">
+  <div class="container">
+    <div class="sec-title">
+      <div class="sub">Why VPNexues</div>
+      <p>We're not just building a company &mdash; we're building a movement. Here's what makes us different.</p>
+    </div>
+    <div class="cr-why-grid">
+      <div class="cr-why-card">
+        <div class="cr-why-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h4>Fast Growth</h4>
+        <p>Scale your career as fast as we scale our exports. Real responsibility from day one.</p>
+      </div>
+      <div class="cr-why-card">
+        <div class="cr-why-icon"><i class="fa-solid fa-globe"></i></div>
+        <h4>Global Impact</h4>
+        <p>Every project touches 5+ countries. Your work reaches farmers and families worldwide.</p>
+      </div>
+      <div class="cr-why-card">
+        <div class="cr-why-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h4>Learn & Grow</h4>
+        <p>Direct mentorship from founders, hands-on training, and a culture that rewards curiosity.</p>
+      </div>
+      <div class="cr-why-card">
+        <div class="cr-why-icon"><i class="fa-solid fa-heart"></i></div>
+        <h4>People First</h4>
+        <p>Flexible hours, remote-first policy, and a team that genuinely cares about your wellbeing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFE AT -->
+<section class="cr-life sec-pad" id="life-at">
+  <div class="container">
+    <div class="sec-title">
+      <div class="sub">Culture</div>
+      <h2>Life at <span>VPNexues</span></h2>
+      <p>We believe in ownership, growth, and freshness — both in our produce and in our culture.</p>
+    </div>
+    <div class="cr-life-grid">
+      <div class="cr-life-card">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/GRP%20Photo.jpeg" alt="Team Collaboration">
+        <div class="overlay"><h4>Team Collaboration</h4><p>Work together across borders to deliver the best organic produce.</p></div>
+      </div>
+      <div class="cr-life-card" style="padding:0;overflow:hidden">
+        <div class="farm-grid">
+          <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/farm%20visit1.jpeg" alt="Farm Visit 1">
+          <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/farm%20visit%202.jpeg" alt="Farm Visit 2">
+          <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/farm%20visit%203.jpeg" alt="Farm Visit 3">
+        </div>
+        <div class="overlay"><h4>Farm Visits</h4><p>Visit our partner farms and see how we grow organic produce.</p></div>
+      </div>
+      <div class="cr-life-card">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/win.jpeg" alt="Celebrating Wins">
+        <div class="overlay"><h4>Celebrating Wins</h4><p>Every milestone matters. We celebrate together as one family.</p></div>
+      </div>
+      <div class="cr-life-card">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/life-at-vpnexues-4.png" alt="Life at VPNexues">
+        <div class="overlay"><h4>Our Workspace</h4><p>A vibrant space where ideas grow and innovation thrives.</p></div>
+      </div>
+    </div>
+    <div class="swiper cr-life-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="cr-life-card">
+            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/GRP%20Photo.jpeg" alt="Team Collaboration">
+            <div class="overlay"><h4>Team Collaboration</h4><p>Work together across borders to deliver the best organic produce.</p></div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="cr-life-card">
+            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/life-farm-visits.jpg" alt="Farm Visits">
+            <div class="overlay"><h4>Farm Visits</h4><p>Visit our partner farms and see how we grow organic produce.</p></div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="cr-life-card">
+            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/life-celebrating-wins.jpg" alt="Celebrating Wins">
+            <div class="overlay"><h4>Celebrating Wins</h4><p>Every milestone matters. We celebrate together as one family.</p></div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="cr-life-card">
+            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/life-at-vpnexues-4.png" alt="Life at VPNexues">
+            <div class="overlay"><h4>Our Workspace</h4><p>A vibrant space where ideas grow and innovation thrives.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination cr-life-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="cr-mission sec-pad">
+  <div class="container">
+    <div class="sec-title">
+      <div class="sub">Our Mission</div>
+      <h2>Empowering <span>Farmers</span></h2>
+      <p>We're on a mission to transform organic agriculture and create lasting impact for farming communities.</p>
+    </div>
+    <div class="cr-mission-grid">
+      <div class="cr-mission-card"><i class="fa-solid fa-tractor" style="font-size:32px;margin-bottom:16px;"></i><h4>Farmer Empowerment</h4><p>Direct partnerships that ensure fair prices and sustainable practices.</p></div>
+      <div class="cr-mission-card"><i class="fa-solid fa-earth-americas"></i><h4>Global Reach</h4><p>Connecting Tamil Nadu's finest organic produce to markets across 5+ countries.</p></div>
+      <div class="cr-mission-card"><i class="fa-solid fa-recycle"></i><h4>Sustainability</h4><p>100% organic, eco-friendly packaging, and carbon-conscious logistics.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="cr-benefits sec-pad">
+  <div class="container">
+    <div class="sec-title">
+      <div class="sub">Perks</div>
+      <h2>Benefits & <span>Perks</span></h2>
+      <p>We take care of our team so they can take care of our mission.</p>
+    </div>
+    <div class="cr-benefits-grid">
+      <div class="cr-benefit"><div class="b-icon"><i class="fa-solid fa-laptop-code"></i></div><h5>Remote-First</h5><p>Work from anywhere. We trust you to deliver results.</p></div>
+      <div class="cr-benefit"><div class="b-icon"><i class="fa-solid fa-chart-line"></i></div><h5>Growth Bonuses</h5><p>Performance-linked incentives that reward your impact.</p></div>
+      <div class="cr-benefit"><div class="b-icon"><i class="fa-solid fa-graduation-cap"></i></div><h5>Learning Budget</h5><p>Annual budget for courses, books, and conferences.</p></div>
+      <div class="cr-benefit"><div class="b-icon"><i class="fa-solid fa-clock"></i></div><h5>Flexible Hours</h5><p>Work when you're most productive. No rigid 9-to-5.</p></div>
+      <div class="cr-benefit"><div class="b-icon"><i class="fa-solid fa-heartbeat"></i></div><h5>Health Benefits</h5><p>Health insurance and wellness support for you and family.</p></div>
+      <div class="cr-benefit"><div class="b-icon"><i class="fa-solid fa-seedling"></i></div><h5>Farm Fresh Produce</h5><p>Monthly organic produce delivered to your doorstep.</p></div>
+      <div class="cr-benefit"><div class="b-icon"><i class="fa-solid fa-plane"></i></div><h5>Team Retreats</h5><p>Annual offsite trips to connect and recharge together.</p></div>
+      <div class="cr-benefit"><div class="b-icon"><i class="fa-solid fa-book-open"></i></div><h5>Mentorship</h5><p>Direct access to founders and industry leaders.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HIRING PROCESS -->
+<section class="cr-hiring sec-pad">
+  <div class="container">
+    <div class="sec-title">
+      <div class="sub">Process</div>
+      <h2>Our <span>Hiring</span> Process</h2>
+      <p>Simple, transparent, and respectful of your time. Here's how we hire.</p>
+    </div>
+    <div class="cr-hiring-timeline">
+      <div class="cr-hire-step"><div class="step-num">1</div><h5>Apply</h5><p>Submit your application with a quick intro</p></div>
+      <div class="cr-hire-step"><div class="step-num">2</div><h5>Screen</h5><p>30-min call to understand your goals</p></div>
+      <div class="cr-hire-step"><div class="step-num">3</div><h5>Task</h5><p>A small real-world assignment</p></div>
+      <div class="cr-hire-step"><div class="step-num">4</div><h5>Interview</h5><p>Meet the team & culture fit</p></div>
+      <div class="cr-hire-step"><div class="step-num">5</div><h5>Welcome!</h5><p>Offer & onboarding</p></div>
+      <div class="cr-hire-step"><div class="step-num">6</div><h5>Grow</h5><p>Training & career development</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="cr-testimonials sec-pad">
+  <div class="container">
+    <div class="sec-title">
+      <div class="sub">Voices</div>
+      <h2>What Our <span>Team</span> Says</h2>
+      <p>Hear from the people who make VPNexues what it is.</p>
+    </div>
+    <div class="cr-voices-grid">
+      <div class="cr-voice">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"The growth here is unmatched. In 6 months, I went from intern to leading a project that serves 3 countries."</blockquote>
+        <div class="cr-voice-author"><div class="avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Team%20Members/libin.jpg" alt="Libin" loading="lazy" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% top;display:block;"></div><div><h5>Libin</h5><span>Frontend Developer</span></div></div>
+      </div>
+      <div class="cr-voice">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"I love that I can work from my village and still be part of a global team. The culture is incredibly supportive."</blockquote>
+        <div class="cr-voice-author"><div class="avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Team%20Members/Hemaanth.jpeg" alt="Hemaanth Kumar" loading="lazy" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% top;display:block;"></div><div><h5>Hemaanth Kumar</h5><span>AI Developer</span></div></div>
+      </div>
+      <div class="cr-voice">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"The farm fresh produce delivery is a great perk! Plus the mentorship from founders has accelerated my career."</blockquote>
+        <div class="cr-voice-author"><div class="avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Team%20Members/Satheesh.jpeg" alt="Sathish" loading="lazy" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% top;display:block;"></div><div><h5>Sathish</h5><span>Web Developer</span></div></div>
+      </div>
+      <div class="cr-voice">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"The people-first culture is real. Every voice is heard, and personal growth is genuinely encouraged here."</blockquote>
+        <div class="cr-voice-author"><div class="avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Team%20Members/Shreen.jpeg" alt="Shereen" loading="lazy" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% top;display:block;"></div><div><h5>Shereen</h5><span>HR Executive</span></div></div>
+      </div>
+      <div class="cr-voice">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"Designing for a mission that supports farmers and families keeps me motivated every single day."</blockquote>
+        <div class="cr-voice-author"><div class="avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Team%20Members/Monika.jpeg" alt="Monika" loading="lazy" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% top;display:block;"></div><div><h5>Monika</h5><span>UI/UX Designer</span></div></div>
+      </div>
+      <div class="cr-voice">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <blockquote>"Working with modern tools on real products that farmers and customers rely on is incredibly rewarding."</blockquote>
+        <div class="cr-voice-author"><div class="avatar"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Team%20Members/Jagadeesh.jpeg" alt="Jegatheeswaran" loading="lazy" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% top;display:block;"></div><div><h5>Jegatheeswaran</h5><span>Web Developer</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="cr-values sec-pad">
+  <div class="container">
+    <div class="sec-title">
+      <div class="sub">Our DNA</div>
+      <h2>Core <span>Values</span></h2>
+      <p>The principles that guide every decision we make.</p>
+    </div>
+    <div class="cr-values-grid">
+      <div class="cr-value"><i class="fa-solid fa-handshake"></i><h4>Integrity</h4><p>Transparent pricing, honest partnerships, and ethical practices at every level.</p></div>
+      <div class="cr-value"><i class="fa-solid fa-lightbulb"></i><h4>Innovation</h4><p>Embracing technology to solve age-old agricultural challenges.</p></div>
+      <div class="cr-value"><i class="fa-solid fa-users"></i><h4>Community</h4><p>Building stronger farming communities through collective growth.</p></div>
+      <div class="cr-value"><i class="fa-solid fa-leaf"></i><h4>Sustainability</h4><p>Protecting the earth while feeding the world — organic always.</p></div>
+      <div class="cr-value"><i class="fa-solid fa-trophy"></i><h4>Excellence</h4><p>Setting the gold standard for organic produce quality and service.</p></div>
+      <div class="cr-value"><i class="fa-solid fa-bolt"></i><h4>Agility</h4><p>Fast decisions, faster execution. We move at the speed of opportunity.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="cr-faq sec-pad">
+  <div class="container">
+    <div class="cr-faq-layout">
+      <div class="cr-faq-left">
+        <div class="sec-title" style="text-align:left">
+          <div class="sub">Questions</div>
+          <h2>Frequently <span>Asked</span></h2>
+          <p style="margin-top:12px">Can't find what you're looking for? Reach out to our team and we'll get back to you within 24 hours.</p>
+        </div>
+        <div class="cr-faq-visual">
+          <div class="cr-faq-badge">
+            <svg viewBox="0 0 24 24" fill="none" width="48" height="48"><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="17" r="0.5" fill="currentColor" stroke="currentColor"/></svg>
+          </div>
+          <div class="cr-faq-stat-row">
+            <div class="cr-faq-stat"><span class="cr-faq-stat-num">50+</span><span class="cr-faq-stat-label">Team Members</span></div>
+            <div class="cr-faq-stat"><span class="cr-faq-stat-num">24h</span><span class="cr-faq-stat-label">Response Time</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cr-faq-right">
+        <div class="cr-faq-list">
+          <div class="cr-faq-item active">
+            <button class="cr-faq-q"><span class="cr-faq-num">01</span>Do I need agriculture experience to apply?<i class="fa-solid fa-plus"></i></button>
+            <div class="cr-faq-a"><p>No! We value passion and skill over background. Whether you're a developer, marketer, or designer — if you care about making an impact, we want you.</p></div>
+          </div>
+          <div class="cr-faq-item">
+            <button class="cr-faq-q"><span class="cr-faq-num">02</span>Are positions fully remote?<i class="fa-solid fa-plus"></i></button>
+            <div class="cr-faq-a"><p>Most roles are fully remote. Some operations roles may require occasional on-site presence in Salem, Tamil Nadu. Each listing specifies the work arrangement.</p></div>
+          </div>
+          <div class="cr-faq-item">
+            <button class="cr-faq-q"><span class="cr-faq-num">03</span>What's the interview process like?<i class="fa-solid fa-plus"></i></button>
+            <div class="cr-faq-a"><p>Our process is simple: application → 30-min screening call → small real-world task → team interview → offer. We respect your time and aim to complete the process within 2 weeks.</p></div>
+          </div>
+          <div class="cr-faq-item">
+            <button class="cr-faq-q"><span class="cr-faq-num">04</span>Do you hire interns?<i class="fa-solid fa-plus"></i></button>
+            <div class="cr-faq-a"><p>Absolutely! We have structured internship programs with stipends, mentorship, and the potential for full-time conversion. Check our open positions for current openings.</p></div>
+          </div>
+          <div class="cr-faq-item">
+            <button class="cr-faq-q"><span class="cr-faq-num">05</span>What benefits do you offer?<i class="fa-solid fa-plus"></i></button>
+            <div class="cr-faq-a"><p>Remote-first work, flexible hours, performance bonuses, learning budgets, health benefits, monthly organic produce, and annual team retreats. See our full benefits section above.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN POSITIONS -->
+<section class="cr-positions sec-pad" id="open-positions">
+  <div class="container">
+    <div class="sec-title">
+      <div class="sub">Opportunities</div>
+      <h2>Open <span>Positions</span></h2>
+      <p>Find your role in the organic revolution.</p>
+    </div>
+    <div class="cr-pos-grid">
+      <div class="cr-pos job-card" data-type="internship remote">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-laptop-code" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Full Stack Web Developer Intern</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Build next-generation dashboards and farmer portals end to end — Node.js + React on the frontend, Java on the backend, and MongoDB for data. Freshers welcome with stipend.</p>
+        <div class="cr-pos-skills"><span>Node.js</span><span>React</span><span>Java</span><span>MongoDB</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=fullstack')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('fullstack-modal')">Details</a></div>
+      </div>
+      <div class="cr-pos job-card" data-type="fulltime remote">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-pen-nib" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>SEO Content Writer</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Full-Time</span><span><i class="fa-solid fa-location-dot"></i> Remote</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Create SEO-optimized blog posts, product descriptions, and website content that drive organic traffic and showcase our organic produce to global audiences.</p>
+        <div class="cr-pos-skills"><span>SEO Writing</span><span>Keyword Research</span><span>Content Strategy</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=seo')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('seo-modal')">Details</a></div>
+      </div>
+      <div class="cr-pos job-card" data-type="fulltime hybrid">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-bullhorn" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Sales & Marketing Executive</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Full-Time</span><span><i class="fa-solid fa-location-dot"></i> Hybrid</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Generate leads, connect with customers, promote products/services, and achieve sales targets through online and offline channels.</p>
+        <div class="cr-pos-skills"><span>B2B Sales</span><span>Digital Marketing</span><span>Client Relations</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=sales')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('sales-modal')">Details</a></div>
+      </div>
+      <div class="cr-pos job-card" data-type="fulltime onsite">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-tractor" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Agriculture Executive</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Full-Time</span><span><i class="fa-solid fa-location-dot"></i> On-Site</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Manage farmer partnerships, coordinate organic certifications, and ensure quality supply chain operations for our export business.</p>
+        <div class="cr-pos-skills"><span>Farm Management</span><span>Supply Chain</span><span>Organic Certification</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=agriculture')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('agri-modal')">Details</a></div>
+      </div>
+      <div class="cr-pos job-card" data-type="fulltime onsite">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-users" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>HR Executive</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Full-Time</span><span><i class="fa-solid fa-location-dot"></i> On-Site</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Manage recruitment, employee relations, and HR operations to build and sustain a motivated team across our farm and office locations.</p>
+        <div class="cr-pos-skills"><span>Recruitment</span><span>Employee Relations</span><span>HR Operations</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=hr')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('hr-modal')">Details</a></div>
+      </div>
+      <div class="cr-pos job-card" data-type="fulltime onsite">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-calculator" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Accountant</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Full-Time</span><span><i class="fa-solid fa-location-dot"></i> On-Site</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Manage bookkeeping, invoicing, and financial records to keep our farm-to-table export operations running smoothly and profitably.</p>
+        <div class="cr-pos-skills"><span>Tally</span><span>GST</span><span>Bookkeeping</span><span>MS Excel</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=accountant')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('accountant-modal')">Details</a></div>
+      </div>
+      <!-- Customer Support Intern -->
+      <div class="cr-pos job-card" data-type="internship remote">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-headset" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Customer Support Intern</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Handle customer communication, support requests and account coordination through phone, email and other channels while ensuring a positive customer experience.</p>
+        <div class="cr-pos-skills"><span>Communication</span><span>Problem Solving</span><span>Customer Service</span><span>Follow-up</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=customer-support')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('customer-support-modal')">Details</a></div>
+      </div>
+
+      <!-- Supply Chain Intern -->
+      <div class="cr-pos job-card" data-type="internship onsite">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-truck-fast" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Supply Chain / Export Documentation Intern</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote / Field</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Support logistics coordination, shipment documentation and export-related activities including invoices, packing lists and tracking.</p>
+        <div class="cr-pos-skills"><span>Logistics</span><span>Inventory Management</span><span>Data Analysis</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=supply-chain')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('supply-chain-modal')">Details</a></div>
+      </div>
+
+      <!-- EA to Director -->
+      <div class="cr-pos job-card" data-type="fulltime onsite">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-briefcase" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Executive Assistant (EA) to Management</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Full-Time</span><span><i class="fa-solid fa-location-dot"></i> On-site / Hybrid</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Provide high-level administrative support to the Director, manage calendars, coordinate meetings, and handle confidential communications.</p>
+        <div class="cr-pos-skills"><span>Administration</span><span>Scheduling</span><span>Communication</span><span>MS Office</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=ea-director')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('ea-director-modal')">Details</a></div>
+      </div>
+
+      <!-- PA to Director -->
+      <div class="cr-pos job-card" data-type="fulltime onsite">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-user-tie" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Personal Assistant (PA) to Director</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Full-Time</span><span><i class="fa-solid fa-location-dot"></i> On-site / Hybrid</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Manage personal and professional schedules, travel arrangements, and daily tasks for the Director with discretion and efficiency.</p>
+        <div class="cr-pos-skills"><span>Time Management</span><span>Travel Planning</span><span>Organization</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=pa-director')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('pa-director-modal')">Details</a></div>
+      </div>
+
+      <!-- Produce Quality Intern -->
+      <div class="cr-pos job-card" data-type="internship onsite">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-magnifying-glass-chart" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Produce Quality / Food Quality Intern</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote / Field</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Ensure that agricultural produce meets the required quality, freshness and safety standards through inspection and documentation.</p>
+        <div class="cr-pos-skills"><span>Quality Control</span><span>Food Safety</span><span>Inspection</span><span>Documentation</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=quality')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('quality-modal')">Details</a></div>
+      </div>
+
+      <!-- Procurement Intern -->
+      <div class="cr-pos job-card" data-type="internship onsite">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-cart-shopping" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Farmer Relations / Procurement Intern</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote / Field</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Build and maintain relationships with farmers and suppliers, support sourcing of quality agricultural produce and procurement activities.</p>
+        <div class="cr-pos-skills"><span>Procurement</span><span>Farmer Relations</span><span>Negotiation</span><span>Communication</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=procurement')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('procurement-modal')">Details</a></div>
+      </div>
+
+      <!-- Software Tester Intern -->
+      <div class="cr-pos job-card" data-type="internship remote">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-bug" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>QA / Software Tester Intern</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote / Hybrid</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Test web and mobile applications, identify and report bugs, and ensure they meet quality and functional requirements.</p>
+        <div class="cr-pos-skills"><span>Software Testing</span><span>Bug Reporting</span><span>Analytical Skills</span><span>Attention to Detail</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=software-tester')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('software-tester-modal')">Details</a></div>
+      </div>
+
+      <!-- Digital Marketing Intern -->
+      <div class="cr-pos job-card" data-type="internship remote">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-chart-line" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Digital Marketing Intern</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Assist in social media management, email campaigns, SEO optimization, and digital advertising to promote our organic brand.</p>
+        <div class="cr-pos-skills"><span>Social Media</span><span>SEO</span><span>Email Marketing</span><span>Analytics</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=digital-marketing')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('digital-marketing-modal')">Details</a></div>
+      </div>
+
+      <!-- Android Developer -->
+      <div class="cr-pos job-card" data-type="internship remote">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-brands fa-android" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>Android Developer</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Build and maintain Android applications for our organic marketplace, integrating APIs and delivering smooth user experiences.</p>
+        <div class="cr-pos-skills"><span>Kotlin</span><span>Android SDK</span><span>REST APIs</span><span>Firebase</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=android-dev')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('android-dev-modal')">Details</a></div>
+      </div>
+
+      <!-- B2B / Retail Sales Executive Intern -->
+      <div class="cr-pos job-card" data-type="internship hybrid">
+        <div class="cr-pos-top">
+          <div class="cr-pos-icon" style="display:flex;align-items:center;justify-content:center;background:#e8f5e9;"><i class="fa-solid fa-handshake" style="font-size:28px;color:#1a5e1f;"></i></div>
+          <div><h4>B2B / Retail Sales Executive Intern</h4><div class="cr-pos-meta"><span><i class="fa-solid fa-clock"></i> Internship</span><span><i class="fa-solid fa-location-dot"></i> Remote / Field</span></div></div>
+        </div>
+        <p class="cr-pos-desc">Identify and connect with potential B2B and retail customers, generate and follow up on sales leads, and achieve assigned sales targets for VP Nexues.</p>
+        <div class="cr-pos-skills"><span>B2B Sales</span><span>Lead Generation</span><span>Negotiation</span><span>Communication</span></div>
+        <div class="cr-pos-btns"><a href="javascript:void(0)" class="btn-apply-sm" onclick="applyWithAnim(this,'apply.html?job=b2b-sales')">Apply Now</a><a href="javascript:void(0)" class="btn-detail" onclick="openJobModal('b2b-sales-modal')">Details</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cr-final">
+  <div class="container">
+    <h2>Ready to Make a <span>Difference?</span></h2>
+    <p class="desc">Join us in building the future of organic agriculture. Your journey starts with a single application.</p>
+    <a href="#open-positions" class="btn-apply-lg"><i class="fa-solid fa-paper-plane"></i> Apply Now</a>
+    <div class="contact-info">
+      <a href="mailto:support@vpnexues.com"><i class="fa-solid fa-envelope"></i> support@vpnexues.com</a>
+      <a href="tel:+919876543210"><i class="fa-solid fa-phone"></i> +91 78100 77636</a>
+      <a href="#"><i class="fa-solid fa-location-dot"></i> Salem, Tamil Nadu</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function applyWithAnim(el, url) {
+  el.style.pointerEvents = 'none';
+  el.classList.add('btn-apply-clicked');
+  setTimeout(function() { window.location.href = url; }, 450);
+}
+document.querySelectorAll('.cr-faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.cr-faq-item').forEach(i => i.classList.remove('active'));
+    if (!wasActive) item.classList.add('active');
+  });
+});
+document.getElementById('back-top').addEventListener('click', function() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('back-top');
+  if (window.scrollY > 300) {
+    btn.classList.add('show');
+  } else {
+    btn.classList.remove('show');
+  }
+});
+</script>
+
+
+        <!-- Footer -->
+    <footer class="footer-section fix section-padding bg-cover pb-0 vnp-box-footer" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bg.jpg');">
+        <div class="container">
+            <div class="footer-widget-top">
+                <a href="index.html" class="logo-img footer-desktop-logo">
+                    <span class="footer-desktop-logo-copy"><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+                </a>
+                <a href="index.html" class="footer-mobile-brand" aria-label="VPNexues home">
+                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues logo">
+                    <span class="footer-mobile-brand-copy"><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+                </a>
+                <div class="content-items">
+                    <h3>Subscribe Our Newsletter To Get More Updates</h3>
+                    <form action="https://formsubmit.co/hemaanthvpnexues@gmail.com" method="POST" id="vnp-subscribe-form">
+                        <input type="hidden" name="_subject" value="New Newsletter Subscription - VPNexues">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="email" name="email" placeholder="Your email" id="vnp-subscribe-email" required>
+                        <button class="theme-btn" type="submit" id="vnp-subscribe-btn">Subscribe <i class="far fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="footer-bottom-wrapper">
+                        <p class="text-1">&copy; 2026 VPNexues Import &amp; Export. All Rights Reserved</p>
+                        <div class="social-icon">
+                            <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="bottom-img"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bottom.png" alt="img"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div id="vnp-subscribe-popup" class="vnp-subs-popup" role="alert" aria-live="polite">
+                    <div class="vnp-subs-popup-icon"><i class="fas fa-check"></i></div>
+                    <div class="vnp-subs-popup-body">
+                        <strong class="vnp-subs-popup-title">You're subscribed!</strong>
+                        <span class="vnp-subs-popup-desc">Thank you for joining the VPNexues newsletter.</span>
+                    </div>
+                    <button type="button" class="vnp-subs-popup-close" aria-label="Close"><i class="fas fa-times"></i></button>
+                </div>
+    </footer>
+
+        <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+        <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+        <script src="assets-ui/js/odometer.min.js"></script>
+        <script src="assets-ui/js/jquery.appear.min.js"></script>
+        <script src="assets-ui/js/swiper-bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+        <script src="assets-ui/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets-ui/js/wow.min.js"></script>
+        <script src="assets-ui/js/gsap.min.js"></script>
+        <script src="assets-ui/js/ScrollTrigger.min.js"></script>
+        <script src="assets-ui/js/SplitText.min.js"></script>
+        <script src="assets-ui/js/splitType.js"></script>
+        <script src="assets-ui/js/main.js"></script>
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof Swiper === 'undefined' || !document.querySelector('.cr-life-swiper')) return;
+  function initLifeSwiper() {
+    var el = document.querySelector('.cr-life-swiper');
+    if (window.matchMedia('(min-width: 768px)').matches && !el.swiper) {
+      new Swiper(el, {
+        loop: true,
+        speed: 500,
+        slidesPerView: 2,
+        spaceBetween: 20,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        pagination: { el: '.cr-life-swiper .swiper-pagination', clickable: true }
+      });
+    }
+  }
+  initLifeSwiper();
+  window.addEventListener('resize', function() {
+    var el = document.querySelector('.cr-life-swiper');
+    if (!window.matchMedia('(min-width: 768px)').matches && el && el.swiper) {
+      el.swiper.destroy(true, true);
+    } else if (window.matchMedia('(min-width: 768px)').matches && el && !el.swiper) {
+      initLifeSwiper();
+    }
+  });
+});
+        </script>
+        <script>
+    <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="shop.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-store nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Shop</span>
+            </a>
+            <a href="shop-cart.html" class="nav-item">
+                <span class="nav-icon-wrap">
+                    <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+                    <span class="nav-badge" id="nav-cart-badge" style="display:none">0</span>
+                </span>
+                <span class="nav-label">Cart</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="vpnOpenModal('login'); return false;">
+                <span class="nav-icon-wrap"><i class="far fa-user nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Account</span>
+            </a>
+        </div>
+    </nav>
+    
+  <script>
+  (function() {
+    function updateCartBadge() {
+      var badge = document.getElementById("nav-cart-badge");
+      if (!badge) return;
+      var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      var count = 0;
+      cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = "";
+      } else {
+        badge.style.display = "none";
+      }
+    }
+    updateCartBadge();
+    window.updateCartBadge = updateCartBadge;
+  })();
+  </script>
+
+<!-- Job Detail Modal: Full Stack Web Developer Intern -->
+<div id="fullstack-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('fullstack-modal')">
+  <div style="background:#fff;border-radius:20px;max-width:500px;margin:40px auto;overflow:hidden;animation:slideUp .3s ease;">
+    <div style="background:linear-gradient(135deg,#0d3b0f,#1a5e1f);padding:24px;color:#fff;position:relative;">
+      <button onclick="closeJobModal('fullstack-modal')" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;">?</button>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/icon/fullstack.jpg" alt="Full Stack" style="width:56px;height:56px;border-radius:14px;object-fit:cover;">
+        <div>
+          <h3 style="margin:0;font-size:20px;color:#fff;">Full Stack Web Developer Intern</h3>
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Internship</span>
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Remote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Duration</div><div style="font-weight:600;color:#333;">6 Months</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Stipend</div><div style="font-weight:600;color:#333;">Unpaid</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Location</div><div style="font-weight:600;color:#333;">Remote (India)</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Start Date</div><div style="font-weight:600;color:#333;">ASAP</div></div>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+      <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:16px;">As a Full Stack Web Developer Intern, you will work directly with our founding team to build and ship customer-facing web products end to end — Node.js and React on the frontend, Java on the backend, and MongoDB for data.</p>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">What You'll Do</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li><strong>Frontend (Node.js + React):</strong> Build responsive UI components, product listing pages, checkout flows, and dashboards</li>
+        <li><strong>Backend (Java):</strong> Design and build REST APIs with Java, implement business logic and third-party integrations</li>
+        <li><strong>Database (MongoDB):</strong> Model data, write queries, and manage collections</li>
+        <li>Connect frontend and backend through REST APIs and ship features end to end</li>
+        <li>Write clean, well-documented code and participate in code reviews via GitHub</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Strong grasp of HTML, CSS, and modern JavaScript (ES6+)</li>
+        <li>Hands-on experience or strong coursework in React.js</li>
+        <li>Basic understanding of Node.js and REST APIs</li>
+        <li>Familiarity with Java fundamentals (Spring Boot is a plus)</li>
+        <li>Basic knowledge of MongoDB or any NoSQL database</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Skills</h4>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Node.js</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">React</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Java</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Spring Boot</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">MongoDB</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">REST APIs</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Git/GitHub</span>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Real Ownership</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Global Products</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Founder Mentorship</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Fully Remote</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Certification</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? PPO Potential</div>
+      </div>
+      <a href="apply.html?job=fullstack" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Job Detail Modal: SEO Content Writer -->
+<div id="seo-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('seo-modal')">
+  <div style="background:#fff;border-radius:20px;max-width:500px;margin:40px auto;overflow:hidden;animation:slideUp .3s ease;">
+    <div style="background:linear-gradient(135deg,#0d3b0f,#1a5e1f);padding:24px;color:#fff;position:relative;">
+      <button onclick="closeJobModal('seo-modal')" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;">?</button>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/icon/seo.jpeg" alt="SEO Content Writer" style="width:56px;height:56px;border-radius:14px;object-fit:cover;">
+        <div>
+          <h3 style="margin:0;font-size:20px;color:#fff;">SEO Content Writer</h3>
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Fresher</span>
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Remote</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Type</div><div style="font-weight:600;color:#333;">Full-Time</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Experience</div><div style="font-weight:600;color:#333;">Fresher</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Location</div><div style="font-weight:600;color:#333;">Remote</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Start Date</div><div style="font-weight:600;color:#333;">ASAP</div></div>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+      <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:16px;">Create SEO-optimized blog posts, product descriptions, and website content that drive organic traffic and showcase our organic produce to global audiences. You'll shape the voice of VPNexues across all digital channels.</p>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">What You'll Do</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Write SEO-optimized blog posts, product pages, and landing pages</li>
+        <li>Conduct keyword research and implement on-page SEO strategies</li>
+        <li>Create compelling meta titles, descriptions, and structured data</li>
+        <li>Collaborate with the design team on content for social media</li>
+        <li>Analyze content performance using Google Analytics and Search Console</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Excellent written English with strong storytelling skills</li>
+        <li>Basic understanding of SEO principles and keyword research tools</li>
+        <li>Familiarity with WordPress or CMS platforms</li>
+        <li>Portfolio of published articles or content samples is a plus</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Skills</h4>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">SEO Writing</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Keyword Research</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Content Strategy</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">WordPress</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Google Analytics</span>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Real Ownership</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Global Audiences</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Founder Mentorship</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Fully Remote</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Certification</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Growth Path</div>
+      </div>
+      <a href="apply.html?job=seo" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Job Detail Modal: Sales & Marketing Executive -->
+<div id="sales-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('sales-modal')">
+  <div style="background:#fff;border-radius:20px;max-width:500px;margin:40px auto;overflow:hidden;animation:slideUp .3s ease;">
+    <div style="background:linear-gradient(135deg,#0d3b0f,#1a5e1f);padding:24px;color:#fff;position:relative;">
+      <button onclick="closeJobModal('sales-modal')" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;">?</button>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/icon/sales.png" alt="Sales & Marketing" style="width:56px;height:56px;border-radius:14px;object-fit:cover;">
+        <div>
+          <h3 style="margin:0;font-size:20px;color:#fff;">Sales & Marketing Executive</h3>
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Fresher</span>
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Hybrid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Type</div><div style="font-weight:600;color:#333;">Full-Time</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Experience</div><div style="font-weight:600;color:#333;">Fresher</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Location</div><div style="font-weight:600;color:#333;">Hybrid</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Start Date</div><div style="font-weight:600;color:#333;">ASAP</div></div>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+      <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:16px;">Generate leads, connect with customers, promote products/services, and achieve sales targets through online and offline channels. You'll be the bridge between our farm-fresh produce and the customers who value quality.</p>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">What You'll Do</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Identify and pursue B2B sales opportunities with retailers and distributors</li>
+        <li>Develop and execute digital marketing campaigns across social media</li>
+        <li>Build and maintain strong client relationships</li>
+        <li>Analyze sales data and market trends to optimize strategies</li>
+        <li>Represent VPNexues at trade shows and industry events</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Strong communication and interpersonal skills</li>
+        <li>Interest in organic food, agriculture, or sustainability</li>
+        <li>Basic knowledge of digital marketing channels</li>
+        <li>Willingness to travel occasionally for client meetings</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Skills</h4>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">B2B Sales</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Digital Marketing</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Client Relations</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Social Media</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Negotiation</span>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Performance Bonuses</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Global Exposure</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Mentorship</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Hybrid Work</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Certification</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Career Growth</div>
+      </div>
+      <a href="apply.html?job=sales" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Job Detail Modal: Agriculture Executive -->
+<div id="agri-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('agri-modal')">
+  <div style="background:#fff;border-radius:20px;max-width:500px;margin:40px auto;overflow:hidden;animation:slideUp .3s ease;">
+    <div style="background:linear-gradient(135deg,#0d3b0f,#1a5e1f);padding:24px;color:#fff;position:relative;">
+      <button onclick="closeJobModal('agri-modal')" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;">?</button>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/icon/agri.jpeg" alt="Agriculture Executive" style="width:56px;height:56px;border-radius:14px;object-fit:cover;">
+        <div>
+          <h3 style="margin:0;font-size:20px;color:#fff;">Agriculture Executive</h3>
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Full-Time</span>
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">On-Site</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Type</div><div style="font-weight:600;color:#333;">Full-Time</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Experience</div><div style="font-weight:600;color:#333;">1-2 Years Preferred</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Location</div><div style="font-weight:600;color:#333;">On-Site (Salem)</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Start Date</div><div style="font-weight:600;color:#333;">ASAP</div></div>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+      <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:16px;">Manage farmer partnerships, coordinate organic certifications, and ensure quality supply chain operations for our export business. You'll work directly with farming communities to uphold our organic standards.</p>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">What You'll Do</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Build and maintain relationships with organic farming partners</li>
+        <li>Coordinate organic certification processes and compliance</li>
+        <li>Monitor crop quality and supply chain logistics</li>
+        <li>Conduct farm visits and provide technical guidance</li>
+        <li>Ensure timely procurement and delivery of produce</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Background in agriculture, agronomy, or related field</li>
+        <li>Understanding of organic farming practices and certifications</li>
+        <li>Strong organizational and communication skills</li>
+        <li>Willingness to travel to farm locations regularly</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Skills</h4>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Farm Management</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Supply Chain</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Organic Certification</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Quality Control</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Field Operations</span>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Direct Farm Impact</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Export Exposure</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Industry Mentorship</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? On-Site Role</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Certification</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Career Growth</div>
+      </div>
+      <a href="apply.html?job=agriculture" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Job Detail Modal: HR Executive -->
+<div id="hr-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('hr-modal')">
+  <div style="background:#fff;border-radius:20px;max-width:500px;margin:40px auto;overflow:hidden;animation:slideUp .3s ease;">
+    <div style="background:linear-gradient(135deg,#0d3b0f,#1a5e1f);padding:24px;color:#fff;position:relative;">
+      <button onclick="closeJobModal('hr-modal')" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;">?</button>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/icon/hr.png" alt="HR Executive" style="width:56px;height:56px;border-radius:14px;object-fit:cover;">
+        <div>
+          <h3 style="margin:0;font-size:20px;color:#fff;">HR Executive</h3>
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Full-Time</span>
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">On-Site</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Type</div><div style="font-weight:600;color:#333;">Full-Time</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Experience</div><div style="font-weight:600;color:#333;">1-2 Years Preferred</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Location</div><div style="font-weight:600;color:#333;">On-Site (Salem)</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Start Date</div><div style="font-weight:600;color:#333;">ASAP</div></div>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+      <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:16px;">Manage recruitment, employee relations, and HR operations to build and sustain a motivated team across our farm and office locations. You'll shape the culture and growth of VPNexues from the inside out.</p>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">What You'll Do</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Manage end-to-end recruitment and onboarding processes</li>
+        <li>Handle employee relations, grievances, and engagement initiatives</li>
+        <li>Develop and implement HR policies and procedures</li>
+        <li>Coordinate training and development programs</li>
+        <li>Maintain employee records and ensure compliance with labor laws</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Background in Human Resources or Business Administration</li>
+        <li>Strong interpersonal and conflict resolution skills</li>
+        <li>Familiarity with HR software and payroll systems</li>
+        <li>Knowledge of Indian labor laws and compliance</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Skills</h4>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Recruitment</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Employee Relations</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">HR Operations</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Compliance</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Training & Dev</span>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Build the Team</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Global Company</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Founder Mentorship</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? On-Site Role</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Certification</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Career Growth</div>
+      </div>
+      <a href="apply.html?job=hr" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Job Detail Modal: Accountant -->
+<div id="accountant-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('accountant-modal')">
+  <div style="background:#fff;border-radius:20px;max-width:500px;margin:40px auto;overflow:hidden;animation:slideUp .3s ease;">
+    <div style="background:linear-gradient(135deg,#0d3b0f,#1a5e1f);padding:24px;color:#fff;position:relative;">
+      <button onclick="closeJobModal('accountant-modal')" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;">?</button>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/icon/business.jpeg" alt="Accountant" style="width:56px;height:56px;border-radius:14px;object-fit:cover;">
+        <div>
+          <h3 style="margin:0;font-size:20px;color:#fff;">Accountant</h3>
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">Fresher</span>
+            <span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:12px;">On-Site</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Type</div><div style="font-weight:600;color:#333;">Entry Level</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Experience</div><div style="font-weight:600;color:#333;">Fresher</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Location</div><div style="font-weight:600;color:#333;">On-Site (Salem)</div></div>
+        <div style="background:#f5f5f5;padding:12px;border-radius:12px;"><div style="font-size:11px;color:#888;text-transform:uppercase;">Start Date</div><div style="font-weight:600;color:#333;">ASAP</div></div>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+      <p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:16px;">Manage bookkeeping, invoicing, and financial records to keep our farm-to-table export operations running smoothly and profitably. You'll work closely with the founders and operations team to ensure accurate, transparent finances.</p>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">What You'll Do</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Maintain day-to-day bookkeeping and bank reconciliation</li>
+        <li>Prepare invoices, payment tracking, and vendor records</li>
+        <li>Assist with GST filings and statutory compliance</li>
+        <li>Support budgeting and monthly financial reporting</li>
+        <li>Coordinate with auditors and tax consultants</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+      <ul style="font-size:14px;color:#555;line-height:1.8;padding-left:20px;margin-bottom:16px;">
+        <li>Bachelor's degree in Commerce, Accounting, or related field</li>
+        <li>Basic knowledge of Tally and MS Excel</li>
+        <li>Familiarity with GST and Indian accounting practices</li>
+        <li>Strong attention to detail and confidentiality</li>
+      </ul>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Skills</h4>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Tally</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">GST</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Bookkeeping</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">MS Excel</span>
+        <span style="background:#e3f2fd;color:#1565c0;padding:5px 12px;border-radius:20px;font-size:12px;">Financial Reporting</span>
+      </div>
+      <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Real Ownership</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Export Exposure</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Founder Mentorship</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? On-Site Role</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Certification</div>
+        <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">?? Career Growth</div>
+      </div>
+      <a href="apply.html?job=accountant" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- Customer Support Intern Modal -->
+<div id="customer-support-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('customer-support-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('customer-support-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">Customer Support Intern</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Internship &middot; 9 months &middot; Remote / Hybrid / On-site</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">We are looking for a responsible and customer-focused Customer Support Intern to handle customer communication, support requests and account coordination while ensuring a positive customer experience.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Key Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Communicate with customers professionally through phone, email and other channels</li>
+      <li>Understand and respond to customer queries and requirements</li>
+      <li>Follow up on customer requests and ensure timely resolution</li>
+      <li>Maintain customer and account records</li>
+      <li>Coordinate with internal teams to resolve customer issues</li>
+      <li>Monitor pending requests and follow up until completion</li>
+      <li>Prepare basic customer reports when required</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Communication</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Problem Solving</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Customer Service</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Follow-up</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Patience</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Performance</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Performance evaluated based on customer communication, response time, issue resolution, follow-up, accuracy, professionalism and timely completion of assigned tasks.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Certificate</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127760; Remote Work</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Mentorship</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Performance Bonus</div>
+    </div>
+    <a href="apply.html?job=customer-support" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- Supply Chain Intern Modal -->
+<div id="supply-chain-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('supply-chain-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('supply-chain-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">Supply Chain / Export Documentation Intern</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Internship &middot; 9 months &middot; Remote / Hybrid / Field</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">We are looking for a detail-oriented Supply Chain / Export Documentation Executive Intern to support logistics coordination, shipment documentation and export-related activities.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Key Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Assist with export and shipment documentation</li>
+      <li>Coordinate with suppliers, logistics partners and internal teams</li>
+      <li>Maintain accurate shipment and logistics records</li>
+      <li>Support shipment planning, tracking and follow-up</li>
+      <li>Assist with invoices, packing lists and other required documents</li>
+      <li>Monitor shipment status and communicate updates</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Logistics</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Export Documentation</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">MS Office</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Attention to Detail</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Performance</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Performance evaluated based on documentation accuracy, coordination, follow-up, timely completion of tasks, communication and overall reliability.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Certificate</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128230; Logistics Exposure</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Mentorship</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Performance Bonus</div>
+    </div>
+    <a href="apply.html?job=supply-chain" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- EA to Director Modal -->
+<div id="ea-director-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('ea-director-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('ea-director-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">Executive Assistant (EA) to Management</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Full-Time &middot; On-site / Hybrid</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">We are looking for a proactive and highly organized Executive Assistant (EA) to support senior management with coordination, communication, documentation and day-to-day business operations.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Key Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Manage meetings, schedules and appointments</li>
+      <li>Coordinate communication between management and internal teams</li>
+      <li>Prepare reports, presentations, meeting notes and documents</li>
+      <li>Track important tasks, deadlines and follow-ups</li>
+      <li>Coordinate with different departments to ensure timely execution</li>
+      <li>Maintain organized business records and documentation</li>
+      <li>Assist in preparing management updates and operational reports</li>
+      <li>Handle confidential information with professionalism</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Administration</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Communication</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">MS Office</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Time Management</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Confidentiality</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Performance</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Performance evaluated based on coordination, communication, task follow-up, organization, responsiveness, accuracy and effective support to management.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Salary Based on Experience</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Health Insurance</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Leadership Access</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127891; Training</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127760; Hybrid Work</div>
+    </div>
+    <a href="apply.html?job=ea-director" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- PA to Director Modal -->
+<div id="pa-director-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('pa-director-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('pa-director-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">Personal Assistant (PA) to Director</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Full-Time &middot; On-site / Hybrid</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">We are looking for a highly organized and trustworthy Personal Assistant (PA) to provide direct administrative and operational support to the Director and assist in managing day-to-day priorities.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Key Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Manage the Director's schedule, meetings and appointments</li>
+      <li>Handle correspondence, calls and important communications</li>
+      <li>Prepare and organize documents, reports and presentations</li>
+      <li>Maintain confidential company and management information</li>
+      <li>Coordinate with internal teams and external contacts</li>
+      <li>Follow up on assigned tasks and ensure timely completion</li>
+      <li>Assist with travel arrangements and other administrative requirements</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Communication</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Time Management</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">MS Office</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Confidentiality</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Organization</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Performance</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Performance evaluated based on organization, responsiveness, confidentiality, communication, follow-up, reliability and effective support to management.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Salary Based on Experience</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Health Insurance</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Leadership Access</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127891; Training</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127760; Hybrid Work</div>
+    </div>
+    <a href="apply.html?job=pa-director" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- Produce Quality Intern Modal -->
+<div id="quality-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('quality-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('quality-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">Produce Quality / Food Quality Intern</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Internship &middot; 9 months &middot; Remote / Field</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">We are looking for a responsible and detail-oriented Produce Quality / Food Quality Executive Intern to ensure that agricultural produce meets the required quality, freshness and safety standards.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Key Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Inspect agricultural produce for quality, freshness and condition</li>
+      <li>Identify damaged, spoiled or unsuitable produce</li>
+      <li>Support quality checks during procurement and collection</li>
+      <li>Maintain quality inspection records</li>
+      <li>Coordinate with farmers and procurement teams regarding quality requirements</li>
+      <li>Support proper handling, packing and storage practices</li>
+      <li>Report quality issues and assist in corrective actions</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Quality Control</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Food Safety</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Inspection</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Documentation</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Performance</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Performance evaluated based on quality inspection accuracy, identification of quality issues, documentation, coordination, consistency and timely completion.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Certificate</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Mentorship</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Organic Exposure</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Performance Bonus</div>
+    </div>
+    <a href="apply.html?job=quality" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- Procurement Intern Modal -->
+<div id="procurement-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('procurement-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('procurement-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">Farmer Relations / Procurement Intern</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Internship &middot; 9 months &middot; Remote / Field</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">We are looking for a motivated Farmer Relations / Procurement Executive Intern to build and maintain relationships with farmers and suppliers and support the sourcing of quality agricultural produce.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Key Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Identify and connect with farmers and agricultural suppliers</li>
+      <li>Build and maintain strong farmer relationships</li>
+      <li>Collect information on crop availability, pricing and supply</li>
+      <li>Support procurement and sourcing activities</li>
+      <li>Coordinate with farmers regarding product requirements and quantities</li>
+      <li>Maintain farmer and supplier records</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Procurement</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Farmer Relations</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Negotiation</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Communication</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Performance</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Performance evaluated based on farmer/supplier sourcing, relationship building, procurement support, communication, follow-up and timely completion.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Certificate</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Mentorship</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Performance Bonus</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127891; Training</div>
+    </div>
+    <a href="apply.html?job=procurement" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- Software Tester Intern Modal -->
+<div id="software-tester-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('software-tester-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('software-tester-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">QA / Software Tester Intern</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Internship &middot; 9 months &middot; Remote / Hybrid / On-site</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">We are looking for a detail-oriented QA / Software Tester Intern to test our web and mobile applications and ensure they meet quality and functional requirements.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Key Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Test web and mobile applications</li>
+      <li>Identify, document and report bugs clearly</li>
+      <li>Perform functional and regression testing</li>
+      <li>Verify bug fixes and ensure issues are properly resolved</li>
+      <li>Maintain testing records and test cases</li>
+      <li>Work closely with developers and UI/UX teams</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Software Testing</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Bug Reporting</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Analytical Skills</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Attention to Detail</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Performance</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Performance evaluated based on quality of testing, accuracy of bug reporting, consistency, communication and timely completion.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Certificate</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127760; Remote Work</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Mentorship</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Performance Bonus</div>
+    </div>
+    <a href="apply.html?job=software-tester" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- Digital Marketing Intern Modal -->
+<div id="digital-marketing-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('digital-marketing-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('digital-marketing-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">Digital Marketing Intern</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Internship &middot; 9 months &middot; Remote</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Assist in social media management, email campaigns, SEO optimization, and digital advertising to promote our organic brand.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Manage social media accounts and create content</li>
+      <li>Assist in email marketing campaigns</li>
+      <li>Conduct keyword research for SEO optimization</li>
+      <li>Track and report campaign performance metrics</li>
+      <li>Support paid advertising campaigns on Google and Meta</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Social Media</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">SEO</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Email Marketing</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Analytics</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Certificate</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127760; Remote Work</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Mentorship</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Performance Bonus</div>
+    </div>
+    <a href="apply.html?job=digital-marketing" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- Android Developer Modal -->
+<div id="android-dev-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('android-dev-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('android-dev-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">Android Developer</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Internship &middot; 9 months &middot; Remote</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">Build and maintain Android applications for our organic marketplace, integrating APIs and delivering smooth user experiences.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Develop new features for Android applications</li>
+      <li>Integrate REST APIs and third-party services</li>
+      <li>Write clean, maintainable code following best practices</li>
+      <li>Fix bugs and optimize app performance</li>
+      <li>Collaborate with UI/UX designers for implementation</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Kotlin</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Android SDK</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">REST APIs</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Firebase</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Certificate</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127760; Remote Work</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Mentorship</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Performance Bonus</div>
+    </div>
+    <a href="apply.html?job=android-dev" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+<!-- B2B Sales Intern Modal -->
+<div id="b2b-sales-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);overflow-y:auto;padding:20px 16px;" onclick="if(event.target===this)closeJobModal('b2b-sales-modal')">
+  <div style="max-width:640px;margin:40px auto;background:#fff;border-radius:20px;padding:28px 24px;position:relative;animation:slideUp .3s ease;">
+    <button onclick="closeJobModal('b2b-sales-modal')" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#f5f5f5;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#10005;</button>
+    <h3 style="color:#1a5e1f;margin-bottom:4px;">B2B / Retail Sales Executive Intern</h3>
+    <p style="color:#666;font-size:13px;margin-bottom:16px;">Internship &middot; 9 months &middot; Remote / Field</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">About the Role</h4>
+    <p style="font-size:14px;color:#444;line-height:1.7;">We are looking for motivated B2B / Retail Sales Executive Interns to support business development, customer acquisition and sales activities. Openings: 2.</p>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Key Responsibilities</h4>
+    <ul style="font-size:14px;color:#444;line-height:1.8;padding-left:20px;">
+      <li>Identify and connect with potential B2B and retail customers</li>
+      <li>Generate and follow up on sales leads</li>
+      <li>Communicate with prospective customers and understand their requirements</li>
+      <li>Present VP Nexues products and services professionally</li>
+      <li>Maintain customer and lead records</li>
+      <li>Achieve assigned sales and business development targets</li>
+    </ul>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Requirements</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Communication</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Negotiation</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">Lead Generation</span>
+      <span style="background:#e8f5e9;color:#1a5e1f;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;">B2B Sales</span>
+    </div>
+    <h4 style="color:#1a5e1f;margin-bottom:8px;">Perks</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#127793; Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128202; Certificate</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; Career Growth</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#129309; Mentorship</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128176; Performance-Based Stipend</div>
+      <div style="background:#f5f5f5;padding:10px;border-radius:10px;font-size:13px;">&#128640; 2 Openings</div>
+    </div>
+    <a href="apply.html?job=b2b-sales" style="display:block;text-align:center;background:#1a5e1f;color:#fff;padding:14px;border-radius:30px;font-weight:700;font-size:15px;text-decoration:none;">Apply Now</a>
+  </div>
+</div>
+
+
+<style>
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<script>
+function openJobModal(id){document.getElementById(id).style.display='block';document.body.style.overflow='hidden'}
+function closeJobModal(id){document.getElementById(id).style.display='none';document.body.style.overflow=''}
+</script>
+  <script>
+  (function() {
+    var form = document.getElementById('vnp-subscribe-form');
+    if (!form) return;
+    var popup = document.getElementById('vnp-subscribe-popup');
+    var popupTitle = popup ? popup.querySelector('.vnp-subs-popup-title') : null;
+    var popupDesc = popup ? popup.querySelector('.vnp-subs-popup-desc') : null;
+    var popupIcon = popup ? popup.querySelector('.vnp-subs-popup-icon i') : null;
+    var popupClose = popup ? popup.querySelector('.vnp-subs-popup-close') : null;
+    var btn = document.getElementById('vnp-subscribe-btn');
+    var emailInput = document.getElementById('vnp-subscribe-email');
+    var popupTimer = null;
+
+    function showPopup(type, title, desc, icon) {
+      if (!popup) return;
+      popup.className = 'vnp-subs-popup show' + (type === 'err' ? ' err' : '');
+      popupIcon.className = icon;
+      popupTitle.textContent = title;
+      popupDesc.textContent = desc;
+      clearTimeout(popupTimer);
+      popupTimer = setTimeout(hidePopup, 4000);
+    }
+    function hidePopup() {
+      if (popup) popup.className = 'vnp-subs-popup';
+    }
+    if (popupClose) popupClose.addEventListener('click', hidePopup);
+
+    function resetBtn() {
+      btn.disabled = false;
+      btn.innerHTML = 'Subscribe <i class="far fa-arrow-right"></i>';
+      btn.classList.remove('vnp-subs-done');
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = (emailInput.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showPopup('err', 'Invalid email address', 'Please enter a valid email address.', 'fas fa-exclamation-triangle');
+        return;
+      }
+      hidePopup();
+      btn.disabled = true;
+      btn.innerHTML = 'Subscribing... <i class="far fa-arrow-right"></i>';
+      var body = '_subject=New Newsletter Subscription - VPNexues&_template=table&_captcha=false&email=' + encodeURIComponent(email);
+      var controller = new AbortController();
+      var fetchTimer = setTimeout(function() { controller.abort(); }, 12000);
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+        body: body,
+        signal: controller.signal
+      }).then(function(res) {
+        clearTimeout(fetchTimer);
+        btn.innerHTML = '<i class="fas fa-check vnp-subs-tick"></i> Subscribed';
+        btn.classList.add('vnp-subs-done');
+        emailInput.value = '';
+        showPopup('ok', "You're subscribed!", 'Thank you for joining the VPNexues newsletter.', 'fas fa-check');
+        setTimeout(resetBtn, 4000);
+      }).catch(function() {
+        clearTimeout(fetchTimer);
+        resetBtn();
+        showPopup('err', 'Something went wrong', 'Please try again or email support@vpnexues.com.', 'fas fa-exclamation-triangle');
+        setTimeout(hidePopup, 5000);
+      });
+    });
+  })();
+
+  </script>
+<script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

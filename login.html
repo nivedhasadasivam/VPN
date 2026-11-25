@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="assets-ui/js/safe-storage.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPNexues - Admin Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',sans-serif;min-height:100vh;display:flex;background:#fff;overflow:hidden}
+
+/* --- LEFT PANEL --- */
+.left-panel{flex:1;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(145deg,#0a2e15 0%,#14532a 35%,#1a6b33 65%,#0f3d1a 100%)}
+.left-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(34,197,94,.12) 0%,transparent 70%),radial-gradient(circle at 20% 80%,rgba(245,166,35,.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(16,185,129,.06) 0%,transparent 50%);pointer-events:none}
+.left-panel .lp-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.08;mix-blend-mode:overlay}
+.left-panel .floating-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.left-panel .floating-shapes span{position:absolute;border-radius:50%;opacity:.15;animation:float 20s ease-in-out infinite}
+.left-panel .floating-shapes span:nth-child(1){width:180px;height:180px;top:10%;left:5%;background:#22c55e;animation-delay:0s;animation-duration:22s}
+.left-panel .floating-shapes span:nth-child(2){width:120px;height:120px;top:60%;right:8%;background:#f5a623;animation-delay:-5s;animation-duration:18s}
+.left-panel .floating-shapes span:nth-child(3){width:90px;height:90px;bottom:15%;left:10%;background:#10b981;animation-delay:-10s;animation-duration:25s}
+.left-panel .floating-shapes span:nth-child(4){width:150px;height:150px;top:20%;right:15%;background:#84cc16;animation-delay:-3s;animation-duration:28s}
+.left-panel .floating-shapes span:nth-child(5){width:60px;height:60px;bottom:30%;right:20%;background:#22c55e;animation-delay:-7s;animation-duration:16s}
+
+.left-panel .lp-content{position:relative;z-index:2;max-width:520px;padding:0 60px;text-align:center;animation:fadeUp 1s ease .2s both}
+.left-panel .lp-brand{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:48px}
+.left-panel .lp-brand-logo{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 8px 32px rgba(34,197,94,.4),0 0 0 4px rgba(34,197,94,.15);display:flex;align-items:center;justify-content:center}
+.left-panel .lp-brand-logo img{width:42px;height:42px}
+.left-panel .lp-brand-text h1{font-size:28px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.1}
+.left-panel .lp-brand-text .tagline{font-size:14px;color:rgba(255,255,255,.7);font-weight:600;margin-top:4px;letter-spacing:.3px}
+
+.left-panel .lp-quotes{margin-bottom:40px}
+.left-panel .lp-quote{display:none;opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.left-panel .lp-quote.active{display:block;opacity:1;transform:translateY(0)}
+.left-panel .lp-quote .quote-icon{font-size:28px;color:rgba(34,197,94,.6);margin-bottom:16px;display:block;animation:pulse 2s ease-in-out infinite}
+.left-panel .lp-quote blockquote{font-size:22px;font-weight:500;line-height:1.5;color:#fff;margin:0;font-style:italic;letter-spacing:-.02em}
+.left-panel .lp-quote cite{display:block;margin-top:16px;font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.15em;font-style:normal}
+
+.left-panel .lp-features{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:32px}
+.left-panel .lp-feature{display:flex;align-items:center;gap:10px;padding:14px 20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:all .3s ease}
+.left-panel .lp-feature:hover{background:rgba(255,255,255,.1);border-color:rgba(34,197,94,.3);transform:translateY(-2px)}
+.left-panel .lp-feature i{font-size:20px;color:#22c55e;flex-shrink:0}
+.left-panel .lp-feature span{font-size:14px;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:.01em}
+
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-20px) scale(1.05)}50%{transform:translate(-20px,30px) scale(.95)}75%{transform:translate(-30px,-10px) scale(1.02)}}
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+
+
+/* --- RIGHT PANEL --- */
+.right-panel{width:560px;display:flex;align-items:center;justify-content:center;padding:40px 60px;position:relative;background:linear-gradient(135deg,#0d3b12 0%,#1a5c2a 30%,#2d7a3a 60%,#1a5c2a 100%);overflow:visible}
+.login-form{width:100%;max-width:400px;position:relative;z-index:1;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.3);border-radius:24px;padding:48px 40px;box-shadow:0 20px 60px rgba(0,0,0,.15),0 0 0 1px rgba(255,255,255,.1) inset;animation:slideUp .6s cubic-bezier(.16,1,.3,1)}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.brand{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px}
+.brand-logo{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 8px 24px rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brand-logo img{width:34px;height:34px}
+.brand-text{text-align:left}
+.brand h1{font-size:26px;font-weight:900;color:#0f172a;letter-spacing:-.5px}
+.brand .tagline{font-size:13px;color:#64748b;font-weight:600;margin-top:2px;letter-spacing:.2px}
+.login-form h2{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:4px;letter-spacing:-.3px}
+.login-form .subtitle{font-size:15px;color:#64748b;margin-bottom:36px;font-weight:400}
+.form-group{margin-bottom:22px}
+.form-group label{display:block;font-size:11px;font-weight:700;color:#334155;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.input-wrap{position:relative}
+.input-wrap .icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:18px;transition:color .2s;pointer-events:none}
+.input-wrap input{width:100%;padding:16px 52px 16px 50px;border:2px solid #e2e8f0;border-radius:14px;font-size:15px;font-family:'Nunito',sans-serif;color:#0f172a;background:#fff;transition:all .25s ease;outline:none}
+.input-wrap input::placeholder{color:#94a3b8;font-weight:500}
+.input-wrap input:focus{border-color:#22c55e;background:#fff;box-shadow:0 0 0 4px rgba(34,197,94,.12)}
+.input-wrap input:focus~.icon{color:#22c55e}
+.input-wrap input.error{border-color:#ef4444}
+.input-wrap input.error~.icon{color:#ef4444}
+.toggle-pw{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#94a3b8;font-size:18px;padding:4px;transition:color .2s}
+.toggle-pw:hover{color:#22c55e}
+.login-btn{width:100%;padding:18px;border:none;border-radius:14px;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;font-size:16px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;box-shadow:0 6px 20px rgba(34,197,94,.3);position:relative;overflow:hidden}
+.login-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#16a34a,#15803d);opacity:0;transition:opacity .3s ease}
+.login-btn:hover::before{opacity:1}
+.login-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(34,197,94,.4)}
+.login-btn:active{transform:translateY(0)}
+.login-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.login-btn i{font-size:18px;position:relative;z-index:1}
+.form-footer{text-align:center;margin-top:28px;font-size:13px;color:#64748b}
+.form-footer a{color:#22c55e;font-weight:700;text-decoration:none;transition:color .2s}
+.form-footer a:hover{color:#16a34a;text-decoration:underline}
+
+/* Error/Success */
+.msg{display:none;padding:14px 18px;border-radius:12px;font-size:13px;font-weight:600;margin-bottom:20px;align-items:center;gap:12px;animation:slideIn .3s ease}
+.msg.show{display:flex}
+.msg.error{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.msg.warning{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.msg.success{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.msg i{font-size:16px;flex-shrink:0}
+@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* --- MOBILE SPLASH (<=1024px) --- */
+.mobile-splash{display:none;width:100%;height:100vh;position:relative;overflow:hidden;background:#e8f5e9}
+.mobile-splash .splash-img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.mobile-splash .splash-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(0,0,0,.45) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 24px 48px}
+.mobile-splash .splash-logo{display:none}
+.mobile-splash .splash-title{display:none}
+.mobile-splash .splash-tagline{display:none}
+.mobile-splash .welcome-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 48px;border:none;border-radius:50px;background:#1a5c2a;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,.3);color:#fff;font-size:16px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .4s ease;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.mobile-splash .welcome-btn:hover{background:#1a5c2a;transform:translateY(-2px)}
+.mobile-splash .welcome-btn:active{background:#f5a623;border-color:#f5a623;transform:scale(0.96);box-shadow:0 2px 12px rgba(245,166,35,.4)}
+.mobile-splash .welcome-btn i{font-size:18px;transition:transform .3s ease}
+.mobile-splash .welcome-btn:active i{transform:translateX(4px)}
+
+/* Mobile sign-in form (hidden by default on mobile) */
+.mobile-login-wrap{display:none;width:100%;min-height:100vh;background:linear-gradient(135deg,#0d3b12 0%,#1a5c2a 30%,#2d7a3a 60%,#1a5c2a 100%);padding:24px 16px;align-items:center;justify-content:center;display:flex;flex-direction:column}
+.mobile-login-wrap .login-form{width:100%;max-width:400px;margin:0;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.3);border-radius:24px;padding:40px 28px;box-shadow:0 20px 60px rgba(0,0,0,.15),0 0 0 1px rgba(255,255,255,.1) inset;animation:slideUp .6s cubic-bezier(.16,1,.3,1)}
+.mobile-login-wrap .mobile-back-btn{display:flex;align-items:center;gap:6px;background:none;border:none;color:#64748b;font-size:13px;font-weight:600;font-family:'Nunito',sans-serif;cursor:pointer;margin-bottom:16px;padding:0;transition:color .2s}
+.mobile-login-wrap .mobile-back-btn:hover{color:#22c55e}
+.mobile-login-wrap .mobile-back-btn i{font-size:16px}
+.mobile-login-wrap .brand-logo{background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:16px}
+.mobile-login-wrap .brand h1{color:#0f172a}
+.mobile-login-wrap .brand .tagline{color:#64748b}
+.mobile-login-wrap .login-form h2{color:#0f172a}
+.mobile-login-wrap .login-form .subtitle{color:#64748b}
+.mobile-login-wrap .form-group label{color:#334155}
+.mobile-login-wrap .input-wrap .icon{color:#94a3b8}
+.mobile-login-wrap .input-wrap input{border-color:#e2e8f0;background:#fff;color:#0f172a}
+.mobile-login-wrap .input-wrap input::placeholder{color:#94a3b8}
+.mobile-login-wrap .input-wrap input:focus{border-color:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.12)}
+.mobile-login-wrap .input-wrap input:focus~.icon{color:#22c55e}
+.mobile-login-wrap .toggle-pw{color:#94a3b8}
+.mobile-login-wrap .toggle-pw:hover{color:#22c55e}
+.mobile-login-wrap .login-btn{background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 6px 20px rgba(34,197,94,.3)}
+.mobile-login-wrap .login-btn::before{background:linear-gradient(135deg,#16a34a,#15803d)}
+.mobile-login-wrap .login-btn:hover{box-shadow:0 10px 28px rgba(34,197,94,.4)}
+.mobile-login-wrap .form-footer{color:#64748b}
+.mobile-login-wrap .form-footer a{color:#22c55e}
+.mobile-login-wrap .form-footer a:hover{color:#16a34a}
+.mobile-login-wrap .msg.error{background:#fef2f2;color:#dc2626;border-color:#fecaca}
+.mobile-login-wrap .msg.warning{background:#fffbeb;color:#d97706;border-color:#fde68a}
+
+/* --- WELCOME SCREEN (after login) --- */
+.welcome-screen{display:none;position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0d3b12 0%,#1a5c2a 30%,#2d7a3a 60%,#1a5c2a 100%);align-items:center;justify-content:center;flex-direction:column;padding:20px}
+.welcome-screen.show{display:flex}
+.welcome-screen img{width:90%;max-width:900px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:welcomeFadeIn .8s ease}
+@keyframes welcomeFadeIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.welcome-screen-btn{margin-top:24px;display:inline-flex;align-items:center;gap:10px;padding:16px 48px;border:none;border-radius:14px;background:linear-gradient(135deg,#1a5c2a,#22C55E);color:#fff;font-size:17px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .3s ease;box-shadow:0 6px 24px rgba(26,92,42,.3);animation:welcomeFadeIn .8s ease .3s both}
+.welcome-screen-btn:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(26,92,42,.4)}
+.welcome-screen-btn i{font-size:16px;transition:transform .3s ease}
+.welcome-screen-btn:hover i{transform:translateX(4px)}
+
+@media(max-width:1024px){
+  body{overflow:auto}
+  .left-panel{display:none}
+  .right-panel{display:none}
+  .mobile-splash{display:block}
+  .mobile-login-wrap.show{display:block}
+}
+
+/* --- Desktop: centre the login card in the viewport --- */
+@media(min-width:1025px){
+  body{align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,#0d3b12 0%,#1a5c2a 30%,#2d7a3a 60%,#1a5c2a 100%)}
+  .left-panel{position:fixed;inset:0;width:50%;height:100%;left:0;flex:none;opacity:1;pointer-events:none;z-index:0;display:flex}
+  .left-panel .lp-bg{object-position:center}
+  .left-panel .lp-content{padding:0 40px}
+  .left-panel .lp-quote blockquote{font-size:20px}
+  .left-panel .lp-feature{padding:12px 18px}
+  .left-panel .lp-feature span{font-size:13px}
+  .right-panel{position:relative;z-index:1;width:50%;max-width:440px;min-height:auto;padding:0;background:transparent;overflow:visible;display:flex;align-items:center;justify-content:center}
+  .right-panel .login-form{background:rgba(255,255,255,.95);border:1px solid rgba(255,255,255,.3);box-shadow:0 20px 60px rgba(0,0,0,.15),0 0 0 1px rgba(255,255,255,.1) inset}
+  .login-form{max-width:420px}
+}
+</style>
+<script>
+function detectIpCountry() {
+    return fetch('https://ip-api.com/json/?fields=status,countryCode,city')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.status === 'success') {
+          return { country: (data.countryCode || '').toUpperCase(), city: (data.city || '').toLowerCase() };
+        }
+        return { country: '', city: '' };
+      })
+      .catch(function() { return { country: '', city: '' }; });
+}
+
+var PHONE_CONFIGS = {
+    IN: { digits: 10, pattern: /^[6-9]/, placeholder: '10-digit Indian mobile number', name: 'Indian' },
+    SG: { digits: 8, pattern: /^[89]/, placeholder: '8-digit Singaporean mobile number', name: 'Singaporean' },
+    US: { digits: 10, pattern: /^[2-9]/, placeholder: '10-digit US mobile number', name: 'US' },
+    AE: { digits: 9, pattern: /^[5]/, placeholder: '9-digit UAE mobile number', name: 'UAE' },
+    GB: { digits: 10, pattern: /^7/, placeholder: '10-digit UK mobile number (starts with 7)', name: 'UK' },
+    AU: { digits: 9, pattern: /^4/, placeholder: '9-digit Australian mobile number (starts with 4)', name: 'Australian' },
+    MY: { digits: 10, pattern: /^1/, placeholder: '10-digit Malaysian mobile number (starts with 1)', name: 'Malaysian' },
+    SA: { digits: 9, pattern: /^5/, placeholder: '9-digit Saudi mobile number (starts with 5)', name: 'Saudi' },
+    CA: { digits: 10, pattern: /^[2-9]/, placeholder: '10-digit Canadian mobile number', name: 'Canadian' },
+    DE: { digits: 11, pattern: /^1[5-7]/, placeholder: '11-digit German mobile number (starts with 15/16/17)', name: 'German' },
+    FR: { digits: 9, pattern: /^[67]/, placeholder: '9-digit French mobile number (starts with 6/7)', name: 'French' },
+    JP: { digits: 10, pattern: /^[7-9]/, placeholder: '10-digit Japanese mobile number (starts with 7-9)', name: 'Japanese' },
+    CN: { digits: 11, pattern: /^1[3-9]/, placeholder: '11-digit Chinese mobile number (starts with 1)', name: 'Chinese' },
+    BR: { digits: 11, pattern: /^9/, placeholder: '11-digit Brazilian mobile number (starts with 9)', name: 'Brazilian' },
+    MX: { digits: 10, pattern: /^[1-9]/, placeholder: '10-digit Mexican mobile number', name: 'Mexican' }
+};
+
+var detectedCountry = 'IN';
+
+window.addEventListener('resize',function(){
+  var lp=document.querySelector('.left-panel');
+  var rp=document.querySelector('.right-panel');
+  var ms=document.querySelector('.mobile-splash');
+  if(window.innerWidth>1024){
+    lp.style.display='flex';
+    rp.style.display='flex';
+    ms.style.display='none';
+    document.getElementById('mobileLoginWrap').classList.remove('show');
+    document.body.style.overflow='hidden';
+  }else{
+    lp.style.display='none';
+    rp.style.display='none';
+    document.body.style.overflow='auto';
+    if(!document.getElementById('mobileLoginWrap').classList.contains('show')){
+      ms.style.display='block';
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    detectIpCountry().then(function(result) {
+        if (result.country && PHONE_CONFIGS[result.country]) {
+            detectedCountry = result.country;
+        }
+    });
+});
+</script>
+</head>
+<body>
+
+<!-- LEFT PANEL -->
+<div class="left-panel">
+  <img class="lp-bg" src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1920&auto=format&fit=crop" alt="Fresh organic vegetables" loading="eager">
+  <div class="floating-shapes" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="lp-content">
+    <div class="lp-brand">
+      <div class="lp-brand-logo">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues">
+      </div>
+      <div class="lp-brand-text">
+        <h1>VPNexues</h1>
+        <div class="tagline">விவசாயம் காப்போம்</div>
+      </div>
+    </div>
+    <div class="lp-quotes" id="lpQuotes">
+      <div class="lp-quote active" data-index="0">
+        <span class="quote-icon"><i class="fas fa-leaf"></i></span>
+        <blockquote>"Freshness isn't a luxury.<br>It's a promise we deliver daily."</blockquote>
+        <cite>Farm to Fork Commitment</cite>
+      </div>
+      <div class="lp-quote" data-index="1">
+        <span class="quote-icon"><i class="fas fa-seedling"></i></span>
+        <blockquote>"From Salem's soil to Singapore's tables,<br>we bridge distance with freshness."</blockquote>
+        <cite>Global Reach, Local Roots</cite>
+      </div>
+      <div class="lp-quote" data-index="2">
+        <span class="quote-icon"><i class="fas fa-truck-fast"></i></span>
+        <blockquote>"30 minutes. That's all it takes<br>for farm-fresh to reach your door."</blockquote>
+        <cite>Lightning Delivery</cite>
+      </div>
+      <div class="lp-quote" data-index="3">
+        <span class="quote-icon"><i class="fas fa-handshake"></i></span>
+        <blockquote>"Trusted by farmers, chosen by families,<br>relied on by businesses worldwide."</blockquote>
+        <cite>Your Trusted Partner</cite>
+      </div>
+      <div class="lp-quote" data-index="4">
+        <span class="quote-icon"><i class="fas fa-award"></i></span>
+        <blockquote>"Quality checked at every step.<br>Because your health deserves nothing less."</blockquote>
+        <cite>Uncompromising Standards</cite>
+      </div>
+    </div>
+    <div class="lp-features">
+      <div class="lp-feature"><i class="fas fa-certificate"></i><span>Export Grade Quality</span></div>
+      <div class="lp-feature"><i class="fas fa-leaf"></i><span>100% Organic Options</span></div>
+      <div class="lp-feature"><i class="fas fa-clock"></i><span>30-Min Delivery</span></div>
+      <div class="lp-feature"><i class="fas fa-box-open"></i><span>No Minimum Order</span></div>
+      <div class="lp-feature"><i class="fas fa-sync-alt"></i><span>Easy Returns</span></div>
+      <div class="lp-feature"><i class="fas fa-headset"></i><span>24/7 Support</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE SPLASH (<=1024px) -->
+<div class="mobile-splash">
+    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/delivery%20mobile%201.png" alt="VPNexues" class="splash-img">
+  <div class="splash-overlay">
+    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues" class="splash-logo">
+    <div class="splash-title">VPNexues</div>
+    <div class="splash-tagline">விவசாயம் காப்போம்</div>
+    <button class="welcome-btn" onclick="showMobileLogin()">
+      Welcome <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- MOBILE LOGIN (<=1024px, hidden initially) -->
+<div class="mobile-login-wrap" id="mobileLoginWrap">
+  <button class="mobile-back-btn" onclick="hideMobileLogin()"><i class="fas fa-arrow-left"></i> Back</button>
+  <div class="login-form">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues">
+      </div>
+      <div class="brand-text">
+        <h1>VPNexues</h1>
+        <div class="tagline">விவசாயம் காப்போம்</div>
+      </div>
+    </div>
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Sign in to access your dashboard</p>
+    <div id="msgBoxM" class="msg"><i class="fas fa-exclamation-circle"></i><span id="msgTextM"></span></div>
+    <form id="loginFormM" onsubmit="return handleLoginM(event)">
+      <div class="form-group">
+        <label>Email Address</label>
+        <div class="input-wrap">
+          <i class="fas fa-envelope icon"></i>
+          <input type="email" id="loginEmailM" placeholder="Enter your email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock icon"></i>
+          <input type="password" id="loginPasswordM" placeholder="Enter your password" autocomplete="current-password" required>
+          <button type="button" class="toggle-pw" onclick="togglePasswordM()"><i class="fas fa-eye" id="pwIconM"></i></button>
+        </div>
+      </div>
+      <button type="submit" class="login-btn" id="loginBtnM">
+        <i class="fas fa-right-to-bracket"></i> Sign In
+      </button>
+    </form>
+    <div class="form-footer">Contact Super Admin for account access</div>
+  </div>
+</div>
+
+<!-- RIGHT PANEL (desktop only) -->
+<div class="right-panel">
+  <div class="login-form">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues">
+      </div>
+      <div class="brand-text">
+        <h1>VPNexues</h1>
+        <div class="tagline">விவசாயம் காப்போம்</div>
+      </div>
+    </div>
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Sign in to access your dashboard</p>
+    <div id="msgBox" class="msg"><i class="fas fa-exclamation-circle"></i><span id="msgText"></span></div>
+    <form id="loginForm" onsubmit="return handleLogin(event)">
+      <div class="form-group">
+        <label>Email Address</label>
+        <div class="input-wrap">
+          <i class="fas fa-envelope icon"></i>
+          <input type="email" id="loginEmail" placeholder="Enter your email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock icon"></i>
+          <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
+          <button type="button" class="toggle-pw" onclick="togglePassword()"><i class="fas fa-eye" id="pwIcon"></i></button>
+        </div>
+      </div>
+      <button type="submit" class="login-btn" id="loginBtn">
+        <i class="fas fa-right-to-bracket"></i> Sign In
+      </button>
+    </form>
+    <div class="form-footer">Contact Super Admin for account access</div>
+  </div>
+</div>
+
+<!-- WELCOME SCREEN (after login) -->
+<div class="welcome-screen" id="welcomeScreen">
+  <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Frontpage%20banner.png" alt="Welcome to VPNexues">
+  <button class="welcome-screen-btn" onclick="goToDashboard()">Go to Dashboard <i class="fas fa-arrow-right"></i></button>
+</div>
+
+<script>
+function showMobileLogin(){
+  var btn=document.querySelector('.welcome-btn');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i>';
+  btn.style.pointerEvents='none';
+  btn.style.background='#f5a623';
+  btn.style.borderColor='#f5a623';
+  setTimeout(function(){
+    document.querySelector('.mobile-splash').style.display='none';
+    document.getElementById('mobileLoginWrap').classList.add('show');
+    window.scrollTo(0,0);
+  },500);
+}
+function hideMobileLogin(){
+  document.getElementById('mobileLoginWrap').classList.remove('show');
+  document.querySelector('.mobile-splash').style.display='block';
+  var btn=document.querySelector('.welcome-btn');
+  btn.innerHTML='Welcome <i class="fas fa-arrow-right"></i>';
+  btn.style.pointerEvents='';
+  btn.style.background='';
+  btn.style.borderColor='';
+  window.scrollTo(0,0);
+}
+function togglePassword(){
+  var inp=document.getElementById('loginPassword');
+  var icon=document.getElementById('pwIcon');
+  if(inp.type==='password'){inp.type='text';icon.className='fas fa-eye-slash'}
+  else{inp.type='password';icon.className='fas fa-eye'}
+}
+function togglePasswordM(){
+  var inp=document.getElementById('loginPasswordM');
+  var icon=document.getElementById('pwIconM');
+  if(inp.type==='password'){inp.type='text';icon.className='fas fa-eye-slash'}
+  else{inp.type='password';icon.className='fas fa-eye'}
+}
+
+var admins={
+  'superadmin@vpnexues.com':{role:'super-admin',page:'super-admin-dashboard.html'},
+  'india@vpnexues.com':{role:'sub-admin',page:'sub-admin-india.html'},
+  'uae@vpnexues.com':{role:'sub-admin',page:'sub-admin-uae.html'},
+  'usa@vpnexues.com':{role:'sub-admin',page:'sub-admin-us.html'},
+  'us@vpnexues.com':{role:'sub-admin',page:'sub-admin-us.html'},
+  'singapore@vpnexues.com':{role:'sub-admin',page:'sub-admin-singapore.html'}
+};
+
+(function(){
+  var s=localStorage.getItem('vpnexuesAuth');
+  var role=localStorage.getItem('vpnexuesRole');
+  if(s==='true' && role){
+    var email=localStorage.getItem('vpnexuesEmail');
+    var a=admins[email];
+    if(a && a.role===role) window.location.href=a.page;
+  }
+})();
+
+function handleLogin(e){
+  e.preventDefault();
+  var email=document.getElementById('loginEmail').value.toLowerCase().trim();
+  var password=document.getElementById('loginPassword').value;
+  var btn=document.getElementById('loginBtn');
+  var msgBox=document.getElementById('msgBox');
+  var msgText=document.getElementById('msgText');
+  msgBox.className='msg';
+  if(!email||!password){showMsg('Please enter email and password','error');return false}
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRe.test(email)){showMsg('Please enter a valid email address','error');return false}
+  var a=admins[email];
+  if(!a){showMsg('Access Denied. No dashboard is assigned to this account. Please contact the Super Administrator.','warning');return false}
+  btn.disabled=true;
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Signing in...';
+  setTimeout(function(){
+    localStorage.setItem('vpnexuesAuth','true');
+    localStorage.setItem('vpnexuesRole',a.role);
+    localStorage.setItem('vpnexuesEmail',email);
+    localStorage.setItem('vpnexuesName',email.split('@')[0]);
+    localStorage.setItem('vpnexuesLoginTime',new Date().toISOString());
+    window._pendingRedirect = a.page;
+    showWelcomeScreen();
+  },500);
+  return false;
+}
+function handleLoginM(e){
+  e.preventDefault();
+  var email=document.getElementById('loginEmailM').value.toLowerCase().trim();
+  var password=document.getElementById('loginPasswordM').value;
+  var btn=document.getElementById('loginBtnM');
+  var msgBox=document.getElementById('msgBoxM');
+  var msgText=document.getElementById('msgTextM');
+  msgBox.className='msg';
+  if(!email||!password){showMsgM('Please enter email and password','error');return false}
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRe.test(email)){showMsgM('Please enter a valid email address','error');return false}
+  var a=admins[email];
+  if(!a){showMsgM('Access Denied. No dashboard is assigned to this account. Please contact the Super Administrator.','warning');return false}
+  btn.disabled=true;
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Signing in...';
+  setTimeout(function(){
+    localStorage.setItem('vpnexuesAuth','true');
+    localStorage.setItem('vpnexuesRole',a.role);
+    localStorage.setItem('vpnexuesEmail',email);
+    localStorage.setItem('vpnexuesName',email.split('@')[0]);
+    localStorage.setItem('vpnexuesLoginTime',new Date().toISOString());
+    window._pendingRedirect = a.page;
+    showWelcomeScreen();
+  },500);
+  return false;
+}
+
+function showMsg(text,type){
+  var msgBox=document.getElementById('msgBox');
+  var msgText=document.getElementById('msgText');
+  msgBox.className='msg show '+type;
+  msgText.textContent=text;
+  var btn=document.getElementById('loginBtn');
+  btn.disabled=false;
+  btn.innerHTML='<i class="fas fa-right-to-bracket"></i> Sign In';
+}
+function showMsgM(text,type){
+  var msgBox=document.getElementById('msgBoxM');
+  var msgText=document.getElementById('msgTextM');
+  msgBox.className='msg show '+type;
+  msgText.textContent=text;
+  var btn=document.getElementById('loginBtnM');
+  btn.disabled=false;
+  btn.innerHTML='<i class="fas fa-right-to-bracket"></i> Sign In';
+}
+function showWelcomeScreen(){
+  document.getElementById('welcomeScreen').classList.add('show');
+}
+function goToDashboard(){
+  window.location.href = window._pendingRedirect || 'super-admin-dashboard.html';
+}
+function doLogout(){
+  localStorage.removeItem('vpnexuesAuth');
+  localStorage.removeItem('vpnexuesRole');
+  localStorage.removeItem('vpnexuesEmail');
+  localStorage.removeItem('vpnexuesName');
+  localStorage.removeItem('vpnexuesLoginTime');
+  window.location.href='login.html';
+}
+
+(function(){
+  var quotes=document.querySelectorAll('.lp-quote');
+  var idx=0;
+  function rotate(){
+    quotes[idx].classList.remove('active');
+    idx=(idx+1)%quotes.length;
+    quotes[idx].classList.add('active');
+  }
+  setInterval(rotate,5000);
+})();
+</script>
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

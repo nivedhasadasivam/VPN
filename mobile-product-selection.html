@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VPNexues - Build Your Small Box</title>
+    <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+    <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+    <!--<< Mobile Bottom Navigation.css >>-->
+  <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.2">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .mobile-header {
+            background: #fff;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2d5a27;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .tamil-text {
+            font-size: 10px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .login-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0f0f0;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .menu-btn {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Green Section */
+        .green-section {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            padding: 20px 16px;
+            color: white;
+        }
+
+        .breadcrumb {
+            font-size: 11px;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        .box-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .box-icon {
+            font-size: 24px;
+        }
+
+        .box-description {
+            font-size: 13px;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        /* Product Selection Area */
+        .product-section {
+            background: white;
+            padding: 20px 16px;
+            min-height: calc(100vh - 320px);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .pricing-info {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-card.selected {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+
+        .product-info {
+            padding: 10px;
+        }
+
+        .product-name {
+            font-size: 11px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .product-price {
+            font-size: 14px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 24px;
+            height: 24px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .product-card:not(.selected) .checkmark {
+            display: none;
+        }
+
+        /* In Cart Section */
+        .in-cart-section {
+            background: white;
+            padding: 16px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-icon {
+            font-size: 20px;
+            color: #4CAF50;
+        }
+
+        .cart-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .selected-count {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .up-arrow-btn {
+            width: 44px;
+            height: 44px;
+            background: #4CAF50;
+            border: none;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            padding: 8px 0;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            color: #999;
+            font-size: 10px;
+            padding: 4px 8px;
+        }
+
+        .nav-item.active {
+            color: #4CAF50;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #4CAF50;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Add padding to body for bottom nav */
+        body {
+            padding-bottom: 70px;
+        }
+    </style>
+
+<link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+</head>
+<body>
+    <!-- Header -->
+    <div class="mobile-header">
+        <div class="header-left">
+            <div class="logo-area">
+                <div class="logo-text">
+                    <div class="logo-icon">🏠</div>
+                    VPNexues
+                </div>
+                <div class="tamil-text">விவசாயம் காப்போம்</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="#" class="login-btn">
+                <i class="fas fa-user"></i>
+                Login
+            </a>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Green Section -->
+    <div class="green-section">
+        <div class="breadcrumb">HOME > SMALL BOX</div>
+        <div class="box-title">
+            <span class="box-icon">📦</span>
+            Build Your Small Box
+        </div>
+        <div class="box-description">Select minimum 10 products. Items after 10 are charged at +15% premium rate.</div>
+    </div>
+
+    <!-- Product Selection Area -->
+    <div class="product-section">
+        <div class="section-title">Select Your Products</div>
+        <div class="pricing-info">First 10 items: standard price. After 10 items: +15% per item. Mix any categories</div>
+        
+        <div class="product-grid">
+            <div class="product-card selected" onclick="toggleProduct(this)">
+                <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/fruits%20images/carrots.jpg" alt="Organic Carrots" class="product-image" onerror="this.src='https://via.placeholder.com/150x100?text=Carrots'">
+                <div class="checkmark">✓</div>
+                <div class="product-info">
+                    <div class="product-name">ORGANIC CARROTS</div>
+                    <div class="product-price">$2.80</div>
+                </div>
+            </div>
+
+            <div class="product-card selected" onclick="toggleProduct(this)">
+                <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/fruits%20images/tomatoes.jpg" alt="Vine Tomatoes" class="product-image" onerror="this.src='https://via.placeholder.com/150x100?text=Tomatoes'">
+                <div class="checkmark">✓</div>
+                <div class="product-info">
+                    <div class="product-name">VINE TOMATOES</div>
+                    <div class="product-price">$3.20</div>
+                </div>
+            </div>
+
+            <div class="product-card selected" onclick="toggleProduct(this)">
+                <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/fruits%20images/spinach.jpg" alt="Fresh Spinach" class="product-image" onerror="this.src='https://via.placeholder.com/150x100?text=Spinach'">
+                <div class="checkmark">✓</div>
+                <div class="product-info">
+                    <div class="product-name">FRESH SPINACH</div>
+                    <div class="product-price">$2.50</div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="toggleProduct(this)">
+                <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/fruits%20images/corn.jpg" alt="Sweet Corn" class="product-image" onerror="this.src='https://via.placeholder.com/150x100?text=Corn'">
+                <div class="checkmark">✓</div>
+                <div class="product-info">
+                    <div class="product-name">SWEET CORN</div>
+                    <div class="product-price">$1.90</div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="toggleProduct(this)">
+                <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/fruits%20images/broccoli.jpg" alt="Broccoli" class="product-image" onerror="this.src='https://via.placeholder.com/150x100?text=Broccoli'">
+                <div class="checkmark">✓</div>
+                <div class="product-info">
+                    <div class="product-name">BROCCOLI</div>
+                    <div class="product-price">$3.50</div>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="toggleProduct(this)">
+                <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/fruits%20images/peppers.jpg" alt="Bell Peppers" class="product-image" onerror="this.src='https://via.placeholder.com/150x100?text=Peppers'">
+                <div class="checkmark">✓</div>
+                <div class="product-info">
+                    <div class="product-name">BELL PEPPERS</div>
+                    <div class="product-price">$4.20</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Summary Bar for Small Box Page -->
+    <div class="mobile-cart-summary small-box-cart" id="mobile-cart-summary">
+        <div class="cart-info">
+            <i class="fas fa-shopping-cart cart-icon"></i>
+            <div class="cart-text">
+                <span class="cart-label">In Cart</span>
+                <span class="cart-count" id="mobile-cart-count">0 selected</span>
+            </div>
+        </div>
+        <button class="cart-action" onclick="goPage('cart-page')">View Cart</button>
+    </div>
+<script>
+        function toggleProduct(card) {
+            card.classList.toggle('selected');
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const selectedCount = document.querySelectorAll('.product-card.selected').length;
+            
+            // Update the cart summary count
+            const cartCount = document.getElementById('mobile-cart-count');
+            const cartSummary = document.getElementById('mobile-cart-summary');
+            
+            if (cartCount) {
+                cartCount.textContent = selectedCount + ' selected';
+            }
+            
+            // Show/hide cart summary based on selection
+            if (cartSummary) {
+                if (selectedCount > 0) {
+                    cartSummary.classList.add('show');
+                } else {
+                    cartSummary.classList.remove('show');
+                }
+            }
+        }
+
+        // Initialize counter on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+        });
+    </script>
+    <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="shop.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-store nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Shop</span>
+            </a>
+            <a href="shop-cart.html" class="nav-item">
+                <span class="nav-icon-wrap">
+                    <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+                    <span class="nav-badge" id="nav-cart-badge" style="display:none">0</span>
+                </span>
+                <span class="nav-label">Cart</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="vpnOpenModal('login'); return false;">
+                <span class="nav-icon-wrap"><i class="far fa-user nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Account</span>
+            </a>
+        </div>
+    </nav>
+    
+  <script>
+  (function() {
+    function updateCartBadge() {
+      var badge = document.getElementById("nav-cart-badge");
+      if (!badge) return;
+      var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      var count = 0;
+      cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = "";
+      } else {
+        badge.style.display = "none";
+      }
+    }
+    updateCartBadge();
+    window.updateCartBadge = updateCartBadge;
+  })();
+  </script>
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+<script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+</body>
+</html>

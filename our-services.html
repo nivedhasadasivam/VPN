@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- ========== Meta Tags ========== -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="modinatheme">
+        <meta name="description" content="Learn how VPNexues supports businesses with import and export needs, from sourcing and documentation to delivery coordination. Request a quote.">
+        <!-- ======== Page title ============ -->
+        <title>Our Services - VPNexues Import &amp; Export</title>
+        <!--<< Favicon >>-->
+        <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+        <link rel="shortcut icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" type="image/x-icon" />
+        <!--<< Bootstrap min.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+        <!--<< Font Awesome.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+        <!--<< Animate.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/animate.min.css?v=1.0">
+        <!--<< Magnific Popup.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/magnific-popup.css">
+        <!--<< MeanMenu.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+        <!--<< Odometer.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/odometer.css">
+        <!--<< Swiper Bundle.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/swiper-bundle.min.css">
+        <!--<< Nice Select.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/nice-select.css">
+        <!--<< Main.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/main.css">
+        <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css">
+
+        <!--
+          COPY NOTE FOR EDITORS
+          ---------------------
+          The service cards marked with [EDIT: ...] are draft wording where the existing
+          website does not confirm the exact service. Replace those notes with confirmed
+          details before publishing. Confirmed facts used here: VPNexues handles full-scale
+          import/export of organic vegetables, fruits, spices, grains and food ingredients;
+          sourcing, export documentation and logistics are mentioned on index.html and
+          help-support.html; markets come from about.html. Quote CTA targets the B2B
+          enquiry form on pricing.html?type=b2b.
+        -->
+        <style>
+            .breadcrumb-wrapper { display: none !important; }
+
+            /* ── Our Services: hero ── */
+            .os-hero {
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+                padding: 54px 16px 62px;
+                text-align: center;
+                background-color: #14532d;
+                background-image:
+                    linear-gradient(135deg, rgba(20,83,45,.80) 0%, rgba(26,107,51,.70) 45%, rgba(45,138,62,.62) 100%),
+                    url('images/farm%20fresh.jpg');
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            .os-hero::before,
+            .os-hero::after {
+                content: '';
+                position: absolute;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(255,255,255,.10) 0%, transparent 70%);
+                pointer-events: none;
+            }
+            .os-hero::before { top: -55%; left: -12%; width: 62%; height: 190%; }
+            .os-hero::after { right: -18%; bottom: -110%; width: 58%; height: 200%; }
+            .os-hero .container { position: relative; z-index: 1; }
+            .os-crumb {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0;
+                list-style: none;
+                margin: 0 0 18px;
+                padding: 0;
+                font-size: 11px;
+                font-weight: 800;
+                letter-spacing: .14em;
+                text-transform: uppercase;
+                color: rgba(255,255,255,.72);
+            }
+            .os-crumb li { display: inline-flex; align-items: center; }
+            .os-crumb li + li::before { content: '/'; margin: 0 10px; opacity: .55; }
+            .os-crumb a { color: inherit; text-decoration: none; }
+            .os-crumb a:hover { color: #fff; }
+            .os-hero-icon {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                background: rgba(255,255,255,.14);
+                border: 1px solid rgba(255,255,255,.38);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 18px;
+            }
+            .os-hero-icon i { font-size: 29px; color: #fff; }
+            .os-hero h1 {
+                font-family: 'Nunito', sans-serif;
+                font-size: clamp(32px, 6vw, 52px);
+                font-weight: 900;
+                line-height: 1.1;
+                color: #fff;
+                margin: 0 0 12px;
+                text-shadow: 0 2px 14px rgba(0,0,0,.48);
+            }
+            .os-hero p {
+                max-width: 730px;
+                margin: 0 auto 26px;
+                color: rgba(255,255,255,.92);
+                font-size: clamp(14px, 2vw, 17px);
+                font-weight: 600;
+                line-height: 1.65;
+                text-shadow: 0 1px 10px rgba(0,0,0,.42);
+            }
+            .os-btn.theme-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                height: auto;
+                min-height: 52px;
+                line-height: 1.2;
+                padding: 14px 30px;
+                border-radius: 10px;
+                background: #fff;
+                color: #14532d;
+                font-size: 15px;
+                font-weight: 900;
+                text-decoration: none;
+                box-shadow: 0 10px 24px rgba(0,0,0,.14);
+                transition: transform .22s ease, box-shadow .22s ease, background .22s ease, color .22s ease;
+            }
+            .os-btn.theme-btn::before { display: none; }
+            .os-btn.theme-btn i { margin-left: 0; transform: none; font-size: 13px; }
+            .os-btn.theme-btn:hover {
+                color: #14532d;
+                background: #f4fbf1;
+                transform: translateY(-2px);
+                box-shadow: 0 14px 30px rgba(0,0,0,.20);
+            }
+            .os-btn--outline.theme-btn {
+                background: transparent;
+                color: #fff;
+                border: 1px solid rgba(255,255,255,.55);
+                box-shadow: none;
+            }
+            .os-btn--outline.theme-btn:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+            /* ── Shared section furniture ── */
+            .os-section { padding: 66px 16px; }
+            .os-section--tint { background: #f8faf6; }
+            .os-wrap { max-width: 1140px; margin: 0 auto; }
+            .os-sec-head { max-width: 700px; margin: 0 auto 38px; text-align: center; }
+            .os-eyebrow {
+                display: inline-block;
+                margin-bottom: 10px;
+                color: #2d8a3e;
+                font-size: 12px;
+                font-weight: 900;
+                letter-spacing: .16em;
+                text-transform: uppercase;
+            }
+            .os-sec-head h2 {
+                margin: 0 0 10px;
+                color: #173d22;
+                font-family: 'Nunito', sans-serif;
+                font-size: clamp(26px, 4vw, 38px);
+                font-weight: 900;
+                line-height: 1.2;
+            }
+            .os-sec-head p { margin: 0; color: #637566; font-size: 15px; line-height: 1.7; }
+            .os-edit {
+                color: #8a6d2f;
+                background: #fbf5e6;
+                border-radius: 4px;
+                padding: 0 3px;
+            }
+
+            /* ── Services grid ── */
+            .os-services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+            .os-service-card {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                padding: 26px 24px 24px;
+                background: #fff;
+                border: 1px solid #e3ede1;
+                border-radius: 16px;
+                box-shadow: 0 6px 22px rgba(20,60,20,.05);
+                transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+            }
+            .os-service-card::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #2d8a3e, #8bc34a);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform .3s ease;
+            }
+            .os-service-card:hover {
+                transform: translateY(-4px);
+                border-color: #cfe3cb;
+                box-shadow: 0 14px 34px rgba(20,60,20,.12);
+            }
+            .os-service-card:hover::after { transform: scaleX(1); }
+            .os-service-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; }
+            .os-service-icon {
+                width: 52px;
+                height: 52px;
+                border-radius: 14px;
+                background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+                color: #2d6a2e;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 21px;
+            }
+            .os-service-num {
+                color: #b9cfb6;
+                font-family: 'Nunito', sans-serif;
+                font-size: 13px;
+                font-weight: 900;
+                letter-spacing: .06em;
+            }
+            .os-service-card h3 {
+                margin: 0 0 10px;
+                color: #1a3c1a;
+                font-family: 'Nunito', sans-serif;
+                font-size: 18px;
+                font-weight: 800;
+                line-height: 1.3;
+            }
+            .os-service-card p { flex: 1; margin: 0 0 18px; color: #66766a; font-size: 14px; line-height: 1.65; }
+            .os-service-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                color: #2d6a2e;
+                font-size: 13px;
+                font-weight: 800;
+                text-decoration: none;
+            }
+            .os-service-link i { font-size: 11px; transition: transform .2s ease; }
+            .os-service-card:hover .os-service-link i { transform: translateX(4px); }
+            .os-service-link:focus-visible,
+            .os-spot-link:focus-visible,
+            .os-btn:focus-visible { outline: 3px solid #f8b417; outline-offset: 3px; }
+
+            /* ── How it works ── */
+            .os-process { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+            .os-process::before {
+                content: '';
+                position: absolute;
+                top: 34px;
+                right: 8%;
+                left: 8%;
+                height: 2px;
+                background: linear-gradient(90deg, #cfe3cb, #2d8a3e, #cfe3cb);
+                z-index: 0;
+            }
+            .os-step { position: relative; z-index: 1; text-align: center; }
+            .os-step-icon {
+                width: 68px;
+                height: 68px;
+                margin: 0 auto 16px;
+                border: 2px solid #cfe3cb;
+                border-radius: 50%;
+                background: #fff;
+                color: #2d6a2e;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                box-shadow: 0 6px 16px rgba(20,60,20,.06);
+            }
+            .os-step:nth-child(2) .os-step-icon { border-color: #8bc34a; }
+            .os-step:nth-child(3) .os-step-icon { border-color: #5b8c51; }
+            .os-step:nth-child(4) .os-step-icon { background: #2d8a3e; border-color: #2d8a3e; color: #fff; }
+            .os-step-no {
+                display: block;
+                margin-bottom: 6px;
+                color: #2d8a3e;
+                font-size: 11px;
+                font-weight: 900;
+                letter-spacing: .14em;
+            }
+            .os-step h3 { margin: 0 0 8px; color: #1a3c1a; font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; line-height: 1.35; }
+            .os-step p { margin: 0; color: #6b7b6b; font-size: 13px; line-height: 1.6; }
+
+            /* ── Products and markets ── */
+            .os-spot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+            .os-spot-card {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                background: #fff;
+                border: 1px solid #e3ede1;
+                border-radius: 16px;
+                box-shadow: 0 6px 22px rgba(20,60,20,.05);
+            }
+            .os-spot-media { height: 172px; overflow: hidden; background: #e8f5e9; }
+            .os-spot-media img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform .4s ease;
+            }
+            .os-spot-card:hover .os-spot-media img { transform: scale(1.04); }
+            .os-spot-body { display: flex; flex: 1; flex-direction: column; padding: 24px; }
+            .os-spot-body h3 { margin: 0 0 10px; color: #173d22; font-family: 'Nunito', sans-serif; font-size: 20px; font-weight: 900; }
+            .os-spot-body p { flex: 1; margin: 0 0 16px; color: #66766a; font-size: 14px; line-height: 1.65; }
+            .os-spot-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; }
+            .os-spot-tags li {
+                padding: 6px 12px;
+                border-radius: 999px;
+                background: #eef7ec;
+                color: #2d6a2e;
+                font-size: 12px;
+                font-weight: 800;
+            }
+            .os-spot-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+            .os-spot-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 16px;
+                border: 1px solid #cfe3cb;
+                border-radius: 8px;
+                color: #2d6a2e;
+                font-size: 13px;
+                font-weight: 800;
+                text-decoration: none;
+                transition: background .2s ease, transform .2s ease;
+            }
+            .os-spot-link:hover { background: #eef7ec; transform: translateY(-2px); }
+            .os-spot-link--solid { background: #2d8a3e; border-color: #2d8a3e; color: #fff; }
+            .os-spot-link--solid:hover { background: #236f31; }
+
+            /* ── Closing CTA ── */
+            .os-cta {
+                padding: 54px 20px;
+                text-align: center;
+                background: linear-gradient(135deg, #14532d, #1a6b33);
+            }
+            .os-cta h2 { margin: 0 0 10px; color: #fff; font-family: 'Nunito', sans-serif; font-size: clamp(23px, 4vw, 32px); font-weight: 900; }
+            .os-cta p { margin: 0 auto 24px; max-width: 620px; color: rgba(255,255,255,.82); font-size: 15px; line-height: 1.65; }
+            .os-cta-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+            /* ── Responsive ── */
+            @media (max-width: 1024px) {
+                .os-services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                .os-process { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 34px; }
+                .os-process::before { display: none; }
+            }
+            @media (max-width: 767px) {
+                .os-hero { padding: 44px 16px 54px; }
+                .os-hero-icon { width: 58px; height: 58px; margin-bottom: 14px; }
+                .os-hero-icon i { font-size: 24px; }
+                .os-section { padding: 48px 16px; }
+                .os-sec-head { margin-bottom: 28px; }
+                .os-services-grid { grid-template-columns: 1fr; gap: 14px; }
+                .os-spot-grid { grid-template-columns: 1fr; gap: 16px; }
+                .os-service-card { padding: 22px 20px; }
+            }
+            @media (max-width: 480px) {
+                .os-process { grid-template-columns: 1fr; row-gap: 26px; }
+                .os-step { display: grid; grid-template-columns: 58px 1fr; column-gap: 14px; text-align: left; align-items: start; }
+                .os-step-icon { grid-row: span 2; width: 54px; height: 54px; margin: 0; font-size: 20px; }
+                .os-step-no { margin-bottom: 2px; }
+                .os-step h3 { margin-bottom: 4px; }
+                .os-step p { grid-column: 2; }
+                .os-spot-media { height: 140px; }
+            }
+        </style>
+    
+    <link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+</head>
+    <body>
+
+        <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
+                <div class="txt-loading">
+                    <span data-text-preloader="V" class="letters-loading">V</span>
+                    <span data-text-preloader="P" class="letters-loading">P</span>
+                    <span data-text-preloader="N" class="letters-loading">N</span>
+                    <span data-text-preloader="e" class="letters-loading">e</span>
+                    <span data-text-preloader="x" class="letters-loading">x</span>
+                    <span data-text-preloader="u" class="letters-loading">u</span>
+                    <span data-text-preloader="e" class="letters-loading">e</span>
+                    <span data-text-preloader="s" class="letters-loading">s</span>
+                </div>
+                <p class="text-center">Loading</p>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-left"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                    <div class="col-3 loader-section section-right"><div class="bg"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back To Top Start -->
+        <button id="back-top" class="back-to-top"><i class="far fa-arrow-up"></i></button>
+
+        <!-- MouseCursor Start -->
+        <div class="mouseCursor cursor-outer"></div>
+        <div class="mouseCursor cursor-inner"></div>
+
+        <!-- Offcanvas Area Start -->
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas-header-fixed">
+                            <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                                <div class="offcanvas__logo">
+                                    <a href="index.html">VPNexues</a>
+                                </div>
+                                <div class="offcanvas__close">
+                                    <button><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <h3 class="offcanvas-title">Hello There!</h3>
+                            <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022. </p>
+                            <div class="mobile-menu fix mt-15"></div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="https://www.facebook.com/vpnexues" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="offcanvas-scrollable-body">
+                            <div class="offcanvas__contact">
+                                <h3>Contact Us</h3>
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="icon"><i class="far fa-phone-alt"></i></div>
+                                        <div class="content">
+                                            <p>Call Us</p>
+                                            <h4><a href="tel:+91 9943994603">+91 9943994603</a></h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fal fa-envelope"></i></div>
+                                        <div class="content">
+                                            <p>Send Email</p>
+                                            <h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4>
+                                        </div>
+                                    </li>
+                                    <li style="align-items: flex-start;">
+                                        <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
+                                        <div class="content">
+                                            <p>Location</p>
+                                            <div class="footer-location-li"><h4>Singapore</h4><span style="color:#333;font-size: 14px;">412 Race Course Road, Singapore 218660, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                            <div class="footer-location-li"><h4>India</h4><span style="color:#333;font-size: 14px;">No 312/11, Siva towers, Perumal, Malai Road, Narasothipatti, Salem Tamil Nadu, India, 636004, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="contact.html" class="theme-btn">Contact Us <i class="far fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+
+        <!-- Header Top Start -->
+        <div class="header-top-section">
+            <div class="container">
+                <div class="header-top-wrapper">
+                    <ul class="header-contact-list">
+                        <li>
+                            <i class="fal fa-envelope"></i>
+                            <a href="mailto:support@vpnexues.com">support@vpnexues.com</a>
+                        </li>
+                        <li>
+                            <i class="far fa-phone-alt"></i>
+                            <a href="tel:+919943994603">+91 9943994603</a>
+                        </li>
+                    </ul>
+                    <div class="head-right">
+                        <div class="line-shape"></div>
+                        <div class="social-icon">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Section Start -->
+        <header id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                    <div class="header-main">
+                        <div class="vpn-logo-header">
+                            <div class="idlogo-vpn">
+                                <a href="index.html" class="top-logo">VPNexues</a>
+                                <span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+                            </div>
+                        </div>
+                        <div class="idlogo-vpn idlogo-vpn-mobile">
+                            <a href="index.html" class="header-logo">VPNexues</a>
+                            <span class="idlogo-vivasayam-txt" style="padding-left:41px;position:relative;top:-8px">விவசாயம் காப்போம்</span>
+                        </div>
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li class="has-dropdown">
+                                            <a href="javascript:void(0)">Pages</a>
+                                            <ul class="submenu" style="display:block;">
+                                                <li><a href="our-services.html">Our Services</a></li>
+                                                <li><a href="team.html">Our Team</a></li>
+                                                <li><a href="careers.html">Careers</a></li>
+                                                <li><a href="pricing.html">Pricing Plan</a></li>
+                                                <li><a href="testimonial.html">Testimonials</a></li>
+                                                <li><a href="faq.html">FAQs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Shop</a>
+                                            <ul class="submenu">
+                                                <li><a href="pricing.html?type=small-box" onclick="goPage('small-box')">Small Box</a></li>
+                                                <li><a href="pricing.html?type=big-box" onclick="goPage('big-box')">Big Box</a></li>
+                                                <li><a href="pricing.html?type=b2b" onclick="goPage('b2b')">B2B</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="news.html">News</a></li>
+                                        <li><a href="contact.html">Support</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <a href="pricing.html?type=b2b" class="theme-btn">Request a Quote <i class="far fa-arrow-right"></i></a>
+                            <div class="header__hamburger my-auto">
+                                <div class="sidebar__toggle">
+                                    <div class="header-bar">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Services Hero -->
+        <section class="os-hero" aria-labelledby="os-hero-title">
+            <div class="container">
+                <nav aria-label="Breadcrumb">
+                    <ol class="os-crumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li aria-current="page">Our Services</li>
+                    </ol>
+                </nav>
+                <div class="os-hero-icon"><i class="fas fa-globe-asia" aria-hidden="true"></i></div>
+                <h1 id="os-hero-title">Our Services</h1>
+                <p>VPNexues supports businesses with import and export needs for organic vegetables, fruits, spices, grains and food ingredients — from sourcing and documentation to delivery coordination.</p>
+                <a href="pricing.html?type=b2b" class="theme-btn os-btn">Request a Quote <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="os-section os-section--tint" aria-labelledby="os-services-title">
+            <div class="os-wrap">
+                <div class="os-sec-head wow fadeInUp">
+                    <span class="os-eyebrow">What we do</span>
+                    <h2 id="os-services-title">Import &amp; export support, end to end</h2>
+                    <p>Practical support for every stage of a cross-border order. Where a service is arranged with a partner, we say so — and you can confirm the exact scope with us before committing.</p>
+                </div>
+
+                <div class="os-services-grid">
+                    <article class="os-service-card wow fadeInUp">
+                        <div class="os-service-top">
+                            <div class="os-service-icon"><i class="fas fa-exchange-alt" aria-hidden="true"></i></div>
+                            <span class="os-service-num">01</span>
+                        </div>
+                        <h3>Import and export handling</h3>
+                        <p>Full-scale import and export operations for organic vegetables, fruits, spices, grains and food ingredients, coordinated from Tamil Nadu for buyers overseas.</p>
+                        <a href="pricing.html?type=b2b" class="os-service-link">Enquire about this service <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="os-service-card wow fadeInUp" data-wow-delay=".08s">
+                        <div class="os-service-top">
+                            <div class="os-service-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
+                            <span class="os-service-num">02</span>
+                        </div>
+                        <h3>Product sourcing and supplier verification</h3>
+                        <p>Sourcing support for quality organic products from our network. <span class="os-edit">[EDIT: add your supplier verification steps — for example, certificate checks, farm audits and sample approval.]</span></p>
+                        <a href="pricing.html?type=b2b" class="os-service-link">Enquire about this service <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="os-service-card wow fadeInUp" data-wow-delay=".16s">
+                        <div class="os-service-top">
+                            <div class="os-service-icon"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
+                            <span class="os-service-num">03</span>
+                        </div>
+                        <h3>Freight and logistics coordination</h3>
+                        <p>Export logistics can be coordinated for fresh produce, including cold-chain handling. <span class="os-edit">[EDIT: add the freight modes, carriers and routes you can arrange.]</span></p>
+                        <a href="pricing.html?type=b2b" class="os-service-link">Enquire about this service <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="os-service-card wow fadeInUp">
+                        <div class="os-service-top">
+                            <div class="os-service-icon"><i class="fas fa-file-invoice" aria-hidden="true"></i></div>
+                            <span class="os-service-num">04</span>
+                        </div>
+                        <h3>Customs clearance and trade documentation</h3>
+                        <p>Export documentation forms part of our trade support. Customs clearance can be arranged through licensed partners. <span class="os-edit">[EDIT: add the ports, markets and document types you handle directly.]</span></p>
+                        <a href="pricing.html?type=b2b" class="os-service-link">Enquire about this service <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="os-service-card wow fadeInUp" data-wow-delay=".08s">
+                        <div class="os-service-top">
+                            <div class="os-service-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></div>
+                            <span class="os-service-num">05</span>
+                        </div>
+                        <h3>Quality inspection and packaging</h3>
+                        <p>Quality checks and export-ready packing can be arranged with our partners. <span class="os-edit">[EDIT: add your inspection standards, lab tests and packaging options.]</span></p>
+                        <a href="pricing.html?type=b2b" class="os-service-link">Enquire about this service <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="os-service-card wow fadeInUp" data-wow-delay=".16s">
+                        <div class="os-service-top">
+                            <div class="os-service-icon"><i class="fas fa-warehouse" aria-hidden="true"></i></div>
+                            <span class="os-service-num">06</span>
+                        </div>
+                        <h3>Warehousing and distribution</h3>
+                        <p>Short-term storage and distribution can be coordinated through partners ahead of dispatch. <span class="os-edit">[EDIT: add warehouse locations, temperature controls and delivery coverage.]</span></p>
+                        <a href="pricing.html?type=b2b" class="os-service-link">Enquire about this service <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="os-section" aria-labelledby="os-process-title">
+            <div class="os-wrap">
+                <div class="os-sec-head wow fadeInUp">
+                    <span class="os-eyebrow">How it works</span>
+                    <h2 id="os-process-title">Four simple steps</h2>
+                    <p>Tell us what you need and we'll work through the details with you.</p>
+                </div>
+
+                <div class="os-process">
+                    <div class="os-step wow fadeInUp">
+                        <div class="os-step-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></div>
+                        <span class="os-step-no">Step 01</span>
+                        <h3>Share your product, quantity, and destination</h3>
+                        <p>Let us know what you need, how much and where it needs to go.</p>
+                    </div>
+                    <div class="os-step wow fadeInUp" data-wow-delay=".1s">
+                        <div class="os-step-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></div>
+                        <span class="os-step-no">Step 02</span>
+                        <h3>Receive a proposal or quote</h3>
+                        <p>We review your requirements and share pricing and available options.</p>
+                    </div>
+                    <div class="os-step wow fadeInUp" data-wow-delay=".2s">
+                        <div class="os-step-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
+                        <span class="os-step-no">Step 03</span>
+                        <h3>Confirm the order and shipping plan</h3>
+                        <p>Agree the products, documentation and delivery schedule together.</p>
+                    </div>
+                    <div class="os-step wow fadeInUp" data-wow-delay=".3s">
+                        <div class="os-step-icon"><i class="fas fa-truck" aria-hidden="true"></i></div>
+                        <span class="os-step-no">Step 04</span>
+                        <h3>Track shipment and coordinate delivery</h3>
+                        <p>Stay updated as the shipment moves and delivery is arranged.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products and Markets Section -->
+        <section class="os-section os-section--tint" aria-labelledby="os-markets-title">
+            <div class="os-wrap">
+                <div class="os-sec-head wow fadeInUp">
+                    <span class="os-eyebrow">Products &amp; markets</span>
+                    <h2 id="os-markets-title">What we move, and where</h2>
+                    <p>Explore our product range and the markets we already serve.</p>
+                </div>
+
+                <div class="os-spot-grid">
+                    <article class="os-spot-card wow fadeInUp">
+                        <div class="os-spot-media">
+                            <img src="images/100%25organic.jpg" alt="Organic produce from VPNexues" loading="lazy">
+                        </div>
+                        <div class="os-spot-body">
+                            <h3>Our products</h3>
+                            <p>Organic vegetables, fruits, spices, grains and food ingredients sourced from Tamil Nadu farms for businesses and households.</p>
+                            <ul class="os-spot-tags">
+                                <li>Vegetables</li>
+                                <li>Fruits</li>
+                                <li>Spices</li>
+                                <li>Grains</li>
+                            </ul>
+                            <div class="os-spot-actions">
+                                <a href="shop.html" class="os-spot-link os-spot-link--solid">Browse products <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="pricing.html" class="os-spot-link">View pricing <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="os-spot-card wow fadeInUp" data-wow-delay=".12s">
+                        <div class="os-spot-media">
+                            <img src="images/airplane-traveling-around-the-world-vector.jpg" alt="Illustration of international air travel and global delivery" loading="lazy">
+                        </div>
+                        <div class="os-spot-body">
+                            <h3>Markets we serve</h3>
+                            <p>Certified organic produce delivered from Tamil Nadu farms to families and businesses across Singapore, Australia, the UAE, the USA and the UK.</p>
+                            <ul class="os-spot-tags">
+                                <li>Singapore</li>
+                                <li>Australia</li>
+                                <li>UAE</li>
+                                <li>USA</li>
+                                <li>UK</li>
+                            </ul>
+                            <div class="os-spot-actions">
+                                <a href="about.html" class="os-spot-link os-spot-link--solid">About VPNexues <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="pricing.html?type=b2b" class="os-spot-link">B2B enquiries <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing CTA Section -->
+        <section class="os-cta" aria-labelledby="os-cta-title">
+            <h2 id="os-cta-title">Have a shipment in mind?</h2>
+            <p>Share your product, quantity and destination and we'll come back with a proposal.</p>
+            <div class="os-cta-actions">
+                <a href="pricing.html?type=b2b" class="theme-btn os-btn">Request a Quote <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+                <a href="contact.html" class="theme-btn os-btn os-btn--outline">Contact Us <i class="far fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </section>
+
+        <style>
+        .footer-services-column .footer-widget-items .list-area li a {
+          white-space: nowrap;
+        }
+        .footer-section-4 .os-footer-brand {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          color: #fff !important;
+          font-size: 20px;
+          font-weight: 800;
+          line-height: 1;
+          text-decoration: none;
+        }
+        .footer-section-4 .os-footer-brand__logo {
+          width: 42px;
+          height: 42px;
+          flex: 0 0 auto;
+          object-fit: contain;
+        }
+        .footer-section-4 .os-footer-brand__text {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+        }
+        .footer-section-4 .os-footer-brand__name {
+          color: #fff;
+          white-space: nowrap;
+        }
+        .footer-section-4 .os-footer-brand__tagline {
+          color: rgba(255, 255, 255, 0.86);
+          font-size: 11px;
+          font-weight: 600;
+          line-height: 1.1;
+          white-space: nowrap;
+        }
+        .footer-section-4 .os-newsletter-compact {
+          gap: 28px;
+          max-width: 820px;
+          margin-left: auto;
+          margin-right: auto;
+          padding: 14px 22px;
+          border-radius: 14px;
+        }
+        .footer-section-4 .os-newsletter-compact h2 {
+          margin: 0;
+          font-size: 26px;
+          line-height: 1.2;
+        }
+        .footer-section-4 .os-newsletter-compact form {
+          max-width: 380px;
+          height: 44px;
+          line-height: 44px;
+          padding-left: 18px;
+        }
+        .footer-section-4 .os-newsletter-compact form input {
+          max-width: 210px;
+          font-size: 14px;
+        }
+        .footer-section-4 .os-newsletter-compact form .theme-btn {
+          top: 3px;
+          right: 3px;
+          height: 38px;
+          line-height: 38px;
+          padding: 0 18px;
+          font-size: 13px;
+        }
+        .footer-section-4 .footer-widget-wrapper-4 {
+          padding-top: 34px;
+          padding-bottom: 34px;
+        }
+        .footer-section-4 .footer-widget-wrapper-4 .footer-widget-items {
+          margin-top: 0;
+        }
+        @media (max-width: 575px) {
+          .footer-section-4 .os-newsletter-compact {
+            gap: 14px;
+            padding: 14px 16px;
+          }
+          .footer-section-4 .os-newsletter-compact h2 {
+            font-size: 22px;
+          }
+          .footer-section-4 .os-newsletter-compact form {
+            max-width: 100%;
+            height: 42px;
+            line-height: 42px;
+          }
+          .footer-section-4 .os-newsletter-compact form .theme-btn {
+            top: 2px;
+            right: 2px;
+            height: 38px;
+            line-height: 38px;
+            padding: 0 14px;
+          }
+          .footer-section-4 .footer-widget-wrapper-4 {
+            padding-top: 24px;
+            padding-bottom: 24px;
+          }
+        }
+        </style>
+
+        <!-- Footer -->
+        <footer class="footer-section-4 section-padding section-bg pb-0 pt-0">
+            <div class="container">
+                <div class="footer-widget-top-4 os-newsletter-compact wow fadeInUp">
+                    <h2>Join Our Newsletter</h2>
+                    <form action="#">
+                        <input type="text" placeholder="Enter email">
+                        <button class="theme-btn" type="submit">Subscribe <i class="far fa-arrow-right"></i></button>
+                    </form>
+                </div>
+                <div class="footer-widget-wrapper-4">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-md-8 wow fadeInUp" data-wow-delay=".2s">
+                            <div class="footer-widget-items">
+                                <div class="widget-head">
+                                    <a href="index.html" class="footer-logo os-footer-brand">
+                                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" alt="VPNexues logo" class="os-footer-brand__logo">
+                                        <span class="os-footer-brand__text">
+                                            <span class="os-footer-brand__name">VPNexues</span>
+                                            <small class="os-footer-brand__tagline">விவசாயம் காப்போம்</small>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="footer-content">
+                                    <h3>Follow Us:</h3>
+                                    <div class="social-icon">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 wow fadeInUp" data-wow-delay=".4s">
+                            <div class="footer-widget-items">
+                                <div class="widget-head"><h5>Useful Links</h5></div>
+                                <ul class="list-area">
+                                    <li><a href="about.html"><i class="far fa-chevron-double-right"></i> About Company</a></li>
+                                    <li><a href="team.html"><i class="far fa-chevron-double-right"></i> Meet Member</a></li>
+                                    <li><a href="contact.html"><i class="far fa-chevron-double-right"></i> Contact Us</a></li>
+                                    <li><a href="faq.html"><i class="far fa-chevron-double-right"></i> Our FAQs</a></li>
+                                    <li><a href="pricing.html"><i class="far fa-chevron-double-right"></i> Pricing Plan</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 footer-services-column wow fadeInUp" data-wow-delay=".6s">
+                            <div class="footer-widget-items">
+                                <div class="widget-head"><h5>Our Services</h5></div>
+                                <ul class="list-area">
+                                    <li><a href="our-services.html"><i class="far fa-chevron-double-right"></i> Import &amp; Export</a></li>
+                                    <li><a href="service-details.html"><i class="far fa-chevron-double-right"></i> Agriculture Foods</a></li>
+                                    <li><a href="service-details.html"><i class="far fa-chevron-double-right"></i> Organic Vegetables</a></li>
+                                    <li><a href="service-details.html"><i class="far fa-chevron-double-right"></i> Dairy Products</a></li>
+                                    <li><a href="service-details.html"><i class="far fa-chevron-double-right"></i> Fast Delivery</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 ps-xl-5 wow fadeInUp" data-wow-delay=".8s">
+                            <div class="footer-widget-items">
+                                <div class="widget-head"><h5>Contact Us</h5></div>
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                                        <div class="content">
+                                            <h5>Email us:</h5>
+                                            <p><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                                        <div class="content">
+                                            <h5>Phone:</h5>
+                                            <p><a href="tel:+919943994603">+91 9943994603</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                                        <div class="content">
+                                            <h5>Location:</h5>
+                                            <p>Salem, Tamil Nadu, India</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="footer-bottom-wrapper">
+                        <p class="text-1 wow fadeInUp">&copy; 2026 VPNexues. All Rights Reserved</p>
+                        <div class="social-icon wow fadeInUp" data-wow-delay=".2s">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--<< All JS Plugins >>-->
+        <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+        <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.nice-select.min.js"></script>
+        <script src="assets-ui/js/odometer.min.js"></script>
+        <script src="assets-ui/js/jquery.appear.min.js"></script>
+        <script src="assets-ui/js/swiper-bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+        <script src="assets-ui/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets-ui/js/wow.min.js"></script>
+        <script src="assets-ui/js/gsap.min.js"></script>
+        <script src="assets-ui/js/ScrollTrigger.min.js"></script>
+        <script src="assets-ui/js/SplitText.min.js"></script>
+        <script src="assets-ui/js/splitType.js"></script>
+        <script src="assets-ui/js/main.js"></script>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Home</span>
+                </a>
+                <a href="shop.html" class="nav-item">
+                    <span class="nav-icon-wrap"><i class="fas fa-store nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Shop</span>
+                </a>
+                <a href="shop-cart.html" class="nav-item">
+                    <span class="nav-icon-wrap">
+                        <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+                        <span class="nav-badge" id="nav-cart-badge" style="display:none">0</span>
+                    </span>
+                    <span class="nav-label">Cart</span>
+                </a>
+                <a href="login.html" class="nav-item">
+                    <span class="nav-icon-wrap"><i class="far fa-user nav-icon" aria-hidden="true"></i></span>
+                    <span class="nav-label">Account</span>
+                </a>
+            </div>
+        </nav>
+
+        <script>
+        (function() {
+            function updateCartBadge() {
+                var badge = document.getElementById("nav-cart-badge");
+                if (!badge) return;
+                var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+                var count = 0;
+                cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+                if (count > 0) {
+                    badge.textContent = count;
+                    badge.style.display = "";
+                } else {
+                    badge.style.display = "none";
+                }
+            }
+            updateCartBadge();
+            window.updateCartBadge = updateCartBadge;
+        })();
+        </script>
+
+        <script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+        <script>window.__vpnSkipAuthModal = true;</script>
+        <script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+    </body>
+</html>

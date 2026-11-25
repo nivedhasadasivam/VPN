@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--<< Header Area >>-->
+    <head>
+        <!-- ========== Meta Tags ========== -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="modinatheme">
+        <meta name="description" content="VPNexues - About Us">
+        <!-- ======== Page title ============ -->
+        <title>About Us - VPNexues</title>
+        <!--<< Favicon >>-->
+        <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+        <link rel="shortcut icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" type="image/x-icon" />
+        <!--<< Bootstrap min.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+        <!--<< Font Awesome.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+        <!--<< Animate.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/animate.min.css?v=1.0">
+        <!--<< Magnific Popup.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/magnific-popup.css">
+        <!--<< MeanMenu.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+        <!--<< Odometer.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/odometer.css">
+        <!--<< Swiper Bundle.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/swiper-bundle.min.css">
+        <!--<< Nice Select.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/nice-select.css">
+        <!--<< Main.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/main.css">
+        <link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+        <!--<< Mobile Bottom Navigation.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css?v=1.2">
+    <style>
+        .breadcrumb-wrapper {
+            display: none !important;
+        }
+        .vpn-login-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1px solid rgba(74,124,63,.26);border-radius:30px;background:rgba(255,255,255,.92);color:#263226;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(42,70,36,.08);margin-right:8px;white-space:nowrap;line-height:1.4}
+        .vpn-login-btn i{color:#4a7c3f;font-size:13px}
+        .vpn-login-btn:hover{transform:translateY(-2px);border-color:rgba(74,124,63,.48);box-shadow:0 12px 28px rgba(42,70,36,.14);color:#1f5f23}
+        .vpn-login-btn:hover i{transform:scale(1.08)}
+        .vpn-login-btn:active{transform:translateY(0) scale(.98)}
+        .vpn-account-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border:1px solid rgba(74,124,63,.26);border-radius:30px;background:rgba(255,255,255,.92);color:#263226;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 8px 22px rgba(42,70,36,.08);margin-right:8px;white-space:nowrap;line-height:1.4;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,color .22s ease}
+        .vpn-account-btn i{color:#4a7c3f;transition:transform .22s ease}
+        .vpn-account-btn:hover{transform:translateY(-2px);border-color:rgba(74,124,63,.48);box-shadow:0 12px 28px rgba(42,70,36,.14);color:#1f5f23}
+        .vpn-account-btn:hover i{transform:scale(1.08)}
+        .vpn-account-btn:active{transform:translateY(0) scale(.98)}
+        @media(max-width:767px){.vpn-account-btn{display:none!important}.vpn-login-btn{padding:6px 11px;margin-right:4px;font-size:12px;gap:5px}.vpn-login-btn i{font-size:12px}}
+        .vpn-header-cart-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;border:1px solid rgba(74,124,63,.26);background:rgba(255,255,255,.92);color:#263226;font-size:16px;cursor:pointer;box-shadow:0 2px 8px rgba(42,70,36,.08);margin-right:8px;transition:all .25s ease;text-decoration:none}
+        .vpn-header-cart-btn:hover{transform:translateY(-2px);border-color:rgba(74,124,63,.48);box-shadow:0 12px 28px rgba(42,70,36,.14);color:#1f5f23}
+        .vpn-header-cart-badge{position:absolute;top:-4px;right:-4px;background:var(--theme-color);color:#fff;font-size:10px;font-weight:800;min-width:18px;height:18px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;line-height:14px;border:2px solid #fff}
+        @media(max-width:767px){.vpn-header-cart-btn{display:none!important}}
+        .vpn-hidden{display:none!important}
+        .about-footer{background-color:#1e3917;color:#d4ddd0;position:relative;overflow:hidden}
+        .about-footer__decoration{position:absolute;inset:0;opacity:0.03;pointer-events:none;background:radial-gradient(ellipse 600px 400px at 10% 50%,#5b8c51 0%,transparent 70%),radial-gradient(ellipse 500px 350px at 85% 30%,#5b8c51 0%,transparent 70%),radial-gradient(ellipse 300px 250px at 50% 80%,#5b8c51 0%,transparent 70%)}
+        .about-footer__container{width:100%;max-width:1800px;margin-inline:auto;padding-inline:clamp(24px,4vw,64px);box-sizing:border-box;position:relative;z-index:1}
+        .about-footer__main{display:grid;grid-template-columns:minmax(320px,1.25fr) minmax(180px,0.6fr) minmax(200px,0.7fr) minmax(340px,1fr);gap:clamp(32px,4vw,72px);padding:52px 0 40px;align-items:start}
+        .about-footer__brand{display:flex;flex-direction:column;gap:14px;min-width:0}
+        .about-footer__logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none}
+        .about-footer__logo img{width:40px;height:40px;border-radius:50%;object-fit:contain}
+        .about-footer__brandName{display:flex;flex-direction:column;line-height:1.1}
+        .about-footer__brandName strong{font-size:22px;font-weight:800;color:#ffffff}
+        .about-footer__brandName small{font-size:11px;font-weight:600;color:rgba(255,255,255,0.76)}
+        .about-footer__description{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6;margin:0;max-width:380px}
+        .about-footer__links{min-width:0}
+        .about-footer__heading{font-size:14px;font-weight:800;color:#ffffff;letter-spacing:1px;margin:0 0 18px;text-transform:uppercase}
+        .about-footer__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+        .about-footer__link{display:inline-block;color:rgba(255,255,255,0.65);text-decoration:none;font-size:15px;font-weight:500;transition:color 0.2s ease}
+        .about-footer__link:hover{color:#ffffff}
+        .about-footer__directors{min-width:0}
+        .about-footer__directorsList{display:flex;flex-direction:column;gap:28px}
+        .about-footer__director{display:flex;align-items:flex-start;gap:18px}
+        .about-footer__directorImage{width:90px;height:120px;border-radius:8px;overflow:hidden;flex-shrink:0;border:2px solid rgba(91,140,81,0.3);transition:border-color 0.25s ease}
+        .about-footer__director:hover .about-footer__directorImage{border-color:#5b8c51}
+        .about-footer__directorImage img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+        .about-footer__directorInfo{display:flex;flex-direction:column;gap:2px;min-width:0}
+        .about-footer__directorInfo strong{font-size:15px;font-weight:700;color:#ffffff}
+        .about-footer__directorInfo span{font-size:13px;opacity:0.8;color:#ffffff;margin-top:2px}
+        .about-footer__bottom{border-top:1px solid rgba(255,255,255,0.08);padding:18px 0;position:relative;z-index:1}
+        .about-footer__bottomInner{width:100%;max-width:1800px;margin-inline:auto;padding-inline:clamp(24px,4vw,64px);box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px}
+        .about-footer__copyright{font-size:13px;color:rgba(255,255,255,0.6);margin:0}
+        .about-footer__tagline{font-size:13px;color:rgba(255,255,255,0.5);margin:0}
+        .about-footer__socials{display:flex;gap:12px}
+        .about-footer__socialIcon{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:#ffffff;text-decoration:none;transition:background 0.25s ease,transform 0.25s ease}
+        .about-footer__socialIcon:hover{background:#5b8c51;transform:translateY(-2px)}
+        @media(max-width:767px){.cta-slide.cta-fa2{width:300px!important;height:500px!important;object-fit:cover}}
+        @media(max-width:1024px){
+            .about-footer__main{grid-template-columns:1fr 1fr;gap:32px 40px;padding:44px 0 32px}
+            .about-footer__brand{grid-column:1/-1}
+            .about-footer__description{max-width:100%}
+            .about-footer__directors{grid-column:1/-1}
+            .about-footer__directorsList{flex-direction:row;flex-wrap:wrap;gap:24px}
+            .about-footer__directorImage{width:80px;height:107px}
+        }
+        @media(max-width:767px){
+            .about-footer__main{grid-template-columns:1fr;gap:24px;padding:32px 0 24px}
+            .about-footer__heading{font-size:13px;margin-bottom:14px}
+            .about-footer__list{gap:10px}
+            .about-footer__link{font-size:14px}
+            .about-footer__directorsList{flex-direction:column;gap:16px}
+            .about-footer__director{gap:14px}
+            .about-footer__directorImage{width:64px;height:85px}
+            .about-footer__directorInfo strong{font-size:14px}
+            .about-footer__bottomInner{flex-direction:column;align-items:center;gap:10px;text-align:center;padding:14px 0}
+            .about-footer__copyright,.about-footer__tagline{text-align:center;font-size:12px}
+            .about-footer__socials{justify-content:center}
+        }
+        /* ===== ABOUT DESKTOP BANNER (shop-style pg-banner) ===== */
+        .about-desktop-heading {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .about-desktop-heading {
+                display: block;
+            }
+            .about-desktop-heading .pg-banner {
+                margin: 0 20px;
+                border-radius: 33px;
+                background: linear-gradient(to right, rgba(20,71,47,.35), rgba(20,61,33,.25)), url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Vegetables%20Banner.png') center 52%/cover no-repeat;
+                padding: 44px 40px 40px;
+                transition: transform .4s ease, background-size .4s ease;
+                overflow: hidden;
+            }
+            .about-desktop-heading .pg-banner:hover {
+                transform: scale(1.03);
+            }
+            .about-desktop-heading .pg-banner::after { display: none !important; }
+            .about-desktop-heading .pg-banner .container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .about-desktop-heading .pg-banner .pg-banner-in .breadcrumb {
+                font-size: 12px;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                opacity: 1;
+                color: #fff !important;
+                margin-bottom: 10px;
+                text-shadow: 0 2px 8px rgba(0, 0, 0, .65), 0 0 18px rgba(255, 255, 255, .35);
+            }
+            .about-desktop-heading .pg-banner .pg-banner-in .breadcrumb a,
+            .about-desktop-heading .pg-banner .pg-banner-in .breadcrumb span {
+                color: #fff !important;
+            }
+            .about-desktop-heading .pg-banner .pg-banner-in h1 {
+                font-size: 30px;
+                margin: 0;
+                color: #fff !important;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, .7), 0 0 22px rgba(255, 255, 255, .4);
+            }
+            .about-desktop-heading .pg-banner .pg-banner-in p {
+                font-size: 13px;
+                margin-top: 6px;
+                color: #fff !important;
+                opacity: 1;
+                text-shadow: 0 1px 6px rgba(0, 0, 0, .6), 0 0 14px rgba(255, 255, 255, .3);
+            }
+        }
+        /* ===== ABOUT BANNER (mobile) ===== */
+        .about-banner {
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0 8px;
+        }
+        .about-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            margin: 0;
+            padding: 0;
+            border-radius: 12px;
+        }
+        @media (min-width: 768px) {
+            .about-banner {
+                display: none;
+            }
+        }
+        /* ===== ABOUT TEXT CAROUSEL ===== */
+        .about-text-carousel {
+            padding: 16px 16px 10px;
+            overflow: hidden;
+        }
+        .about-text-carousel .atc-slide {
+            display: none;
+            animation: atcFade 0.45s ease forwards;
+        }
+        .about-text-carousel .atc-slide.active {
+            display: block;
+        }
+        @keyframes atcFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .about-text-carousel .atc-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1a5c2a;
+            margin: 0 0 4px;
+        }
+        .about-text-carousel .atc-desc {
+            font-size: 13px;
+            color: #555;
+            margin: 0 0 12px;
+            line-height: 1.45;
+        }
+        .about-text-carousel .atc-items {
+            display: flex;
+            gap: 8px;
+        }
+        .about-text-carousel .atc-item {
+            flex: 1;
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            border-radius: 12px;
+            padding: 12px 6px 10px;
+            text-align: center;
+        }
+        .about-text-carousel .atc-item .atc-emoji {
+            font-size: 22px;
+            margin-bottom: 4px;
+            color: #2e7d32;
+        }
+        .about-text-carousel .atc-item h5 {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1a5c2a;
+            margin: 0 0 2px;
+            text-transform: uppercase;
+        }
+        .about-text-carousel .atc-item p {
+            font-size: 9px;
+            color: #666;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .about-text-carousel .atc-dots {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 12px;
+        }
+        .about-text-carousel .atc-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ccc;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .about-text-carousel .atc-dot.active {
+            background: #1a5c2a;
+            width: 18px;
+            border-radius: 4px;
+        }
+        @media (min-width: 768px) {
+            .about-text-carousel {
+                display: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .about-banner-img {
+                width: 100%;
+            }
+            .about-wrapper .row.g-4 {
+                gap: 0 !important;
+            }
+            .about-wrapper .about-right-items {
+                overflow: hidden;
+            }
+            .about-wrapper .about-right-items .about-image {
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+            }
+            .about-wrapper .about-right-items .about-image img {
+                width: 100% !important;
+                height: auto !important;
+                display: block;
+                border-radius: 12px;
+                object-fit: cover;
+                transition: transform .4s ease;
+            }
+            .about-wrapper .about-right-items .about-image:hover img {
+                transform: scale(1.12);
+            }
+            .about-wrapper .about-right-items .about-top-box {
+                padding: 28px 20px;
+            }
+        }
+        @media (min-width: 768px) {
+            .header-right .vpn-shop-now-btn {
+                display: none !important;
+            }
+        }
+        /* Farmer receiving letter animation */
+        .organic-bg-box{transition:filter .3s ease,transform .3s ease;filter:brightness(.7)}
+.organic-bg-box:hover{filter:brightness(1.25)}
+.organic-bg-box .feature-content{text-align:center;color:#ffffff;text-shadow:0 0 12px rgba(0,0,0,.9),0 2px 4px rgba(0,0,0,.8);font-weight:700}
+.organic-bg-box .feature-content h3{font-weight:900;font-size:22px}
+.organic-bg-box .feature-content h3,.organic-bg-box .feature-content p{color:#ffffff}
+.about-image img{transition:transform .4s ease;}
+.about-image:hover img{transform:scale(1.12);}
+.about-img-tooltip{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);color:#fff;font-size:13px;padding:10px;opacity:0;transition:opacity .3s ease;pointer-events:none}
+.about-image:hover .about-img-tooltip{opacity:1;}
+.flip-card{perspective:1000px;min-height:180px;}
+.flip-card-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d;}
+.flip-card:hover .flip-card-inner{transform:rotateY(180deg);}
+.flip-card-front,.flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;}
+.flip-card-back{transform:rotateY(180deg);}
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+<style>.idlogo-vivasayam-txt{font-family:'Noto Sans Tamil','Latha','Nirmala UI',sans-serif !important;}</style>
+</head>
+    <body>
+
+      
+        <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner">                
+                </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="V" class="letters-loading">V</span>
+                    <span data-text-preloader="P" class="letters-loading">P</span>
+                    <span data-text-preloader="N" class="letters-loading">N</span>
+                    <span data-text-preloader="e" class="letters-loading">e</span>
+                    <span data-text-preloader="x" class="letters-loading">x</span>
+                    <span data-text-preloader="u" class="letters-loading">u</span>
+                    <span data-text-preloader="e" class="letters-loading">e</span>
+                    <span data-text-preloader="s" class="letters-loading">s</span>
+                </div>
+                <p class="text-center">Loading</p>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back To Top Start -->
+        <button id="back-top" class="back-to-top">
+             <i class="far fa-arrow-up"></i>
+        </button>
+
+        <!-- MouseCursor Start -->
+        <div class="mouseCursor cursor-outer"></div>
+        <div class="mouseCursor cursor-inner"></div>
+
+        <!-- Offcanvas Area Start -->
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas-header-fixed">
+                        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                            <div class="offcanvas__logo">
+                                <a href="index.html">
+                                  VPNexues
+                                </a>
+                            </div>
+                            <div class="offcanvas__close">
+                                <button>
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <h3 class="offcanvas-title">Hello There!</h3>
+                        <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022. </p>
+                        <div class="mobile-menu fix mt-15"></div>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                        </div>
+
+                        <div class="offcanvas-scrollable-body">
+                        <div class="offcanvas__contact">
+                            <h3>Contact Us</h3>
+                            <ul class="contact-list">
+                                <li>
+                                    <div class="icon">
+                                       <i class="far fa-phone-alt"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>Call Us</p>
+                                        <h4><a href="tel:+91 9943994603">+91 9943994603</a></h4>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                       <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>Send Email</p>
+                                        <h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                       <i class="fal fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>Location</p>
+                                         <div class="footer-location-li" >
+                                          <h4>Singapore</h4>
+                                          <span style="color:#333;font-size: 14px;">412 Race Course Road, Singapore 218660, <br/>
+                                              +91 9943994603 | +91 8148197842</span>
+                                      </div>
+                                      <div class="footer-location-li">
+                                          <h4>India</h4>
+                                          <span style="color:#333;font-size: 14px;">No 312/11, Siva towers, Perumal, Malai Road, Narasothipatti, Salem Tamilnadu, India, 636004, <br />
+                                          +91 9943994603 | +91 8148197842
+                                          </span>
+                                      </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="theme-btn">
+                             Show Now
+                             <i class="far fa-arrow-right"></i>
+                         </a>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+
+        <!-- Header Top Start -->
+        <div class="header-top-section">
+            <div class="container">
+                <div class="header-top-wrapper">
+                    <ul class="header-contact-list">
+                        <li>
+                            <i class="fal fa-envelope"></i>
+                            <a href="mailto:support@vpnexues.com">
+                                support@vpnexues.com
+                            </a>
+                        </li>
+                        <li>
+                            <i class="far fa-phone-alt"></i>
+                            <a href="tel:+91 9943994603">
+                                +91 9943994603
+                            </a> |
+                            <a href="tel:+91 8148197842">
+                                 +91 8148197842</a>
+                           
+                        </li>
+                    </ul>
+                    <div class="head-right">
+                       
+
+                        <div class="line-shape"></div>
+                        <div class="social-icon">
+                            <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header Section Start -->
+        <header id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                <div class="header-main">
+                  <div class="vpn-logo-header">
+                        <div class="idlogo-vpn">
+                        <a href="index.html" class="top-logo"> VPNexues    </a>
+                        <span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+                        </div>
+                    </div>
+                    <div class="idlogo-vpn idlogo-vpn-mobile">
+                        <a href="index.html" class="header-logo"> VPNexues    </a>
+                        <span class="idlogo-vivasayam-txt" style="padding-left: 41px;position: relative;top:-8px">விவசாயம் காப்போம்</span>
+                    </div>
+                      
+                        <div class="mean__menu-wrapper">
+                            <div class="main-menu">
+                               <nav id="mobile-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="about.html">About Us</a>
+                                        </li>
+                                        <li class="has-dropdown">
+                                            <a href="javascript:void(0)">Pages</a>
+                                            <ul class="submenu" style="display: block;">
+                                                <li><a href="our-services.html">Our Services</a></li>
+                                                <li><a href="team.html">Our Team</a></li>
+                                                <li><a href="pricing.html">Pricing Plan</a></li>
+                                                <li><a href="testimonial.html">Testimonails</a></li>
+                                                <li><a href="faq.html">Faqs</a></li>
+                                                <li><a href="news.html">News</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-dropdown">
+                                            <a href="javascript:void(0);">
+                                                Shop
+                                                
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="shop.html">Shop</a></li>
+                                                <li><a href="pricing.html?type=small-box" onclick="goPage('small-box')">Small Box</a></li>
+                                                <li><a href="pricing.html?type=big-box" onclick="goPage('big-box')">Big Box</a></li>
+                                                <li><a href="pricing.html?type=b2b" onclick="goPage('b2b')">B2B</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html">Support</a></li>
+                                        <li class="vpn-desktop-careers"><a href="careers.html">Careers</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                             <a href="shop-cart.html" class="vpn-header-cart-btn" aria-label="View Cart">
+                                 <i class="fas fa-shopping-cart"></i>
+                                 <span class="vpn-header-cart-badge" id="header-cart-badge" style="display:none">0</span>
+                             </a>
+                             <a href="shop.html" class="theme-btn vpn-shop-now-btn" style="margin-left:10px;">
+                                All Products
+                                <i class="far fa-arrow-right"></i>
+                             </a>
+                             <button class="vpn-login-btn" onclick="vpnOpenModal('login')" aria-label="Login or Sign up" id="navLoginBtn">
+                                <i class="far fa-user"></i> Login
+                            </button>
+                            <a class="vpn-account-btn vpn-hidden" href="account.html" aria-label="My Account" id="navAccountBtn">
+                               <i class="far fa-user-circle"></i> <span id="navAccountLabel">My Account</span>
+                            </a>
+                            <script>try{if(typeof vpnUpdateLoginButtons==='function')vpnUpdateLoginButtons();}catch(e){}</script>
+                             <div class="header__hamburger my-auto">
+                                 <div class="sidebar__toggle">
+                                     <div class="header-bar">
+                                         <span></span>
+                                         <span></span>
+                                         <span></span>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- About Desktop Banner (shop-style pg-banner) -->
+        <div class="about-desktop-heading">
+            <div class="pg-banner">
+                <div class="container">
+                    <div class="pg-banner-in">
+                        <div class="breadcrumb"><a href="index.html">Home</a><span>&rsaquo;</span> About Us</div>
+                        <h1>&#127793; About Us</h1>
+                        <p>Learn more about VPNexues, our mission, vision and values.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Banner (mobile image) -->
+        <section class="about-banner">
+            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/About%20us%20Banner.png" alt="VPNexues About Us" class="about-banner-img" loading="eager">
+        </section>
+
+        <!-- About Text Carousel (mobile, below banner) -->
+        <section class="about-text-carousel" id="aboutTextCarousel">
+            <div class="atc-slide active" data-atc="0">
+                <h3 class="atc-title">About Us</h3>
+                <p class="atc-desc">Learn more about VPNexues, our mission, vision, and values.</p>
+                <div class="atc-items">
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-bullseye"></i></div>
+                        <h5>Our Mission</h5>
+                        <p>Farm fresh exports</p>
+                    </div>
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-eye"></i></div>
+                        <h5>Our Vision</h5>
+                        <p>Global reach</p>
+                    </div>
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-heart"></i></div>
+                        <h5>Our Values</h5>
+                        <p>Pure organic</p>
+                    </div>
+                </div>
+            </div>
+            <div class="atc-slide" data-atc="1">
+                <h3 class="atc-title">Our Mission</h3>
+                <p class="atc-desc">Bringing 100% organic, chemical-free produce from Tamil Nadu farms to the world.</p>
+                <div class="atc-items">
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-seedling"></i></div>
+                        <h5>Farm to Table</h5>
+                        <p>Fresh &amp; fast delivery</p>
+                    </div>
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-leaf"></i></div>
+                        <h5>100% Organic</h5>
+                        <p>No chemicals ever</p>
+                    </div>
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-shield-alt"></i></div>
+                        <h5>Trust</h5>
+                        <p>Full traceability</p>
+                    </div>
+                </div>
+            </div>
+            <div class="atc-slide" data-atc="2">
+                <h3 class="atc-title">Our Vision</h3>
+                <p class="atc-desc">Becoming the most trusted organic export brand from India to the globe.</p>
+                <div class="atc-items">
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-globe"></i></div>
+                        <h5>Global</h5>
+                        <p>4+ countries served</p>
+                    </div>
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-certificate"></i></div>
+                        <h5>Quality</h5>
+                        <p>Certified organic</p>
+                    </div>
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-recycle"></i></div>
+                        <h5>Sustainable</h5>
+                        <p>Eco-friendly practices</p>
+                    </div>
+                </div>
+            </div>
+            <div class="atc-slide" data-atc="3">
+                <h3 class="atc-title">Our Values</h3>
+                <p class="atc-desc">Integrity, sustainability, and a genuine love for the land guide everything we do.</p>
+                <div class="atc-items">
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-tree"></i></div>
+                        <h5>Rooted</h5>
+                        <p>From Tamil Nadu</p>
+                    </div>
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-fire"></i></div>
+                        <h5>Passion</h5>
+                        <p>For the land</p>
+                    </div>
+                    <div class="atc-item">
+                        <div class="atc-emoji"><i class="fas fa-flask"></i></div>
+                        <h5>Lab Tested</h5>
+                        <p>Pure quality assured</p>
+                    </div>
+                </div>
+            </div>
+            <div class="atc-dots" id="atcDots">
+                <div class="atc-dot active" data-atcdot="0"></div>
+                <div class="atc-dot" data-atcdot="1"></div>
+                <div class="atc-dot" data-atcdot="2"></div>
+                <div class="atc-dot" data-atcdot="3"></div>
+            </div>
+        </section>
+
+        <!-- Feature Section Start -->
+        <section class="feature-section section-padding fix">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="feature-box-items organic-bg-box" style="background:url('images/100%25organic.jpg') center/cover no-repeat;position:relative;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;">
+                            <div class="feature-content" style="position:relative;z-index:1;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.6);">
+                                <h3>100% Organic Products</h3>
+                                <p>All our produce is chemical-free and naturally grown on certified organic farms across Tamil Nadu, India.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="feature-box-items organic-bg-box" style="background:url('images/farm%20fresh.jpg') center/cover no-repeat;position:relative;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;">
+                            <div class="feature-content">
+                                <h3>Farm Fresh Vegetables</h3>
+                                <p>From field to doorstep, we deliver the freshest seasonal vegetables to homes and businesses in 15+ countries.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
+                        <div class="feature-box-items organic-bg-box" style="background:url('images/airplane-traveling-around-the-world-vector.jpg') center/cover no-repeat;position:relative;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;">
+                            <div class="feature-content">
+                                <h3>Import & Export</h3>
+                                <p>Full-scale import and export operations for organic vegetables, fruits, spices, grains, and food ingredients.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".8s">
+                        <div class="feature-box-items organic-bg-box" style="background:url('images/images.jpg') center/cover no-repeat;position:relative;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;">
+                            <div class="feature-content">
+                                <h3>B2B & B2C Supply</h3>
+                                <p>Serving both businesses and consumers with reliable organic produce supply chains from Tamil Nadu to the world.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section Start -->
+        <section class="about-section section-padding fix pt-0">
+            <div class="container">
+                <div class="about-wrapper">
+                    <div class="row g-4">
+                        <div class="col-lg-7">
+                            <div class="about-left-content">
+                                <div class="section-title mb-0">
+                                    <span class="wow fadeInUp"><img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/sub-title.svg" alt="img">About VPNexues</span>
+                                    <h2 class="text-anim">VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022.</h2>
+                                </div>
+                                <p class="about-text wow fadeInUp" data-wow-delay=".2s">
+                                    VPNexues is a farm-to-customer agri supply chain company connecting Tamil Nadu farmers directly to consumers and businesses worldwide. We eliminate middlemen, ensure fair income for farmers, and deliver the freshest organic produce — from vegetables and fruits to spices and specialty food ingredients.
+                                </p>
+                                <div class="list-items wow fadeInUp" data-wow-delay=".4s">
+                                    <ul>
+                                        <li>
+                                            <i class="far fa-check"></i>
+                                            Direct Farmer Connection
+                                        </li>
+                                        <li>
+                                            <i class="far fa-check"></i>
+                                            B2B & B2C Flexible Plans
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <i class="far fa-check"></i>
+                                            Global Shipping Network
+                                        </li>
+                                        <li>
+                                            <i class="far fa-check"></i>
+                                            Quality Certified Organic
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="about-bottom-area">
+                                    <a href="#contact-app" class="theme-btn wow fadeInUp" data-wow-delay=".6s">
+                                        Contact Us <i class="far fa-arrow-right"></i>
+                                    </a>
+                                    <div class="phone-box-items wow fadeInUp" data-wow-delay=".8s">
+                                        <div class="icon">
+                                            <i class="fas fa-phone-alt"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p>Phone :</p>
+                                            <a href="tel:+91 9943994603">+91 9943994603</a>
+                                               <a href="tel:+91 8148197842">
+                                 +91 8148197842</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="about-right-items">
+                                <div class="about-top-box wow fadeInUp" data-wow-delay=".3s">
+                                    <p>Trusted Worldwide</p>
+                                    <h2><span class="odometer" data-count="150">0</span>+</h2>
+                                    <p class="text">
+                                       Certified organic produce delivered from Tamil Nadu farms to families and businesses across Singapore, Australia, UAE, USA, UK, and beyond.
+                                    </p>
+                                </div>
+                                <div class="about-image wow fadeInUp" data-wow-delay=".5s" style="position:relative;overflow:hidden;">
+                                    <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/about/about-01.jpg" alt="img">
+                                    <div class="about-img-tooltip">Certified organic produce delivered from Tamil Nadu farms to families and businesses across Singapore, Australia, UAE, USA, UK, and beyond.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Section Start -->
+        <section class="service-section section-padding section-bg">
+            <div class="top-shape">
+                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/top-shape.png" alt="img">
+            </div>
+            <div class="service-left-shape d-none d-xxl-block float-bob-y">
+                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/left-shape.png" alt="img">
+            </div>
+            <div class="service-right-shape d-none d-xxl-block float-bob-x">
+                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/right-shape.png" alt="img">
+            </div>
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="wow fadeInUp"><img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/sub-title.svg" alt="img">Our Services</span>
+                    <h2 class="text-anim">Services We Offer</h2>
+                    <p class="wow fadeInUp" data-wow-delay=".2s">
+                      From organic farming and harvesting to global export logistics, we provide end-to-end solutions with quality and care.
+                    </p>
+                </div>
+                <div class="service-wrapper">
+                     <ul class="nav">
+                        <li class="nav-item wow fadeInUp" data-wow-delay=".2s">
+                            <a href="#thumb1" data-bs-toggle="tab" class="nav-link active">
+                           Organic Produce Export
+                            </a>
+                        </li>
+                        <li class="nav-item wow fadeInUp" data-wow-delay=".4s">
+                            <a href="#thumb2" data-bs-toggle="tab" class="nav-link">
+                                Farm-to-Door Delivery
+                            </a>
+                        </li>
+                        <li class="nav-item wow fadeInUp" data-wow-delay=".6s">
+                            <a href="#thumb3" data-bs-toggle="tab" class="nav-link">
+                            B2B Bulk Supply
+                            </a>
+                        </li>
+                        <li class="nav-item wow fadeInUp" data-wow-delay=".8s">
+                            <a href="#thumb4" data-bs-toggle="tab" class="nav-link">
+                            Import & Sourcing
+                            </a>
+                        </li>
+                    </ul>
+                     <div class="tab-content">
+                        <div id="thumb1" class="tab-pane fade show active">
+                            <div class="row align-items-center g-4">
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="service-content-area">
+                                        <div class="icon">
+                                            <i class="flaticon-agriculture"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3><a href="pricing.html?type=small-box">Organic Produce Export</a></h3>
+                                            <p>We export fresh organic vegetables, fruits, spices, and grains from Tamil Nadu farms to international markets. Our B2B and B2C channels ensure every customer gets farm-fresh quality.</p>
+                                            <a href="about.html" class="theme-btn">
+                                                View Details <i class="far fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="service-image">
+                                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/service-01.jpg" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="thumb2" class="tab-pane fade">
+                            <div class="row align-items-center g-4">
+                                <div class="col-lg-6">
+                                    <div class="service-content-area">
+                                        <div class="icon">
+                                            <i class="flaticon-agriculture"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3><a href="pricing.html?type=small-box">Farm-to-Door Delivery</a></h3>
+                                            <p>Our B2C service delivers chemical-free, farm-fresh produce directly to households. Weekly, monthly, and yearly subscription plans available for families across Singapore and India.</p>
+                                            <a href="pricing.html?type=small-box" class="theme-btn">
+                                                View Details <i class="far fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="service-image">
+                                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/service-02.jpg" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="thumb3" class="tab-pane fade">
+                             <div class="row align-items-center g-4">
+                                <div class="col-lg-6">
+                                    <div class="service-content-area">
+                                        <div class="icon">
+                                            <i class="flaticon-agriculture"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3><a href="pricing.html?type=small-box">B2B Bulk Supply</a></h3>
+                                            <p>Reliable, consistent bulk supply of organic produce for restaurants, supermarkets, food processing companies, and wholesale distributors worldwide with custom packaging.</p>
+                                            <a href="pricing.html?type=small-box" class="theme-btn">
+                                                View Details <i class="far fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="service-image">
+                                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/service-03.jpg" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="thumb4" class="tab-pane fade">
+                            <div class="row align-items-center g-4">
+                                <div class="col-lg-6">
+                                    <div class="service-content-area">
+                                        <div class="icon">
+                                            <i class="flaticon-agriculture"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3><a href="pricing.html?type=small-box">Import & Sourcing</a></h3>
+                                            <p>We import specialty food ingredients and products from global markets to serve the growing demand in India's organic food sector. End-to-end logistics and documentation handled.</p>
+                                            <a href="pricing.html?type=small-box" class="theme-btn">
+                                                View Details <i class="far fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="service-image">
+                                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/service-04.jpg" alt="img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Counter Section Start -->
+        <section class="counter-section section-padding section-bg pt-0">
+            <div class="bottom-shape">
+                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/bottom-shape.png" alt="img">
+            </div>
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="counter-box-items-area">
+                            <div class="icon">
+                                <i class="flaticon-delivery"></i>
+                            </div>
+                            <div class="content">
+                                <h2><span>0</span>+</h2>
+                                <p>Organic Products Exported</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="counter-box-items-area">
+                            <div class="icon">
+                                <i class="flaticon-leaf"></i>
+                            </div>
+                            <div class="content">
+                                <h2><span>0</span>K+</h2>
+                                <p>Happy Customers Served</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
+                        <div class="counter-box-items-area">
+                            <div class="icon">
+                                <i class="flaticon-like"></i>
+                            </div>
+                            <div class="content">
+                                <h2><span>0</span>%</h2>
+                                <p>Customer Satisfaction Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".8s">
+                        <div class="counter-box-items-area">
+                            <div class="icon">
+                                <i class="flaticon-farmer"></i>
+                            </div>
+                            <div class="content">
+                                <h2><span>0</span>+</h2>
+                                <p>Expert Team Members</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Choose Us Section Start -->
+        <section class="choose-us-section section-padding pt-0">
+            <div class="shape-1 float-bob-x">
+                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/choose/shape-1.png" alt="img">
+            </div>
+            <div class="container">
+                <div class="choose-us-wrapper">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="choose-left-image-items">
+                                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/choose/choose-01.jpg" alt="img">
+                                <div class="image-2">
+                                    <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/choose/choose-02.jpg" alt="img">
+                                </div>
+                                <div class="organic-shape">
+                                    <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/choose/organic-icon.png" alt="img">
+                                </div>
+                                <div class="ratting-box">
+                                    <div class="ratting-image">
+                                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/choose/ratting-icon.png" alt="img">
+                                    </div>
+                                    <h4>Award-winning
+     <br> export company
+</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="choose-content-items">
+                                <div class="section-title mb-0">
+                                    <span class="wow fadeInUp"><img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/sub-title.svg" alt="img">Why Choose VPNexues</span>
+                                    <h2 class="text-anim">Growing Organic in Tamil Nadu, Delivering Worldwide</h2>
+                                </div>
+                                <p class="choose-text wow fadeInUp" data-wow-delay=".2s">
+                                  In 2026, the organic food and vegetable business is evolving rapidly. VPNexues is not just in the vegetable business ? we handle full-scale import and export operations across global markets.
+                                </p>
+                                <p class="wow fadeInUp" data-wow-delay=".4s">
+                                    We connect Tamil Nadu's finest organic farmers directly with consumers and businesses worldwide ? no middlemen, fair pricing, and guaranteed freshness from farm to table across Singapore, UAE, Europe, and beyond.
+                                </p>
+                                <div class="progress-wrap">
+                                    <div class="pro-items wow fadeInUp" data-wow-delay=".6s">
+                                        <div class="pro-head">
+                                            <h6 class="title">Organic Quality</h6>
+                                            <span class="point">99%</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-value style-two"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pro-items wow fadeInUp" data-wow-delay=".8s">
+                                        <div class="pro-head">
+                                            <h6 class="title">Export Reliability</h6>
+                                            <span class="point">90%</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-value style-two"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Section Start -->
+        <div class="brand-section section-padding pt-0">
+            <div class="container">
+                <div class="top-text text-center wow fadeInUp">
+                    <p>VPNexues partners with 50+ businesses across 5+ countries worldwide</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section Start -->
+        <section class="gallery-section section-padding section-bg">
+            <div class="top-shape">
+                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/service/top-shape.png" alt="img">
+            </div>
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="wow fadeInUp"><img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/sub-title.svg" alt="img">Our Product Gallery</span>
+                    <h2 class="text-anim">Fresh From Our Farms</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp">
+                    <div class="gallery-image-items">
+                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/gallery/farmer-bg-1.jpg" alt="img">
+                        <div class="content">
+                            <p>Gallery</p>
+                            <h3><a href="javascript:void(0);">Eco and Agriculture</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="gallery-image-items">
+                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/gallery/farmer-bg-2.jpg" alt="img">
+                        <div class="content">
+                            <p>Gallery</p>
+                            <h3><a href="javascript:void(0);">Eco and Agriculture</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="gallery-image-items">
+                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/gallery/farmer-bg-3.jpg" alt="img">
+                        <div class="content">
+                            <p>Gallery</p>
+                            <h3><a href="javascript:void(0);">Eco and Agriculture</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                    <div class="gallery-image-items">
+                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/gallery/farmer-bg-4.jpg" alt="img">
+                        <div class="content">
+                            <p>Gallery</p>
+                            <h3><a href="javascript:void(0);">Eco and Agriculture</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".8s">
+                    <div class="gallery-image-items">
+                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/gallery/farmer-bg-5.jpg" alt="img">
+                        <div class="content">
+                            <p>Gallery</p>
+                            <h3><a href="javascript:void(0);">Eco and Agriculture</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".9s">
+                    <div class="gallery-image-items">
+                        <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/gallery/farmer-bg-6.jpg" alt="img">
+                        <div class="content">
+                            <p>Gallery</p>
+                            <h3><a href="javascript:void(0);">Eco and Agriculture</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cta Section Start -->
+        <section class="cta-section section-padding pt-0" style="background-color: #fff;">
+            <div class="bottom-shape d-none d-lg-block">
+            </div>
+            <div class="container">
+                <div class="cta-wrapper bg-cover" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/cta/cta-bg.jpg')">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-8 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="cta-content">
+                                <div class="section-title mb-0">
+                                    <span class="text-white"><img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/sub-title.svg" alt="img">Why Choose VPNexues</span>
+                                    <h2 class="text-white text-anim">Growing Organic in Tamil Nadu, Delivering Worldwide</h2>
+                                </div>
+                                <p class="cta-text">
+                                   In 2026, the organic food and vegetable business is evolving rapidly. VPNexues is not just in the vegetable business ? we handle full-scale import and export operations across global markets.
+
+                                    We connect Tamil Nadu's finest organic farmers directly with consumers and businesses worldwide ? no middlemen, fair pricing, and guaranteed freshness from farm to table across Singapore, UAE, Europe, and beyond.
+                                </p>
+                                <div class="cta-bottom-area">
+                                    <a href="#contact-app" class="theme-btn">
+                                        Contact Today <i class="far fa-arrow-right"></i>
+                                    </a>
+                                    <div class="phone-box-items">
+                                        <div class="icon">
+                                            <i class="fas fa-phone-alt"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p>Phone:</p>
+                                            <a href="tel:+91 9943994603">+91 9943994603</a>
+                                               <a href="tel:+91 8148197842">+91 8148197842</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 wow fadeInUp" data-wow-delay=".5s">
+                            <div class="cta-image">
+                                <div class="cta-slider">
+                                    <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/cta/fa2.webp" class="cta-slide cta-fa2 active">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section Start --> 
+        <section class="contact-section section-bg fix" id="contact-app">
+            <div class="shape-1 float-bob-y">
+                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/contact-shape.png" alt="img">
+            </div>
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-6">
+                            <div class="contact-content">
+                                <div class="section-title mb-0">
+                                    <span class="wow fadeInUp"><img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/sub-title.svg" alt="img">Contact With Us</span>
+                                    <h2 class="text-anim">Contact Us for B2B & B2C Organic Produce Supply</h2>
+                                </div>
+                              <form id="contact-form" class="contact-form-box">
+    <div class="row g-4 align-items-center justify-content-center">
+        <div class="col-lg-6 col-md-6">
+            <div class="form-clt">
+                <input type="email" name="email" placeholder="Enter email" required>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="form-clt">
+                <input type="text" name="fullname" placeholder="Enter name" required>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="form-clt">
+                <input type="text" name="company" placeholder="Company name">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="form-clt">
+                <input type="text" name="phone" placeholder="Phone number">
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-clt">
+                <input type="text" name="subject" placeholder="Your subject" required>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-clt">
+                <textarea name="message" placeholder="Write a message..." required></textarea>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="contact-button">
+                <button type="submit" class="theme-btn" id="sendMessageBtn">
+                    Send Your Message
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-image">
+                                <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/contact-img-01.jpg" alt="Person writing a letter to a farmer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section Start --> 
+        <div class="video-section parallaxie fix">
+            <div class="video-wrapper">
+                <div class="video">
+                    <img loading="lazy" decoding="async" src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/video.webp" alt="img">
+                    <a href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/video.mp4" class="video-btn video-popup">
+                        <i class="fas fa-play"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section Start -->
+        <footer class="about-footer">
+            <div class="about-footer__decoration" aria-hidden="true"></div>
+            <div class="about-footer__container">
+                <div class="about-footer__main">
+                    <div class="about-footer__brand">
+                        <a href="index.html" class="about-footer__logo">
+                            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/logo/vp-logo.svg" alt="VPNexues logo">
+                            <span class="about-footer__brandName">
+                                <strong>VPNexues</strong>
+                                <small>விவசாயம் காப்போம்</small>
+                            </span>
+                        </a>
+                        <p class="about-footer__description">Farm-fresh groceries and export-grade produce, delivered with care. Supporting farmers, nourishing families.</p>
+                    </div>
+
+                    <div class="about-footer__links">
+                        <h5 class="about-footer__heading">Useful Links</h5>
+                        <ul class="about-footer__list">
+                            <li><a href="about.html" class="about-footer__link">About VPNexues</a></li>
+                            <li><a href="team.html" class="about-footer__link">Our Team</a></li>
+                            <li><a href="contact.html" class="about-footer__link">Contact Us</a></li>
+                            <li><a href="index.html#contact-app" class="about-footer__link">B2B Enquiries</a></li>
+                            <li><a href="faq.html" class="about-footer__link">FAQs</a></li>
+                            <li><a href="pricing.html" class="about-footer__link">Pricing Plans</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="about-footer__links">
+                        <h5 class="about-footer__heading">Our Services</h5>
+                        <ul class="about-footer__list">
+                            <li><a href="shop.html" class="about-footer__link">Organic Vegetables</a></li>
+                            <li><a href="shop.html" class="about-footer__link">Tropical Fruits</a></li>
+                            <li><a href="shop.html" class="about-footer__link">Premium Spices</a></li>
+                            <li><a href="shop.html" class="about-footer__link">Organic Grains</a></li>
+                            <li><a href="shop.html" class="about-footer__link">Food Ingredients</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="about-footer__directors">
+                        <h5 class="about-footer__heading">Directors</h5>
+                        <div class="about-footer__directorsList">
+                            <div class="about-footer__director">
+                                <div class="about-footer__directorImage">
+                                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/preed-bg.jpeg" alt="Pradeep Kumar">
+                                </div>
+                                <div class="about-footer__directorInfo">
+                                    <strong>Pradeep Kumar</strong>
+                                    <span>Director</span>
+                                </div>
+                            </div>
+                            <div class="about-footer__director">
+                                <div class="about-footer__directorImage">
+                                    <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/nag-bg.jpg" alt="Nageswaran Duraiswamy">
+                                </div>
+                                <div class="about-footer__directorInfo">
+                                    <strong>Nageswaran Duraiswamy</strong>
+                                    <span>Director</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-footer__bottom">
+                <div class="about-footer__bottomInner">
+                    <p class="about-footer__copyright">&copy; 2026 VPNexues Import &amp; Export</p>
+                    <p class="about-footer__tagline">Fresh food, thoughtfully sourced.</p>
+                    <div class="about-footer__socials">
+                        <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank" rel="noreferrer" aria-label="Facebook" class="about-footer__socialIcon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/vpnexues/" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="about-footer__socialIcon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank" rel="noreferrer" aria-label="Instagram" class="about-footer__socialIcon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--<< All JS Plugins >>-->
+        <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+        <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.nice-select.min.js"></script>
+        <script src="assets-ui/js/odometer.min.js"></script>
+        <script src="assets-ui/js/jquery.appear.min.js"></script>
+        <script src="assets-ui/js/swiper-bundle.min.js"></script>
+        <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+        <script src="assets-ui/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets-ui/js/wow.min.js"></script>
+        <script src="assets-ui/js/gsap.min.js"></script>
+        <script src="assets-ui/js/ScrollTrigger.min.js"></script>
+        <script src="assets-ui/js/SplitText.min.js"></script>
+        <script src="assets-ui/js/splitType.js"></script>
+        <script src="assets-ui/js/main.js"></script>
+
+    <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="shop.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-store nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Shop</span>
+            </a>
+            <a href="shop-cart.html" class="nav-item">
+                <span class="nav-icon-wrap">
+                    <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+                    <span class="nav-badge" id="nav-cart-badge" style="display:none">0</span>
+                </span>
+                <span class="nav-label">Cart</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="vpnOpenModal('login'); return false;">
+                <span class="nav-icon-wrap"><i class="far fa-user nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Account</span>
+            </a>
+        </div>
+    </nav>
+
+  <script>
+  (function() {
+    function updateCartBadge() {
+      var badge = document.getElementById("nav-cart-badge");
+      var hBadge = document.getElementById("header-cart-badge");
+      var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      var count = 0;
+      cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+      if (badge) {
+        if (count > 0) { badge.textContent = count; badge.style.display = ""; }
+        else { badge.style.display = "none"; }
+      }
+      if (hBadge) {
+        if (count > 0) { hBadge.textContent = count; hBadge.style.display = ""; }
+        else { hBadge.style.display = "none"; }
+      }
+    }
+    updateCartBadge();
+    window.updateCartBadge = updateCartBadge;
+  })();
+
+  /* About Text Carousel */
+  (function() {
+    var el = document.getElementById('aboutTextCarousel');
+    if (!el) return;
+    var slides = el.querySelectorAll('.atc-slide');
+    var dots = el.querySelectorAll('.atc-dot');
+    var cur = 0, total = slides.length, timer;
+    function show(i) {
+      slides.forEach(function(s) { s.classList.remove('active'); });
+      dots.forEach(function(d) { d.classList.remove('active'); });
+      slides[i].classList.add('active');
+      dots[i].classList.add('active');
+      cur = i;
+    }
+    function next() { show((cur + 1) % total); }
+    dots.forEach(function(d) {
+      d.addEventListener('click', function() {
+        show(parseInt(this.getAttribute('data-atcdot')));
+        clearInterval(timer);
+        timer = setInterval(next, 3200);
+      });
+    });
+    timer = setInterval(next, 3200);
+  })();
+  </script>
+
+    <script>
+const form = document.getElementById('contact-form');
+if (form) {
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch('send-mail.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            if(data.trim() === "success"){
+                showToast("Message sent successfully!", "success");
+                form.reset();
+            } else {
+                showToast("Failed to send message!", "error");
+            }
+        })
+        .catch(error => {
+            showToast("Something went wrong!", "error");
+        });
+    });
+}
+
+function showToast(message, type){
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+    toast.innerText = message;
+    toast.className = "toast-message show";
+    if(type === "success"){
+        toast.classList.add("toast-success");
+    } else {
+        toast.classList.add("toast-error");
+    }
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
+
+(function () {
+    const slides = document.querySelectorAll('.cta-slide');
+    if (slides.length <= 1) return;
+    let current = 0;
+    slides[0].classList.add('active');
+    setInterval(function () {
+        const prev = current;
+        current = (current + 1) % slides.length;
+        slides[prev].classList.remove('active');
+        slides[prev].classList.add('leaving');
+        setTimeout(function () {
+            slides[prev].classList.remove('leaving');
+        }, 1800);
+        slides[current].classList.add('active');
+    }, 4000);
+})();
+</script>
+
+<div id="toast" class="toast-message"></div>
+
+<script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

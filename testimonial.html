@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--<< Header Area >>-->
+    <head>
+        <!-- ========== Meta Tags ========== -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="modinatheme">
+        <meta name="description" content="VPNexues ">
+        <!-- ======== Page title ============ -->
+         <!-- ======== Page title ============ -->
+        <title>VPNexues </title>
+        <!--<< Favicon >>-->
+        <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16" />
+        <link rel="shortcut icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" type="image/x-icon" />
+        <!--<< Bootstrap min.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/bootstrap.min.min.css?v=1.0">
+        <!--<< Font Awesome.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+        <!--<< Animate.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/animate.min.css?v=1.0">
+        <!--<< Magnific Popup.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/magnific-popup.css">
+        <!--<< MeanMenu.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/meanmenu.css">
+        <!--<< Odometer.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/odometer.css">
+        <!--<< Swiper Bundle.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/swiper-bundle.min.css">
+        <!--<< Nice Select.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/nice-select.css">
+        <!--<< Main.css >>-->
+        <link rel="stylesheet" href="assets-ui/css/main.css">
+        <link rel="stylesheet" href="assets-ui/css/auth-responsive.css?v=5.0">
+    <link rel="stylesheet" href="assets-ui/css/mobile-bottom-nav.css">
+    <style>
+        body { background: linear-gradient(180deg, #eaf6ea 0%, #f6faf5 55%, #ffffff 100%); background-attachment: fixed; }
+        .breadcrumb-wrapper { display: none !important; }
+
+        /* ===== TESTIMONIAL SECTION MODERN DESIGN ===== */
+        .testimonial-section .section-title span {
+            color: #96c121;
+        }
+        .testimonial-section .section-title h2 {
+            color: #055729;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        /* Testimonial image - modern card */
+        .testimonial-wrapper .testimonial-image {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(5, 87, 41, .15);
+            border: 3px solid #b9d278;
+        }
+        .testimonial-wrapper .testimonial-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(150, 193, 33, .15), transparent 60%);
+            pointer-events: none;
+        }
+        .testimonial-wrapper .testimonial-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Box items - glassmorphism card */
+        .testimonial-wrapper .testimonial-box-items {
+            background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(234,246,234,.85));
+            border: 1.5px solid rgba(185, 210, 120, .35);
+            border-radius: 20px;
+            padding: 36px 40px;
+            box-shadow: 0 12px 40px rgba(5, 87, 41, .08);
+            backdrop-filter: blur(10px);
+            transition: transform .3s ease, box-shadow .3s ease;
+            position: relative;
+        }
+        .testimonial-wrapper .testimonial-box-items::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #96c121, #ffce00, #69c7ea);
+            border-radius: 20px 20px 0 0;
+        }
+        .testimonial-wrapper .testimonial-box-items:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(5, 87, 41, .12);
+        }
+
+        /* Stars */
+        .testimonial-wrapper .testimonial-box-items .star {
+            display: flex;
+            gap: 4px;
+        }
+        .testimonial-wrapper .testimonial-box-items .star i {
+            color: #ffce00;
+            font-size: 18px;
+            filter: drop-shadow(0 2px 4px rgba(255, 206, 0, .3));
+        }
+
+        /* Quote text */
+        .testimonial-wrapper .testimonial-box-items h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #055729;
+            line-height: 1.6;
+            margin-top: 20px;
+            font-style: italic;
+            position: relative;
+        }
+
+        /* Client info */
+        .testimonial-wrapper .testimonial-box-items .client-info-area {
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 1.5px solid rgba(185, 210, 120, .3);
+        }
+        .testimonial-wrapper .testimonial-box-items .client-info-area .client-info .client-image {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #96c121;
+            box-shadow: 0 4px 12px rgba(150, 193, 33, .25);
+        }
+        .testimonial-wrapper .testimonial-box-items .client-info-area .client-info .client-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .testimonial-wrapper .testimonial-box-items .client-info-area .client-info .content h5 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #055729;
+            margin-bottom: 2px;
+        }
+        .testimonial-wrapper .testimonial-box-items .client-info-area .client-info .content p {
+            font-size: 13px;
+            color: #69c7ea;
+            font-weight: 600;
+        }
+
+        /* Quote icon */
+        .testimonial-wrapper .testimonial-box-items .client-info-area .icon i {
+            color: #b9d278;
+            font-size: 48px;
+            opacity: .5;
+        }
+
+        /* Arrow buttons */
+        .testimonial-wrapper .array-buttons .array-prev,
+        .testimonial-wrapper .array-buttons .array-next {
+            border: 2px solid #96c121 !important;
+            background: #fff !important;
+            transition: all .3s ease;
+        }
+        .testimonial-wrapper .array-buttons .array-prev:hover,
+        .testimonial-wrapper .array-buttons .array-next:hover {
+            background: #96c121 !important;
+        }
+        .testimonial-wrapper .array-buttons .array-prev:hover svg path,
+        .testimonial-wrapper .array-buttons .array-next:hover svg path {
+            fill: #fff !important;
+        }
+        .testimonial-wrapper .array-buttons .array-prev svg path,
+        .testimonial-wrapper .array-buttons .array-next svg path {
+            fill: #96c121 !important;
+        }
+
+        /* ===== BANNER (mobile image) ===== */
+        .testimonial-banner {
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0 8px;
+        }
+        .testimonial-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            margin: 0;
+            padding: 0;
+            border-radius: 12px;
+        }
+        @media (min-width: 768px) {
+            .testimonial-banner { display: none; }
+        }
+
+        /* ===== DESKTOP BANNER ===== */
+        .testimonial-desktop-heading { display: none; }
+        @media (min-width: 768px) {
+            .testimonial-desktop-heading { display: block !important; }
+            .testimonial-desktop-heading .pg-banner {
+                margin: 0;
+                border-radius: 0 0 28px 28px;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                padding: 44px 0 40px;
+                background:
+                    linear-gradient(to right, rgba(5,87,41,.45), rgba(150,193,33,.2)),
+                    url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Shopping%20pages%20Bannner%20Imgs/testimonial-banner.jpg') center 52%/cover no-repeat;
+            }
+            .testimonial-desktop-heading .pg-banner::after { display: none !important; }
+            .testimonial-desktop-heading .pg-banner .container {
+                padding-left: clamp(20px, 4vw, 60px);
+                padding-right: clamp(20px, 4vw, 60px);
+            }
+            .testimonial-desktop-heading .pg-banner .pg-banner-in .breadcrumb {
+                font-size: 12px;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                opacity: 1;
+                color: #fff !important;
+                margin-bottom: 10px;
+                text-shadow: 0 2px 8px rgba(0, 0, 0, .65), 0 0 18px rgba(255, 255, 255, .35);
+            }
+            .testimonial-desktop-heading .pg-banner .pg-banner-in .breadcrumb a,
+            .testimonial-desktop-heading .pg-banner .pg-banner-in .breadcrumb span {
+                color: #fff !important;
+            }
+            .testimonial-desktop-heading .pg-banner .pg-banner-in h1 {
+                font-size: 30px;
+                margin: 0;
+                color: #fff !important;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, .7), 0 0 22px rgba(255, 255, 255, .4);
+            }
+            .testimonial-desktop-heading .pg-banner .pg-banner-in p {
+                font-size: 13px;
+                margin-top: 6px;
+                color: #fff !important;
+                opacity: 1;
+                text-shadow: 0 1px 6px rgba(0, 0, 0, .6), 0 0 14px rgba(255, 255, 255, .3);
+            }
+        }
+
+        /* Desktop header */
+        @media (min-width: 768px) {
+            #header-sticky { background: linear-gradient(180deg, #f7fbf5 0%, #eef6ea 100%); box-shadow: none; border-bottom: none; }
+            #header-sticky .mega-menu-wrapper,
+            #header-sticky .header-main { background: transparent; box-shadow: none; }
+            #header-sticky .mean__menu-wrapper,
+            #header-sticky .main-menu,
+            #header-sticky nav#mobile-menu,
+            #header-sticky nav#mobile-menu > ul { background: transparent !important; box-shadow: none !important; border: none !important; border-radius: 0 !important; }
+            #header-sticky .header-main .main-menu ul li > a { color: #1c4b2a; }
+            #header-sticky .header-main .main-menu ul li:hover > a,
+            #header-sticky .header-main .main-menu ul li > a:hover { color: #f8b417; }
+        }
+
+        /* Footer */
+        .vnp-box-footer{background:#1E3917!important;background-image:none!important}
+        .vnp-box-footer::before{background:rgba(30,57,23,.85)!important}
+        .vnp-box-footer .footer-widget-wrapper{display:none!important}
+        .vnp-box-footer .footer-bottom{background:transparent!important;border:0!important}
+        .vnp-box-footer .footer-desktop-logo-copy{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1.1}
+        .vnp-box-footer .footer-desktop-logo-copy strong{font-size:24px;font-weight:800;color:#fff}
+        .vnp-box-footer .footer-desktop-logo-copy small{font-size:11px;font-weight:600;color:rgba(255,255,255,.76)}
+        .vnp-box-footer .footer-mobile-brand{display:none}
+        @media(min-width:768px){.vnp-box-footer{padding-top:46px!important}}
+        @media(max-width:767px){
+          .vnp-box-footer{padding:24px 0 0!important;background-position:center}
+          .vnp-box-footer .footer-widget-top{display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 18px 18px;text-align:center}
+          .vnp-box-footer .footer-widget-top .footer-desktop-logo{display:none}
+          .vnp-box-footer .footer-mobile-brand{display:inline-flex;align-items:center;gap:9px;color:#fff;text-decoration:none;text-align:left}
+          .vnp-box-footer .footer-mobile-brand img{width:38px;height:38px;flex:0 0 38px;object-fit:contain}
+          .vnp-box-footer .footer-mobile-brand-copy{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+          .vnp-box-footer .footer-mobile-brand-copy strong{color:#fff;font-size:19px;font-weight:800;line-height:1}
+          .vnp-box-footer .footer-mobile-brand-copy small{color:rgba(255,255,255,.76);font-size:9px;font-weight:600;line-height:1}
+          .vnp-box-footer .footer-bottom{padding:16px 0 18px}
+          .vnp-box-footer .footer-bottom-wrapper{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+          .vnp-box-footer .footer-bottom-wrapper .text-1{margin:0;font-size:10px;line-height:1.3}
+          .vnp-box-footer .footer-bottom-wrapper .social-icon{display:flex;gap:20px}
+          .vnp-box-footer .footer-bottom-wrapper .bottom-img{display:none}
+        }
+        .vnp-box-footer{position:relative}
+        .vnp-subs-popup{
+          display:none;align-items:center;gap:12px;background:#fff;border-radius:14px;
+          padding:14px 16px;box-shadow:0 16px 40px rgba(20,71,47,.18);
+          border:1px solid #eef3ec;
+        }
+        .vnp-subs-popup.show{display:flex;animation:vnpSubsPop .3s ease}
+        @keyframes vnpSubsPop{from{opacity:0;transform:translate(-50%,-50%) scale(.9)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+        .vnp-subs-popup-icon{
+          width:38px;height:38px;flex:0 0 38px;border-radius:50%;
+          background:linear-gradient(135deg,#2f7d2c,#1f5f23);color:#fff;
+          display:flex;align-items:center;justify-content:center;font-size:16px;
+        }
+        .vnp-subs-popup.err .vnp-subs-popup-icon{background:linear-gradient(135deg,#c0392b,#922b21)}
+        .vnp-subs-popup-body{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+        .vnp-subs-popup-title{font-size:14px;font-weight:800;color:#1a2b1e;line-height:1.2}
+        .vnp-subs-popup-desc{font-size:12px;color:#6b7280;line-height:1.4}
+        .vnp-subs-popup-close{border:none;background:none;color:#9ca3af;font-size:14px;cursor:pointer;padding:4px}
+        #vnp-subscribe-btn .vnp-subs-tick{margin-right:6px}
+        #vnp-subscribe-btn.vnp-subs-done{
+          background:#FFC107 !important;
+          background-image:none !important;
+          color:#1a2b1e !important;
+          border-color:#FFC107 !important;
+          box-shadow:0 8px 24px rgba(255,193,7,.35) !important;
+          font-weight:800;
+        }
+        #vnp-subscribe-btn.vnp-subs-done::before,
+        #vnp-subscribe-btn.vnp-subs-done::after{display:none !important}
+        #vnp-subscribe-btn.vnp-subs-done .vnp-subs-tick{
+          margin:0;width:22px;height:22px;border-radius:50%;
+          background:#1a2b1e;color:#FFC107;font-size:12px;
+          display:inline-flex;align-items:center;justify-content:center;
+          transform:none !important;
+        }
+        #vnp-subscribe-btn.vnp-subs-done{line-height:1;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+        @media(max-width:767px){
+          .vnp-subs-popup{
+            position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+            z-index:99999;width:82%;max-width:330px;flex-direction:column;
+            text-align:center;padding:28px 22px;background:#2f7d2c;border:none;
+          }
+          .vnp-subs-popup::before{
+            content:'';position:fixed;inset:0;background:rgba(15,30,20,.55);z-index:-1;
+          }
+          .vnp-subs-popup.show{animation:vnpSubsPopMob .3s ease}
+          @keyframes vnpSubsPopMob{from{opacity:0;transform:translate(-50%,-46%) scale(.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+          .vnp-subs-popup-body{align-items:center}
+          .vnp-subs-popup-title{color:#fff}
+          .vnp-subs-popup-desc{color:rgba(255,255,255,.9)}
+          .vnp-subs-popup-icon{background:#FFC107;color:#1a2b1e}
+          .vnp-subs-popup-close{position:absolute;top:10px;right:12px;color:rgba(255,255,255,.8)}
+          .vnp-subs-popup.err{background:#b03a2e}
+        }
+        @media(min-width:768px){
+          .vnp-subs-popup{
+            position:absolute;left:50%;bottom:120px;transform:translateX(-50%);
+            z-index:60;background:#2f7d2c;border:none;
+            flex-direction:column;text-align:center;gap:10px;padding:20px 26px;
+            min-width:240px;
+          }
+          .vnp-subs-popup.show{animation:vnpSubsPopDesk .3s ease}
+          @keyframes vnpSubsPopDesk{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+          .vnp-subs-popup .vnp-subs-popup-icon{
+            width:52px;height:52px;flex:0 0 52px;font-size:24px;
+            background:#FFC107;color:#1a2b1e;
+          }
+          .vnp-subs-popup-title{color:#fff;font-size:15px}
+          .vnp-subs-popup-desc{color:rgba(255,255,255,.85)}
+          .vnp-subs-popup-close{color:rgba(255,255,255,.8);position:absolute;top:10px;right:12px}
+          .vnp-subs-popup.err{background:#b03a2e}
+        }
+        .vpn-login-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1px solid rgba(74,124,63,.26);border-radius:30px;background:rgba(255,255,255,.92);color:#263226;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(42,70,36,.08);margin-right:8px;white-space:nowrap;line-height:1.4}
+        .vpn-login-btn i{color:#4a7c3f;font-size:13px}
+        .vpn-login-btn:hover{transform:translateY(-2px);border-color:rgba(74,124,63,.48);box-shadow:0 12px 28px rgba(42,70,36,.14);color:#1f5f23}
+        .vpn-login-btn:hover i{transform:scale(1.08)}
+        .vpn-login-btn:active{transform:translateY(0) scale(.98)}
+        .vpn-account-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border:1px solid rgba(74,124,63,.26);border-radius:30px;background:rgba(255,255,255,.92);color:#263226;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 8px 22px rgba(42,70,36,.08);margin-right:8px;white-space:nowrap;line-height:1.4;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,color .22s ease}
+        .vpn-account-btn i{color:#4a7c3f;transition:transform .22s ease}
+        .vpn-account-btn:hover{transform:translateY(-2px);border-color:rgba(74,124,63,.48);box-shadow:0 12px 28px rgba(42,70,36,.14);color:#1f5f23}
+        .vpn-account-btn:hover i{transform:scale(1.08)}
+        .vpn-account-btn:active{transform:translateY(0) scale(.98)}
+        .vpn-hidden{display:none!important}
+        @media(max-width:767px){.vpn-account-btn{display:none!important}.vpn-login-btn{padding:6px 11px;margin-right:4px;font-size:12px;gap:5px}.vpn-login-btn i{font-size:12px}}
+    </style>
+    </head>
+    <body>
+
+          <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+            <div class="animation-preloader">
+                <div class="spinner">                
+                </div>
+                <div class="txt-loading">
+                    <span data-text-preloader="V" class="letters-loading">
+                        V
+                    </span>
+                    <span data-text-preloader="P" class="letters-loading">
+                        P
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+                    <span data-text-preloader="e" class="letters-loading">
+                       e
+                    </span>
+                    <span data-text-preloader="x" class="letters-loading">
+                       x
+                    </span>
+                     <span data-text-preloader="u" class="letters-loading">
+                       u
+                    </span>
+                     <span data-text-preloader="e" class="letters-loading">
+                       e
+                    </span>
+                     <span data-text-preloader="s" class="letters-loading">
+                       s
+                    </span>
+                </div>
+                <p class="text-center">Loading</p>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MouseCursor Start -->
+        <div class="mouseCursor cursor-outer"></div>
+        <div class="mouseCursor cursor-inner"></div>
+
+         <!-- Offcanvas Area Start -->
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <style>
+                            .offcanvas__logo { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; line-height: 1.05; background: url(https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg) no-repeat left center; background-size: 52px; padding-left: 66px; font-size: 24px; min-height: 60px; }
+                            .offcanvas__logo a { font-size: 24px; line-height: 1.05; }
+                            .offcanvas__logo .idlogo-vivasayam-txt { display: block; font-size: 10px; line-height: 1.25; font-weight: 600; letter-spacing: .2px; margin-top: 2px; white-space: nowrap; }
+                        </style>
+                        <div class="offcanvas-header-fixed">
+                            <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                                <div class="offcanvas__logo">
+                                    <a href="index.html">VPNexues</a><span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+                                </div>
+                                <div class="offcanvas__close">
+                                    <button><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <h3 class="offcanvas-title">Hello There!</h3>
+                            <p>VPNexues is Tamil Nadu's Premier Organic Farm-to-Table Export Company Since 2022. </p>
+                            <div class="mobile-menu fix mt-15"></div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="https://www.facebook.com/vpnexues" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="offcanvas-scrollable-body">
+                            <div class="offcanvas__contact">
+                                <h3>Contact Us</h3>
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="icon"><i class="far fa-phone-alt"></i></div>
+                                        <div class="content">
+                                            <p>Call Us</p>
+                                            <h4><a href="tel:+91 9943994603">+91 9943994603</a></h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon"><i class="fal fa-envelope"></i></div>
+                                        <div class="content">
+                                            <p>Send Email</p>
+                                            <h4><a href="mailto:support@vpnexues.com">support@vpnexues.com</a></h4>
+                                        </div>
+                                    </li>
+                                    <li style="align-items: flex-start;">
+                                        <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
+                                        <div class="content">
+                                            <p>Location</p>
+                                            <div class="footer-location-li"><h4>Singapore</h4><span style="color:#333;font-size: 14px;">412 Race Course Road, Singapore 218660, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                            <div class="footer-location-li"><h4>India</h4><span style="color:#333;font-size: 14px;">No 312/11, Siva towers, Perumal, Malai Road, Narasothipatti, Salem Tamil Nadu, India, 636004, <br/>+91 9943994603 | +91 8148197842</span></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="contact.html" class="theme-btn">
+                                Get A Quote
+                                <i class="far fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+
+        <!-- Header Top Start -->
+        <div class="header-top-section">
+            <div class="container">
+                <div class="header-top-wrapper">
+                    <ul class="header-contact-list">
+                        <li>
+                            <i class="fal fa-envelope"></i>
+                            <a href="mailto:support@vpnexues.com">
+                                support@vpnexues.com
+                            </a>
+                        </li>
+                        <li>
+                            <i class="far fa-phone-alt"></i>
+                            <a href="tel:+91 9943994603">
+                                +91 9943994603
+                            </a> |
+                            <a href="tel:+91 8148197842">
+                                 +91 8148197842</a>
+                           
+                        </li>
+                    </ul>
+                    <!-- <a href="index.html" class="top-logo">
+                        VPNexues
+                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/logo/black-logo.svg" alt="img">
+                    </a> -->
+                    <div class="head-right">
+                       
+
+                        <div class="line-shape"></div>
+                        <div class="social-icon">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com/in/vpnexues-private-limited-26976b3bb/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/vpnexues/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+              <!-- Header Section Start -->
+        <header id="header-sticky" class="header-1">
+            <div class="container">
+                <div class="mega-menu-wrapper">
+                <div class="header-main">
+                  <div class="vpn-logo-header">
+                        <div class="idlogo-vpn">
+                        <a href="index.html" class="top-logo"> VPNexues    </a>
+                        <span class="idlogo-vivasayam-txt">விவசாயம் காப்போம்</span>
+                        </div>
+               
+                            </div>
+                              <div class="idlogo-vpn idlogo-vpn-mobile">
+                          <a href="index.html" class="header-logo"> VPNexues    </a>
+                            <span class="idlogo-vivasayam-txt" style="padding-left: 41px;position: relative;top:-8px">விவசாயம் காப்போம்</span>
+                        </div>
+                      
+                        <div class="mean__menu-wrapper">
+                            
+                            <div class="main-menu">
+                               <nav id="mobile-menu">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li>
+                                            <a href="about.html">
+                                                About Us
+                                            </a>
+                                        </li>
+                                        <li class="has-dropdown">
+                                            <a href="javascript:void(0)">
+                                                Pages
+                                                <!-- <i class="fas fa-chevron-down"></i> -->
+                                            </a>
+                                            <ul class="submenu" style="display: block;">
+                                                <li><a href="our-services.html">Our Services</a></li>
+                                                <li><a href="team.html">Our Team</a></li>
+                                                <li><a href="pricing.html">Pricing Plan</a></li>
+                                                <li><a href="testimonial.html">Testimonails</a></li>
+                                                <!-- <li><a href="history.html">Our History</a></li> -->
+                                                <li><a href="faq.html">Faqs</a></li>
+                                                <li><a href="news.html">News</a></li>
+                                                <li><a href="gallery.html">Gallery</a></li>
+                                            </ul>
+                                        </li>
+                                       <!-- <li>
+                                            <a href="javascript:void(0)">
+                                                Services
+                                                <i class="fas fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="submenu" style="display: none;">
+                                                <li><a href="service.html">Our Services</a></li>
+                                                <li><a href="service-details.html">Service Details</a></li>
+                                            </ul>
+                                        </li> -->
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                Shop
+                                                
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="shop.html">Shop</a></li>
+                                                <li><a href="pricing.html?type=small-box" onclick="goPage('small-box')">Small Box</a></li>
+                                                <li><a href="pricing.html?type=big-box" onclick="goPage('big-box')">Big Box</a></li>
+                                                <li><a href="pricing.html?type=b2b" onclick="goPage('b2b')">B2B</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.html">Support</a></li>
+                                        <li class="vpn-desktop-careers"><a href="careers.html">Careers</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right d-flex justify-content-end align-items-center">
+                            <button class="vpn-login-btn" onclick="vpnOpenModal('login')" aria-label="Login or Sign up">
+                                <i class="far fa-user"></i> Login
+                            </button>
+                            <a class="vpn-account-btn" href="account.html" aria-label="My Account">
+                                <i class="far fa-user-circle"></i> <span id="navAccountLabel">My Account</span>
+                            </a>
+                            <div class="header__hamburger my-auto">
+                                <div class="sidebar__toggle">
+                                    <div class="header-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+         <!-- Testimonial Desktop Banner (shop-style pg-banner, desktop only) -->
+        <div class="testimonial-desktop-heading">
+            <div class="pg-banner"><div class="container"><div class="pg-banner-in"><div class="breadcrumb"><a href="index.html">Home</a><span>&rsaquo;</span> Testimonials</div><h1>&#10077; Our Testimonial</h1><p>Real stories from the farmers, partners and customers who grow with us.</p></div></div></div>
+        </div>
+
+        <!-- Testimonial Banner (mobile image) -->
+        <section class="testimonial-banner">
+            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/Testimonial%20Banner.png" alt="VPNexues Our Testimonial" class="testimonial-banner-img" loading="eager">
+        </section>
+
+        <!-- Testimonial Section Start -->
+        <section class="testimonial-section section-padding fix pt-50">
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/sub-title.svg" alt="img">Our Testimonial</span>
+                    <h2 class="text-anim" style="margin:0px auto;width:50%"><div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">W</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">h</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">a</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">t</div></div> <div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">O</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">u</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">r</div></div> <div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">P</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">a</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">r</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">t</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">n</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">e</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">r</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">s</div></div> <div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">S</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">a</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">y</div></div> <div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">A</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">b</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">o</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">u</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">t</div></div> <div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">V</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">P</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">N</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">e</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">x</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">u</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">e</div><div style="position: relative; display: inline-block; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">s</div></div></h2>
+                </div>
+                <div class="testimonial-wrapper">
+                    <div class="row align-items-center g-4">
+                        <div class="col-xl-4 col-lg-4 col-md-5 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                            <div class="testimonial-image">
+                                <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/testimonial/testimonial-01.jpg" alt="img">
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-8 col-md-7">
+                            <div class="swiper testimonial-slide swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                                <div class="swiper-wrapper" id="swiper-wrapper-d5e1eb58107f27363" aria-live="off" style="transform: translate3d(-1552px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 1" style="width: 746px; margin-right: 30px;">
+                                        <div class="testimonial-box-items">
+                                            <div class="star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <h3>
+                                             "VPNexues transformed how we source organic produce. Their farm-to-business model ensures we get the freshest vegetables directly from Tamil Nadu farmers. Exceptional quality and reliable delivery every time!"
+                                            </h3>
+                                            <div class="client-info-area">
+                                                <div class="client-info">
+                                                    <div class="client-image">
+                                                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/testimonial/client-image.png" alt="img">
+                                                    </div>
+                                                    <div class="content">
+                                                        <p>Gold Business, Tamil Nadu</p>
+                                                        <h5>Arp Sathish Kumar</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="flaticon-quote"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-duplicate-active swiper-slide-prev swiper-slide-duplicate-next" data-swiper-slide-index="0" role="group" aria-label="1 / 1" style="width: 746px; margin-right: 30px;">
+                                        <div class="testimonial-box-items">
+                                            <div class="star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <h3>
+                                               "VPNexues transformed how we source organic produce. Their farm-to-business model ensures we get the freshest vegetables directly from Tamil Nadu farmers. Exceptional quality and reliable delivery every time!"
+                                            </h3>
+                                            <div class="client-info-area">
+                                                <div class="client-info">
+                                                    <div class="client-image">
+                                                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/testimonial/client-image.png" alt="img">
+                                                    </div>
+                                                    <div class="content">
+                                                        <p>Gold Business, Tamil Nadu</p>
+                                                        <h5>Arp Sathish Kumar</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="flaticon-quote"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="swiper-slide swiper-slide-duplicate swiper-slide-active swiper-slide-duplicate-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 1" style="width: 746px; margin-right: 30px;">
+                                        <div class="testimonial-box-items">
+                                            <div class="star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <h3>
+                                               "VPNexues transformed how we source organic produce. Their farm-to-business model ensures we get the freshest vegetables directly from Tamil Nadu farmers. Exceptional quality and reliable delivery every time!"
+                                            </h3>
+                                            <div class="client-info-area">
+                                                <div class="client-info">
+                                                    <div class="client-image">
+                                                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/testimonial/client-image.png" alt="img">
+                                                    </div>
+                                                    <div class="content">
+                                                        <p>Gold Business, Tamil Nadu</p>
+                                                        <h5>Arp Sathish Kumar</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="icon">
+                                                    <i class="flaticon-quote"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div></div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                        </div>
+                        <div class="col-xl-1">
+                            <div class="array-buttons">
+                                <button class="array-prev" tabindex="0" aria-label="Next slide" aria-controls="swiper-wrapper-d5e1eb58107f27363">
+                                    <svg width="37" height="19" viewBox="0 0 37 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.24454 9.88849L8.65344 18.2975C8.9555 18.6502 9.48636 18.6913 9.83908 18.3892C10.1918 18.0871 10.2329 17.5562 9.93078 17.2035C9.9026 17.1706 9.87196 17.1399 9.83908 17.1118L2.8681 10.1324L36.1591 10.1324C36.6235 10.1324 37 9.75588 37 9.29144C37 8.82699 36.6235 8.45057 36.1591 8.45057L2.8681 8.45057L9.83908 1.47959C10.1918 1.17753 10.2329 0.64667 9.93078 0.293948C9.62864 -0.0587745 9.09786 -0.099893 8.74514 0.202244C8.71226 0.230427 8.68155 0.261067 8.65344 0.293948L0.244467 8.70292C-0.0815177 9.03078 -0.0815176 9.56048 0.24454 9.88849Z" fill="#808080"></path>
+                                    </svg>
+                                </button>
+                                <button class="array-next" tabindex="0" aria-label="Previous slide" aria-controls="swiper-wrapper-d5e1eb58107f27363">
+                                    <svg width="37" height="19" viewBox="0 0 37 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M36.7555 8.70292L28.3466 0.293945C28.0445 -0.0587769 27.5136 -0.0998951 27.1609 0.202242C26.8082 0.504307 26.7671 1.03516 27.0692 1.38788C27.0974 1.42076 27.128 1.45148 27.1609 1.47959L34.1319 8.45902H0.840868C0.376497 8.45902 0 8.83552 0 9.29996C0 9.76441 0.376497 10.1408 0.840868 10.1408H34.1319L27.1609 17.1118C26.8082 17.4139 26.7671 17.9447 27.0692 18.2975C27.3714 18.6502 27.9021 18.6913 28.2549 18.3892C28.2877 18.361 28.3185 18.3303 28.3466 18.2975L36.7555 9.88848C37.0815 9.56062 37.0815 9.03092 36.7555 8.70292Z" fill="#808080"></path>
+                                    </svg>
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+       <!-- Cta Discount Section Start -->
+        <!-- <section class="cta-discount-section-4 section-padding pt-0">
+            <div class="container">
+                <div class="cta-wrapper-4 bg-cover" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/cta-discount-bg.jpg');">
+                    <div class="cta-discount-area">
+                        <div class="circle-bg-icon wow fadeInUp">
+                            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/cta/white-circle.png" alt="img" class="circle-icon">
+                            <div class="icon">
+                                <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/icon-01.svg" alt="img">
+                            </div>
+                        </div>
+                        <div class="section-title wow fadeInUp" data-wow-delay=".3s">
+                            <span class="text-white"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/sub-title.svg" alt="img">Discount Offer</span>
+                            <h2 class="text-white text-anim">Don�t Miss Out � <br> Enjoy Up to 50% Off!</h2>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" class="theme-btn wow fadeInUp" data-wow-delay=".7s">
+                       Discover More <i class="far fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Gallery Section Start -->
+        <!-- <div class="gallery-section-4 section-padding fix pt-0 section-bg">
+            <div class="swiper gallery-slide">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="gallery-image-4">
+                            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-01.jpg" alt="img">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-image-4">
+                            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-02.jpg" alt="img">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-image-4">
+                            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-03.jpg" alt="img">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-image-4">
+                            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-04.jpg" alt="img">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-image-4">
+                            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-05.jpg" alt="img">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-image-4">
+                            <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/gallery/gallery-06.jpg" alt="img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+       <!-- Footer Section Start -->
+        <footer class="footer-section fix section-padding bg-cover pb-0 vnp-box-footer" style="background-image: url('https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bg.jpg');">
+            <div class="container">
+                <div class="footer-widget-top">
+                    <a href="index.html" class="logo-img footer-desktop-logo">
+                        <span class="footer-desktop-logo-copy"><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+                    </a>
+                    <a href="index.html" class="footer-mobile-brand" aria-label="VPNexues home">
+                        <img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/home-1/vp_logo.svg" onerror="this.onerror=null;this.src='assets-ui/img/home-1/vp_logo.svg'" alt="VPNexues logo">
+                        <span class="footer-mobile-brand-copy"><strong>VPNexues</strong><small>விவசாயம் காப்போம்</small></span>
+                    </a>
+                    <div class="content-items">
+                        <h3>Subscribe Our Newsletter To Get More Updates</h3>
+                        <form action="https://formsubmit.co/hemaanthvpnexues@gmail.com" method="POST" id="vnp-subscribe-form">
+                            <input type="hidden" name="_subject" value="New Newsletter Subscription - VPNexues">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="email" name="email" placeholder="Your email" id="vnp-subscribe-email" required>
+                            <button class="theme-btn" type="submit" id="vnp-subscribe-btn">Subscribe <i class="far fa-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="footer-bottom-wrapper">
+                            <p class="text-1">&copy; 2026 VPNexues Import &amp; Export. All Rights Reserved</p>
+                            <div class="social-icon">
+                                <a href="https://www.facebook.com/share/1Cda4sCpk5/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.linkedin.com/company/vpnexues/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/vpnexues?igsh=dzViZDMyNXllNTFw" target="_blank"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="bottom-img"><img src="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/site-assets/home-1/footer-bottom.png" alt="img"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="vnp-subscribe-popup" class="vnp-subs-popup" role="alert" aria-live="polite">
+                    <div class="vnp-subs-popup-icon"><i class="fas fa-check"></i></div>
+                    <div class="vnp-subs-popup-body">
+                        <strong class="vnp-subs-popup-title">You're subscribed!</strong>
+                        <span class="vnp-subs-popup-desc">Thank you for joining the VPNexues newsletter.</span>
+                    </div>
+                    <button type="button" class="vnp-subs-popup-close" aria-label="Close"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+        </footer>
+        
+
+        <!--<< All JS Plugins >>-->
+       <script src="assets-ui/js/jquery-3.7.1.min.js"></script>
+        <!--<< Bootstrap Js >>-->
+        <script src="assets-ui/js/bootstrap.bundle.min.js"></script>
+        <!--<< Nice Select Js >>-->
+        <script src="assets-ui/js/jquery.nice-select.min.js"></script>
+        <!--<< Odometer Js >>-->
+        <script src="assets-ui/js/odometer.min.js"></script>
+        <!--<< Appear Js >>-->
+        <script src="assets-ui/js/jquery.appear.min.js"></script>
+        <!--<< Swiper Slider Js >>-->
+        <script src="assets-ui/js/swiper-bundle.min.js"></script>
+        <!--<< MeanMenu Js >>-->
+        <script src="assets-ui/js/jquery.meanmenu.min.js"></script>
+        <!--<< Magnific Popup Js >>-->
+        <script src="assets-ui/js/jquery.magnific-popup.min.js"></script>
+        <!--<< Wow Animation Js >>-->
+        <script src="assets-ui/js/wow.min.js"></script>
+        <!--<< Gsap Animation Js >>-->
+        <script src="assets-ui/js/gsap.min.js"></script>
+        <!--<< ScrollTrigger Js >>-->
+        <script src="assets-ui/js/ScrollTrigger.min.js"></script>
+        <!--<< SplitText Js >>-->
+        <script src="assets-ui/js/SplitText.min.js"></script>
+        <!--<< splitType Js >>-->
+        <script src="assets-ui/js/splitType.js"></script>
+        <!--<< Main.js >>-->
+        <script src="assets-ui/js/main.js"></script>
+    <nav class="mobile-bottom-nav-global" aria-label="Mobile bottom navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-home nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="shop.html" class="nav-item">
+                <span class="nav-icon-wrap"><i class="fas fa-store nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Shop</span>
+            </a>
+            <a href="shop-cart.html" class="nav-item">
+                <span class="nav-icon-wrap">
+                    <i class="fas fa-shopping-cart nav-icon" aria-hidden="true"></i>
+                    <span class="nav-badge" id="nav-cart-badge" style="display:none">0</span>
+                </span>
+                <span class="nav-label">Cart</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" onclick="vpnOpenModal('login'); return false;">
+                <span class="nav-icon-wrap"><i class="far fa-user nav-icon" aria-hidden="true"></i></span>
+                <span class="nav-label">Account</span>
+            </a>
+        </div>
+    </nav>
+    
+  <script>
+  (function() {
+    function updateCartBadge() {
+      var badge = document.getElementById("nav-cart-badge");
+      if (!badge) return;
+      var cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      var count = 0;
+      cart.forEach(function(item) { count += (item.qty || item.quantity || 1); });
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = "";
+      } else {
+        badge.style.display = "none";
+      }
+    }
+    updateCartBadge();
+    window.updateCartBadge = updateCartBadge;
+  })();
+  </script>
+  <script>
+  (function() {
+    var form = document.getElementById('vnp-subscribe-form');
+    if (!form) return;
+    var popup = document.getElementById('vnp-subscribe-popup');
+    var popupTitle = popup ? popup.querySelector('.vnp-subs-popup-title') : null;
+    var popupDesc = popup ? popup.querySelector('.vnp-subs-popup-desc') : null;
+    var popupIcon = popup ? popup.querySelector('.vnp-subs-popup-icon i') : null;
+    var popupClose = popup ? popup.querySelector('.vnp-subs-popup-close') : null;
+    var btn = document.getElementById('vnp-subscribe-btn');
+    var emailInput = document.getElementById('vnp-subscribe-email');
+    var popupTimer = null;
+
+    function showPopup(type, title, desc, icon) {
+      if (!popup) return;
+      popup.className = 'vnp-subs-popup show' + (type === 'err' ? ' err' : '');
+      popupIcon.className = icon;
+      popupTitle.textContent = title;
+      popupDesc.textContent = desc;
+      clearTimeout(popupTimer);
+      popupTimer = setTimeout(hidePopup, 4000);
+    }
+    function hidePopup() {
+      if (popup) popup.className = 'vnp-subs-popup';
+    }
+    if (popupClose) popupClose.addEventListener('click', hidePopup);
+
+    function resetBtn() {
+      btn.disabled = false;
+      btn.innerHTML = 'Subscribe <i class="far fa-arrow-right"></i>';
+      btn.classList.remove('vnp-subs-done');
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = (emailInput.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showPopup('err', 'Invalid email address', 'Please enter a valid email address.', 'fas fa-exclamation-triangle');
+        return;
+      }
+      hidePopup();
+      btn.disabled = true;
+      btn.innerHTML = 'Subscribing... <i class="far fa-arrow-right"></i>';
+      var body = '_subject=New Newsletter Subscription - VPNexues&_template=table&_captcha=false&email=' + encodeURIComponent(email);
+      var controller = new AbortController();
+      var fetchTimer = setTimeout(function() { controller.abort(); }, 12000);
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+        body: body,
+        signal: controller.signal
+      }).then(function(res) {
+        clearTimeout(fetchTimer);
+        btn.innerHTML = '<i class="fas fa-check vnp-subs-tick"></i> Subscribed';
+        btn.classList.add('vnp-subs-done');
+        emailInput.value = '';
+        showPopup('ok', "You're subscribed!", 'Thank you for joining the VPNexues newsletter.', 'fas fa-check');
+        setTimeout(resetBtn, 4000);
+      }).catch(function() {
+        clearTimeout(fetchTimer);
+        resetBtn();
+        showPopup('err', 'Something went wrong', 'Please try again or email support@vpnexues.com.', 'fas fa-exclamation-triangle');
+        setTimeout(hidePopup, 5000);
+      });
+    });
+  })();
+  </script>
+<script src="assets-ui/js/auth-modal.js?v=1.5"></script>
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>

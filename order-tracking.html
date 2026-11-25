@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order Tracking | VPNexues</title>
+  <script>
+    (function () {
+      var authKeys = ["vpnexuesAuth", "vpnexuesLoggedIn", "vpnexuesSession", "isLoggedIn"];
+      var isLoggedIn = authKeys.some(function (key) {
+        return localStorage.getItem(key) === "true" || sessionStorage.getItem(key) === "true";
+      });
+      if (!isLoggedIn) {
+        window.location.replace("index.html?login=1");
+      }
+    })();
+  </script>
+  <link rel="icon" href="https://slnercwjkfacyrfhdsnp.supabase.co/storage/v1/object/public/javascript-assets/vp_favicon.ico" sizes="16x16">
+  <link rel="stylesheet" href="assets-ui/css/font-awesome.css">
+  <style>
+    :root {
+      --ot-green: #16a34a;
+      --ot-green-light: #dcfce7;
+      --ot-green-dark: #15803d;
+      --ot-bg: linear-gradient(180deg, #e8f5e3 0%, #f4f9f2 100%);
+      --ot-card: #14532d;
+      --ot-text: #000000;
+      --ot-muted: #6b7280;
+      --ot-border: #14532d;
+      --ot-radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body.ot-page {
+      min-height: 100vh;
+      background: var(--ot-bg);
+      color: var(--ot-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    .ot-shell {
+      width: 100%;
+      padding: 0 16px 24px;
+    }
+
+    /* �”€�”€�”€ Header �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ot-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 16px;
+      background: var(--ot-bg);
+    }
+
+    .ot-back {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid #14532d;
+      background: #14532d;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(20, 83, 45, .28), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transition: all .25s ease;
+    }
+
+    .ot-back:hover {
+      border-color: #0f3d22;
+      background: #0f3d22;
+      box-shadow: 0 6px 16px rgba(20, 83, 45, .34), inset 0 1px 0 rgba(255, 255, 255, .14);
+      transform: translateX(-2px);
+    }
+
+    .ot-back:active {
+      transform: translateX(0);
+      background: #0b2e19;
+      box-shadow: 0 2px 6px rgba(20, 83, 45, .3), inset 0 1px 2px rgba(0, 0, 0, .18);
+    }
+
+    .ot-back i { display: inline-block; line-height: 1; }
+
+    .ot-header-title {
+      flex: 1;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    /* Balances the back button so the title stays truly centred. */
+    .ot-header-spacer { flex: 0 0 40px; width: 40px; }
+
+    /* �”€�”€�”€ Order Info Card �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ot-order-info {
+      background: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: var(--ot-radius);
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .ot-order-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .ot-order-id-label {
+      font-size: 13px;
+      color: var(--ot-muted);
+      margin-bottom: 2px;
+    }
+
+    .ot-order-id {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--ot-text);
+    }
+
+    .ot-status-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: #fef3c7;
+      color: #d97706;
+    }
+
+    .ot-status-badge.placed { background: #fef3c7; color: #d97706; }
+    .ot-status-badge.confirmed { background: #dbeafe; color: #2563eb; }
+    .ot-status-badge.processing { background: #3d6b1e; color: #ffffff; }
+    .ot-status-badge.shipped { background: #dbeafe; color: #2563eb; }
+    .ot-status-badge.delivered { background: #dcfce7; color: #16a34a; }
+    .ot-status-badge.cancelled { background: #fee2e2; color: #dc2626; }
+
+    .ot-order-dates {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--ot-muted);
+    }
+
+    .ot-order-date-val {
+      color: var(--ot-text);
+      font-weight: 500;
+    }
+
+    /* �”€�”€�”€ Timeline Card �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ot-timeline-card {
+      background: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: var(--ot-radius);
+      padding: 20px 18px;
+      margin-bottom: 16px;
+    }
+
+    .ot-tl-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      position: relative;
+      padding-bottom: 28px;
+    }
+
+    .ot-tl-step:last-child { padding-bottom: 0; }
+
+    .ot-tl-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .ot-tl-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .ot-tl-dot--done {
+      background: var(--ot-green);
+      color: #fff;
+    }
+
+    .ot-tl-dot--pending {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      color: #e5e7eb;
+    }
+
+    .ot-tl-line {
+      width: 2px;
+      flex: 1;
+      min-height: 16px;
+      margin-top: 4px;
+    }
+
+    .ot-tl-line--done { background: var(--ot-green); }
+    .ot-tl-line--pending { background: #e5e7eb; }
+
+    .ot-tl-content {
+      flex: 1;
+      padding-top: 3px;
+    }
+
+    .ot-tl-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ot-text);
+    }
+
+    .ot-tl-title--pending { color: var(--ot-muted); }
+
+    .ot-tl-time {
+      font-size: 13px;
+      color: var(--ot-muted);
+      margin-top: 2px;
+    }
+
+    .ot-tl-sub {
+      font-size: 13px;
+      color: var(--ot-muted);
+      margin-top: 2px;
+    }
+
+    /* �”€�”€�”€ Delivery Details Card �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ot-delivery-card {
+      background: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: var(--ot-radius);
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+
+    .ot-delivery-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .ot-delivery-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ot-text);
+    }
+
+    .ot-delivery-label {
+      font-size: 12px;
+      color: var(--ot-muted);
+      margin-bottom: 2px;
+    }
+
+    .ot-delivery-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .ot-delivery-address {
+      font-size: 14px;
+      color: var(--ot-text);
+      flex: 1;
+    }
+
+    .ot-view-btn {
+      padding: 8px 18px;
+      border-radius: 10px;
+      border: 1.5px solid #14532d;
+      background: transparent;
+      color: #14532d;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .ot-view-btn:hover { background: #eef5ee; }
+
+    /* �”€�”€�”€ Order Selection �”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€�”€ */
+    .ot-select-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px 0;
+    }
+
+    .ot-select-card {
+      background: #e8f5e9;
+      border: 2px solid #14532d;
+      border-radius: var(--ot-radius);
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .ot-select-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: #ffffff;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #c8e6c9;
+    }
+
+    .ot-select-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ot-select-thumb i {
+      font-size: 22px;
+      color: #a5d6a7;
+    }
+
+    .ot-select-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ot-select-card:hover {
+      border-color: #0c831f;
+      box-shadow: 0 2px 12px rgba(20, 83, 45, 0.3);
+    }
+
+    .ot-select-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .ot-select-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .ot-select-status {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    .ot-select-status.placed { background: #fef3c7; color: #d97706; }
+    .ot-select-status.confirmed { background: #dbeafe; color: #2563eb; }
+    .ot-select-status.processing { background: #3d6b1e; color: #ffffff; }
+    .ot-select-status.delivered { background: #dcfce7; color: #16a34a; }
+    .ot-select-status.cancelled { background: #fee2e2; color: #dc2626; }
+
+    .ot-select-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ot-select-date {
+      font-size: 12px;
+      color: #666666;
+    }
+
+    .ot-select-total {
+      font-size: 15px;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .ot-empty {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .ot-empty-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #14532d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .ot-empty-icon i { font-size: 32px; color: #ffffff; }
+    .ot-empty h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .ot-empty p { font-size: 14px; color: var(--ot-muted); }
+  </style>
+</head>
+<body class="ot-page">
+  <main class="ot-shell">
+
+    <!-- Header -->
+    <header class="ot-header">
+      <a class="ot-back" id="ot-back-btn" href="account.html" aria-label="Go back to account"><i class="fas fa-chevron-left" aria-hidden="true"></i></a>
+      <div class="ot-header-title">Order Tracking</div>
+      <span class="ot-header-spacer" aria-hidden="true"></span>
+    </header>
+
+    <!-- Order Selection List -->
+    <div id="ot-select-view">
+      <div class="ot-select-list" id="ot-select-list"></div>
+      <div class="ot-empty" id="ot-empty" style="display:none;">
+        <div class="ot-empty-icon"><i class="fas fa-box-open"></i></div>
+        <h3>No orders found</h3>
+        <p>Place an order to track it here</p>
+      </div>
+    </div>
+
+    <!-- Tracking Detail -->
+    <div id="ot-detail-view" style="display:none;">
+
+      <!-- Order Info -->
+      <div class="ot-order-info">
+        <div class="ot-order-top">
+          <div>
+            <div class="ot-order-id" id="ot-product-name">-</div>
+          </div>
+          <div class="ot-status-badge" id="ot-status-badge">Placed</div>
+        </div>
+        <div class="ot-order-dates">
+          <div>Placed on <span class="ot-order-date-val" id="ot-placed-date">-</span></div>
+          <div class="ot-order-date-val" id="ot-delivered-date"></div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="ot-timeline-card">
+        <div id="ot-timeline"></div>
+      </div>
+
+      <!-- Delivery Details -->
+      <div class="ot-delivery-card" id="ot-delivery-card">
+        <div class="ot-delivery-header">
+          <div class="ot-delivery-title">Delivery Details</div>
+        </div>
+        <div class="ot-delivery-label">Delivery Address</div>
+        <div class="ot-delivery-row">
+          <div class="ot-delivery-address" id="ot-address-text">-</div>
+          <button class="ot-view-btn" onclick="window.location.href='addresses.html'">View</button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+  (function() {
+    'use strict';
+
+    var orders = [];
+    try { orders = JSON.parse(localStorage.getItem('vpnexues_orders') || '[]'); } catch(e) { orders = []; }
+
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    function formatDate(dateStr) {
+      var d = new Date(dateStr);
+      var day = d.getDate();
+      var month = months[d.getMonth()];
+      var year = d.getFullYear();
+      var hours = d.getHours();
+      var mins = d.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      var minsStr = mins < 10 ? '0' + mins : mins;
+      return day + ' ' + month + ', ' + year + '  \u2022  ' + hours + ':' + minsStr + ' ' + ampm;
+    }
+
+    function formatDateShort(dateStr) {
+      var d = new Date(dateStr);
+      var day = d.getDate();
+      var month = months[d.getMonth()];
+      var year = d.getFullYear();
+      return day + ' ' + month + ', ' + year;
+    }
+
+    function renderOrderList() {
+      var list = document.getElementById('ot-select-list');
+      var empty = document.getElementById('ot-empty');
+
+      if (orders.length === 0) {
+        list.innerHTML = '';
+        empty.style.display = '';
+        return;
+      }
+
+      empty.style.display = 'none';
+      var html = '';
+
+      orders.forEach(function(order, index) {
+        var status = order.status || 'placed';
+        var statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
+
+        var productNames = [];
+        var firstImage = null;
+        (order.items || []).forEach(function(item) {
+          productNames.push(item.name || item.title || 'Item');
+          if (!firstImage && (item.image || item.img)) firstImage = item.image || item.img;
+        });
+
+        var thumbHtml = firstImage
+          ? '<img src="' + firstImage + '" alt="">'
+          : '<i class="fas fa-box"></i>';
+
+        html += '<div class="ot-select-card" onclick="showTracking(' + index + ')">';
+        html += '<div class="ot-select-thumb">' + thumbHtml + '</div>';
+        html += '<div class="ot-select-body">';
+        html += '<div class="ot-select-top">';
+        html += '<div class="ot-select-name">' + productNames.join(', ') + '</div>';
+        html += '<div class="ot-select-status ' + status + '">' + statusLabel + '</div>';
+        html += '</div>';
+        html += '<div class="ot-select-bottom">';
+        html += '<div class="ot-select-date">' + formatDateShort(order.date) + '</div>';
+        html += '<div class="ot-select-total">\u20B9' + (order.total || 0).toFixed(2) + '</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+      });
+
+      list.innerHTML = html;
+    }
+
+    window.showTracking = function(index) {
+      var order = orders[index];
+      if (!order) return;
+
+      document.getElementById('ot-select-view').style.display = 'none';
+      document.getElementById('ot-detail-view').style.display = '';
+
+      var status = order.status || 'placed';
+
+      var productNames = [];
+      (order.items || []).forEach(function(item) {
+        productNames.push(item.name || item.title || 'Item');
+      });
+      document.getElementById('ot-product-name').textContent = productNames.join(', ');
+
+      var badge = document.getElementById('ot-status-badge');
+      badge.className = 'ot-status-badge ' + status;
+      badge.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+
+      document.getElementById('ot-placed-date').textContent = formatDateShort(order.date);
+
+      if (status === 'delivered') {
+        var d = new Date(order.date);
+        d.setMinutes(d.getMinutes() + 30);
+        document.getElementById('ot-delivered-date').textContent = formatDateShort(d.toISOString());
+      } else {
+        document.getElementById('ot-delivered-date').textContent = '';
+      }
+
+      var steps = getTimelineSteps(status, order.date);
+      var html = '';
+
+      steps.forEach(function(step, i) {
+        var dotClass = step.done ? 'ot-tl-dot--done' : 'ot-tl-dot--pending';
+        var lineClass = i < steps.length - 1 ? (step.done ? 'ot-tl-line--done' : 'ot-tl-line--pending') : '';
+        var titleClass = step.done ? '' : 'ot-tl-title--pending';
+
+        html += '<div class="ot-tl-step">';
+        html += '<div class="ot-tl-left">';
+        html += '<div class="ot-tl-dot ' + dotClass + '">';
+        if (step.done) html += '<i class="fas fa-check"></i>';
+        html += '</div>';
+        if (i < steps.length - 1) html += '<div class="ot-tl-line ' + lineClass + '"></div>';
+        html += '</div>';
+        html += '<div class="ot-tl-content">';
+        html += '<div class="ot-tl-title ' + titleClass + '">' + step.label + '</div>';
+        if (step.time) html += '<div class="ot-tl-time">' + step.time + '</div>';
+        if (step.sub) html += '<div class="ot-tl-sub">' + step.sub + '</div>';
+        html += '</div>';
+        html += '</div>';
+      });
+
+      document.getElementById('ot-timeline').innerHTML = html;
+
+      var addr = order.address;
+      if (addr) {
+        var addrText = addr.address || '';
+        if (addr.flat) addrText = addr.flat + ', ' + addrText;
+        document.getElementById('ot-address-text').textContent = addrText || 'No address provided';
+      } else {
+        document.getElementById('ot-delivery-card').style.display = 'none';
+      }
+
+      window.scrollTo(0, 0);
+    };
+
+    function getTimelineSteps(status, orderDate) {
+      var d = new Date(orderDate);
+      var fmt = function(mins) {
+        var t = new Date(d.getTime() + mins * 60000);
+        var day = t.getDate();
+        var month = months[t.getMonth()];
+        var year = t.getFullYear();
+        var hours = t.getHours();
+        var m = t.getMinutes();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        return day + ' ' + month + ', ' + year + '  \u2022  ' + (hours < 10 ? '0' : '') + hours + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
+      };
+
+      if (status === 'placed') {
+        return [
+          { label: 'Order Placed', time: fmt(0), done: true, icon: 'fa-calendar-check' },
+          { label: 'Confirmed', time: '', done: false, icon: 'fa-shield-halved' },
+          { label: 'Packed', time: '', done: false, icon: 'fa-box-open' },
+          { label: 'Out for Delivery', time: '', done: false, icon: 'fa-truck' },
+          { label: 'Delivered', time: '', done: false, icon: 'fa-house', sub: '' }
+        ];
+      } else if (status === 'confirmed') {
+        return [
+          { label: 'Order Placed', time: fmt(0), done: true, icon: 'fa-calendar-check' },
+          { label: 'Confirmed', time: fmt(1), done: true, icon: 'fa-shield-halved' },
+          { label: 'Packed', time: '', done: false, icon: 'fa-box-open' },
+          { label: 'Out for Delivery', time: '', done: false, icon: 'fa-truck' },
+          { label: 'Delivered', time: '', done: false, icon: 'fa-house', sub: '' }
+        ];
+      } else if (status === 'processing') {
+        return [
+          { label: 'Order Placed', time: fmt(0), done: true, icon: 'fa-calendar-check' },
+          { label: 'Confirmed', time: fmt(1), done: true, icon: 'fa-shield-halved' },
+          { label: 'Packed', time: fmt(5), done: true, icon: 'fa-box-open' },
+          { label: 'Out for Delivery', time: '', done: false, icon: 'fa-truck' },
+          { label: 'Delivered', time: '', done: false, icon: 'fa-house', sub: '' }
+        ];
+      } else if (status === 'shipped') {
+        return [
+          { label: 'Order Placed', time: fmt(0), done: true, icon: 'fa-calendar-check' },
+          { label: 'Confirmed', time: fmt(1), done: true, icon: 'fa-shield-halved' },
+          { label: 'Packed', time: fmt(5), done: true, icon: 'fa-box-open' },
+          { label: 'Out for Delivery', time: fmt(15), done: true, icon: 'fa-truck' },
+          { label: 'Delivered', time: '', done: false, icon: 'fa-house', sub: '' }
+        ];
+      } else if (status === 'delivered') {
+        return [
+          { label: 'Order Placed', time: fmt(0), done: true, icon: 'fa-calendar-check' },
+          { label: 'Confirmed', time: fmt(1), done: true, icon: 'fa-shield-halved' },
+          { label: 'Packed', time: fmt(5), done: true, icon: 'fa-box-open' },
+          { label: 'Out for Delivery', time: fmt(15), done: true, icon: 'fa-truck' },
+          { label: 'Delivered', time: fmt(30), done: true, icon: 'fa-house', sub: 'Your order has been delivered. Thank you!' }
+        ];
+      } else if (status === 'cancelled') {
+        return [
+          { label: 'Order Placed', time: fmt(0), done: true, icon: 'fa-calendar-check' },
+          { label: 'Cancelled', time: fmt(2), done: true, icon: 'fa-xmark' }
+        ];
+      }
+
+      return [
+        { label: 'Order Placed', time: fmt(0), done: true, icon: 'fa-calendar-check' },
+        { label: 'Processing', time: '', done: false, icon: 'fa-gear' }
+      ];
+    }
+
+    renderOrderList();
+  })();
+  </script>
+
+<script id="broken-image-hide">document.addEventListener("error",function(e){if(e.target.tagName==="IMG"){e.target.style.setProperty("display","none","important");var c=e.target.closest(".bb-item-img,.box-icon-only,.bb-mobile-image-wrap,.sb-mobile-product-card,.prd-img,.product-image,.image-box");if(c){c.classList.add("img-load-failed");var ic=c.querySelector(".box-product-icon");if(ic){ic.style.setProperty("display","flex","important");ic.style.alignItems="center";ic.style.justifyContent="center";ic.style.width="100%";ic.style.height="100%";ic.style.fontSize="44px";}}}},true);</script>
+</body>
+</html>
