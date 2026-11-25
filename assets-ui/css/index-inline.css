@@ -1,0 +1,696 @@
+/* ============================================================
+   index-inline.css — extracted from index.html inline <style> blocks
+   ============================================================ */
+
+/* ── Block 1: Account buttons, topbar, sticky, modal styles (lines 42-328) ── */
+.vpn-account-btn {
+    background: rgba(255, 255, 255, .92);
+    border: 1px solid rgba(74, 124, 63, .26);
+    color: #263226;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+    box-shadow: 0 2px 8px rgba(42, 70, 36, .08);
+    margin-right: 8px;
+}
+.vpn-account-btn i { color: #4a7c3f; font-size: 13px; }
+.vpn-account-btn:hover { background: #4a7c3f; color: #fff; }
+.vpn-account-btn:hover i { color: #fff; }
+.vpn-account-btn.vpn-hidden { display: none !important; }
+
+.vpn-login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: 1px solid rgba(74, 124, 63, .26);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .92);
+    color: #263226;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(42, 70, 36, .08);
+    margin-right: 8px;
+    transition: background .2s, color .2s;
+}
+.vpn-login-btn i { color: #4a7c3f; font-size: 13px; }
+.vpn-login-btn:hover { background: #4a7c3f; color: #fff; }
+.vpn-login-btn:hover i { color: #fff; }
+.vpn-login-btn.vpn-hidden { display: none !important; }
+
+.header-1 .vpn-shop-now-btn { display: inline-flex !important; }
+
+@media (min-width: 768px) {
+    .header-right .vpn-shop-now-btn { display: none !important; }
+    .header-1 .vpn-login-btn {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 6px;
+        padding: 9px 16px;
+        border: 1px solid rgba(74, 124, 63, .26);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, .92);
+        color: #263226;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(42, 70, 36, .08);
+        margin-right: 8px;
+    }
+    .header-1 .vpn-login-btn.vpn-hidden { display: none !important; }
+    .header-1 .vpn-login-btn i { color: #4a7c3f; font-size: 13px; }
+    .header-1 .vpn-account-btn { display: inline-flex !important; }
+    .header-1 .vpn-account-btn.vpn-hidden { display: none !important; }
+}
+
+.header-top-section .head-right .flag-wrap select,
+.header-top-section .head-right .flag-wrap .nice-select,
+.header-top-section .header-top-wrapper .head-right .flag-wrap select,
+.header-top-section .header-top-wrapper .head-right .flag-wrap .nice-select,
+.header-top-section .header-top-wrapper .head-right .flag-wrap .nice-select::after,
+.header-top-section .header-top-wrapper .head-right .flag-wrap .nice-select .list {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    max-width: 0 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.mobile-header-country {
+    display: inline-flex !important;
+    visibility: visible !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: 1px solid rgba(91, 140, 81, .26);
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 5px 14px rgba(34, 76, 36, .08);
+    z-index: 9999;
+    cursor: pointer;
+}
+.mobile-header-country .flag {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 24px;
+    height: 18px;
+}
+.mobile-header-country .flag img {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 24px;
+    height: 18px;
+    border-radius: 3px;
+    object-fit: cover;
+}
+.mobile-header-country .flag-country-code {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1c2820;
+    letter-spacing: 0.5px;
+}
+.mobile-header-country { z-index: 1; }
+
+.topbar-flag {
+    display: none !important;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border: 1px solid rgba(91, 140, 81, .26);
+    border-radius: 999px;
+    background: #fff;
+    cursor: pointer;
+}
+.topbar-flag .flag {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 22px;
+    height: 16px;
+    overflow: visible;
+}
+.topbar-flag .flag img {
+    display: block !important;
+    min-width: 22px;
+    min-height: 16px;
+    width: 22px;
+    height: 16px;
+    border-radius: 3px;
+    object-fit: cover;
+}
+.topbar-flag .flag-country-code {
+    font-size: 12px;
+    font-weight: 800;
+    color: #1c2820;
+    letter-spacing: 0.5px;
+}
+@media (min-width: 768px) {
+    .topbar-flag { display: inline-flex !important; }
+    .header-flag-mobile { display: none !important; }
+}
+
+.vpn-header-cart-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin-left: 12px;
+    border: 1px solid rgba(91, 140, 81, .26);
+    border-radius: 50%;
+    background: #fff;
+    color: #263226;
+    font-size: 18px;
+    box-shadow: 0 2px 8px rgba(42, 70, 36, .08);
+    text-decoration: none;
+    transition: background .2s, color .2s;
+}
+.vpn-header-cart-btn:hover {
+    background: var(--theme-color);
+    color: #fff;
+    border-color: var(--theme-color);
+}
+.vpn-header-cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    background: var(--theme-color);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 14px;
+    text-align: center;
+}
+@media (max-width: 767px) {
+    .vpn-header-cart-btn { display: none !important; }
+}
+
+.flag-wrap {
+    display: inline-flex !important;
+    visibility: visible !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    align-items: center;
+    gap: 6px;
+    z-index: 100000 !important;
+}
+.flag-wrap .flag,
+.flag-wrap .flag img {
+    display: inline-block !important;
+    visibility: visible !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: relative !important;
+    opacity: 1 !important;
+}
+.flag-country-code {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1c2820;
+    letter-spacing: 0.5px;
+}
+@media (max-width: 767px) {
+    #header-sticky .header-right { gap: 10px !important; margin-right: 4px; }
+    .flag-country-code { font-size: 11px; }
+}
+
+/* ── Home product card grid ── */
+.vpn-product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+.vpn-product-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 14px;
+}
+.vpn-product-body span {
+    color: #168a52;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+.vpn-product-body h3 {
+    margin: 6px 0 4px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #142b19;
+    line-height: 1.3;
+}
+.vpn-product-body h3 a { color: inherit; text-decoration: none; }
+.vpn-product-body p { color: #6b7280; font-size: 12px; margin: 0; }
+.vpn-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 8px;
+}
+.vpn-price-row strong { font-size: 18px; color: #101e13; }
+.vpn-price-row del { font-size: 12px; color: #8b9489; }
+
+/* ── Hero banner edge fix ── */
+.hero-section.hero-1 { padding: 0; margin: 0; border-radius: 0; }
+.hero-section.hero-1 .hero-height { border-radius: 0; overflow: hidden; }
+.hero-section.hero-1 .banner-active { border-radius: 0; }
+.hero-section.hero-1 .swiper-slide { border-radius: 0; }
+.hero-section.hero-1 .hero-bg { border-radius: 0; }
+.hero-section.hero-1 .array-button { display: none; }
+
+/* ── Mobile (default) — match 760px breakpoint ── */
+body.vpn-redesign-home { background: #fff !important; }
+.vpn-premium-home { overflow: visible !important; }
+
+/* ── Desktop (768px+) ── */
+@media (min-width: 768px) {
+    body.vpn-redesign-home { background: #fcfdfb !important; }
+    .vpn-premium-home { overflow: hidden !important; }
+    .hero-section.hero-1 { padding: 0 40px; margin: 0 20px; border-radius: 33px; }
+    .hero-section.hero-1 .hero-height { border-radius: 24px; }
+    .hero-section.hero-1 .banner-active { border-radius: 20px; }
+    .hero-section.hero-1 .swiper-slide { border-radius: 20px; }
+    .hero-section.hero-1 .hero-bg { border-radius: 20px; }
+    .hero-section.hero-1 .array-button { display: flex; }
+}
+@media (min-width: 1200px) {
+    .hero-section.hero-1 { padding: 0 60px; margin: 0 20px; }
+}
+
+/* ── Add to cart button ── */
+.vpn-add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin-top: auto;
+    padding: 10px 16px;
+    border: 2px solid #2f7d2c;
+    border-radius: 8px;
+    background: #2f7d2c;
+    color: #fff;
+    font: 700 13px/1 'Nunito', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+.vpn-add-btn:hover { background: #23611f; border-color: #23611f; color: #fff; }
+.vpn-add-btn i { font-size: 13px; }
+@media (min-width: 768px) {
+    .vpn-redesign-home .vpn-add-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 12px 20px;
+        margin-top: auto;
+        font-size: 14px;
+        font-weight: 800;
+        border-radius: 12px;
+        min-height: 44px;
+        background: linear-gradient(135deg, #1a6b2a 0%, #2d8c3a 50%, #1a6b2a 100%) !important;
+        background-size: 200% 200% !important;
+        border: 2px solid #2d8c3a !important;
+        box-shadow: 0 4px 15px rgba(26,107,42,.25) !important;
+        color: #fff !important;
+        cursor: pointer;
+        transition: all .25s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .vpn-redesign-home .vpn-add-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+        transition: left .5s ease;
+    }
+    .vpn-redesign-home .vpn-add-btn:hover {
+        background: linear-gradient(135deg, #145a20 0%, #228b34 50%, #145a20 100%) !important;
+        background-size: 200% 200% !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26,107,42,.45) !important;
+        color: #fff !important;
+        border-color: #1a6b2a !important;
+    }
+    .vpn-redesign-home .vpn-add-btn:hover::before { left: 100%; }
+    .vpn-redesign-home .vpn-add-btn:active {
+        transform: translateY(0) scale(.97);
+        box-shadow: 0 2px 8px rgba(26,107,42,.3) !important;
+    }
+    .vpn-redesign-home .vpn-add-btn i { font-size: 14px; transition: transform .3s ease; }
+    .vpn-redesign-home .vpn-add-btn:hover i { transform: translateX(2px) rotate(-8deg); }
+}
+
+/* ── Index Page: Quantity Selector (shop-style) ── */
+.vpn-card-actions { width: 100%; margin-top: auto; }
+.vpn-card-actions.has-qty .sb-add-btn { display: none !important; }
+.vpn-card-actions.has-qty .sb-quantity { display: grid !important; }
+
+/* Add to cart button — default state */
+.vpn-card-actions .sb-add-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    min-height: 40px;
+    padding: 0 16px;
+    border: none !important;
+    border-radius: 10px !important;
+    background: #5B8C51 !important;
+    color: #fff !important;
+    font: 900 14px/1 'Nunito', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .2s ease;
+    margin-top: auto;
+}
+.vpn-card-actions .sb-add-btn:hover { background: #426d3b !important; }
+.vpn-card-actions .sb-add-btn:active { transform: scale(0.98); }
+.vpn-card-actions .sb-add-btn i { margin-right: 6px; font-size: 13px; }
+
+/* Quantity selector — light bordered pill (shop style) */
+.vpn-card-actions .sb-quantity {
+    display: none;
+    width: 100%;
+    min-height: 36px;
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    margin-top: auto;
+    overflow: hidden;
+    border: 1.5px solid #dce5d6;
+    border-radius: 10px;
+    background: #f5f8f1;
+}
+
+/* Minus / Plus buttons */
+.vpn-card-actions .sb-quantity button {
+    display: grid;
+    width: 36px;
+    height: 34px;
+    place-items: center;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #5B8C51;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease;
+}
+.vpn-card-actions .sb-quantity button:hover { background: #eef4e9; }
+.vpn-card-actions .sb-quantity button:active { transform: scale(.92); }
+
+/* Quantity number */
+.vpn-card-actions .sb-quantity .vpn-qty-num {
+    display: grid;
+    min-width: 0;
+    height: 34px;
+    place-items: center;
+    border-right: 1px solid #dce5d6;
+    border-left: 1px solid #dce5d6;
+    background: #f5f8f1;
+    color: #1a4d1a;
+    font: 900 14px/1 'Nunito', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Small mobile adjustments */
+@media (max-width: 375px) {
+    .vpn-card-actions .sb-add-btn { font-size: 12px; padding: 0 10px; min-height: 36px; }
+    .vpn-card-actions .sb-quantity { min-height: 34px; grid-template-columns: 34px minmax(0, 1fr) 34px; }
+    .vpn-card-actions .sb-quantity button { width: 34px; height: 32px; font-size: 12px; }
+    .vpn-card-actions .sb-quantity .vpn-qty-num { height: 32px; font-size: 13px; }
+}
+
+/* ── Added-to-cart toast notification ── */
+.idx-cart-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: #2f7d2c;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font: 600 13px/1 'Nunito', sans-serif;
+    box-shadow: 0 8px 24px rgba(30, 80, 28, 0.3);
+    z-index: 99999;
+    opacity: 0;
+    transition: opacity .25s ease, transform .25s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.idx-cart-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.idx-cart-toast i { margin-right: 6px; }
+
+/* ── Block 2: Product range carousel styles (lines 1946-2154) ── */
+.product-range-section { background: #fff; }
+.product-range-section .product-category-title {
+    color: #168a52;
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 42px 0 68px;
+    transition: opacity .35s ease, transform .35s ease;
+}
+.product-range-section .product-category-title.is-changing { opacity: 0; transform: translateY(12px); }
+.product-range-carousel { overflow: hidden; padding: 0 6px 18px; position: relative; }
+.product-range-card {
+    background: #fff;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    box-shadow: 0 10px 34px rgba(15, 44, 23, .08);
+    min-height: 455px;
+    overflow: hidden;
+    padding: 38px 28px 30px;
+    position: relative;
+    text-align: center;
+    transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+.product-range-card:hover {
+    border-color: #6A994E;
+    box-shadow: 0 18px 46px rgba(106, 153, 78, .18);
+    transform: translateY(-7px);
+}
+.product-range-card .sale-badge {
+    background: #f4df4d;
+    border-radius: 5px;
+    color: #27402a;
+    font-size: 16px;
+    font-weight: 700;
+    left: 32px;
+    line-height: 1;
+    padding: 10px 18px;
+    position: absolute;
+    top: 38px;
+    z-index: 2;
+}
+.product-range-card .wishlist-btn {
+    align-items: center;
+    background: rgba(106, 153, 78, .2);
+    border-radius: 50%;
+    bottom: 32px;
+    color: #5b9550;
+    display: flex;
+    height: 42px;
+    justify-content: center;
+    position: absolute;
+    right: 28px;
+    transition: background .25s ease, color .25s ease, transform .25s ease;
+    width: 42px;
+}
+.product-range-card .wishlist-btn:hover { background: #6A994E; color: #fff; transform: scale(1.08); }
+.product-range-card .product-img {
+    align-items: center;
+    display: flex;
+    height: 235px;
+    justify-content: center;
+    margin: 38px 0 24px;
+}
+.product-range-card .product-img img {
+    max-height: 205px;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform .3s ease;
+}
+.product-range-card:hover .product-img img { transform: scale(1.06); }
+.product-range-card h5 { color: #1d371c; font-size: 22px; font-weight: 700; line-height: 1.3; margin-bottom: 14px; }
+.product-range-card h5 a { color: inherit; }
+.product-range-card .price-row {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+}
+.product-range-card .price { color: #5fad4c; font-size: 24px; font-weight: 800; }
+.product-range-card .old-price { color: #1a1a1a; font-size: 22px; font-weight: 700; text-decoration: line-through; }
+.product-range-card .unit-text { color: #1a1a1a; font-size: 14px; font-weight: 600; }
+.product-range-nav {
+    align-items: center;
+    background: rgba(35, 35, 35, .32);
+    border: 0;
+    color: #fff;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    margin-top: -20px;
+    position: absolute;
+    top: 50%;
+    transition: background .25s ease, transform .25s ease;
+    width: 40px;
+    z-index: 5;
+}
+.product-range-nav:hover { background: #6A994E; transform: translateY(-1px); }
+.product-range-prev { left: 92px; }
+.product-range-next { right: 92px; }
+@media (max-width: 1199px) {
+    .product-range-section .product-category-title { font-size: 48px; }
+    .product-range-prev { left: 28px; }
+    .product-range-next { right: 28px; }
+}
+@media (max-width: 767px) {
+    .product-range-section .section-title h2 { font-size: 34px; }
+    .product-range-section .product-category-title { font-size: 38px; margin: 28px 0 42px; }
+    .product-range-card { min-height: 410px; padding: 30px 22px 28px; }
+    .product-range-card .product-img { height: 215px; margin-top: 30px; }
+    .product-range-card h5 { font-size: 20px; }
+    .product-range-prev { left: 18px; }
+    .product-range-next { right: 18px; }
+}
+
+/* ── Block 3: Auth popup keyframe (line 2906) ── */
+@keyframes authPopupPop { from { transform: scale(.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ── Block 4: Promo popup + misc (lines 3108-3589) ── */
+.promo-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+.promo-popup-card {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 24px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: promoSlideUp 0.4s ease;
+}
+@keyframes promoSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.promo-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+    line-height: 1;
+}
+.promo-popup-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+.promo-popup-icon { font-size: 48px; margin-bottom: 12px; }
+.promo-popup-title { margin: 0 0 8px; color: #1a3a15; font-size: 22px; font-weight: 800; }
+.promo-popup-subtitle { margin: 0 0 20px; color: #666; font-size: 14px; line-height: 1.5; }
+.promo-popup-features { text-align: left; margin-bottom: 24px; }
+.promo-popup-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+}
+.promo-popup-feature i { color: #2d7a3f; font-size: 16px; }
+.promo-popup-cta {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #1a5c2e, #2d7a3f);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.promo-popup-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(45,122,63,0.4);
+}
+.promo-popup-terms { margin: 12px 0 0; color: #666; font-size: 11px; }
+
+@media (min-width: 480px) {
+    .loc-sheet-overlay { align-items: center; padding: 16px; }
+    .loc-sheet-card { border-radius: 16px; max-height: 70vh; }
+}
+
+/* ── Tamil font for logo ── */
+.idlogo-vivasayam-txt {
+    font-family: 'Noto Sans Tamil', 'Latha', 'Nirmala UI', sans-serif !important;
+}

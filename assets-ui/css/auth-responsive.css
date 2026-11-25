@@ -1,0 +1,2337 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400..800&display=swap");
+
+/* VPNexues "Harvest Pop" authentication modal */
+
+.vpn-auth-open,
+html.vpn-auth-open,
+html.vpn-auth-open body {
+  overflow: hidden;
+}
+
+html.vpn-auth-open #back-top {
+  display: none !important;
+}
+
+#vpnModal {
+  --pop-forest: #0b4926;
+  --pop-forest-deep: #06331b;
+  --pop-forest-soft: #1c6b36;
+  --pop-leaf: #4fad48;
+  --pop-lime: #d9ff5a;
+  --pop-lime-deep: #a8d92f;
+  --pop-yellow: #ffd447;
+  --pop-orange: #ff8b3d;
+  --pop-tomato: #f25a4d;
+  --pop-cream: #fff8e8;
+  --pop-cream-deep: #f8eed7;
+  --pop-ink: #173620;
+  --pop-muted: #74816f;
+  --pop-line: #e5dcc6;
+
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background: var(--pop-cream);
+  color: var(--pop-ink);
+  font-family: "Poppins", "Nunito", Arial, sans-serif;
+}
+
+#vpnModal.open {
+  display: block;
+}
+
+#vpnModal,
+#vpnModal * {
+  box-sizing: border-box;
+}
+
+#vpnModal input,
+#vpnModal button {
+  font-family: inherit;
+  outline: none;
+}
+
+#vpnModal button:focus-visible,
+#vpnModal input:focus-visible {
+  outline: 3px solid rgba(168, 217, 47, .55);
+  outline-offset: 3px;
+}
+
+/* Panel shell: one fixed box, never a scrolling document */
+#vpnModal .vpn-modal-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--pop-cream);
+  animation: vpnHarvestPop .4s cubic-bezier(.2, .9, .3, 1.1) both;
+}
+
+#vpnModal .vpn-modal-panel > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+@keyframes vpnHarvestPop {
+  from { opacity: 0; transform: translateY(14px) scale(.975); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Promo panel: compact banner on narrow screens, full column on desktop */
+#vpnModal .vpn-modal-deco {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 132px;
+  padding: 14px 18px 18px;
+  overflow: hidden;
+  color: #fffdf2;
+  background-color: var(--pop-forest-deep);
+  /* Fresh farmers-market produce photo with leafy-green overlays. */
+  background-image:
+    linear-gradient(150deg, rgba(13, 84, 44, .62) 0%, rgba(10, 70, 37, .42) 52%, rgba(6, 49, 26, .52) 100%),
+    linear-gradient(0deg, rgba(3, 28, 14, .5) 0%, rgba(3, 28, 14, .02) 62%),
+    radial-gradient(circle at 88% 12%, rgba(217, 255, 90, .1) 0 92px, transparent 93px),
+    url("../img/auth-login-bg.jpg");
+  background-position: center, center, center, center;
+  background-size: auto, auto, auto, cover;
+  background-repeat: no-repeat;
+}
+
+#vpnModal .vpn-modal-deco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .42;
+  background-image: radial-gradient(rgba(255, 255, 255, .12) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+#vpnModal .vpn-modal-deco::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  top: auto;
+  right: -96px;
+  bottom: 42px;
+  left: auto;
+  width: 270px;
+  height: 270px;
+  border: 2px solid rgba(217, 255, 90, .18);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top bar */
+#vpnModal .vpn-deco-topbar {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .4);
+}
+
+#vpnModal .vpn-category-drawer__brand {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+#vpnModal .vpn-modal-logo {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  padding: 5px;
+  border: 2px solid var(--pop-lime);
+  border-radius: 14px;
+  background: #fffdf4;
+  object-fit: contain;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .22);
+}
+
+#vpnModal .deco-logo {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  color: #fffdf2;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: .01em;
+}
+
+#vpnModal .idlogo-vivasayam-txt {
+  display: block;
+  margin-top: 2px;
+  color: var(--pop-yellow);
+  font-family: "Noto Sans Tamil", "Latha", "Nirmala UI", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+#vpnModal .vpn-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, .85);
+  border-radius: 50%;
+  background: var(--pop-lime);
+  color: var(--pop-forest-deep);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 4px 0 var(--pop-lime-deep);
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+}
+
+#vpnModal .vpn-close-btn:hover {
+  transform: rotate(8deg) scale(1.05);
+  background: var(--pop-yellow);
+  box-shadow: 0 6px 0 rgba(120, 83, 8, .45);
+  color: var(--pop-forest-deep);
+}
+
+#vpnModal .vpn-close-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--pop-lime-deep);
+}
+
+/* Promo copy */
+#vpnModal .vpn-auth-banner-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  max-width: 370px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: auto;
+}
+
+#vpnModal .vpn-picked-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  padding: 6px 10px;
+  border: 2px solid rgba(11, 51, 27, .2);
+  border-radius: 999px;
+  background: var(--pop-lime);
+  color: var(--pop-forest-deep);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  line-height: 1;
+  box-shadow: 0 4px 0 var(--pop-lime-deep);
+  transform: rotate(-2deg);
+}
+
+#vpnModal .vpn-farm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 5px 9px;
+  border: 2px solid rgba(11, 51, 27, .18);
+  border-radius: 999px;
+  background: var(--pop-yellow);
+  color: #18391f;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  line-height: 1;
+  box-shadow: 0 5px 0 rgba(120, 83, 8, .35);
+  transform: rotate(1.5deg);
+}
+
+#vpnModal .vpn-auth-offer {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 0 8px;
+  padding: 6px 9px;
+  border: 1.5px solid rgba(217, 255, 90, .65);
+  border-radius: 999px;
+  background: rgba(6, 43, 22, .72);
+  color: #fffdf2;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.35;
+  backdrop-filter: blur(6px);
+}
+
+#vpnModal .vpn-auth-offer strong {
+  margin: 0 3px;
+  color: var(--pop-lime);
+  font-weight: 900;
+}
+
+#vpnModal .vpn-auth-banner-content h2 {
+  max-width: 360px;
+  margin: 0 0 8px;
+  color: #fffdf2;
+  font: 900 25px/.98 "Poppins", "Nunito", Arial, sans-serif;
+  letter-spacing: -.04em;
+  line-height: .98;
+  text-transform: uppercase;
+  text-shadow: 0 3px 0 rgba(3, 34, 16, .42), 0 7px 18px rgba(0, 0, 0, .3);
+}
+
+#vpnModal .vpn-auth-banner-content h2 span {
+  color: var(--pop-lime);
+}
+
+/* The supporting copy is restored only when there is generous height. */
+#vpnModal .vpn-auth-banner-content p {
+  display: none;
+  max-width: 330px;
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-left: 4px solid var(--pop-yellow);
+  border-radius: 4px 12px 12px 4px;
+  background: rgba(4, 38, 19, .5);
+  color: rgba(255, 253, 242, .95);
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+#vpnModal .vpn-auth-benefits,
+#vpnModal .vpn-modal-drag-handle {
+  display: none;
+}
+
+/* Form panel shares the same fixed box — no independent scroll area */
+#vpnModal .vpn-modal-form-area {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  padding: 16px 18px calc(18px + env(safe-area-inset-bottom));
+  overflow: hidden;
+  margin-top: 0;
+  border-radius: 0;
+  background-color: var(--pop-cream);
+  background-image:
+    radial-gradient(rgba(11, 73, 38, .06) 1px, transparent 1px),
+    linear-gradient(180deg, #fffbf0 0%, var(--pop-cream-deep) 100%);
+  background-size: 20px 20px, auto;
+}
+
+#vpnModal .vpn-modal-form-area > .vpn-tabs,
+#vpnModal .vpn-modal-form-area > .vpn-auth-card-head,
+#vpnModal .vpn-modal-form-area > #vpnLoginForm,
+#vpnModal .vpn-modal-form-area > #vpnSignupForm,
+#vpnModal .vpn-modal-form-area > .vpn-trust-note {
+  width: 100%;
+  max-width: 430px;
+  min-height: 0;
+  flex: 0 0 auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#vpnModal .vpn-auth-bottom-art {
+  display: none;
+}
+
+/* Tabs */
+#vpnModal .vpn-tabs {
+  display: flex;
+  gap: 5px;
+  margin: 0 0 10px;
+  padding: 4px;
+  border: 2px solid #e8dfca;
+  border-radius: 15px;
+  background: #f4eddd;
+}
+
+#vpnModal .vpn-tab {
+  flex: 1;
+  min-width: 0;
+  min-height: 38px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: #6e7b6b;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+#vpnModal .vpn-tab:hover:not(.active) {
+  color: var(--pop-forest);
+  background: rgba(255, 255, 255, .68);
+}
+
+#vpnModal .vpn-tab.active {
+  background: var(--pop-lime);
+  color: var(--pop-forest-deep);
+  box-shadow: 0 4px 0 var(--pop-lime-deep);
+  transform: translateY(-1px);
+}
+
+/* Heading */
+#vpnModal .vpn-auth-card-head {
+  margin: 0 0 12px;
+}
+
+#vpnModal .vpn-auth-card-head p {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 4px;
+  color: var(--pop-forest-soft);
+  font-size: 9.5px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+#vpnModal .vpn-auth-card-head p::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--pop-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 212, 71, .24);
+}
+
+#vpnModal .vpn-auth-card-head h3 {
+  margin: 0;
+  color: var(--pop-forest-deep);
+  font: 900 22px/1.1 "Poppins", "Nunito", Arial, sans-serif;
+  letter-spacing: -.025em;
+}
+
+#vpnModal .vpn-form-sub {
+  margin: 0 0 9px;
+  color: var(--pop-muted);
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+#vpnModal .vpn-field-label {
+  display: block;
+  margin: 0 0 5px;
+  color: var(--pop-ink);
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+/* Inputs */
+#vpnModal .vpn-input-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: stretch;
+  margin: 0 0 8px;
+}
+
+#vpnModal .vpn-input-group > i {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  z-index: 1;
+  color: var(--pop-leaf);
+  font-size: 14px;
+  transform: translateY(-50%);
+}
+
+#vpnModal .vpn-input-group input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  padding: 0 13px;
+  border: 2px solid var(--pop-line);
+  border-radius: 14px;
+  background: #fffdf7;
+  color: var(--pop-ink);
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 2px 0 rgba(11, 73, 38, .04);
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+#vpnModal .vpn-input-group > i + input {
+  padding-left: 42px;
+}
+
+#vpnModal .vpn-input-group input::placeholder {
+  color: #9ba596;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#vpnModal .vpn-input-group input:focus {
+  border-color: var(--pop-lime-deep);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(217, 255, 90, .34);
+}
+
+#vpnModal .vpn-input-group input:-webkit-autofill {
+  -webkit-text-fill-color: var(--pop-ink);
+  -webkit-box-shadow: 0 0 0 1000px #fffdf7 inset;
+}
+
+#vpnModal .vpn-country-prefix {
+  display: inline-flex;
+  flex: 0 0 82px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-right: 6px;
+  border: 2px solid var(--pop-line);
+  border-right: 0;
+  border-radius: 14px 0 0 14px;
+  background: #f2ffe0;
+  color: var(--pop-forest-deep);
+  font-size: 12.5px;
+  font-weight: 900;
+  transition: border-color .25s ease, background .25s ease;
+}
+
+#vpnModal .vpn-country-prefix img {
+  width: 20px;
+  height: 15px;
+  flex: 0 0 20px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .16);
+}
+
+#vpnModal .vpn-country-prefix + input {
+  padding-left: 12px;
+  border-left: 0;
+  border-radius: 0 14px 14px 0;
+}
+
+#vpnModal .vpn-input-group:focus-within .vpn-country-prefix {
+  border-color: var(--pop-lime-deep);
+  background: #e9ffc9;
+}
+
+#vpnModal .vpn-country-code-select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  appearance: auto;
+  -webkit-appearance: auto;
+}
+
+/* Buttons */
+#vpnModal .vpn-submit-btn {
+  display: flex;
+  width: 100%;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  padding: 0 16px;
+  border: 2px solid var(--pop-lime-deep);
+  border-radius: 14px;
+  background: var(--pop-lime);
+  color: var(--pop-forest-deep);
+  font-size: 13.5px;
+  font-weight: 900;
+  letter-spacing: .01em;
+  box-shadow: 0 5px 0 #8fbd2d, 0 10px 20px rgba(91, 130, 20, .16);
+  cursor: pointer;
+  transition: transform .22s ease, box-shadow .22s ease, opacity .22s ease;
+}
+
+#vpnModal .vpn-submit-btn i {
+  position: static;
+  top: auto;
+  left: auto;
+  font-size: 14px;
+  transform: none;
+}
+
+#vpnModal .vpn-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #8fbd2d, 0 16px 28px rgba(91, 130, 20, .22);
+}
+
+#vpnModal .vpn-submit-btn:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #8fbd2d;
+}
+
+#vpnModal .vpn-submit-btn:disabled {
+  opacity: .55;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#vpnModal .vpn-otp-verify-btn {
+  width: auto;
+  min-width: 152px;
+  min-height: 38px;
+  margin: 0 0 7px auto;
+  padding: 7px 14px;
+  border-radius: 12px;
+  font-size: 12px;
+  box-shadow: 0 4px 0 #8fbd2d;
+}
+
+#vpnModal .vpn-otp-resend-link {
+  display: inline-flex;
+  width: auto;
+  margin: 0 0 7px auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--pop-forest-soft);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+#vpnModal .vpn-otp-resend-link:hover {
+  color: var(--pop-leaf);
+}
+
+#vpnModal .vpn-otp-resend-link:disabled {
+  color: #a4ad9d;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+/* Messages */
+#vpnModal .vpn-otp-message {
+  margin: 0 0 7px;
+  padding: 7px 10px;
+  border: 1.5px solid transparent;
+  border-radius: 11px;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+#vpnModal .vpn-otp-message.vpn-error {
+  border-color: #f2c5bf;
+  background: #fff0ed;
+  color: #b33a31;
+}
+
+#vpnModal .vpn-otp-message.vpn-success {
+  border-color: #c8e8b8;
+  background: #f0fae4;
+  color: #367226;
+}
+
+#vpnModal .vpn-field-error {
+  margin: -4px 0 7px;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+/* Switch and terms */
+#vpnModal .vpn-auth-switch {
+  margin: 2px 0 7px;
+  padding-top: 8px;
+  border-top: 2px dashed #e6dcc5;
+  color: var(--pop-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+#vpnModal .vpn-auth-switch a,
+#vpnModal .vpn-terms a {
+  color: var(--pop-forest-soft);
+  font-weight: 900;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#vpnModal .vpn-auth-switch a:hover,
+#vpnModal .vpn-terms a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Pin the trust message to the bottom of the right-hand form panel. */
+#vpnModal .vpn-modal-form-area > .vpn-trust-note {
+  margin-top: auto;
+}
+
+/* Compact trust message — present on both auth modes without adding a scroll. */
+#vpnModal .vpn-trust-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 7px;
+  padding: 8px 11px;
+  border: 1.5px solid rgba(28, 107, 54, .22);
+  border-left: 4px solid var(--pop-lime);
+  border-radius: 12px;
+  background: linear-gradient(120deg, #f1f9e9 0%, #fff8df 100%);
+  box-shadow: 0 2px 0 rgba(28, 107, 54, .08);
+  color: var(--pop-forest-deep);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: left;
+}
+
+#vpnModal .vpn-trust-note i {
+  color: var(--pop-forest-soft);
+  font-size: 15px;
+}
+
+#vpnModal .vpn-terms {
+  margin: 0;
+  color: #8d9788;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Hidden states */
+#vpnModal .vpn-hidden,
+#vpnModal .vpn-signup-extra {
+  display: none !important;
+}
+
+/* Tablet: still one centered, fixed-height box */
+@media (min-width: 481px) and (max-width: 820px) {
+  #vpnModal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(6, 51, 27, .42);
+    backdrop-filter: blur(4px);
+  }
+
+  #vpnModal .vpn-modal-panel {
+    width: min(620px, 100%);
+    max-width: 100%;
+    height: calc(100vh - 36px);
+    height: calc(100dvh - 36px);
+    border: 2px solid rgba(255, 255, 255, .7);
+    border-radius: 28px;
+    box-shadow: 0 26px 70px rgba(3, 34, 16, .34);
+  }
+
+  #vpnModal .vpn-modal-deco {
+    min-height: 128px;
+    padding: 16px 24px 16px;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2 {
+    font-size: 27px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    padding: 14px 26px calc(16px + env(safe-area-inset-bottom));
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  #vpnModal .vpn-modal-form-area > .vpn-tabs,
+  #vpnModal .vpn-modal-form-area > .vpn-auth-card-head,
+  #vpnModal .vpn-modal-form-area > #vpnLoginForm,
+  #vpnModal .vpn-modal-form-area > #vpnSignupForm,
+  #vpnModal .vpn-modal-form-area > .vpn-trust-note {
+    max-width: 460px;
+  }
+
+  /* Pair name/email on tablets too, so the pinned trust box always fits. */
+  #vpnModal #vpnSignupForm {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+    align-content: start;
+  }
+
+  #vpnModal #vpnSignupForm > .vpn-form-sub,
+  #vpnModal #vpnSignupForm > #vpnSignupError,
+  #vpnModal #vpnSignupForm > #vpnSignupSendOtpBtn,
+  #vpnModal #vpnSignupForm > #vpnSignupOtpGroup,
+  #vpnModal #vpnSignupForm > #vpnSignupVerifyOtpBtn,
+  #vpnModal #vpnSignupForm > #vpnSignupResendOtpBtn,
+  #vpnModal #vpnSignupForm > #vpnSignupOtpMessage,
+  #vpnModal #vpnSignupForm > .vpn-auth-switch,
+  #vpnModal #vpnSignupForm > .vpn-terms,
+  #vpnModal #vpnSignupForm > #vpnSignupCreateBtn {
+    grid-column: 1 / -1;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(3) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(6) {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(7) {
+    grid-column: 1 / -1;
+    grid-row: 5;
+  }
+}
+
+/* Desktop split */
+@media (min-width: 821px) {
+  #vpnModal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(4, 35, 18, .66);
+    backdrop-filter: blur(5px);
+  }
+
+  #vpnModal .vpn-modal-panel {
+    width: 864px;
+    max-width: min(864px, calc(100vw - 40px));
+    height: 648px;
+    height: min(648px, calc(100vh - 40px));
+    height: min(648px, calc(100dvh - 40px));
+    grid-template-columns: 46% 54%;
+    grid-template-rows: minmax(0, 1fr);
+    border: 2px solid rgba(255, 255, 255, .75);
+    border-radius: 34px;
+    box-shadow: 0 32px 90px rgba(2, 28, 12, .46);
+  }
+
+  #vpnModal .vpn-modal-deco {
+    min-height: 0;
+    padding: 30px 34px 34px;
+  }
+
+  #vpnModal .vpn-deco-topbar {
+    margin-bottom: 28px;
+  }
+
+  #vpnModal .vpn-modal-logo {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  #vpnModal .vpn-close-btn {
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+
+  #vpnModal .vpn-auth-banner-content {
+    max-width: 360px;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2 {
+    font-size: 42px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    padding: 30px 46px calc(30px + env(safe-area-inset-bottom));
+    margin-top: 0;
+    border-radius: 0;
+    border-left: 1px solid rgba(11, 73, 38, .08);
+  }
+
+  /* Keep the corner close button clear of the tab strip. */
+  #vpnModal .vpn-tabs {
+    margin-top: 26px;
+  }
+
+  #vpnModal .vpn-auth-card-head h3 {
+    font-size: 25px;
+  }
+
+  #vpnModal .vpn-tab {
+    min-height: 40px;
+    font-size: 13px;
+  }
+
+  #vpnModal .vpn-input-group input {
+    height: 44px;
+  }
+
+  /* Pair name/email so sign-up + OTP fits without growing the box. */
+  #vpnModal #vpnSignupForm {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+    align-content: start;
+  }
+
+  #vpnModal #vpnSignupForm > .vpn-form-sub,
+  #vpnModal #vpnSignupForm > #vpnSignupError,
+  #vpnModal #vpnSignupForm > #vpnSignupSendOtpBtn,
+  #vpnModal #vpnSignupForm > #vpnSignupOtpGroup,
+  #vpnModal #vpnSignupForm > #vpnSignupVerifyOtpBtn,
+  #vpnModal #vpnSignupForm > #vpnSignupResendOtpBtn,
+  #vpnModal #vpnSignupForm > #vpnSignupOtpMessage,
+  #vpnModal #vpnSignupForm > .vpn-auth-switch,
+  #vpnModal #vpnSignupForm > .vpn-terms,
+  #vpnModal #vpnSignupForm > #vpnSignupCreateBtn {
+    grid-column: 1 / -1;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(3) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(6) {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+
+  #vpnModal #vpnSignupForm > :nth-child(7) {
+    grid-column: 1 / -1;
+    grid-row: 5;
+  }
+}
+
+/* Restore the supporting promo line only on comfortably tall desktop screens. */
+@media (min-width: 821px) and (min-height: 760px) {
+  #vpnModal .vpn-auth-banner-content p {
+    display: block;
+  }
+}
+
+/* Small phones */
+@media (max-width: 479px) {
+  #vpnModal .vpn-modal-deco {
+    min-height: 118px;
+    padding: 10px 16px 12px;
+  }
+
+  #vpnModal .vpn-deco-topbar {
+    margin-bottom: 8px;
+  }
+
+  #vpnModal .vpn-modal-logo {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+    padding: 4px;
+    border-radius: 10px;
+  }
+
+  #vpnModal .deco-logo {
+    font-size: 12px;
+  }
+
+  #vpnModal .idlogo-vivasayam-txt {
+    font-size: 8.5px;
+  }
+
+  #vpnModal .vpn-close-btn {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  #vpnModal .vpn-picked-badge,
+  #vpnModal .vpn-farm-badge {
+    padding: 4px 8px;
+    font-size: 8px;
+  }
+
+  #vpnModal .vpn-picked-badge {
+    margin-bottom: 6px;
+  }
+
+  #vpnModal .vpn-farm-badge {
+    margin: 8px 0 0;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2 {
+    font-size: 21px;
+  }
+
+  #vpnModal .vpn-auth-offer {
+    margin-bottom: 6px;
+    padding: 5px 8px;
+    font-size: 9.5px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    padding: 10px 14px calc(12px + env(safe-area-inset-bottom));
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  #vpnModal .vpn-tabs {
+    margin-bottom: 7px;
+    padding: 3px;
+  }
+
+  #vpnModal .vpn-tab {
+    min-height: 34px;
+    font-size: 12px;
+  }
+
+  #vpnModal .vpn-auth-card-head {
+    margin-bottom: 8px;
+  }
+
+  #vpnModal .vpn-auth-card-head h3 {
+    font-size: 20px;
+  }
+
+  #vpnModal .vpn-country-prefix {
+    flex-basis: 78px;
+    gap: 5px;
+  }
+
+  #vpnModal .vpn-country-prefix img {
+    width: 18px;
+    height: 14px;
+    flex-basis: 18px;
+  }
+
+  #vpnModal .vpn-otp-verify-btn {
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 6px;
+  }
+
+  #vpnModal .vpn-otp-resend-link {
+    width: 100%;
+    justify-content: center;
+    margin: 0 0 6px;
+  }
+}
+
+@media (max-width: 359px) {
+  #vpnModal .vpn-auth-banner-content h2 {
+    font-size: 19px;
+  }
+}
+
+/* Short screens: compress decoration, never introduce a scrollbar */
+@media (max-height: 820px) and (max-width: 820px) {
+  #vpnModal .vpn-modal-deco {
+    min-height: 0;
+    padding: 8px 14px 10px;
+  }
+
+  #vpnModal .vpn-deco-topbar {
+    margin-bottom: 6px;
+  }
+
+  #vpnModal .vpn-modal-logo {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+    padding: 3px;
+    border-radius: 9px;
+  }
+
+  #vpnModal .deco-logo {
+    font-size: 11px;
+  }
+
+  #vpnModal .idlogo-vivasayam-txt {
+    font-size: 8px;
+  }
+
+  #vpnModal .vpn-close-btn {
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
+  }
+
+  #vpnModal .vpn-picked-badge,
+  #vpnModal .vpn-farm-badge {
+    padding: 3px 7px;
+    font-size: 7.5px;
+  }
+
+  #vpnModal .vpn-picked-badge {
+    margin-bottom: 5px;
+  }
+
+  #vpnModal .vpn-farm-badge {
+    margin: 5px 0 0;
+  }
+
+  #vpnModal .vpn-auth-offer {
+    margin-bottom: 5px;
+    padding: 4px 7px;
+    font-size: 9px;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2 {
+    margin-bottom: 0;
+    font-size: 19px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    padding: 8px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+
+  #vpnModal .vpn-tabs {
+    margin-bottom: 5px;
+    padding: 3px;
+  }
+
+  #vpnModal .vpn-tab {
+    min-height: 30px;
+    font-size: 11.5px;
+  }
+
+  #vpnModal .vpn-auth-card-head {
+    margin-bottom: 6px;
+  }
+
+  #vpnModal .vpn-auth-card-head p {
+    display: none;
+  }
+
+  #vpnModal .vpn-auth-card-head h3 {
+    font-size: 18px;
+  }
+
+  #vpnModal .vpn-form-sub:not(.vpn-otp-message) {
+    display: none;
+  }
+
+  #vpnModal .vpn-field-label {
+    margin-bottom: 3px;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  #vpnModal .vpn-input-group {
+    margin-bottom: 5px;
+  }
+
+  #vpnModal .vpn-input-group input {
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  #vpnModal .vpn-country-prefix {
+    flex-basis: 72px;
+    border-radius: 12px 0 0 12px;
+  }
+
+  #vpnModal .vpn-country-prefix img {
+    width: 16px;
+    height: 12px;
+    flex-basis: 16px;
+  }
+
+  #vpnModal .vpn-country-prefix + input {
+    border-radius: 0 12px 12px 0;
+  }
+
+  #vpnModal .vpn-submit-btn {
+    min-height: 40px;
+    margin-bottom: 7px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  #vpnModal .vpn-otp-verify-btn {
+    min-height: 34px;
+    margin-bottom: 5px;
+    padding: 5px 12px;
+  }
+
+  #vpnModal .vpn-otp-resend-link {
+    margin-bottom: 5px;
+    font-size: 10px;
+  }
+
+  #vpnModal .vpn-otp-message {
+    margin-bottom: 5px;
+    padding: 5px 8px;
+    font-size: 10.5px;
+  }
+
+  #vpnModal .vpn-auth-switch {
+    margin-bottom: 5px;
+    padding-top: 5px;
+    font-size: 10.5px;
+  }
+
+  #vpnModal .vpn-trust-note {
+    margin-bottom: 5px;
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+
+  #vpnModal .vpn-terms {
+    display: none;
+  }
+}
+
+/* Very short phones: keep the brand, badge, and every control; drop extra copy. */
+@media (max-height: 600px) and (max-width: 820px) {
+  #vpnModal .vpn-modal-deco {
+    min-height: 0;
+    padding: 8px 14px;
+  }
+
+  #vpnModal .vpn-auth-banner-content {
+    min-height: 0;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2,
+  #vpnModal .vpn-auth-banner-content p,
+  #vpnModal .vpn-auth-offer {
+    display: none;
+  }
+
+  #vpnModal .vpn-picked-badge,
+  #vpnModal .vpn-farm-badge {
+    margin: 0;
+  }
+
+  #vpnModal .vpn-picked-badge {
+    margin-bottom: 4px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    padding-top: 6px;
+  }
+
+  #vpnModal .vpn-input-group input {
+    height: 36px;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 821px) {
+  #vpnModal .vpn-modal-panel {
+    height: calc(100vh - 24px);
+    height: calc(100dvh - 24px);
+  }
+
+  #vpnModal .vpn-modal-deco {
+    padding-top: 22px;
+    padding-bottom: 24px;
+  }
+
+  #vpnModal .vpn-deco-topbar {
+    margin-bottom: 18px;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2 {
+    font-size: 34px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    padding: 22px 36px calc(22px + env(safe-area-inset-bottom));
+  }
+
+  #vpnModal .vpn-tabs {
+    margin-top: 32px;
+    margin-bottom: 8px;
+  }
+
+  #vpnModal .vpn-auth-card-head {
+    margin-bottom: 8px;
+  }
+
+  #vpnModal .vpn-form-sub:not(.vpn-otp-message),
+  #vpnModal .vpn-terms {
+    display: none;
+  }
+
+  #vpnModal .vpn-input-group input {
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #vpnModal,
+  #vpnModal * {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Live vpnexues.com modal tokens (CSS module _eq244_).
+   This is the final cascade layer and intentionally mirrors the live site's
+   two-box layout: full-width white overlay + promo box on small screens, and
+   a centered 820px split box on desktop.
+   -------------------------------------------------------------------------- */
+#vpnModal {
+  --live-green: #2d5a27;
+  --live-green-dark: #1a5c2e;
+  --live-green-mid: #2d7a3f;
+  --live-green-light: #3d9a4a;
+  --live-border: #e5e7eb;
+  --live-ink: #111111;
+  --live-muted: #333333;
+
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  color: var(--live-muted);
+  font-family: "DM Sans", "Manrope", "Poppins", Arial, sans-serif;
+}
+
+#vpnModal.open {
+  display: block;
+}
+
+#vpnModal .vpn-modal-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 100%;
+  max-height: none;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+  animation: none;
+}
+
+#vpnModal .vpn-modal-panel > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+#vpnModal .vpn-modal-deco {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 250px;
+  padding: 18px 16px 28px;
+  overflow: hidden;
+  color: #fff;
+  background: #123b13 url("../img/auth-login-bg.jpg") bottom / cover no-repeat;
+}
+
+#vpnModal .vpn-modal-deco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  opacity: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, #0a23098c 0%, #0a230959 35%, #0a230914 70%, #0000 100%),
+              linear-gradient(#0612060d 0%, #0612061a 35%, #06120673 100%);
+}
+
+#vpnModal .vpn-modal-deco::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  opacity: .75;
+  pointer-events: none;
+  background: radial-gradient(circle at 18% 20%, #ffffff1f, #0000 34%);
+}
+
+#vpnModal .vpn-deco-topbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 0 0 16px;
+  text-shadow: none;
+}
+
+#vpnModal .vpn-category-drawer__brand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+#vpnModal .vpn-modal-logo {
+  display: block;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  padding: 4px;
+  border: 0;
+  border-radius: 50%;
+  background: #fffffff2;
+  object-fit: contain;
+  box-shadow: 0 2px 8px #00000026;
+}
+
+#vpnModal .deco-logo {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+#vpnModal .idlogo-vivasayam-txt {
+  display: block;
+  margin-top: 1px;
+  color: #ffffffd9;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  line-height: 1.25;
+}
+
+#vpnModal .vpn-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 20;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  box-shadow: none;
+  transform: none;
+  transition: background .3s ease, transform .2s ease;
+}
+
+#vpnModal .vpn-close-btn:hover,
+#vpnModal .vpn-close-btn:active {
+  background: #f0f0f0;
+  color: #000;
+  box-shadow: none;
+  transform: scale(1.05);
+}
+
+#vpnModal .vpn-auth-banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 315px;
+  margin-top: auto;
+  padding: 0;
+  text-align: center;
+}
+
+#vpnModal .vpn-auth-banner-content h2 {
+  display: block;
+  max-width: 286px;
+  margin: 0 auto 10px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: normal;
+  line-height: 1.16;
+  text-align: center;
+  text-transform: none;
+  text-shadow: 0 2px 12px #0000006b;
+}
+
+#vpnModal .vpn-auth-banner-content h2 span {
+  color: inherit;
+}
+
+#vpnModal .vpn-auth-banner-content p {
+  display: -webkit-box;
+  max-width: 328px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffffeb;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-shadow: 0 1px 8px #00000080;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#vpnModal .vpn-picked-badge,
+#vpnModal .vpn-farm-badge,
+#vpnModal .vpn-auth-offer {
+  display: none !important;
+}
+
+#vpnModal .vpn-modal-form-area {
+  display: block;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  margin: 0;
+  padding: 24px 20px calc(36px + env(safe-area-inset-bottom, 0px));
+  border: 0;
+  border-radius: 0;
+  background: #ffffffeb;
+  box-shadow: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#vpnModal .vpn-modal-form-area > .vpn-tabs,
+#vpnModal .vpn-modal-form-area > .vpn-auth-card-head,
+#vpnModal .vpn-modal-form-area > #vpnLoginForm,
+#vpnModal .vpn-modal-form-area > #vpnSignupForm,
+#vpnModal .vpn-modal-form-area > .vpn-trust-note {
+  width: auto;
+  max-width: none;
+  min-height: 0;
+  flex: 0 0 auto;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#vpnModal .vpn-auth-bottom-art {
+  display: none;
+}
+
+#vpnModal .vpn-tabs {
+  display: flex;
+  gap: 5px;
+  margin: 0 0 21px;
+  padding: 5px;
+  border: 0;
+  border-radius: 14px;
+  background: #f3f4f6;
+}
+
+#vpnModal .vpn-tab,
+#vpnModal .vpn-tab:hover:not(.active) {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #333;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: none;
+  transform: none;
+  cursor: pointer;
+  transition: background .3s ease, color .3s ease, box-shadow .3s ease;
+}
+
+#vpnModal .vpn-tab.active {
+  background: #2d5a27;
+  color: #fff;
+  box-shadow: 0 2px 10px #2d5a274d;
+  transform: none;
+}
+
+#vpnModal .vpn-auth-card-head {
+  margin: 0 0 16px;
+}
+
+#vpnModal .vpn-auth-card-head p {
+  display: block;
+  align-items: normal;
+  gap: 0;
+  margin: 0 0 6px;
+  color: #2d5a27;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+#vpnModal .vpn-auth-card-head p::before {
+  display: none;
+}
+
+#vpnModal .vpn-auth-card-head h3 {
+  margin: 0;
+  color: #111;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: normal;
+  line-height: 1.18;
+}
+
+#vpnModal .vpn-form-sub,
+#vpnModal .vpn-form-sub:not(.vpn-otp-message) {
+  display: block;
+  margin: 0 0 17px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+#vpnModal .vpn-field-label {
+  display: block;
+  margin: 0 0 8px;
+  color: #111;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20.8px;
+}
+
+#vpnModal .vpn-input-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: stretch;
+  margin: 0 0 14px;
+}
+
+#vpnModal .vpn-input-group > i {
+  top: 50%;
+  left: 16px;
+  z-index: 1;
+  color: #2d5a27;
+  font-size: 14px;
+  transform: translateY(-50%);
+}
+
+#vpnModal .vpn-input-group input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  height: 52px;
+  padding: 0 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  color: #111;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: none;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+#vpnModal .vpn-input-group > i + input {
+  padding-left: 46px;
+}
+
+#vpnModal .vpn-input-group input::placeholder {
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#vpnModal .vpn-input-group input:focus {
+  border-color: #2d5a27;
+  background: #fff;
+  box-shadow: 0 0 0 3px #2d5a271a;
+}
+
+#vpnModal .vpn-input-group input:disabled {
+  color: #555;
+  background: #f3f4f6;
+}
+
+#vpnModal .vpn-country-prefix {
+  display: inline-flex;
+  flex: 0 0 100px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-right: 8px;
+  padding: 0;
+  border: 2px solid #e5e7eb;
+  border-right: 2px solid #e5e7eb;
+  border-radius: 14px 0 0 14px;
+  background: #f9fafb;
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+  transition: border-color .3s ease;
+}
+
+#vpnModal .vpn-country-prefix img {
+  width: 26px;
+  height: 20px;
+  flex: 0 0 26px;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: none;
+}
+
+#vpnModal .vpn-country-prefix + input {
+  padding-left: 16px;
+  border-left: 2px solid #e5e7eb;
+  border-radius: 14px;
+}
+
+#vpnModal .vpn-input-group:focus-within .vpn-country-prefix {
+  border-color: #2d5a27;
+  background: #f9fafb;
+}
+
+#vpnModal #vpnSignupForm {
+  display: block;
+}
+
+#vpnModal .vpn-submit-btn {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1a5c2e 0%, #2d7a3f 50%, #3d9a4a 100%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: normal;
+  box-shadow: 0 6px 24px #2d7a3f59;
+  cursor: pointer;
+  transition: transform .3s ease, box-shadow .3s ease, opacity .3s ease;
+}
+
+#vpnModal .vpn-submit-btn i {
+  position: static;
+  top: auto;
+  left: auto;
+  font-size: 14px;
+  transform: none;
+}
+
+#vpnModal .vpn-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px #2d7a3f73;
+}
+
+#vpnModal .vpn-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 6px 24px #2d7a3f59;
+}
+
+#vpnModal .vpn-submit-btn:disabled {
+  opacity: .5;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#vpnModal .vpn-otp-verify-btn {
+  width: auto;
+  min-width: 132px;
+  min-height: 52px;
+  margin: -2px 0 8px auto;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+#vpnModal .vpn-otp-resend-link {
+  display: inline-flex;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #2d5a27;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+#vpnModal .vpn-otp-resend-link:hover {
+  color: #1a5c2e;
+}
+
+#vpnModal .vpn-otp-resend-link:disabled {
+  color: #9aae92;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+#vpnModal .vpn-otp-message {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+#vpnModal .vpn-otp-message.vpn-error {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+#vpnModal .vpn-otp-message.vpn-success {
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+#vpnModal .vpn-auth-switch {
+  margin: 2px 0 15px;
+  padding: 0;
+  border: 0;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20.8px;
+  text-align: center;
+}
+
+#vpnModal .vpn-auth-switch a,
+#vpnModal .vpn-terms a {
+  color: #2d5a27;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#vpnModal .vpn-modal-form-area > .vpn-trust-note {
+  margin-top: 0;
+}
+
+#vpnModal .vpn-trust-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border: 0;
+  border-left: 0;
+  border-radius: 14px;
+  background: #f0fdf4;
+  color: #15803d;
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+}
+
+#vpnModal .vpn-trust-note i {
+  flex: 0 0 24px;
+  color: #15803d;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+#vpnModal .vpn-trust-note span {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+#vpnModal .vpn-trust-note strong {
+  font-size: 13px;
+  line-height: 22.4px;
+}
+
+#vpnModal .vpn-trust-note small {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 17.6px;
+}
+
+#vpnModal .vpn-terms {
+  display: block;
+  margin: 0;
+  color: #555;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.55;
+  text-align: center;
+}
+
+#vpnModal .vpn-recaptcha-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+@media (max-width: 479px) {
+  #vpnModal.open {
+    display: block;
+    padding: 0;
+    background: #fff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  #vpnModal .vpn-modal-panel {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    height: auto;
+    min-height: calc(100% - 20px);
+    margin: 10px auto;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #vpnModal .vpn-modal-deco {
+    min-height: 200px;
+    padding: 14px 14px 22px;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2 {
+    font-size: 18px;
+  }
+
+  #vpnModal .vpn-auth-banner-content p {
+    font-size: 11px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    padding: 20px 16px calc(32px + env(safe-area-inset-bottom, 0px));
+  }
+
+  #vpnModal .vpn-auth-card-head h3 {
+    font-size: 18px;
+  }
+
+  #vpnModal .vpn-otp-verify-btn {
+    width: 100%;
+    min-width: 0;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 820px) {
+  #vpnModal.open {
+    display: block;
+    padding: 0;
+    background: #fff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  #vpnModal .vpn-modal-panel {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    height: auto;
+    min-height: calc(100% - 20px);
+    margin: 10px auto;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #vpnModal .vpn-modal-deco {
+    min-height: 300px;
+    padding: 20px 24px 32px;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2 {
+    font-size: 22px;
+  }
+
+  #vpnModal .vpn-auth-banner-content p {
+    font-size: 12px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    padding: 28px 28px calc(36px + env(safe-area-inset-bottom, 0px));
+  }
+
+  #vpnModal .vpn-auth-card-head h3 {
+    font-size: 21px;
+  }
+}
+
+@media (min-width: 821px) {
+  #vpnModal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #00000080;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  #vpnModal .vpn-modal-panel {
+    flex-direction: row;
+    width: 682px;
+    max-width: calc(92vw - 20px);
+    min-height: 0;
+    max-height: calc(90vh - 20px);
+    margin: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 25px 60px #0000004d;
+  }
+
+  #vpnModal .vpn-modal-deco {
+    width: 45%;
+    min-height: 460px;
+    max-height: calc(90vh - 20px);
+    padding: 20px 22px 36px;
+    background-position: top;
+  }
+
+  #vpnModal .vpn-modal-deco::before {
+    background: linear-gradient(90deg, #0a230973 0%, #0a230940 35%, #0a23090d 70%, #0000 100%),
+                linear-gradient(#06120605 0%, #0612060f 35%, #06120659 100%);
+  }
+
+  #vpnModal .vpn-deco-topbar {
+    margin-bottom: 16px;
+  }
+
+  #vpnModal .vpn-close-btn {
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  #vpnModal .vpn-auth-banner-content {
+    justify-content: flex-start;
+    max-width: 100%;
+    margin-top: 0;
+    padding: 0 24px 30px;
+  }
+
+  #vpnModal .vpn-auth-banner-content h2 {
+    max-width: 100%;
+    font-size: 28px;
+    line-height: 1.15;
+  }
+
+  #vpnModal .vpn-auth-banner-content p {
+    max-width: 360px;
+    font-size: 13px;
+  }
+
+  #vpnModal .vpn-modal-form-area {
+    width: 55%;
+    max-height: 90vh;
+    padding: 24px 48px 32px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  #vpnModal .vpn-tabs {
+    margin-top: 0;
+  }
+
+  #vpnModal .vpn-tab {
+    min-height: 46px;
+    font-size: 15px;
+  }
+
+  #vpnModal .vpn-auth-card-head h3 {
+    font-size: 22px;
+  }
+
+  #vpnModal .vpn-input-group input {
+    font-size: 14px;
+  }
+
+  #vpnModal .vpn-input-group input::placeholder {
+    font-size: 14px;
+  }
+
+  #vpnModal .vpn-trust-note {
+    padding: 14px 16px;
+  }
+
+  #vpnModal .vpn-trust-note strong {
+    font-size: 14px;
+  }
+
+  #vpnModal .vpn-trust-note small {
+    font-size: 11px;
+  }
+}
+
+/* ── Vegetable mascots peeking over the login card edges ── */
+/* Bell pepper + eggplant use the same bob / click-jump behaviour as the
+   broccoli (small box) and carrot (big box) mascots on the home page. */
+/* Let the rounded card paint its own corners while mascots extend beyond them. */
+#vpnModal .vpn-modal-panel { overflow: visible; }
+
+#vpnModal .vpn-modal-mascots {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+#vpnModal .vpn-modal-mascot {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  height: auto;
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Same wrapper + keyframes as .vpn-box-mascot-bob in box-concept.css. */
+#vpnModal .vpn-modal-mascot-bob {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 95%;
+  animation: vpnAuthMascotBob 3.2s ease-in-out infinite;
+}
+
+/* The eggplant is the "big box" mascot here, so it bounces half a beat behind. */
+#vpnModal .vpn-modal-mascot-eggplant .vpn-modal-mascot-bob {
+  animation-delay: -2s;
+}
+
+#vpnModal .vpn-modal-mascot-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes vpnAuthMascotBob {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+/* Same squash / stretch click jump as .vpn-box-mascot-burst. */
+#vpnModal .vpn-modal-mascot-burst {
+  animation: .7s cubic-bezier(.2, .9, .3, 1.3) 0s 1 normal none vpnAuthMascotJump;
+}
+
+#vpnModal .vpn-modal-mascot-burst .vpn-modal-mascot-bob {
+  animation-duration: .8s;
+}
+
+@keyframes vpnAuthMascotJump {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.08, .9) translateY(4px); }
+  50% { transform: scale(.95, 1.1) translateY(-26px); }
+  80% { transform: scale(1.03, .97) translateY(2px); }
+  100% { transform: scale(1); }
+}
+
+/* Desktop: bell pepper peeks over the top-left, eggplant over the right edge. */
+@media (min-width: 821px) {
+  #vpnModal .vpn-modal-deco { border-radius: 20px 0 0 20px; }
+  #vpnModal .vpn-modal-form-area { border-radius: 0 20px 20px 0; }
+
+  #vpnModal .vpn-modal-mascot-bellpeper { top: -51px; left: 3%; z-index: 1; width: 156px; }
+  #vpnModal .vpn-modal-mascot-eggplant { top: 50%; right: -110px; bottom: auto; left: auto; z-index: 2; width: 150px; margin-top: -75px; }
+}
+
+/* Tablet: modal fills the screen, so keep mascots in the empty right side of the banner. */
+@media (min-width: 480px) and (max-width: 820px) {
+  #vpnModal .vpn-modal-mascot-bellpeper { top: 68px; right: 170px; left: auto; width: 104px; z-index: 1; }
+  #vpnModal .vpn-modal-mascot-eggplant { top: 190px; right: -28px; left: auto; bottom: auto; z-index: 2; width: 104px; }
+}
+
+/* Phones: banner text fills the width, so hide mascots to keep copy/logo readable. */
+@media (max-width: 479px) {
+  #vpnModal .vpn-modal-mascots { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #vpnModal .vpn-modal-mascot,
+  #vpnModal .vpn-modal-mascot-burst,
+  #vpnModal .vpn-modal-mascot-bob {
+    animation: none !important;
+  }
+}
+
+/* Final override: centered, high-contrast left-panel wording on every breakpoint. */
+#vpnModal .vpn-modal-deco {
+  padding: 18px 10px 28px;
+}
+
+#vpnModal .vpn-modal-deco::before {
+  background:
+    radial-gradient(ellipse at 50% 68%, rgba(3, 24, 10, .8) 0%, rgba(3, 24, 10, .46) 42%, transparent 74%),
+    linear-gradient(90deg, rgba(6, 30, 12, .62) 0%, rgba(6, 30, 12, .34) 58%, transparent 100%),
+    linear-gradient(to bottom, rgba(3, 18, 8, .2) 0%, rgba(3, 18, 8, .5) 100%);
+}
+
+#vpnModal .vpn-auth-banner-content {
+  justify-content: center;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 8px;
+  gap: 12px;
+}
+
+#vpnModal .vpn-auth-banner-content h2 {
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 30px;
+  line-height: 1.14;
+  letter-spacing: -.01em;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .8), 0 4px 20px rgba(0, 0, 0, .65);
+}
+
+#vpnModal .vpn-auth-banner-content p {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .8), 0 3px 14px rgba(0, 0, 0, .6);
+  -webkit-line-clamp: unset;
+}

@@ -1,0 +1,104 @@
+/*
+-------------------------------------------------------------------
+  Theme Name   : VPNexues
+  Author       : ModinaTheme
+  Author URI   : https://themeforest.net/user/modinatheme/
+  Description  : VPNexues - Agriculture & Organic Farm HTML Template
+  Version      : 1.0.0
+-------------------------------------------------------------------
+*/
+
+/* ----------------------------------------------------------------
+[Table of Contents]
+
+01. Basic
+    01.1 Mixins
+    01.2 Variables
+    01.3 Buttons
+    01.4 Typography
+
+02. Template Sections
+    02.1 Preloader
+    02.2 Section
+    02.3 Animation
+    02.4 Header
+    02.5 MeanMenu
+    02.6 Hero
+    02.7 Feature
+    02.8 About
+    02.9 Service
+    02.10 Shop
+    02.11 Project
+    02.12 Helping
+    02.13 Team
+    02.14 FAQ
+    02.15 CTA
+    02.16 Testimonial
+    02.17 Brand
+    02.18 News Addons
+    02.19 Blog
+    02.20 Contact
+    02.21 Footer
+
+------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------
+   01. Basic
+-------------------------------------------------------------- */
+
+// 01.1 Mixins
+@use "mixins" as *;
+// 01.2 Variables	
+@use "_variables" as *;
+// 01.3 Buttons
+@use "_buttons" as *;
+// 01.4 Typography
+@use "_typography" as *;
+
+
+/* --------------------------------------------------------------
+   02. Template Sections
+-------------------------------------------------------------- */
+
+// 02.1 Preloader
+@use "_preloader" as *;
+// 02.2 Section 
+@use "_section" as *;
+// 02.3 Animation
+@use "_animation" as *;
+// 02.4 Header
+@use "_header" as *;
+// 02.5 MeanMenu
+@use "_meanmenu" as *;
+// 02.6 Hero
+@use "_hero" as *;
+// 02.7 Feature
+@use "_feature" as *;
+// 02.8 About
+@use "_about" as *;
+// 02.9 Service
+@use "_service" as *;
+// 02.10 Shop
+@use "_shop" as *;
+// 02.11 Project
+@use "_project" as *;
+// 02.12 Helping
+@use "_helping" as *;
+// 02.13 Team
+@use "_team" as *;
+// 02.14 FAQ
+@use "_faq" as *;
+// 02.15 CTA
+@use "_cta" as *;
+// 02.16 Testimonial
+@use "_testimonial" as *;
+// 02.17 Brand
+@use "_brand" as *;
+// 02.18 News Addons
+@use "_news-addons" as *;
+// 02.19 Blog 
+@use "_blog" as *;
+// 02.20 Contact
+@use "_contact" as *;
+// 02.21 Footer
+@use "_footer" as *;

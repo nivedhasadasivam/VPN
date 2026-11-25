@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^powershell -ExecutionPolicy Bypass -File 'c:\\\\Users\\\\libin\\\\OneDrive\\\\Desktop\\\\vpnexues-new\\\\vpnexues-new\\\\add-css-links\\.ps1'$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

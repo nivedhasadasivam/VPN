@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="defaultAvatarTitle">
+  <title id="defaultAvatarTitle">Default profile picture</title>
+  <defs>
+    <linearGradient id="avatarBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8f5e3"/>
+      <stop offset="1" stop-color="#cfe7cd"/>
+    </linearGradient>
+    <linearGradient id="avatarShirt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3f8f3c"/>
+      <stop offset="1" stop-color="#14532d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" fill="url(#avatarBg)"/>
+  <circle cx="128" cy="110" r="86" fill="#ffffff" opacity=".22"/>
+
+  <path d="M32 256c7-49 44-76 96-76s89 27 96 76H32Z" fill="url(#avatarShirt)"/>
+  <path d="M106 166h44v32c0 10-10 18-22 18s-22-8-22-18v-32Z" fill="#d9a47e"/>
+  <path d="M106 174c8 8 36 8 44 0v14c-11 9-33 9-44 0v-14Z" fill="#c68c68" opacity=".55"/>
+
+  <ellipse cx="128" cy="112" rx="47" ry="55" fill="#ebbb95"/>
+  <circle cx="81" cy="117" r="9" fill="#e2ac85"/>
+  <circle cx="175" cy="117" r="9" fill="#e2ac85"/>
+
+  <path d="M81 108c0-36 19-58 47-58s47 22 47 58c-1-10-7-17-15-22-12 9-29 11-45 6-12-4-21-2-28 10-2 3-4 5-6 6Z" fill="#403b37"/>
+  <path d="M88 88c9-19 23-28 40-28 18 0 32 10 40 28-12-8-25-11-40-11s-28 4-40 11Z" fill="#4a443f" opacity=".7"/>
+
+  <ellipse cx="111" cy="116" rx="4" ry="5" fill="#3b342f"/>
+  <ellipse cx="145" cy="116" rx="4" ry="5" fill="#3b342f"/>
+  <path d="M118 143c6 5 14 5 20 0" fill="none" stroke="#a9684f" stroke-width="3" stroke-linecap="round"/>
+  <path d="M128 122c-2 6-2 8 0 9 2-1 2-3 0-9Z" fill="#d79c77"/>
+</svg>
